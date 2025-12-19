@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neon Buttons</title>
     <style>
-        /* ARKA FON - KARANLIK */
+        /* ARKA FON - YENİ GRADIENT RƏNG (ALWAYS APPLIED TO ALL DEVICES) */
         body {
-            background: #000;
+            background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
             margin: 0;
             min-height: 100vh;
             display: flex;
@@ -16,7 +16,7 @@
             font-family: Arial, sans-serif;
         }
         
-        /* BUTTON CONTAINER */
+        /* BUTTON CONTAINER - HORIZONTAL (əvvəlki kimi) */
         .buttons-container {
             display: flex;
             flex-wrap: wrap;
@@ -27,7 +27,7 @@
             padding: 20px;
         }
         
-        /* ALL BUTTONS COMMON STYLES - ORIGINAL WITHOUT WHITE COLOR */
+        /* ALL BUTTONS COMMON STYLES - HƏR ŞEY EYNİ QALIR */
         .neon-btn {
             position: relative;
             background: transparent;
@@ -62,7 +62,7 @@
             display: none; /* Hide the flag icons */
         }
         
-        /* AZE BUTTON - CYAN NEON (ORIGINAL COLOR) */
+        /* AZE BUTTON - CYAN NEON (EYNİ QALIR) */
         .aze-btn {
             color: #00ffff;
             border: 2px solid #00ffff;
@@ -102,7 +102,7 @@
                 inset 0 0 15px rgba(0, 255, 255, 0.15);
         }
         
-        /* RUS BUTTON - PURPLE NEON (ORIGINAL COLOR) */
+        /* RUS BUTTON - PURPLE NEON (EYNİ QALIR) */
         .rus-btn {
             color: #ff00ff;
             border: 2px solid #ff00ff;
@@ -142,7 +142,7 @@
                 inset 0 0 15px rgba(255, 0, 255, 0.15);
         }
         
-        /* ENG BUTTON - LIME NEON (ORIGINAL COLOR) */
+        /* ENG BUTTON - LIME NEON (EYNİ QALIR) */
         .eng-btn {
             color: #00ff00;
             border: 2px solid #00ff00;
@@ -182,7 +182,7 @@
                 inset 0 0 15px rgba(0, 255, 0, 0.15);
         }
         
-        /* WHATSAPP BUTTON - GREEN NEON (ORIGINAL COLOR) */
+        /* WHATSAPP BUTTON - GREEN NEON (EYNİ QALIR) */
         .whatsapp-btn {
             color: #25d366;
             border: 2px solid #25d366;
@@ -222,7 +222,7 @@
                 inset 0 0 15px rgba(37, 211, 102, 0.15);
         }
         
-        /* ACTIVE STATE - PERMANENT BRIGHTER GLOW */
+        /* ACTIVE STATE - PERMANENT BRIGHTER GLOW (EYNİ QALIR) */
         .neon-btn.active {
             background: rgba(255, 255, 255, 0.08);
             box-shadow: 
@@ -232,7 +232,7 @@
             transform: scale(1.03);
         }
         
-        /* RESPONSIVE DESIGN - MADE SMALLER FOR PHONES */
+        /* RESPONSIVE DESIGN - EYNİ QALIR */
         @media (max-width: 768px) {
             .buttons-container {
                 gap: 15px; /* Reduced gap */
@@ -285,20 +285,8 @@
             }
         }
         
-        /* BACKGROUND EFFECT - DAHA AZ PARLAQ */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(0, 255, 0, 0.02) 0%, transparent 50%);
-            z-index: -1;
-        }
+        /* IMPORTANT: Remove any background-color overrides that might be in media queries */
+        /* The body gradient at the top is now applied to ALL devices */
     </style>
 </head>
 <body>
