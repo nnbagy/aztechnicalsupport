@@ -17,6 +17,7 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
             min-height: 100vh;
+            color: #e0e0e0;
         }
         
         /* NAVIGATION BAR */
@@ -225,6 +226,189 @@
             margin-bottom: 40px;
         }
         
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #aaffff;
+        }
+        
+        /* CONTACT SECTION */
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        
+        .contact-title {
+            text-align: center;
+            font-size: 36px;
+            color: #00ffff;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background-color: rgba(0, 20, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: rgba(0, 20, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .contact-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .contact-item h3 {
+            color: #00ffff;
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-item h3 i {
+            color: #00ffff;
+            width: 20px;
+        }
+        
+        .contact-item p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-left: 30px;
+        }
+        
+        .contact-item strong {
+            color: #ffffff;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #00ffff;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(0, 10, 10, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .required {
+            color: #ff5555;
+        }
+        
+        .submit-btn {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+        
+        .submit-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* CONTENT BOX */
+        .content-box {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(0, 20, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            text-align: left;
+        }
+        
+        .content-box h2 {
+            color: #00ffff;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .content-box p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #cccccc;
+        }
+        
         /* MOBILE STYLES */
         @media (max-width: 1024px) {
             .navbar {
@@ -246,6 +430,10 @@
                 font-size: 13px;
                 min-width: 70px;
                 height: 40px;
+            }
+            
+            .contact-title {
+                font-size: 32px;
             }
         }
         
@@ -294,41 +482,21 @@
                 font-size: 18px;
             }
             
-            /* SMALLER GLOW FOR MOBILE */
-            .aze-btn, .rus-btn, .eng-btn {
-                box-shadow: 
-                    0 0 5px #00ffff,
-                    0 0 10px #00ffff,
-                    inset 0 0 5px rgba(0, 255, 255, 0.08);
+            .contact-container {
+                flex-direction: column;
             }
             
-            .neon-btn:hover {
-                box-shadow: 
-                    0 0 10px #00ffff,
-                    0 0 18px #00ffff,
-                    0 0 25px rgba(0, 255, 255, 0.4),
-                    inset 0 0 10px rgba(0, 255, 255, 0.12);
-                transform: translateY(-1px);
+            .contact-info,
+            .contact-form {
+                min-width: 100%;
             }
             
-            /* ACTIVE STATE FOR MOBILE - EVEN MORE SUBTLE */
-            .neon-btn.active {
-                background: rgba(0, 255, 255, 0.08);
-                color: #ffffff !important;
-                box-shadow: 
-                    0 0 8px #00ffff,
-                    0 0 15px rgba(0, 255, 255, 0.25),
-                    inset 0 0 8px rgba(0, 255, 255, 0.08);
-                transform: scale(1.01);
+            .hero h1 {
+                font-size: 32px;
             }
             
-            .neon-btn.active:hover {
-                background: rgba(0, 255, 255, 0.12);
-                box-shadow: 
-                    0 0 10px #00ffff,
-                    0 0 18px rgba(0, 255, 255, 0.35),
-                    inset 0 0 10px rgba(0, 255, 255, 0.12);
-                transform: scale(1.02) translateY(-1px);
+            .hero p {
+                font-size: 18px;
             }
         }
         
@@ -359,58 +527,42 @@
             .company-subtitle {
                 font-size: 16px;
             }
+            
+            .contact-title {
+                font-size: 28px;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
         }
         
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 40px;
+        /* FOOTER */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px 20px;
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            margin-top: 60px;
         }
         
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        .footer p {
+            color: #88ffff;
+            margin-bottom: 10px;
         }
         
-        .hero p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            color: #aaffff;
-        }
-        
-        /* CONTENT BOX */
-        .content-box {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            text-align: left;
-        }
-        
-        .content-box h2 {
-            color: #00ffff;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
-            padding-bottom: 10px;
-        }
-        
-        .content-box p {
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #cccccc;
+        .copyright {
+            color: #66cccc;
+            font-size: 14px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -426,12 +578,12 @@
         
         <!-- CENTER - MAIN BUTTONS -->
         <div class="nav-center">
-            <button class="nav-btn active">ANA SƏHİFƏ</button>
+            <button class="nav-btn">ANA SƏHİFƏ</button>
             <button class="nav-btn">HAQQIMIZDA</button>
             <button class="nav-btn">KATALOQ</button>
             <button class="nav-btn">XİDMƏTLƏR</button>
             <button class="nav-btn">LAYİHƏLƏR</button>
-            <button class="nav-btn">ƏLAQƏ</button>
+            <button class="nav-btn active">ƏLAQƏ</button>
         </div>
         
         <!-- RIGHT - TOP CORNER BUTTONS (YOUR NEON BUTTONS) -->
@@ -456,8 +608,75 @@
         <p>2020-ci ildən fəaliyyətdədir. Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
     
-    <!-- MAIN CONTENT -->
-    <div class="content">
+    <!-- CONTACT SECTION -->
+    <div class="contact-section" id="elaqe">
+        <h2 class="contact-title">Bizim ilə Əlaqə</h2>
+        
+        <div class="contact-container">
+            <!-- CONTACT INFORMATION -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3><i class="fas fa-map-marker-alt"></i> Ünvan</h3>
+                    <p><strong>Bakı şəhəri, Buzovna Krutoy Zona</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3><i class="fas fa-phone"></i> Telefon</h3>
+                    <p><strong>+994 (10) 212-12-mənki</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3><i class="fas fa-envelope"></i> Email</h3>
+                    <p><strong>rasim88ismayilov@mail.ru</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3><i class="fas fa-clock"></i> İş Saatları</h3>
+                    <p><strong>Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3><i class="fas fa-info-circle"></i> Qeyd</h3>
+                    <p>Bütün sahələri doldurduqdan sonra "Göndər" düyməsini klikləyin. Müraciətiniz bizə göndəriləcək və ən qısa zamanda sizə cavab verəcəyik.</p>
+                </div>
+            </div>
+            
+            <!-- CONTACT FORM -->
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Adı, soyadı <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Adınızı və soyadınızı daxil edin">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Mobil nömrə <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+994 (__) ___ __ __">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Şirkətin adı <span class="required">*</span></label>
+                        <input type="text" id="company" name="company" required placeholder="Şirkətinizin adını daxil edin">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mətn <span class="required">*</span></label>
+                        <textarea id="message" name="message" required placeholder="Müraciətinizi bura yazın..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">GÖNDƏR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT (for other pages) -->
+    <div class="content" id="home-content" style="display: none;">
         <h1 class="company-name">AZHYDRO</h1>
         <p class="company-subtitle">2020-ci ildən fəaliyyətdədir</p>
         
@@ -472,6 +691,13 @@
             </p>
         </div>
     </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>AZHYDRO - 2020-ci ildən fəaliyyətdədir</p>
+        <p>Bütün hüquqlar qorunur © 2025</p>
+        <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
+    </div>
 
     <script>
         // Add active state to navigation buttons
@@ -479,11 +705,15 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const neonButtons = document.querySelectorAll('.neon-btn');
             
-            // Set first nav button as active by default
-            navButtons[0].classList.add('active');
+            // Set ƏLAQƏ button as active by default (contact page)
+            navButtons[5].classList.add('active');
             
             // Set AZ button as active by default
             document.querySelector('.aze-btn').classList.add('active');
+            
+            // Show contact section by default, hide home content
+            document.getElementById('elaqe').style.display = 'block';
+            document.getElementById('home-content').style.display = 'none';
             
             // Nav button click handler
             navButtons.forEach(button => {
@@ -495,6 +725,17 @@
                     
                     // Add active class to clicked button
                     this.classList.add('active');
+                    
+                    // Show/hide content based on button clicked
+                    const buttonText = this.textContent.trim();
+                    
+                    if (buttonText === 'ƏLAQƏ') {
+                        document.getElementById('elaqe').style.display = 'block';
+                        document.getElementById('home-content').style.display = 'none';
+                    } else {
+                        document.getElementById('elaqe').style.display = 'none';
+                        document.getElementById('home-content').style.display = 'block';
+                    }
                 });
             });
             
@@ -512,8 +753,64 @@
                     // Show which language is selected (for demonstration)
                     const lang = this.querySelector('.btn-text').textContent;
                     console.log('Selected language:', lang);
+                    
+                    // Here you can add language switching logic
+                    // For now, just show an alert
+                    if (lang === 'AZ') {
+                        document.querySelector('.contact-title').textContent = 'Bizim ilə Əlaqə';
+                        document.querySelector('.submit-btn').textContent = 'GÖNDƏR';
+                    } else if (lang === 'RUS') {
+                        document.querySelector('.contact-title').textContent = 'Свяжитесь с нами';
+                        document.querySelector('.submit-btn').textContent = 'ОТПРАВИТЬ';
+                    } else if (lang === 'ENG') {
+                        document.querySelector('.contact-title').textContent = 'Contact Us';
+                        document.querySelector('.submit-btn').textContent = 'SEND';
+                    }
                 });
             });
+            
+            // Contact form submission handler
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = {
+                        name: document.getElementById('name').value,
+                        phone: document.getElementById('phone').value,
+                        email: document.getElementById('email').value,
+                        company: document.getElementById('company').value,
+                        message: document.getElementById('message').value
+                    };
+                    
+                    // In a real application, you would send this data to a server
+                    // For this example, we'll simulate sending an email
+                    const emailBody = `
+                        Yeni müraciət:
+                        
+                        Ad, Soyad: ${formData.name}
+                        Telefon: ${formData.phone}
+                        Email: ${formData.email}
+                        Şirkət: ${formData.company}
+                        
+                        Mesaj:
+                        ${formData.message}
+                        
+                        Göndərilmə tarixi: ${new Date().toLocaleString()}
+                    `;
+                    
+                    // Simulate sending to gozalovsamir@gmail.com
+                    console.log('Email would be sent to: gozalovsamir@gmail.com');
+                    console.log('Email content:', emailBody);
+                    
+                    // Show success message
+                    alert('Müraciətiniz uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.');
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
         });
     </script>
 </body>
