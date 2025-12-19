@@ -18,6 +18,7 @@
             background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
             min-height: 100vh;
             color: #e0e0e0;
+            overflow-x: hidden;
         }
         
         /* NAVIGATION BAR */
@@ -29,6 +30,8 @@
             justify-content: space-between;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            position: relative;
+            z-index: 100;
         }
         
         /* LEFT SIDE - LOGO SPACE */
@@ -231,41 +234,76 @@
             margin-top: 5px;
         }
         
-        /* CONTACT SECTION */
-        .contact-section {
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-        }
-        
-        .contact-title {
-            text-align: center;
-            font-size: 36px;
-            color: #00ffff;
-            margin-bottom: 40px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-        
-        .contact-container {
+        /* SPLIT LAYOUT */
+        .split-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
+            min-height: calc(100vh - 300px);
+        }
+        
+        /* LEFT SIDE - PARTICLE ANIMATION WITH CUBE */
+        .left-side {
+            flex: 1;
+            width: 50%;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* RIGHT SIDE - CONTACT INFORMATION */
+        .right-side {
+            flex: 1;
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
         }
         
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 255, 255, 0.1);
+        /* CONTACT HEADER */
+        .contact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
         }
         
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
+        .contact-title-left {
+            font-size: 36px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .contact-title-right {
+            text-align: right;
+        }
+        
+        .contact-title-right .line1 {
+            display: block;
+            font-size: 36px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .contact-title-right .line2 {
+            display: block;
+            font-size: 32px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            margin-top: 5px;
+        }
+        
+        /* CONTACT INFORMATION */
+        .contact-info {
             background-color: rgba(0, 20, 20, 0.7);
             padding: 30px;
             border-radius: 10px;
@@ -351,8 +389,13 @@
                 height: 40px;
             }
             
-            .contact-title {
+            .contact-title-left,
+            .contact-title-right .line1 {
                 font-size: 32px;
+            }
+            
+            .contact-title-right .line2 {
+                font-size: 28px;
             }
             
             .company-name-two-line .line1 {
@@ -401,6 +444,35 @@
                 height: 38px;
             }
             
+            /* Mobile layout for split container */
+            .split-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .left-side,
+            .right-side {
+                width: 100%;
+                height: 50vh;
+            }
+            
+            .right-side {
+                padding: 30px 20px;
+            }
+            
+            .contact-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .contact-title-left,
+            .contact-title-right {
+                text-align: center;
+                width: 100%;
+            }
+            
             .company-name {
                 font-size: 36px;
             }
@@ -415,15 +487,6 @@
             
             .company-subtitle {
                 font-size: 18px;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .contact-info,
-            .contact-form {
-                min-width: 100%;
             }
             
             .hero h1 {
@@ -463,37 +526,51 @@
                 font-size: 26px;
             }
             
+            .contact-title-left,
+            .contact-title-right .line1 {
+                font-size: 28px;
+            }
+            
+            .contact-title-right .line2 {
+                font-size: 26px;
+            }
+            
             .company-subtitle {
                 font-size: 16px;
             }
             
-            .contact-title {
-                font-size: 28px;
-            }
-            
             .hero {
                 padding: 60px 20px;
+            }
+            
+            .right-side {
+                padding: 20px 15px;
+            }
+            
+            .contact-info {
+                padding: 20px;
             }
         }
         
         /* FOOTER */
         .footer {
             background-color: rgba(0, 0, 0, 0.9);
-            padding: 30px 20px;
+            padding: 40px 20px 30px;
             text-align: center;
             border-top: 1px solid rgba(0, 255, 255, 0.1);
-            margin-top: 60px;
+            margin-top: 0;
         }
         
         .footer p {
             color: #88ffff;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
         
         .copyright {
             color: #66cccc;
             font-size: 14px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -533,11 +610,24 @@
         </div>
     </div>
     
-    <!-- CONTACT SECTION -->
-    <div class="contact-section" id="elaqe">
-        <h2 class="contact-title">Bizim ilə Əlaqə</h2>
+    <!-- SPLIT LAYOUT -->
+    <div class="split-container">
+        <!-- LEFT SIDE - PARTICLE ANIMATION WITH CUBE -->
+        <div class="left-side">
+            <div id="particle-canvas"></div>
+        </div>
         
-        <div class="contact-container">
+        <!-- RIGHT SIDE - CONTACT INFORMATION -->
+        <div class="right-side">
+            <!-- CONTACT HEADER -->
+            <div class="contact-header">
+                <div class="contact-title-left" id="contact-title">Bizim ilə Əlaqə</div>
+                <div class="contact-title-right">
+                    <span class="line1">AZTECHNICAL</span>
+                    <span class="line2">SUPPORT</span>
+                </div>
+            </div>
+            
             <!-- CONTACT INFORMATION -->
             <div class="contact-info">
                 <div class="contact-item">
@@ -587,7 +677,131 @@
         <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
 
+    <!-- THREE.JS PARTICLE ANIMATION WITH CUBE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        // Particle Animation Code with Cube
+        let scene, camera, renderer, particles, cube, uniforms, mouse = new THREE.Vector3();
+        
+        function initParticles() {
+            const canvasContainer = document.getElementById('particle-canvas');
+            
+            scene = new THREE.Scene();
+            
+            camera = new THREE.PerspectiveCamera(60, canvasContainer.clientWidth/canvasContainer.clientHeight, 0.1, 1000);
+            camera.position.z = 5;
+            
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
+            canvasContainer.appendChild(renderer.domElement);
+            
+            // Add a light
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(1, 1, 1).normalize();
+            scene.add(light);
+            
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            
+            // Create particles
+            const count = 15000;
+            const positions = new Float32Array(count * 3);
+            
+            for (let i = 0; i < count; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 5;
+                positions[i*3+1] = (Math.random() - 0.5) * 5;
+                positions[i*3+2] = (Math.random() - 0.5) * 5;
+            }
+            
+            const particleGeometry = new THREE.BufferGeometry();
+            particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+            
+            uniforms = {
+                uTime: { value: 0.0 },
+                uMouse: { value: new THREE.Vector3(0,0,0) }
+            };
+            
+            const particleMaterial = new THREE.ShaderMaterial({
+                uniforms,
+                vertexShader: `
+                    uniform vec3 uMouse;
+                    
+                    void main() {
+                        vec3 pos = position;
+                        
+                        float dist = distance(pos, uMouse);
+                        pos += normalize(pos - uMouse) * (0.2 / (dist + 0.1));
+                        
+                        gl_PointSize = 1.5;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    void main() {
+                        gl_FragColor = vec4(0.2, 0.6, 1.0, 0.8);
+                    }
+                `,
+                transparent: true
+            });
+            
+            particles = new THREE.Points(particleGeometry, particleMaterial);
+            scene.add(particles);
+            
+            // Create a cube
+            const cubeGeometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+            const cubeMaterial = new THREE.MeshPhongMaterial({ 
+                color: 0x00ffff,
+                emissive: 0x003333,
+                specular: 0x555555,
+                shininess: 30,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            scene.add(cube);
+            
+            // Mouse & touch interaction
+            canvasContainer.addEventListener("pointermove", (e) => {
+                const rect = canvasContainer.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / canvasContainer.clientWidth) * 2 - 1;
+                const y = -((e.clientY - rect.top) / canvasContainer.clientHeight) * 2 + 1;
+                mouse.set(x * 2, y * 2, 1);
+                uniforms.uMouse.value = mouse;
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', onWindowResize);
+        }
+        
+        function onWindowResize() {
+            const canvasContainer = document.getElementById('particle-canvas');
+            camera.aspect = canvasContainer.clientWidth / canvasContainer.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
+        }
+        
+        function animateParticles() {
+            if (uniforms && particles && cube) {
+                uniforms.uTime.value += 0.01;
+                
+                // Rotate particles and cube
+                particles.rotation.x += 0.001;
+                particles.rotation.y += 0.002;
+                
+                // Rotate and animate cube
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                
+                // Pulse the cube scale
+                const scale = 1 + 0.1 * Math.sin(uniforms.uTime.value * 2);
+                cube.scale.set(scale, scale, scale);
+                
+                renderer.render(scene, camera);
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        
         // Language data
         const translations = {
             aze: {
@@ -624,7 +838,7 @@
                 hoursText: "Monday - Friday: 9:00 AM to 6:00 PM"
             }
         };
-
+        
         // Function to change language
         function changeLanguage(lang) {
             // Remove active class from all buttons
@@ -639,7 +853,7 @@
             const t = translations[lang];
             
             // Update contact title
-            document.querySelector('.contact-title').textContent = t.contactTitle;
+            document.getElementById('contact-title').textContent = t.contactTitle;
             
             // Update address
             document.querySelector('.address-label').textContent = t.addressLabel;
@@ -670,8 +884,12 @@
             document.getElementById('aze-btn').classList.add('active');
             
             // Show contact section by default, hide home content
-            document.getElementById('elaqe').style.display = 'block';
+            document.getElementById('elaqe').style.display = 'none'; // Hide old contact section
             document.getElementById('home-content').style.display = 'none';
+            
+            // Initialize particle animation with cube
+            initParticles();
+            animateParticles();
             
             // Nav button click handler
             navButtons.forEach(button => {
@@ -688,10 +906,10 @@
                     const buttonText = this.textContent.trim();
                     
                     if (buttonText === 'ƏLAQƏ') {
-                        document.getElementById('elaqe').style.display = 'block';
+                        document.querySelector('.split-container').style.display = 'flex';
                         document.getElementById('home-content').style.display = 'none';
                     } else {
-                        document.getElementById('elaqe').style.display = 'none';
+                        document.querySelector('.split-container').style.display = 'none';
                         document.getElementById('home-content').style.display = 'block';
                     }
                 });
