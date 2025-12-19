@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Buttons</title>
+    <style>
+        /* ARKA FON - KARANLIK */
+        body {
+            background: #000;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* BUTTON CONTAINER */
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+        
+        /* ALL BUTTONS COMMON STYLES */
+        .neon-btn {
+            position: relative;
+            background: transparent;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 20px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 140px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            height: 70px;
+            box-sizing: border-box;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        /* BUTTON TEXT */
+        .neon-btn .btn-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* REMOVE BAYRAQ ICONS - SHOW ONLY TEXT */
+        .btn-icon {
+            display: none; /* Hide the flag icons */
+        }
+        
+        /* AZE BUTTON - CYAN NEON */
+        .aze-btn {
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            box-shadow: 
+                0 0 8px #00ffff,
+                0 0 15px #00ffff,
+                inset 0 0 8px rgba(0, 255, 255, 0.1);
+        }
+        
+        .aze-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(0, 255, 255, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .aze-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .aze-btn:hover {
+            background: rgba(0, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 15px #00ffff,
+                0 0 25px #00ffff,
+                0 0 35px rgba(0, 255, 255, 0.5),
+                inset 0 0 15px rgba(0, 255, 255, 0.15);
+        }
+        
+        /* RUS BUTTON - PURPLE NEON */
+        .rus-btn {
+            color: #ff00ff;
+            border: 2px solid #ff00ff;
+            box-shadow: 
+                0 0 8px #ff00ff,
+                0 0 15px #ff00ff,
+                inset 0 0 8px rgba(255, 0, 255, 0.1);
+        }
+        
+        .rus-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(255, 0, 255, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .rus-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .rus-btn:hover {
+            background: rgba(255, 0, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 15px #ff00ff,
+                0 0 25px #ff00ff,
+                0 0 35px rgba(255, 0, 255, 0.5),
+                inset 0 0 15px rgba(255, 0, 255, 0.15);
+        }
+        
+        /* ENG BUTTON - LIME NEON */
+        .eng-btn {
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            box-shadow: 
+                0 0 8px #00ff00,
+                0 0 15px #00ff00,
+                inset 0 0 8px rgba(0, 255, 0, 0.1);
+        }
+        
+        .eng-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(0, 255, 0, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .eng-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .eng-btn:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 15px #00ff00,
+                0 0 25px #00ff00,
+                0 0 35px rgba(0, 255, 0, 0.5),
+                inset 0 0 15px rgba(0, 255, 0, 0.15);
+        }
+        
+        /* WHATSAPP BUTTON - GREEN NEON */
+        .whatsapp-btn {
+            color: #25d366;
+            border: 2px solid #25d366;
+            box-shadow: 
+                0 0 8px #25d366,
+                0 0 15px #25d366,
+                inset 0 0 8px rgba(37, 211, 102, 0.1);
+        }
+        
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(37, 211, 102, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .whatsapp-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .whatsapp-btn:hover {
+            background: rgba(37, 211, 102, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 15px #25d366,
+                0 0 25px #25d366,
+                0 0 35px rgba(37, 211, 102, 0.5),
+                inset 0 0 15px rgba(37, 211, 102, 0.15);
+        }
+        
+        /* ACTIVE STATE - PERMANENT BRIGHTER GLOW */
+        .neon-btn.active {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 0 15px currentColor,
+                0 0 25px currentColor,
+                inset 0 0 15px rgba(255, 255, 255, 0.15);
+            transform: scale(1.03);
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .buttons-container {
+                gap: 20px;
+            }
+            
+            .neon-btn {
+                padding: 18px 30px;
+                font-size: 16px;
+                min-width: 120px;
+                height: 65px;
+            }
+            
+            /* MOBILE'DA DAHA AZ GLOW */
+            .aze-btn, .rus-btn, .eng-btn, .whatsapp-btn {
+                box-shadow: 
+                    0 0 6px currentColor,
+                    0 0 12px currentColor,
+                    inset 0 0 6px rgba(255, 255, 255, 0.08);
+            }
+            
+            .neon-btn:hover {
+                box-shadow: 
+                    0 0 12px currentColor,
+                    0 0 20px currentColor,
+                    0 0 28px rgba(255, 255, 255, 0.4),
+                    inset 0 0 12px rgba(255, 255, 255, 0.12);
+            }
+            
+            .neon-btn.active {
+                box-shadow: 
+                    0 0 12px currentColor,
+                    0 0 20px currentColor,
+                    inset 0 0 12px rgba(255, 255, 255, 0.12);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .buttons-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .neon-btn {
+                padding: 16px 25px;
+                font-size: 15px;
+                min-width: 200px;
+                height: 60px;
+            }
+        }
+        
+        /* BACKGROUND EFFECT - DAHA AZ PARLAQ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 255, 0, 0.02) 0%, transparent 50%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons-container">
+        <!-- AZE BUTTON -->
+        <button class="neon-btn aze-btn active" onclick="setActive(this)">
+            <span class="btn-icon">🇦🇿</span>
+            <span class="btn-text">AZE</span>
+        </button>
+        
+        <!-- RUS BUTTON -->
+        <button class="neon-btn rus-btn" onclick="setActive(this)">
+            <span class="btn-icon">🇷🇺</span>
+            <span class="btn-text">RUS</span>
+        </button>
+        
+        <!-- ENG BUTTON -->
+        <button class="neon-btn eng-btn" onclick="setActive(this)">
+            <span class="btn-icon">🇺🇸</span>
+            <span class="btn-text">ENG</span>
+        </button>
+        
+        <!-- WHATSAPP BUTTON - PHONE NUMBER CHANGED -->
+        <a href="https://wa.me/994102505453" class="neon-btn whatsapp-btn" target="_blank">
+            <span class="btn-icon">💬</span>
+            <span class="btn-text">WhatsApp</span>
+        </a>
+    </div>
+
+    <script>
+        // Function to set active button (for language buttons only)
+        function setActive(button) {
+            // Remove active class from all language buttons
+            document.querySelectorAll('.aze-btn, .rus-btn, .eng-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // You can add language switching logic here
+            const lang = button.querySelector('.btn-text').textContent;
+            console.log('Selected language:', lang);
+        }
+        
+        // Initialize - AZE button active by default
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make AZE button active
+            document.querySelector('.aze-btn').classList.add('active');
+        });
+    </script>
+</body>
+</html>
