@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neon Buttons</title>
     <style>
-        /* ARKA FON - YENİ GRADIENT RƏNG (ALWAYS APPLIED TO ALL DEVICES) */
+        /* ARKA FON - YENİ GRADIENT RƏNG (digər koddan götürülüb) */
         body {
             background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
             margin: 0;
@@ -234,6 +234,11 @@
         
         /* RESPONSIVE DESIGN - EYNİ QALIR */
         @media (max-width: 768px) {
+            /* BACKGROUND GRADIENT FOR PHONES TOO - SAME AS PC */
+            body {
+                background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
+            }
+            
             .buttons-container {
                 gap: 15px; /* Reduced gap */
             }
@@ -272,6 +277,11 @@
         }
         
         @media (max-width: 480px) {
+            /* BACKGROUND GRADIENT FOR VERY SMALL PHONES TOO */
+            body {
+                background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
+            }
+            
             .buttons-container {
                 flex-direction: column;
                 gap: 12px;
@@ -285,8 +295,7 @@
             }
         }
         
-        /* IMPORTANT: Remove any background-color overrides that might be in media queries */
-        /* The body gradient at the top is now applied to ALL devices */
+        /* BACKGROUND EFFECT - SİLİNDİ, ÇÜNKÜ YUXARIDA YENİ GRADIENT VAR */
     </style>
 </head>
 <body>
