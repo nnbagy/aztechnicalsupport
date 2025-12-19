@@ -631,6 +631,758 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <h3><i class="fas fa-map-marker-alt"></i> Ünvan</h3>
+                    <p><strong>Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3><i class="fas fa-phone"></i> Telefon</h3>
+                    <p><strong>+994 (10) 250 54 53</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3><i class="fas fa-envelope"></i> Email</h3>
+                    <p><strong>office@aztechnicalsupport.az</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3><i class="fas fa-clock"></i> İş Saatları</h3>
+                    <p><strong>Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
+                </div>
+            </div>
+            
+            <!-- CONTACT FORM REMOVED -->
+            <div class="contact-form" style="display: none;">
+                <!-- Form has been removed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT (for other pages) -->
+    <div class="content" id="home-content" style="display: none;">
+        <h1 class="company-name">AZHYDRO</h1>
+        <p class="company-subtitle">2020-ci ildən fəaliyyətdədir</p>
+        
+        <div class="content-box">
+            <h2>Şirkətimiz Haqqında</h2>
+            <p>
+                AZHYDRO şirkəti 2020-ci ildən etibarən su təchizatı, kanalizasiya sistemlərinin quraşdırılması və texniki xidməti sahəsində fəaliyyət göstərir. 
+                Yüksək keyfiyyətli iş və müştəri məmnuniyyəti bizim əsas prinsipimizdir.
+            </p>
+            <p>
+                Peşəkar komandamız və müasir texnologiyalar sayəsində ən mürəkkəb layihələri də uğurla həyata keçiririk.
+            </p>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>AZHYDRO - 2020-ci ildən fəaliyyətdədir</p>
+        <p>Bütün hüquqlar qorunur © 2025</p>
+        <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
+    </div>
+
+    <script>
+        // Set ƏLAQƏ button as active by default (contact page)
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const neonButtons = document.querySelectorAll('.neon-btn');
+            
+            // Set ƏLAQƏ button as active by default (contact page)
+            navButtons[5].classList.add('active');
+            
+            // Set AZ button as active by default
+            document.querySelector('.aze-btn').classList.add('active');
+            
+            // Show contact section by default, hide home content
+            document.getElementById('elaqe').style.display = 'block';
+            document.getElementById('home-content').style.display = 'none';
+            
+            // Nav button click handler
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all nav buttons
+                    navButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show/hide content based on button clicked
+                    const buttonText = this.textContent.trim();
+                    
+                    if (buttonText === 'ƏLAQƏ') {
+                        document.getElementById('elaqe').style.display = 'block';
+                        document.getElementById('home-content').style.display = 'none';
+                    } else {
+                        document.getElementById('elaqe').style.display = 'none';
+                        document.getElementById('home-content').style.display = 'block';
+                    }
+                });
+            });
+            
+            // Neon button click handler (for language buttons)
+            neonButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all language buttons
+                    document.querySelectorAll('.aze-btn, .rus-btn, .eng-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show which language is selected (for demonstration)
+                    const lang = this.querySelector('.btn-text').textContent;
+                    console.log('Selected language:', lang);
+                    
+                    // Here you can add language switching logic
+                    // For now, just show an alert
+                    if (lang === 'AZ') {
+                        document.querySelector('.contact-title').textContent = 'Bizim ilə Əlaqə';
+                    } else if (lang === 'RUS') {
+                        document.querySelector('.contact-title').textContent = 'Свяжитесь с нами';
+                    } else if (lang === 'ENG') {
+                        document.querySelector('.contact-title').textContent = 'Contact Us';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZHYDRO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        /* NAVIGATION BAR */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        /* LEFT SIDE - LOGO SPACE */
+        .logo-space {
+            width: 200px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .logo-placeholder {
+            color: #00ffff;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: rgba(0, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 5px;
+            min-width: 180px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+        
+        /* CENTER - NAVIGATION BUTTONS */
+        .nav-center {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .nav-btn:hover {
+            background-color: rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+        
+        /* ACTIVE STATE FOR NAV BUTTONS */
+        .nav-btn.active {
+            background-color: rgba(0, 255, 255, 0.15);
+            border-color: rgba(0, 255, 255, 0.7);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        /* Hover should still work on active buttons */
+        .nav-btn.active:hover {
+            background-color: rgba(0, 255, 255, 0.25);
+            border-color: rgba(0, 255, 255, 0.9);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+        }
+        
+        /* RIGHT SIDE - TOP CORNER BUTTONS (YOUR NEON BUTTONS) */
+        .nav-right {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* ALL BUTTONS COMMON STYLES - YOUR NEON BUTTONS */
+        .neon-btn {
+            position: relative;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 80px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 45px;
+            box-sizing: border-box;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        /* BUTTON TEXT */
+        .neon-btn .btn-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* REMOVE BAYRAQ ICONS - SHOW ONLY TEXT */
+        .btn-icon {
+            display: none; /* Hide the flag icons */
+        }
+        
+        /* ALL LANGUAGE BUTTONS - CYAN NEON (SAME AS AZ BUTTON) */
+        .aze-btn, .rus-btn, .eng-btn {
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            box-shadow: 
+                0 0 8px #00ffff,
+                0 0 15px #00ffff,
+                inset 0 0 8px rgba(0, 255, 255, 0.1);
+        }
+        
+        /* SHARED ::before FOR ALL LANGUAGE BUTTONS */
+        .aze-btn::before,
+        .rus-btn::before,
+        .eng-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(0, 255, 255, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        /* SHARED HOVER EFFECTS FOR ALL LANGUAGE BUTTONS */
+        .aze-btn:hover::before,
+        .rus-btn:hover::before,
+        .eng-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .aze-btn:hover,
+        .rus-btn:hover,
+        .eng-btn:hover {
+            background: rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 15px #00ffff,
+                0 0 25px #00ffff,
+                0 0 35px rgba(0, 255, 255, 0.5),
+                inset 0 0 15px rgba(0, 255, 255, 0.15);
+        }
+        
+        /* ACTIVE STATE - SIMPLE AND SUBTLE */
+        .neon-btn.active {
+            background: rgba(0, 255, 255, 0.1); /* Very subtle background */
+            color: #ffffff !important; /* White text */
+            font-weight: bold;
+            box-shadow: 
+                0 0 12px #00ffff,
+                0 0 20px rgba(0, 255, 255, 0.3),
+                inset 0 0 10px rgba(0, 255, 255, 0.1);
+            transform: scale(1.02);
+            border-color: #00ffff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Hover on active button - very subtle change */
+        .neon-btn.active:hover {
+            background: rgba(0, 255, 255, 0.15);
+            box-shadow: 
+                0 0 15px #00ffff,
+                0 0 25px rgba(0, 255, 255, 0.4),
+                inset 0 0 12px rgba(0, 255, 255, 0.15);
+            transform: scale(1.03) translateY(-1px);
+        }
+        
+        /* MAIN CONTENT */
+        .content {
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .company-name {
+            font-size: 48px;
+            color: #00ffff;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        .company-subtitle {
+            font-size: 20px;
+            color: #88ffff;
+            margin-bottom: 40px;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #aaffff;
+        }
+        
+        /* CONTACT SECTION */
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        
+        .contact-title {
+            text-align: center;
+            font-size: 36px;
+            color: #00ffff;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background-color: rgba(0, 20, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: rgba(0, 20, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .contact-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .contact-item h3 {
+            color: #00ffff;
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-item h3 i {
+            color: #00ffff;
+            width: 20px;
+        }
+        
+        .contact-item p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-left: 30px;
+        }
+        
+        .contact-item strong {
+            color: #ffffff;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #00ffff;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(0, 10, 10, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .required {
+            color: #ff5555;
+        }
+        
+        .submit-btn {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+        
+        .submit-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* PHONE INPUT - FIXED CURSOR POSITION */
+        #phone {
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+        
+        /* Format hint below input */
+        .phone-format-hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+            font-family: monospace;
+        }
+        
+        /* CONTENT BOX */
+        .content-box {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(0, 20, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            text-align: left;
+        }
+        
+        .content-box h2 {
+            color: #00ffff;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .content-box p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #cccccc;
+        }
+        
+        /* MOBILE STYLES */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-center {
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+                min-width: 100px;
+            }
+            
+            .neon-btn {
+                padding: 10px 15px;
+                font-size: 13px;
+                min-width: 70px;
+                height: 40px;
+            }
+            
+            .contact-title {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .logo-space {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-center {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                min-width: 90px;
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .neon-btn {
+                min-width: 70px;
+                padding: 8px 12px;
+                font-size: 12px;
+                height: 38px;
+            }
+            
+            .company-name {
+                font-size: 36px;
+            }
+            
+            .company-subtitle {
+                font-size: 18px;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .contact-info,
+            .contact-form {
+                min-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-center {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .nav-right {
+                width: 100%;
+            }
+            
+            .neon-btn {
+                flex: 1;
+                min-width: auto;
+            }
+            
+            .company-name {
+                font-size: 28px;
+            }
+            
+            .company-subtitle {
+                font-size: 16px;
+            }
+            
+            .contact-title {
+                font-size: 28px;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+        }
+        
+        /* FOOTER */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+        
+        .footer p {
+            color: #88ffff;
+            margin-bottom: 10px;
+        }
+        
+        .copyright {
+            color: #66cccc;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <!-- LEFT - LOGO SPACE -->
+        <div class="logo-space">
+            <div class="logo-placeholder">
+                AZHYDRO
+            </div>
+        </div>
+        
+        <!-- CENTER - MAIN BUTTONS -->
+        <div class="nav-center">
+            <button class="nav-btn">ANA SƏHİFƏ</button>
+            <button class="nav-btn">HAQQIMIZDA</button>
+            <button class="nav-btn">KATALOQ</button>
+            <button class="nav-btn">XİDMƏTLƏR</button>
+            <button class="nav-btn">LAYİHƏLƏR</button>
+            <button class="nav-btn active">ƏLAQƏ</button>
+        </div>
+        
+        <!-- RIGHT - TOP CORNER BUTTONS (YOUR NEON BUTTONS) -->
+        <div class="nav-right">
+            <button class="neon-btn aze-btn active">
+                <span class="btn-text">AZ</span>
+            </button>
+            
+            <button class="neon-btn rus-btn">
+                <span class="btn-text">RUS</span>
+            </button>
+            
+            <button class="neon-btn eng-btn">
+                <span class="btn-text">ENG</span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h1>AZHYDRO</h1>
+        <p>2020-ci ildən fəaliyyətdədir. Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
+    </div>
+    
+    <!-- CONTACT SECTION -->
+    <div class="contact-section" id="elaqe">
+        <h2 class="contact-title">Bizim ilə Əlaqə</h2>
+        
+        <div class="contact-container">
+            <!-- CONTACT INFORMATION -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3><i class="fas fa-map-marker-alt"></i> Ünvan</h3>
                     <p><strong>Bakı şəhəri, Buzovna Krutoy Zona</strong></p>
                 </div>
                 
