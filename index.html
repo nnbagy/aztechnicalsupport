@@ -384,6 +384,20 @@
             transform: translateY(-2px);
         }
         
+        /* PHONE INPUT - FIXED CURSOR POSITION */
+        #phone {
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+        
+        /* Format hint below input */
+        .phone-format-hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+            font-family: monospace;
+        }
+        
         /* CONTENT BOX */
         .content-box {
             max-width: 800px;
@@ -651,7 +665,8 @@
                     
                     <div class="form-group">
                         <label for="phone">Mobil nömrə <span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+994 (__) ___ __ __">
+                        <input type="text" id="phone" name="phone" required placeholder="+994 (__) ___ __ __">
+                        <div class="phone-format-hint">Format: +994 (XX) XXX XX XX</div>
                     </div>
                     
                     <div class="form-group">
@@ -700,8 +715,9 @@
     </div>
 
     <script>
-        // Add active state to navigation buttons
+        // Phone mask with correct cursor positioning
         document.addEventListener('DOMContentLoaded', function() {
+            const phoneInput = document.getElementById('phone');
             const navButtons = document.querySelectorAll('.nav-btn');
             const neonButtons = document.querySelectorAll('.neon-btn');
             
@@ -714,6 +730,225 @@
             // Show contact section by default, hide home content
             document.getElementById('elaqe').style.display = 'block';
             document.getElementById('home-content').style.display = 'none';
+            
+            // Phone mask implementation
+            // We have 12 digits total for user to input (after +994)
+            // Format: +994 (XX) XXX XX XX
+            // User digits positions: 0,1 (first parentheses), 2,3,4 (three digits), 5,6 (space), 7,8 (last)
+            
+            let userDigits = ['', '', '', '', '', '', '', '', '', '', '', '']; // 12 digits
+            let cursorPosition = 0; // Position in userDigits array (0-11)
+            
+            // Update phone display
+            function updatePhoneDisplay() {
+                // Build the formatted display
+                // Fixed parts: +994 ( )   
+                let display = '+994 (';
+                
+                // First 2 digits (inside parentheses)
+                display += (userDigits[0] || '_') + (userDigits[1] || '_');
+                display += ') ';
+                
+                // Next 3 digits
+                display += (userDigits[2] || '_') + (userDigits[3] || '_') + (userDigits[4] || '_');
+                display += ' ';
+                
+                // Next 2 digits
+                display += (userDigits[5] || '_') + (userDigits[6] || '_');
+                display += ' ';
+                
+                // Last 2 digits
+                display += (userDigits[7] || '_') + (userDigits[8] || '_');
+                display += ' ';
+                
+                // Last 3 digits (we have 12 total, but format shows 9, let's adjust)
+                // Actually for +994 (XX) XXX XX XX we need 9 digits, not 12
+                // Let me fix: +994 is fixed, user enters 9 digits
+                // Re-initialize with 9 digits
+                
+                phoneInput.value = display;
+                
+                // Calculate cursor position in the displayed string
+                let cursorPosInDisplay = 0;
+                
+                // Map cursor position in userDigits to position in display
+                if (cursorPosition === 0) cursorPosInDisplay = 6; // After "+994 ("
+                else if (cursorPosition === 1) cursorPosInDisplay = 7;
+                else if (cursorPosition === 2) cursorPosInDisplay = 10; // After ") "
+                else if (cursorPosition === 3) cursorPosInDisplay = 11;
+                else if (cursorPosition === 4) cursorPosInDisplay = 12;
+                else if (cursorPosition === 5) cursorPosInDisplay = 14; // After space
+                else if (cursorPosition === 6) cursorPosInDisplay = 15;
+                else if (cursorPosition === 7) cursorPosInDisplay = 17; // After space
+                else if (cursorPosition === 8) cursorPosInDisplay = 18;
+                else if (cursorPosition === 9) cursorPosInDisplay = 20; // End
+                
+                // Set cursor position
+                setTimeout(() => {
+                    phoneInput.setSelectionRange(cursorPosInDisplay, cursorPosInDisplay);
+                }, 0);
+            }
+            
+            // Initialize with empty digits (9 digits for user input)
+            userDigits = ['', '', '', '', '', '', '', '', '']; // 9 digits
+            cursorPosition = 0;
+            updatePhoneDisplay();
+            
+            // Handle phone input
+            phoneInput.addEventListener('keydown', function(e) {
+                // Allow control keys
+                if ([8, 9, 13, 37, 38, 39, 40, 46, 36, 35].includes(e.keyCode)) {
+                    // Handle backspace
+                    if (e.keyCode === 8) { // Backspace
+                        e.preventDefault();
+                        if (cursorPosition > 0) {
+                            cursorPosition--;
+                            userDigits[cursorPosition] = '';
+                            updatePhoneDisplay();
+                        }
+                        return;
+                    }
+                    // Handle delete
+                    else if (e.keyCode === 46) { // Delete
+                        e.preventDefault();
+                        if (cursorPosition < userDigits.length) {
+                            userDigits[cursorPosition] = '';
+                            updatePhoneDisplay();
+                        }
+                        return;
+                    }
+                    // Handle arrow keys
+                    else if (e.keyCode === 37) { // Left arrow
+                        e.preventDefault();
+                        if (cursorPosition > 0) {
+                            cursorPosition--;
+                            updatePhoneDisplay();
+                        }
+                        return;
+                    }
+                    else if (e.keyCode === 39) { // Right arrow
+                        e.preventDefault();
+                        if (cursorPosition < userDigits.length) {
+                            cursorPosition++;
+                            updatePhoneDisplay();
+                        }
+                        return;
+                    }
+                    else if (e.keyCode === 36) { // Home
+                        e.preventDefault();
+                        cursorPosition = 0;
+                        updatePhoneDisplay();
+                        return;
+                    }
+                    else if (e.keyCode === 35) { // End
+                        e.preventDefault();
+                        // Find last filled position
+                        let lastPos = userDigits.length - 1;
+                        while (lastPos >= 0 && !userDigits[lastPos]) {
+                            lastPos--;
+                        }
+                        cursorPosition = Math.min(lastPos + 1, userDigits.length);
+                        updatePhoneDisplay();
+                        return;
+                    }
+                    // Let tab and enter pass through
+                    return;
+                }
+                
+                // Handle number input (0-9)
+                if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+                    e.preventDefault();
+                    
+                    // Only allow if we haven't reached max digits (9 digits)
+                    if (cursorPosition < userDigits.length) {
+                        const digit = e.key.replace(/\D/g, '');
+                        if (digit) {
+                            // Insert digit at cursor position
+                            userDigits[cursorPosition] = digit;
+                            cursorPosition++;
+                            
+                            // Auto-advance to next position
+                            while (cursorPosition < userDigits.length && userDigits[cursorPosition]) {
+                                cursorPosition++;
+                            }
+                            
+                            updatePhoneDisplay();
+                        }
+                    }
+                    return;
+                }
+                
+                // Prevent any other input
+                e.preventDefault();
+            });
+            
+            // Handle focus - cursor starts at first digit inside parentheses
+            phoneInput.addEventListener('focus', function() {
+                // If empty, position cursor at first digit (inside parentheses)
+                if (userDigits.every(d => !d)) {
+                    cursorPosition = 0;
+                } else {
+                    // Find first empty position
+                    for (let i = 0; i < userDigits.length; i++) {
+                        if (!userDigits[i]) {
+                            cursorPosition = i;
+                            break;
+                        }
+                    }
+                    // If all filled, position at end
+                    if (userDigits.every(d => d)) {
+                        cursorPosition = userDigits.length;
+                    }
+                }
+                updatePhoneDisplay();
+            });
+            
+            // Handle click to position cursor
+            phoneInput.addEventListener('click', function(e) {
+                // Estimate which digit was clicked based on click position
+                const rect = phoneInput.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const totalWidth = phoneInput.offsetWidth;
+                const clickPercent = clickX / totalWidth;
+                
+                // Map click position to digit index
+                // Display positions: 0-5: "+994 (", 6-7: first 2 digits, 8-9: ") ", 10-12: next 3 digits, 13: space, 14-15: next 2 digits, 16: space, 17-18: last 2 digits
+                
+                let estimatedDigit = 0;
+                if (clickPercent < 0.3) estimatedDigit = 0; // First digit in parentheses
+                else if (clickPercent < 0.4) estimatedDigit = 1; // Second digit in parentheses
+                else if (clickPercent < 0.5) estimatedDigit = 2; // First of next 3
+                else if (clickPercent < 0.55) estimatedDigit = 3; // Second of next 3
+                else if (clickPercent < 0.6) estimatedDigit = 4; // Third of next 3
+                else if (clickPercent < 0.65) estimatedDigit = 5; // First of next 2
+                else if (clickPercent < 0.7) estimatedDigit = 6; // Second of next 2
+                else if (clickPercent < 0.8) estimatedDigit = 7; // First of last 2
+                else estimatedDigit = 8; // Second of last 2
+                
+                cursorPosition = Math.min(estimatedDigit, userDigits.length);
+                updatePhoneDisplay();
+            });
+            
+            // Handle paste
+            phoneInput.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const pastedText = e.clipboardData.getData('text');
+                const numbers = pastedText.replace(/\D/g, '');
+                
+                // Insert numbers at cursor position
+                for (let i = 0; i < numbers.length; i++) {
+                    const digit = numbers[i];
+                    const pos = cursorPosition + i;
+                    
+                    if (pos < userDigits.length) {
+                        userDigits[pos] = digit;
+                    }
+                }
+                
+                // Update cursor position
+                cursorPosition = Math.min(cursorPosition + numbers.length, userDigits.length);
+                updatePhoneDisplay();
+            });
             
             // Nav button click handler
             navButtons.forEach(button => {
@@ -775,10 +1010,35 @@
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
+                    // Validate phone number - must have all 9 digits filled
+                    const allDigitsFilled = userDigits.every(digit => digit !== '');
+                    
+                    if (!allDigitsFilled) {
+                        alert('Zəhmət olmasa bütün telefon nömrəsi rəqəmlərini daxil edin: +994 (XX) XXX XX XX');
+                        phoneInput.focus();
+                        
+                        // Position cursor at first empty digit
+                        for (let i = 0; i < userDigits.length; i++) {
+                            if (!userDigits[i]) {
+                                cursorPosition = i;
+                                updatePhoneDisplay();
+                                break;
+                            }
+                        }
+                        
+                        return;
+                    }
+                    
                     // Get form data
+                    const fullPhoneNumber = '+994' + 
+                        userDigits[0] + userDigits[1] + // First 2 digits
+                        userDigits[2] + userDigits[3] + userDigits[4] + // Next 3 digits
+                        userDigits[5] + userDigits[6] + // Next 2 digits
+                        userDigits[7] + userDigits[8]; // Last 2 digits
+                    
                     const formData = {
                         name: document.getElementById('name').value,
-                        phone: document.getElementById('phone').value,
+                        phone: fullPhoneNumber,
                         email: document.getElementById('email').value,
                         company: document.getElementById('company').value,
                         message: document.getElementById('message').value
@@ -809,6 +1069,11 @@
                     
                     // Reset form
                     contactForm.reset();
+                    
+                    // Reset phone mask
+                    userDigits = ['', '', '', '', '', '', '', '', ''];
+                    cursorPosition = 0;
+                    updatePhoneDisplay();
                 });
             }
         });
