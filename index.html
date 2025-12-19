@@ -78,6 +78,20 @@
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
         }
         
+        /* ACTIVE STATE FOR NAV BUTTONS */
+        .nav-btn.active {
+            background-color: rgba(0, 255, 255, 0.15);
+            border-color: rgba(0, 255, 255, 0.7);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        /* Hover should still work on active buttons */
+        .nav-btn.active:hover {
+            background-color: rgba(0, 255, 255, 0.25);
+            border-color: rgba(0, 255, 255, 0.9);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+        }
+        
         /* RIGHT SIDE - TOP CORNER BUTTONS (YOUR NEON BUTTONS) */
         .nav-right {
             display: flex;
@@ -289,6 +303,16 @@
             transform: scale(1.03);
         }
         
+        /* HOVER SHOULD STILL WORK ON ACTIVE NEON BUTTONS */
+        .neon-btn.active:hover {
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 0 20px currentColor,
+                0 0 30px currentColor,
+                inset 0 0 18px rgba(255, 255, 255, 0.2);
+            transform: scale(1.05) translateY(-2px);
+        }
+        
         /* MAIN CONTENT */
         .content {
             padding: 60px 40px;
@@ -402,6 +426,14 @@
                     inset 0 0 10px rgba(255, 255, 255, 0.12);
                 transform: scale(1.02);
             }
+            
+            .neon-btn.active:hover {
+                box-shadow: 
+                    0 0 15px currentColor,
+                    0 0 22px currentColor,
+                    inset 0 0 12px rgba(255, 255, 255, 0.15);
+                transform: scale(1.03) translateY(-1px);
+            }
         }
         
         @media (max-width: 480px) {
@@ -498,7 +530,7 @@
         
         <!-- CENTER - MAIN BUTTONS -->
         <div class="nav-center">
-            <button class="nav-btn">ANA SƏHİFƏ</button>
+            <button class="nav-btn active">ANA SƏHİFƏ</button>
             <button class="nav-btn">HAQQIMIZDA</button>
             <button class="nav-btn">KATALOQ</button>
             <button class="nav-btn">XİDMƏTLƏR</button>
@@ -556,12 +588,8 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const neonButtons = document.querySelectorAll('.neon-btn');
             
-            // Set first nav button as active
-            if (navButtons.length > 0) {
-                navButtons[0].style.backgroundColor = 'rgba(0, 255, 255, 0.15)';
-                navButtons[0].style.borderColor = 'rgba(0, 255, 255, 0.5)';
-                navButtons[0].style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.3)';
-            }
+            // Set first nav button as active by default
+            navButtons[0].classList.add('active');
             
             // Set AZ button as active by default
             document.querySelector('.aze-btn').classList.add('active');
@@ -569,14 +597,13 @@
             // Nav button click handler
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
+                    // Remove active class from all nav buttons
                     navButtons.forEach(btn => {
-                        btn.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-                        btn.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                        btn.style.boxShadow = 'none';
+                        btn.classList.remove('active');
                     });
-                    this.style.backgroundColor = 'rgba(0, 255, 255, 0.15)';
-                    this.style.borderColor = 'rgba(0, 255, 255, 0.5)';
-                    this.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.3)';
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
                 });
             });
             
