@@ -1,367 +1,342 @@
 <!DOCTYPE html>
-<html>
+<html lang="az">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Buttons</title>
+    <title>AZHYDRO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ARKA FON - YENİ GRADIENT RƏNG (FOR PC/ALL DEVICES) */
-        body {
-            background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
+        /* Reset and base styles */
+        * {
             margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
         }
         
-        /* BUTTON CONTAINER - HORIZONTAL (əvvəlki kimi) */
-        .buttons-container {
+        /* NAVIGATION BAR */
+        .navbar {
+            background-color: #1a3c34; /* Dark green/blue similar to image */
+            padding: 15px 40px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
             align-items: center;
-            max-width: 800px;
-            padding: 20px;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
-        /* ALL BUTTONS COMMON STYLES - HƏR ŞEY EYNİ QALIR */
-        .neon-btn {
-            position: relative;
-            background: transparent;
-            border: none;
-            border-radius: 12px;
-            padding: 20px 35px;
-            font-size: 18px;
+        /* LEFT SIDE - LOGO SPACE */
+        .logo-space {
+            width: 200px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .logo-placeholder {
+            color: white;
+            font-size: 24px;
             font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 5px;
+            min-width: 180px;
+            text-align: center;
+        }
+        
+        /* CENTER - NAVIGATION BUTTONS */
+        .nav-center {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-btn {
+            background-color: #2a5c4f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 500;
             min-width: 140px;
             text-align: center;
-            text-decoration: none;
+        }
+        
+        .nav-btn:hover {
+            background-color: #3a7c6f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* RIGHT SIDE - TOP CORNER BUTTONS */
+        .nav-right {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            height: 70px;
-            box-sizing: border-box;
-            overflow: hidden;
-            z-index: 1;
+            gap: 15px;
         }
         
-        /* BUTTON TEXT */
-        .neon-btn .btn-text {
-            position: relative;
-            z-index: 2;
+        .top-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            min-width: 110px;
+            text-align: center;
         }
         
-        /* REMOVE BAYRAQ ICONS - SHOW ONLY TEXT */
-        .btn-icon {
-            display: none; /* Hide the flag icons */
+        .top-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
         }
         
-        /* AZE BUTTON - CYAN NEON (EYNİ QALIR) */
-        .aze-btn {
-            color: #00ffff;
-            border: 2px solid #00ffff;
-            box-shadow: 
-                0 0 8px #00ffff,
-                0 0 15px #00ffff,
-                inset 0 0 8px rgba(0, 255, 255, 0.1);
+        /* MAIN CONTENT */
+        .content {
+            padding: 40px;
+            text-align: center;
         }
         
-        .aze-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(0, 255, 255, 0.08) 50%, 
-                transparent 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
+        .company-name {
+            font-size: 48px;
+            color: #1a3c34;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
         
-        .aze-btn:hover::before {
-            opacity: 1;
+        .company-subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
         }
         
-        .aze-btn:hover {
-            background: rgba(0, 255, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 
-                0 0 15px #00ffff,
-                0 0 25px #00ffff,
-                0 0 35px rgba(0, 255, 255, 0.5),
-                inset 0 0 15px rgba(0, 255, 255, 0.15);
+        /* MOBILE STYLES */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-center {
+                gap: 15px;
+            }
+            
+            .nav-btn {
+                padding: 10px 18px;
+                font-size: 15px;
+                min-width: 120px;
+            }
+            
+            .top-btn {
+                padding: 8px 15px;
+                font-size: 13px;
+                min-width: 90px;
+            }
         }
         
-        /* RUS BUTTON - PURPLE NEON (EYNİ QALIR) */
-        .rus-btn {
-            color: #ff00ff;
-            border: 2px solid #ff00ff;
-            box-shadow: 
-                0 0 8px #ff00ff,
-                0 0 15px #ff00ff,
-                inset 0 0 8px rgba(255, 0, 255, 0.1);
-        }
-        
-        .rus-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(255, 0, 255, 0.08) 50%, 
-                transparent 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .rus-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .rus-btn:hover {
-            background: rgba(255, 0, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 
-                0 0 15px #ff00ff,
-                0 0 25px #ff00ff,
-                0 0 35px rgba(255, 0, 255, 0.5),
-                inset 0 0 15px rgba(255, 0, 255, 0.15);
-        }
-        
-        /* ENG BUTTON - LIME NEON (EYNİ QALIR) */
-        .eng-btn {
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            box-shadow: 
-                0 0 8px #00ff00,
-                0 0 15px #00ff00,
-                inset 0 0 8px rgba(0, 255, 0, 0.1);
-        }
-        
-        .eng-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(0, 255, 0, 0.08) 50%, 
-                transparent 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .eng-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .eng-btn:hover {
-            background: rgba(0, 255, 0, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 
-                0 0 15px #00ff00,
-                0 0 25px #00ff00,
-                0 0 35px rgba(0, 255, 0, 0.5),
-                inset 0 0 15px rgba(0, 255, 0, 0.15);
-        }
-        
-        /* WHATSAPP BUTTON - GREEN NEON (EYNİ QALIR) */
-        .whatsapp-btn {
-            color: #25d366;
-            border: 2px solid #25d366;
-            box-shadow: 
-                0 0 8px #25d366,
-                0 0 15px #25d366,
-                inset 0 0 8px rgba(37, 211, 102, 0.1);
-        }
-        
-        .whatsapp-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(37, 211, 102, 0.08) 50%, 
-                transparent 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .whatsapp-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .whatsapp-btn:hover {
-            background: rgba(37, 211, 102, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 
-                0 0 15px #25d366,
-                0 0 25px #25d366,
-                0 0 35px rgba(37, 211, 102, 0.5),
-                inset 0 0 15px rgba(37, 211, 102, 0.15);
-        }
-        
-        /* ACTIVE STATE - PERMANENT BRIGHTER GLOW (EYNİ QALIR) */
-        .neon-btn.active {
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 
-                0 0 15px currentColor,
-                0 0 25px currentColor,
-                inset 0 0 15px rgba(255, 255, 255, 0.15);
-            transform: scale(1.03);
-        }
-        
-        /* RESPONSIVE DESIGN - PHONE VERSION WITH SOLID GREEN BACKGROUND */
         @media (max-width: 768px) {
-            /* SOLID GREEN BACKGROUND FOR PHONES (like WhatsApp button color) */
-            body {
-                background: #001a0d !important; /* Dark green similar to gradient end color */
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
             }
             
-            .buttons-container {
-                gap: 15px; /* Reduced gap */
+            .logo-space {
+                width: 100%;
+                justify-content: center;
             }
             
-            .neon-btn {
-                padding: 10px 20px; /* Much smaller padding for phones */
-                font-size: 14px; /* Smaller font */
-                min-width: 100px; /* Smaller width */
-                height: 50px; /* Much shorter height */
+            .nav-center {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
             }
             
-            /* SMALLER GLOW FOR MOBILE */
-            .aze-btn, .rus-btn, .eng-btn, .whatsapp-btn {
-                box-shadow: 
-                    0 0 5px currentColor,
-                    0 0 10px currentColor,
-                    inset 0 0 5px rgba(255, 255, 255, 0.08);
+            .nav-btn {
+                min-width: 100px;
+                padding: 10px 15px;
+                font-size: 14px;
             }
             
-            .neon-btn:hover {
-                box-shadow: 
-                    0 0 10px currentColor,
-                    0 0 18px currentColor,
-                    0 0 25px rgba(255, 255, 255, 0.4),
-                    inset 0 0 10px rgba(255, 255, 255, 0.12);
-                transform: translateY(-2px); /* Smaller hover movement */
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
             }
             
-            .neon-btn.active {
-                box-shadow: 
-                    0 0 10px currentColor,
-                    0 0 18px currentColor,
-                    inset 0 0 10px rgba(255, 255, 255, 0.12);
-                transform: scale(1.02); /* Smaller active scale */
+            .top-btn {
+                min-width: 80px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .company-name {
+                font-size: 36px;
+            }
+            
+            .company-subtitle {
+                font-size: 18px;
             }
         }
         
         @media (max-width: 480px) {
-            /* SOLID GREEN BACKGROUND FOR VERY SMALL PHONES TOO */
-            body {
-                background: #001a0d !important; /* Dark green */
-            }
-            
-            .buttons-container {
+            .nav-center {
                 flex-direction: column;
-                gap: 12px;
+                width: 100%;
             }
             
-            .neon-btn {
-                padding: 8px 16px; /* Even smaller for very small phones */
-                font-size: 13px;
-                min-width: 120px; /* Better width for vertical layout */
-                height: 45px; /* Even shorter */
+            .nav-btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .nav-right {
+                width: 100%;
+            }
+            
+            .top-btn {
+                flex: 1;
+                min-width: auto;
+            }
+            
+            .company-name {
+                font-size: 28px;
+            }
+            
+            .company-subtitle {
+                font-size: 16px;
             }
         }
         
-        /* BACKGROUND FIX FOR ALL BROWSERS */
-        * {
-            box-sizing: border-box;
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(26, 60, 52, 0.9), rgba(26, 60, 52, 0.8)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-    <div class="buttons-container">
-        <!-- AZE BUTTON -->
-        <button class="neon-btn aze-btn active" onclick="setActive(this)">
-            <span class="btn-icon">🇦🇿</span>
-            <span class="btn-text">AZE</span>
-        </button>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <!-- LEFT - LOGO SPACE -->
+        <div class="logo-space">
+            <div class="logo-placeholder">
+                AZHYDRO LOGO
+            </div>
+        </div>
         
-        <!-- RUS BUTTON -->
-        <button class="neon-btn rus-btn" onclick="setActive(this)">
-            <span class="btn-icon">🇷🇺</span>
-            <span class="btn-text">RUS</span>
-        </button>
+        <!-- CENTER - MAIN BUTTONS -->
+        <div class="nav-center">
+            <button class="nav-btn">ANA SƏHİFƏ</button>
+            <button class="nav-btn">HAQQIMIZDA</button>
+            <button class="nav-btn">KATALOQ</button>
+            <button class="nav-btn">XİDMƏTLƏR</button>
+            <button class="nav-btn">LAYİHƏLƏR</button>
+            <button class="nav-btn">ƏLAQƏ</button>
+        </div>
         
-        <!-- ENG BUTTON -->
-        <button class="neon-btn eng-btn" onclick="setActive(this)">
-            <span class="btn-icon">🇺🇸</span>
-            <span class="btn-text">ENG</span>
-        </button>
+        <!-- RIGHT - TOP CORNER BUTTONS -->
+        <div class="nav-right">
+            <button class="top-btn">AZ</button>
+            <button class="top-btn">RU</button>
+            <button class="top-btn">EN</button>
+            <button class="top-btn"><i class="fas fa-phone"></i> ƏLAQƏ</button>
+        </div>
+    </nav>
+    
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h1>AZHYDRO</h1>
+        <p>2020-ci ildən fəaliyyətdədir. Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <div class="content">
+        <h1 class="company-name">AZHYDRO</h1>
+        <p class="company-subtitle">2020-ci ildən fəaliyyətdədir</p>
         
-        <!-- WHATSAPP BUTTON - PHONE NUMBER CHANGED -->
-        <a href="https://wa.me/994102505453" class="neon-btn whatsapp-btn" target="_blank">
-            <span class="btn-icon">💬</span>
-            <span class="btn-text">WhatsApp</span>
-        </a>
+        <div style="margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: left; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h2 style="color: #1a3c34; margin-bottom: 20px;">Şirkətimiz Haqqında</h2>
+            <p style="line-height: 1.8; margin-bottom: 20px; color: #555;">
+                AZHYDRO şirkəti 2020-ci ildən etibarən su təchizatı, kanalizasiya sistemlərinin quraşdırılması və texniki xidməti sahəsində fəaliyyət göstərir. 
+                Yüksək keyfiyyətli iş və müştəri məmnuniyyəti bizim əsas prinsipimizdir.
+            </p>
+            <p style="line-height: 1.8; color: #555;">
+                Peşəkar komandamız və müasir texnologiyalar sayəsində ən mürəkkəb layihələri də uğurla həyata keçiririk.
+            </p>
+        </div>
     </div>
 
     <script>
-        // Function to set active button (for language buttons only)
-        function setActive(button) {
-            // Remove active class from all language buttons
-            document.querySelectorAll('.aze-btn, .rus-btn, .eng-btn').forEach(btn => {
-                btn.classList.remove('active');
+        // Add active state to navigation buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const topButtons = document.querySelectorAll('.top-btn');
+            
+            // Set first nav button as active
+            if (navButtons.length > 0) {
+                navButtons[0].style.backgroundColor = '#3a7c6f';
+                navButtons[0].style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+            }
+            
+            // Set first language button as active
+            if (topButtons.length > 0) {
+                topButtons[0].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                topButtons[0].style.borderColor = 'rgba(255, 255, 255, 0.7)';
+            }
+            
+            // Nav button click handler
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    navButtons.forEach(btn => {
+                        btn.style.backgroundColor = '#2a5c4f';
+                        btn.style.boxShadow = 'none';
+                    });
+                    this.style.backgroundColor = '#3a7c6f';
+                    this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+                });
             });
             
-            // Add active class to clicked button
-            button.classList.add('active');
-            
-            // You can add language switching logic here
-            const lang = button.querySelector('.btn-text').textContent;
-            console.log('Selected language:', lang);
-        }
-        
-        // Initialize - AZE button active by default
-        document.addEventListener('DOMContentLoaded', function() {
-            // Make AZE button active
-            document.querySelector('.aze-btn').classList.add('active');
-            
-            // Force background color based on screen size
-            if (window.innerWidth <= 768) {
-                document.body.style.background = '#001a0d';
-            }
-        });
-        
-        // Update background on resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth <= 768) {
-                document.body.style.background = '#001a0d';
-            } else {
-                document.body.style.background = 'linear-gradient(135deg, #000000 0%, #001a1a 100%)';
-            }
+            // Top button click handler (for language/contact buttons)
+            topButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // If it's a language button (AZ, RU, EN)
+                    if (this.textContent === 'AZ' || this.textContent === 'RU' || this.textContent === 'EN') {
+                        topButtons.forEach(btn => {
+                            if (btn.textContent === 'AZ' || btn.textContent === 'RU' || btn.textContent === 'EN') {
+                                btn.style.backgroundColor = 'transparent';
+                                btn.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                            }
+                        });
+                        this.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                        this.style.borderColor = 'rgba(255, 255, 255, 0.7)';
+                    }
+                });
+            });
         });
     </script>
 </body>
