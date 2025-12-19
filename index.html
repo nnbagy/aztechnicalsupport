@@ -93,29 +93,24 @@
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
         }
         
-        /* RIGHT SIDE - TOP CORNER BUTTONS (UPDATED STYLES) */
-        .all-buttons {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+        /* RIGHT SIDE - TOP CORNER BUTTONS (HORIZONTAL) */
+        .nav-right {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 1000;
+            gap: 15px;
         }
         
-        /* BUTTONS STYLES - UPDATED WITH GREEN CORNERS */
+        /* LANGUAGE BUTTONS STYLES - HORIZONTAL */
         .lang-btn {
             background: rgba(0, 0, 0, 0.8);
             color: white;
             border: 2px solid cyan;
             border-radius: 10px;
-            padding: 18px 22px;
+            padding: 12px 24px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 70px;
+            min-width: 80px;
             text-align: center;
             box-shadow: 0 0 10px cyan;
             text-decoration: none;
@@ -125,6 +120,7 @@
             gap: 6px;
             position: relative;
             overflow: hidden;
+            height: 45px;
         }
         
         /* GREEN CORNERS EFFECT */
@@ -323,7 +319,7 @@
         }
         
         /* TELEFON ÜÇÜN */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .navbar {
                 padding: 15px 20px;
             }
@@ -338,22 +334,53 @@
                 min-width: 100px;
             }
             
-            /* BUTTONS RESPONSIVE */
-            .all-buttons {
-                top: 15px;
-                right: 15px;
-                gap: 8px;
-            }
-            
             .lang-btn {
-                padding: 12px 14px;
-                font-size: 14px;
-                min-width: 60px;
-                gap: 5px;
+                padding: 10px 15px;
+                font-size: 13px;
+                min-width: 70px;
+                height: 40px;
             }
             
             .contact-title {
                 font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .logo-space {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-center {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                min-width: 90px;
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .lang-btn {
+                min-width: 70px;
+                padding: 8px 12px;
+                font-size: 12px;
+                height: 38px;
             }
             
             .company-name {
@@ -382,42 +409,24 @@
             }
         }
         
-        /* For very small screens */
         @media (max-width: 480px) {
-            .navbar {
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px;
-            }
-            
-            .logo-space {
-                width: 100%;
-                justify-content: center;
-            }
-            
             .nav-center {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
+                flex-direction: column;
+                width: 100%;
             }
             
             .nav-btn {
-                min-width: 90px;
-                padding: 8px 12px;
-                font-size: 13px;
+                width: 100%;
+                min-width: auto;
             }
             
-            /* BUTTONS RESPONSIVE */
-            .all-buttons {
-                top: 10px;
-                right: 10px;
-                gap: 6px;
+            .nav-right {
+                width: 100%;
             }
             
             .lang-btn {
-                padding: 10px 12px;
-                font-size: 13px;
-                min-width: 50px;
+                flex: 1;
+                min-width: auto;
             }
             
             .company-name {
@@ -467,13 +476,6 @@
     </style>
 </head>
 <body>
-    <!-- BUTTONS AT THE TOP RIGHT - UPDATED WITHOUT ZƏNG BUTTON -->
-    <div class="all-buttons">
-        <button class="lang-btn active" onclick="showContent('aze')" id="aze-btn">AZE</button>
-        <button class="lang-btn" onclick="showContent('rus')" id="rus-btn">RUS</button>
-        <button class="lang-btn" onclick="showContent('eng')" id="eng-btn">ENG</button>
-    </div>
-
     <!-- NAVIGATION BAR -->
     <nav class="navbar">
         <!-- LEFT - LOGO SPACE -->
@@ -493,8 +495,12 @@
             <button class="nav-btn active">ƏLAQƏ</button>
         </div>
         
-        <!-- RIGHT - TOP CORNER BUTTONS (REMOVED OLD BUTTONS, USING FIXED BUTTONS ABOVE) -->
-        <div class="nav-right" style="width: 200px;"></div>
+        <!-- RIGHT - LANGUAGE BUTTONS (HORIZONTAL) -->
+        <div class="nav-right">
+            <button class="lang-btn active" onclick="showContent('aze')" id="aze-btn">AZE</button>
+            <button class="lang-btn" onclick="showContent('rus')" id="rus-btn">RUS</button>
+            <button class="lang-btn" onclick="showContent('eng')" id="eng-btn">ENG</button>
+        </div>
     </nav>
     
     <!-- HERO SECTION -->
