@@ -1004,7 +1004,7 @@
                 });
             });
             
-            // Contact form submission handler
+            // Contact form submission handler - WITH SECURITY FIX
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
@@ -1067,13 +1067,14 @@
                     // Show success message
                     alert('Müraciətiniz uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.');
                     
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Reset phone mask
+                    // ==== SECURITY FIX: CLEAR PHONE NUMBER HISTORY ====
+                    // Clear phone number first (before resetting other fields)
                     userDigits = ['', '', '', '', '', '', '', '', ''];
                     cursorPosition = 0;
                     updatePhoneDisplay();
+                    
+                    // Reset other form fields
+                    contactForm.reset();
                 });
             }
         });
