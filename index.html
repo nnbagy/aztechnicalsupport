@@ -194,7 +194,7 @@
             margin-bottom: 40px;
         }
         
-        /* HERO SECTION */
+        /* HERO SECTION - UPDATED WITH TWO-LINE NAME */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -211,6 +211,31 @@
             margin-bottom: 20px;
             color: #00ffff;
             text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            line-height: 1.2;
+        }
+        
+        /* TWO-LINE COMPANY NAME STYLES */
+        .company-name-two-line {
+            display: inline-block;
+            text-align: center;
+            line-height: 1;
+        }
+        
+        .company-name-two-line .line1 {
+            display: block;
+            font-size: 48px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        .company-name-two-line .line2 {
+            display: block;
+            font-size: 42px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            margin-top: 5px;
         }
         
         .hero p {
@@ -344,6 +369,14 @@
             .contact-title {
                 font-size: 32px;
             }
+            
+            .company-name-two-line .line1 {
+                font-size: 42px;
+            }
+            
+            .company-name-two-line .line2 {
+                font-size: 38px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -385,6 +418,14 @@
             
             .company-name {
                 font-size: 36px;
+            }
+            
+            .company-name-two-line .line1 {
+                font-size: 36px;
+            }
+            
+            .company-name-two-line .line2 {
+                font-size: 32px;
             }
             
             .company-subtitle {
@@ -431,6 +472,14 @@
             
             .company-name {
                 font-size: 28px;
+            }
+            
+            .company-name-two-line .line1 {
+                font-size: 28px;
+            }
+            
+            .company-name-two-line .line2 {
+                font-size: 26px;
             }
             
             .company-subtitle {
@@ -505,7 +554,10 @@
     
     <!-- HERO SECTION -->
     <div class="hero">
-        <h1>AZHYDRO</h1>
+        <div class="company-name-two-line">
+            <span class="line1">AZTECHNICAL</span>
+            <span class="line2">SUPPORT</span>
+        </div>
         <p>2020-ci ildən fəaliyyətdədir. Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
     
