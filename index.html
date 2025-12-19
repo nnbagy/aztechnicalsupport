@@ -181,30 +181,28 @@
                 inset 0 0 15px rgba(0, 255, 255, 0.15);
         }
         
-        /* ACTIVE STATE - FULL NEON BACKGROUND (MUCH MORE VISIBLE) */
+        /* ACTIVE STATE - SIMPLE AND SUBTLE */
         .neon-btn.active {
-            background: rgba(0, 255, 255, 0.25); /* Full neon background */
-            color: #000; /* Dark text for contrast */
+            background: rgba(0, 255, 255, 0.1); /* Very subtle background */
+            color: #ffffff !important; /* White text */
             font-weight: bold;
             box-shadow: 
-                0 0 20px #00ffff,
-                0 0 35px #00ffff,
-                0 0 50px rgba(0, 255, 255, 0.7),
-                inset 0 0 20px rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-            border-color: #ffffff;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+                0 0 12px #00ffff,
+                0 0 20px rgba(0, 255, 255, 0.3),
+                inset 0 0 10px rgba(0, 255, 255, 0.1);
+            transform: scale(1.02);
+            border-color: #00ffff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         
-        /* Hover on active button - even brighter */
+        /* Hover on active button - very subtle change */
         .neon-btn.active:hover {
-            background: rgba(0, 255, 255, 0.35);
+            background: rgba(0, 255, 255, 0.15);
             box-shadow: 
-                0 0 25px #00ffff,
-                0 0 40px #00ffff,
-                0 0 60px rgba(0, 255, 255, 0.9),
-                inset 0 0 25px rgba(255, 255, 255, 0.4);
-            transform: scale(1.07) translateY(-2px);
+                0 0 15px #00ffff,
+                0 0 25px rgba(0, 255, 255, 0.4),
+                inset 0 0 12px rgba(0, 255, 255, 0.15);
+            transform: scale(1.03) translateY(-1px);
         }
         
         /* MAIN CONTENT */
@@ -313,28 +311,24 @@
                 transform: translateY(-1px);
             }
             
-            /* ACTIVE STATE FOR MOBILE */
+            /* ACTIVE STATE FOR MOBILE - EVEN MORE SUBTLE */
             .neon-btn.active {
-                background: rgba(0, 255, 255, 0.3);
-                color: #000;
-                font-weight: bold;
+                background: rgba(0, 255, 255, 0.08);
+                color: #ffffff !important;
                 box-shadow: 
-                    0 0 15px #00ffff,
-                    0 0 25px #00ffff,
-                    0 0 35px rgba(0, 255, 255, 0.6),
-                    inset 0 0 15px rgba(255, 255, 255, 0.25);
-                transform: scale(1.04);
-                border-color: #ffffff;
+                    0 0 8px #00ffff,
+                    0 0 15px rgba(0, 255, 255, 0.25),
+                    inset 0 0 8px rgba(0, 255, 255, 0.08);
+                transform: scale(1.01);
             }
             
             .neon-btn.active:hover {
-                background: rgba(0, 255, 255, 0.4);
+                background: rgba(0, 255, 255, 0.12);
                 box-shadow: 
-                    0 0 18px #00ffff,
-                    0 0 28px #00ffff,
-                    0 0 40px rgba(0, 255, 255, 0.8),
-                    inset 0 0 18px rgba(255, 255, 255, 0.3);
-                transform: scale(1.05) translateY(-1px);
+                    0 0 10px #00ffff,
+                    0 0 18px rgba(0, 255, 255, 0.35),
+                    inset 0 0 10px rgba(0, 255, 255, 0.12);
+                transform: scale(1.02) translateY(-1px);
             }
         }
         
