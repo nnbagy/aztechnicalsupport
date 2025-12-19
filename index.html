@@ -15,17 +15,19 @@
         
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
+            min-height: 100vh;
         }
         
         /* NAVIGATION BAR */
         .navbar {
-            background-color: #1a3c34; /* Dark green/blue similar to image */
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 15px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
         }
         
         /* LEFT SIDE - LOGO SPACE */
@@ -38,83 +40,272 @@
         }
         
         .logo-placeholder {
-            color: white;
+            color: #00ffff;
             font-size: 24px;
             font-weight: bold;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 255, 255, 0.05);
             padding: 10px 15px;
             border-radius: 5px;
             min-width: 180px;
             text-align: center;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
         }
         
         /* CENTER - NAVIGATION BUTTONS */
         .nav-center {
             display: flex;
-            gap: 25px;
+            gap: 15px;
         }
         
         .nav-btn {
-            background-color: #2a5c4f;
+            background-color: rgba(0, 0, 0, 0.5);
             color: white;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 12px 24px;
             font-size: 16px;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
-            min-width: 140px;
+            min-width: 120px;
             text-align: center;
         }
         
         .nav-btn:hover {
-            background-color: #3a7c6f;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
         }
         
-        /* RIGHT SIDE - TOP CORNER BUTTONS */
+        /* RIGHT SIDE - TOP CORNER BUTTONS (YOUR NEON BUTTONS) */
         .nav-right {
             display: flex;
             gap: 15px;
         }
         
-        .top-btn {
-            background-color: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
+        /* ALL BUTTONS COMMON STYLES - YOUR NEON BUTTONS */
+        .neon-btn {
+            position: relative;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
             font-size: 14px;
-            border-radius: 6px;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 500;
-            min-width: 110px;
+            min-width: 80px;
             text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 45px;
+            box-sizing: border-box;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        .top-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
+        /* BUTTON TEXT */
+        .neon-btn .btn-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* REMOVE BAYRAQ ICONS - SHOW ONLY TEXT */
+        .btn-icon {
+            display: none; /* Hide the flag icons */
+        }
+        
+        /* AZE BUTTON - CYAN NEON */
+        .aze-btn {
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            box-shadow: 
+                0 0 8px #00ffff,
+                0 0 15px #00ffff,
+                inset 0 0 8px rgba(0, 255, 255, 0.1);
+        }
+        
+        .aze-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(0, 255, 255, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .aze-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .aze-btn:hover {
+            background: rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 15px #00ffff,
+                0 0 25px #00ffff,
+                0 0 35px rgba(0, 255, 255, 0.5),
+                inset 0 0 15px rgba(0, 255, 255, 0.15);
+        }
+        
+        /* RUS BUTTON - PURPLE NEON */
+        .rus-btn {
+            color: #ff00ff;
+            border: 2px solid #ff00ff;
+            box-shadow: 
+                0 0 8px #ff00ff,
+                0 0 15px #ff00ff,
+                inset 0 0 8px rgba(255, 0, 255, 0.1);
+        }
+        
+        .rus-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(255, 0, 255, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .rus-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .rus-btn:hover {
+            background: rgba(255, 0, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 15px #ff00ff,
+                0 0 25px #ff00ff,
+                0 0 35px rgba(255, 0, 255, 0.5),
+                inset 0 0 15px rgba(255, 0, 255, 0.15);
+        }
+        
+        /* ENG BUTTON - LIME NEON */
+        .eng-btn {
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            box-shadow: 
+                0 0 8px #00ff00,
+                0 0 15px #00ff00,
+                inset 0 0 8px rgba(0, 255, 0, 0.1);
+        }
+        
+        .eng-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(0, 255, 0, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .eng-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .eng-btn:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 15px #00ff00,
+                0 0 25px #00ff00,
+                0 0 35px rgba(0, 255, 0, 0.5),
+                inset 0 0 15px rgba(0, 255, 0, 0.15);
+        }
+        
+        /* CONTACT BUTTON - GREEN NEON */
+        .contact-btn {
+            color: #25d366;
+            border: 2px solid #25d366;
+            box-shadow: 
+                0 0 8px #25d366,
+                0 0 15px #25d366,
+                inset 0 0 8px rgba(37, 211, 102, 0.1);
+        }
+        
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(37, 211, 102, 0.08) 50%, 
+                transparent 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .contact-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .contact-btn:hover {
+            background: rgba(37, 211, 102, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 15px #25d366,
+                0 0 25px #25d366,
+                0 0 35px rgba(37, 211, 102, 0.5),
+                inset 0 0 15px rgba(37, 211, 102, 0.15);
+        }
+        
+        /* ACTIVE STATE - PERMANENT BRIGHTER GLOW */
+        .neon-btn.active {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 0 15px currentColor,
+                0 0 25px currentColor,
+                inset 0 0 15px rgba(255, 255, 255, 0.15);
+            transform: scale(1.03);
         }
         
         /* MAIN CONTENT */
         .content {
-            padding: 40px;
+            padding: 60px 40px;
             text-align: center;
         }
         
         .company-name {
             font-size: 48px;
-            color: #1a3c34;
+            color: #00ffff;
             margin-bottom: 10px;
             font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
         
         .company-subtitle {
             font-size: 20px;
-            color: #666;
+            color: #88ffff;
             margin-bottom: 40px;
         }
         
@@ -125,19 +316,20 @@
             }
             
             .nav-center {
-                gap: 15px;
+                gap: 10px;
             }
             
             .nav-btn {
-                padding: 10px 18px;
-                font-size: 15px;
-                min-width: 120px;
+                padding: 10px 15px;
+                font-size: 14px;
+                min-width: 100px;
             }
             
-            .top-btn {
-                padding: 8px 15px;
+            .neon-btn {
+                padding: 10px 15px;
                 font-size: 13px;
-                min-width: 90px;
+                min-width: 70px;
+                height: 40px;
             }
         }
         
@@ -156,13 +348,13 @@
             .nav-center {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 12px;
+                gap: 10px;
             }
             
             .nav-btn {
-                min-width: 100px;
-                padding: 10px 15px;
-                font-size: 14px;
+                min-width: 90px;
+                padding: 8px 12px;
+                font-size: 13px;
             }
             
             .nav-right {
@@ -171,10 +363,11 @@
                 gap: 10px;
             }
             
-            .top-btn {
-                min-width: 80px;
+            .neon-btn {
+                min-width: 70px;
                 padding: 8px 12px;
                 font-size: 12px;
+                height: 38px;
             }
             
             .company-name {
@@ -183,6 +376,31 @@
             
             .company-subtitle {
                 font-size: 18px;
+            }
+            
+            /* SMALLER GLOW FOR MOBILE */
+            .aze-btn, .rus-btn, .eng-btn, .contact-btn {
+                box-shadow: 
+                    0 0 5px currentColor,
+                    0 0 10px currentColor,
+                    inset 0 0 5px rgba(255, 255, 255, 0.08);
+            }
+            
+            .neon-btn:hover {
+                box-shadow: 
+                    0 0 10px currentColor,
+                    0 0 18px currentColor,
+                    0 0 25px rgba(255, 255, 255, 0.4),
+                    inset 0 0 10px rgba(255, 255, 255, 0.12);
+                transform: translateY(-1px);
+            }
+            
+            .neon-btn.active {
+                box-shadow: 
+                    0 0 10px currentColor,
+                    0 0 18px currentColor,
+                    inset 0 0 10px rgba(255, 255, 255, 0.12);
+                transform: scale(1.02);
             }
         }
         
@@ -201,7 +419,7 @@
                 width: 100%;
             }
             
-            .top-btn {
+            .neon-btn {
                 flex: 1;
                 min-width: auto;
             }
@@ -217,18 +435,21 @@
         
         /* HERO SECTION */
         .hero {
-            background: linear-gradient(rgba(26, 60, 52, 0.9), rgba(26, 60, 52, 0.8)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             padding: 100px 40px;
             text-align: center;
             margin-bottom: 40px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
         }
         
         .hero h1 {
             font-size: 42px;
             margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
         }
         
         .hero p {
@@ -236,6 +457,32 @@
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.6;
+            color: #aaffff;
+        }
+        
+        /* CONTENT BOX */
+        .content-box {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(0, 20, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            text-align: left;
+        }
+        
+        .content-box h2 {
+            color: #00ffff;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .content-box p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #cccccc;
         }
     </style>
 </head>
@@ -245,7 +492,7 @@
         <!-- LEFT - LOGO SPACE -->
         <div class="logo-space">
             <div class="logo-placeholder">
-                AZHYDRO LOGO
+                AZHYDRO
             </div>
         </div>
         
@@ -259,12 +506,24 @@
             <button class="nav-btn">ƏLAQƏ</button>
         </div>
         
-        <!-- RIGHT - TOP CORNER BUTTONS -->
+        <!-- RIGHT - TOP CORNER BUTTONS (YOUR NEON BUTTONS) -->
         <div class="nav-right">
-            <button class="top-btn">AZ</button>
-            <button class="top-btn">RU</button>
-            <button class="top-btn">EN</button>
-            <button class="top-btn"><i class="fas fa-phone"></i> ƏLAQƏ</button>
+            <button class="neon-btn aze-btn active">
+                <span class="btn-text">AZ</span>
+            </button>
+            
+            <button class="neon-btn rus-btn">
+                <span class="btn-text">RU</span>
+            </button>
+            
+            <button class="neon-btn eng-btn">
+                <span class="btn-text">EN</span>
+            </button>
+            
+            <button class="neon-btn contact-btn">
+                <i class="fas fa-phone"></i>
+                <span class="btn-text">ƏLAQƏ</span>
+            </button>
         </div>
     </nav>
     
@@ -279,13 +538,13 @@
         <h1 class="company-name">AZHYDRO</h1>
         <p class="company-subtitle">2020-ci ildən fəaliyyətdədir</p>
         
-        <div style="margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: left; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-            <h2 style="color: #1a3c34; margin-bottom: 20px;">Şirkətimiz Haqqında</h2>
-            <p style="line-height: 1.8; margin-bottom: 20px; color: #555;">
+        <div class="content-box">
+            <h2>Şirkətimiz Haqqında</h2>
+            <p>
                 AZHYDRO şirkəti 2020-ci ildən etibarən su təchizatı, kanalizasiya sistemlərinin quraşdırılması və texniki xidməti sahəsində fəaliyyət göstərir. 
                 Yüksək keyfiyyətli iş və müştəri məmnuniyyəti bizim əsas prinsipimizdir.
             </p>
-            <p style="line-height: 1.8; color: #555;">
+            <p>
                 Peşəkar komandamız və müasir texnologiyalar sayəsində ən mürəkkəb layihələri də uğurla həyata keçiririk.
             </p>
         </div>
@@ -295,45 +554,52 @@
         // Add active state to navigation buttons
         document.addEventListener('DOMContentLoaded', function() {
             const navButtons = document.querySelectorAll('.nav-btn');
-            const topButtons = document.querySelectorAll('.top-btn');
+            const neonButtons = document.querySelectorAll('.neon-btn');
             
             // Set first nav button as active
             if (navButtons.length > 0) {
-                navButtons[0].style.backgroundColor = '#3a7c6f';
-                navButtons[0].style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+                navButtons[0].style.backgroundColor = 'rgba(0, 255, 255, 0.15)';
+                navButtons[0].style.borderColor = 'rgba(0, 255, 255, 0.5)';
+                navButtons[0].style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.3)';
             }
             
-            // Set first language button as active
-            if (topButtons.length > 0) {
-                topButtons[0].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-                topButtons[0].style.borderColor = 'rgba(255, 255, 255, 0.7)';
-            }
+            // Set AZ button as active by default
+            document.querySelector('.aze-btn').classList.add('active');
             
             // Nav button click handler
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     navButtons.forEach(btn => {
-                        btn.style.backgroundColor = '#2a5c4f';
+                        btn.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                        btn.style.borderColor = 'rgba(255, 255, 255, 0.2)';
                         btn.style.boxShadow = 'none';
                     });
-                    this.style.backgroundColor = '#3a7c6f';
-                    this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+                    this.style.backgroundColor = 'rgba(0, 255, 255, 0.15)';
+                    this.style.borderColor = 'rgba(0, 255, 255, 0.5)';
+                    this.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.3)';
                 });
             });
             
-            // Top button click handler (for language/contact buttons)
-            topButtons.forEach(button => {
+            // Neon button click handler (for language/contact buttons)
+            neonButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     // If it's a language button (AZ, RU, EN)
-                    if (this.textContent === 'AZ' || this.textContent === 'RU' || this.textContent === 'EN') {
-                        topButtons.forEach(btn => {
-                            if (btn.textContent === 'AZ' || btn.textContent === 'RU' || btn.textContent === 'EN') {
-                                btn.style.backgroundColor = 'transparent';
-                                btn.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                            }
+                    if (this.classList.contains('aze-btn') || 
+                        this.classList.contains('rus-btn') || 
+                        this.classList.contains('eng-btn')) {
+                        
+                        // Remove active class from all language buttons
+                        document.querySelectorAll('.aze-btn, .rus-btn, .eng-btn').forEach(btn => {
+                            btn.classList.remove('active');
                         });
-                        this.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-                        this.style.borderColor = 'rgba(255, 255, 255, 0.7)';
+                        
+                        // Add active class to clicked button
+                        this.classList.add('active');
+                    }
+                    
+                    // If it's the contact button
+                    if (this.classList.contains('contact-btn')) {
+                        alert('Əlaqə nömrəmiz: +994 XX XXX XX XX');
                     }
                 });
             });
