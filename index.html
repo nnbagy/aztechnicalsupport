@@ -133,8 +133,8 @@
             display: none; /* Hide the flag icons */
         }
         
-        /* AZE BUTTON - CYAN NEON */
-        .aze-btn {
+        /* ALL LANGUAGE BUTTONS - CYAN NEON (SAME AS AZ BUTTON) */
+        .aze-btn, .rus-btn, .eng-btn {
             color: #00ffff;
             border: 2px solid #00ffff;
             box-shadow: 
@@ -143,7 +143,10 @@
                 inset 0 0 8px rgba(0, 255, 255, 0.1);
         }
         
-        .aze-btn::before {
+        /* SHARED ::before FOR ALL LANGUAGE BUTTONS */
+        .aze-btn::before,
+        .rus-btn::before,
+        .eng-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -159,11 +162,16 @@
             transition: opacity 0.3s;
         }
         
-        .aze-btn:hover::before {
+        /* SHARED HOVER EFFECTS FOR ALL LANGUAGE BUTTONS */
+        .aze-btn:hover::before,
+        .rus-btn:hover::before,
+        .eng-btn:hover::before {
             opacity: 1;
         }
         
-        .aze-btn:hover {
+        .aze-btn:hover,
+        .rus-btn:hover,
+        .eng-btn:hover {
             background: rgba(0, 255, 255, 0.1);
             transform: translateY(-2px);
             box-shadow: 
@@ -171,126 +179,6 @@
                 0 0 25px #00ffff,
                 0 0 35px rgba(0, 255, 255, 0.5),
                 inset 0 0 15px rgba(0, 255, 255, 0.15);
-        }
-        
-        /* RUS BUTTON - PURPLE NEON */
-        .rus-btn {
-            color: #ff00ff;
-            border: 2px solid #ff00ff;
-            box-shadow: 
-                0 0 8px #ff00ff,
-                0 0 15px #ff00ff,
-                inset 0 0 8px rgba(255, 0, 255, 0.1);
-        }
-        
-        .rus-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(255, 0, 255, 0.08) 50%, 
-                transparent 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .rus-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .rus-btn:hover {
-            background: rgba(255, 0, 255, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 0 15px #ff00ff,
-                0 0 25px #ff00ff,
-                0 0 35px rgba(255, 0, 255, 0.5),
-                inset 0 0 15px rgba(255, 0, 255, 0.15);
-        }
-        
-        /* ENG BUTTON - LIME NEON */
-        .eng-btn {
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            box-shadow: 
-                0 0 8px #00ff00,
-                0 0 15px #00ff00,
-                inset 0 0 8px rgba(0, 255, 0, 0.1);
-        }
-        
-        .eng-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(0, 255, 0, 0.08) 50%, 
-                transparent 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .eng-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .eng-btn:hover {
-            background: rgba(0, 255, 0, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 0 15px #00ff00,
-                0 0 25px #00ff00,
-                0 0 35px rgba(0, 255, 0, 0.5),
-                inset 0 0 15px rgba(0, 255, 0, 0.15);
-        }
-        
-        /* CONTACT BUTTON - GREEN NEON */
-        .contact-btn {
-            color: #25d366;
-            border: 2px solid #25d366;
-            box-shadow: 
-                0 0 8px #25d366,
-                0 0 15px #25d366,
-                inset 0 0 8px rgba(37, 211, 102, 0.1);
-        }
-        
-        .contact-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(37, 211, 102, 0.08) 50%, 
-                transparent 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .contact-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .contact-btn:hover {
-            background: rgba(37, 211, 102, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 0 15px #25d366,
-                0 0 25px #25d366,
-                0 0 35px rgba(37, 211, 102, 0.5),
-                inset 0 0 15px rgba(37, 211, 102, 0.15);
         }
         
         /* ACTIVE STATE - PERMANENT BRIGHTER GLOW */
@@ -403,35 +291,35 @@
             }
             
             /* SMALLER GLOW FOR MOBILE */
-            .aze-btn, .rus-btn, .eng-btn, .contact-btn {
+            .aze-btn, .rus-btn, .eng-btn {
                 box-shadow: 
-                    0 0 5px currentColor,
-                    0 0 10px currentColor,
-                    inset 0 0 5px rgba(255, 255, 255, 0.08);
+                    0 0 5px #00ffff,
+                    0 0 10px #00ffff,
+                    inset 0 0 5px rgba(0, 255, 255, 0.08);
             }
             
             .neon-btn:hover {
                 box-shadow: 
-                    0 0 10px currentColor,
-                    0 0 18px currentColor,
-                    0 0 25px rgba(255, 255, 255, 0.4),
-                    inset 0 0 10px rgba(255, 255, 255, 0.12);
+                    0 0 10px #00ffff,
+                    0 0 18px #00ffff,
+                    0 0 25px rgba(0, 255, 255, 0.4),
+                    inset 0 0 10px rgba(0, 255, 255, 0.12);
                 transform: translateY(-1px);
             }
             
             .neon-btn.active {
                 box-shadow: 
-                    0 0 10px currentColor,
-                    0 0 18px currentColor,
-                    inset 0 0 10px rgba(255, 255, 255, 0.12);
+                    0 0 10px #00ffff,
+                    0 0 18px #00ffff,
+                    inset 0 0 10px rgba(0, 255, 255, 0.12);
                 transform: scale(1.02);
             }
             
             .neon-btn.active:hover {
                 box-shadow: 
-                    0 0 15px currentColor,
-                    0 0 22px currentColor,
-                    inset 0 0 12px rgba(255, 255, 255, 0.15);
+                    0 0 15px #00ffff,
+                    0 0 22px #00ffff,
+                    inset 0 0 12px rgba(0, 255, 255, 0.15);
                 transform: scale(1.03) translateY(-1px);
             }
         }
@@ -545,16 +433,11 @@
             </button>
             
             <button class="neon-btn rus-btn">
-                <span class="btn-text">RU</span>
+                <span class="btn-text">RUS</span>
             </button>
             
             <button class="neon-btn eng-btn">
-                <span class="btn-text">EN</span>
-            </button>
-            
-            <button class="neon-btn contact-btn">
-                <i class="fas fa-phone"></i>
-                <span class="btn-text">ƏLAQƏ</span>
+                <span class="btn-text">ENG</span>
             </button>
         </div>
     </nav>
@@ -607,27 +490,16 @@
                 });
             });
             
-            // Neon button click handler (for language/contact buttons)
+            // Neon button click handler (for language buttons)
             neonButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // If it's a language button (AZ, RU, EN)
-                    if (this.classList.contains('aze-btn') || 
-                        this.classList.contains('rus-btn') || 
-                        this.classList.contains('eng-btn')) {
-                        
-                        // Remove active class from all language buttons
-                        document.querySelectorAll('.aze-btn, .rus-btn, .eng-btn').forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                        
-                        // Add active class to clicked button
-                        this.classList.add('active');
-                    }
+                    // Remove active class from all language buttons
+                    document.querySelectorAll('.aze-btn, .rus-btn, .eng-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
                     
-                    // If it's the contact button
-                    if (this.classList.contains('contact-btn')) {
-                        alert('Əlaqə nömrəmiz: +994 XX XXX XX XX');
-                    }
+                    // Add active class to clicked button
+                    this.classList.add('active');
                 });
             });
         });
