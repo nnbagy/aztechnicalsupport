@@ -240,7 +240,7 @@
             min-height: calc(100vh - 300px);
         }
         
-        /* LEFT SIDE - PARTICLE ANIMATION WITH CUBE */
+        /* LEFT SIDE - BLACK BACKGROUND FOR CUBE ANIMATION */
         .left-side {
             flex: 1;
             width: 50%;
@@ -249,12 +249,13 @@
             overflow: hidden;
         }
         
-        #particle-canvas {
+        #cube-animation {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            display: block;
         }
         
         /* RIGHT SIDE - CONTACT INFORMATION */
@@ -612,9 +613,9 @@
     
     <!-- SPLIT LAYOUT -->
     <div class="split-container">
-        <!-- LEFT SIDE - PARTICLE ANIMATION WITH CUBE -->
+        <!-- LEFT SIDE - CUBE ANIMATION (YOUR EXACT CODE) -->
         <div class="left-side">
-            <div id="particle-canvas"></div>
+            <div id="cube-animation"></div>
         </div>
         
         <!-- RIGHT SIDE - CONTACT INFORMATION -->
@@ -677,129 +678,94 @@
         <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
 
-    <!-- THREE.JS PARTICLE ANIMATION WITH CUBE -->
+    <!-- YOUR EXACT THREE.JS CUBE ANIMATION CODE - NO CHANGES -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Particle Animation Code with Cube
-        let scene, camera, renderer, particles, cube, uniforms, mouse = new THREE.Vector3();
-        
-        function initParticles() {
-            const canvasContainer = document.getElementById('particle-canvas');
+        // YOUR EXACT CODE - NO CHANGES
+        let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
+
+        init();
+        animate();
+
+        function init() {
+            const cubeContainer = document.getElementById('cube-animation');
             
             scene = new THREE.Scene();
-            
-            camera = new THREE.PerspectiveCamera(60, canvasContainer.clientWidth/canvasContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 5;
-            
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
-            canvasContainer.appendChild(renderer.domElement);
-            
-            // Add a light
-            const light = new THREE.DirectionalLight(0xffffff, 1);
-            light.position.set(1, 1, 1).normalize();
-            scene.add(light);
-            
-            const ambientLight = new THREE.AmbientLight(0x404040);
-            scene.add(ambientLight);
-            
-            // Create particles
-            const count = 15000;
+
+            camera = new THREE.PerspectiveCamera(60, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
+            camera.position.z = 3;
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+            cubeContainer.appendChild(renderer.domElement);
+
+            const count = 50000;
             const positions = new Float32Array(count * 3);
-            
+
             for (let i = 0; i < count; i++) {
-                positions[i*3] = (Math.random() - 0.5) * 5;
-                positions[i*3+1] = (Math.random() - 0.5) * 5;
-                positions[i*3+2] = (Math.random() - 0.5) * 5;
+                positions[i*3] = (Math.random() - 0.5) * 2;
+                positions[i*3+1] = (Math.random() - 0.5) * 2;
+                positions[i*3+2] = (Math.random() - 0.5) * 2;
             }
-            
+
             const particleGeometry = new THREE.BufferGeometry();
             particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-            
+
             uniforms = {
                 uTime: { value: 0.0 },
                 uMouse: { value: new THREE.Vector3(0,0,0) }
             };
-            
-            const particleMaterial = new THREE.ShaderMaterial({
+
+            const material = new THREE.ShaderMaterial({
                 uniforms,
                 vertexShader: `
                     uniform vec3 uMouse;
-                    
+
                     void main() {
                         vec3 pos = position;
-                        
+
                         float dist = distance(pos, uMouse);
-                        pos += normalize(pos - uMouse) * (0.2 / (dist + 0.1));
-                        
-                        gl_PointSize = 1.5;
+                        pos += normalize(pos - uMouse) * (0.15 / dist);
+
+                        gl_PointSize = 1.0;   // kvadrat + sharik tam yox olur
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     }
                 `,
                 fragmentShader: `
                     void main() {
-                        gl_FragColor = vec4(0.2, 0.6, 1.0, 0.8);
+                        // Hissəcik real piksel kimi görünür, heç bir forma yoxdur.
+                        gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
                     }
                 `,
                 transparent: true
             });
-            
-            particles = new THREE.Points(particleGeometry, particleMaterial);
-            scene.add(particles);
-            
-            // Create a cube
-            const cubeGeometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
-            const cubeMaterial = new THREE.MeshPhongMaterial({ 
-                color: 0x00ffff,
-                emissive: 0x003333,
-                specular: 0x555555,
-                shininess: 30,
-                transparent: true,
-                opacity: 0.8
-            });
-            
-            cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-            scene.add(cube);
-            
-            // Mouse & touch interaction
-            canvasContainer.addEventListener("pointermove", (e) => {
-                const rect = canvasContainer.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / canvasContainer.clientWidth) * 2 - 1;
-                const y = -((e.clientY - rect.top) / canvasContainer.clientHeight) * 2 + 1;
-                mouse.set(x * 2, y * 2, 1);
+
+            sphere = new THREE.Points(particleGeometry, material);
+            scene.add(sphere);
+
+            // Mouse & touch
+            cubeContainer.addEventListener("pointermove", (e) => {
+                const rect = cubeContainer.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / cubeContainer.clientWidth) * 2 - 1;
+                const y = -((e.clientY - rect.top) / cubeContainer.clientHeight) * 2 + 1;
+                mouse.set(x, y, 0.5);
                 uniforms.uMouse.value = mouse;
             });
             
             // Handle window resize
-            window.addEventListener('resize', onWindowResize);
+            window.addEventListener('resize', function() {
+                const cubeContainer = document.getElementById('cube-animation');
+                camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+            });
         }
-        
-        function onWindowResize() {
-            const canvasContainer = document.getElementById('particle-canvas');
-            camera.aspect = canvasContainer.clientWidth / canvasContainer.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
-        }
-        
-        function animateParticles() {
-            if (uniforms && particles && cube) {
-                uniforms.uTime.value += 0.01;
-                
-                // Rotate particles and cube
-                particles.rotation.x += 0.001;
-                particles.rotation.y += 0.002;
-                
-                // Rotate and animate cube
-                cube.rotation.x += 0.01;
-                cube.rotation.y += 0.01;
-                
-                // Pulse the cube scale
-                const scale = 1 + 0.1 * Math.sin(uniforms.uTime.value * 2);
-                cube.scale.set(scale, scale, scale);
-                
-                renderer.render(scene, camera);
-            }
-            requestAnimationFrame(animateParticles);
+
+        function animate() {
+            uniforms.uTime.value += 0.01;
+            sphere.rotation.y += 0.002;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
         }
         
         // Language data
@@ -882,14 +848,6 @@
             
             // Set AZ button as active by default
             document.getElementById('aze-btn').classList.add('active');
-            
-            // Show contact section by default, hide home content
-            document.getElementById('elaqe').style.display = 'none'; // Hide old contact section
-            document.getElementById('home-content').style.display = 'none';
-            
-            // Initialize particle animation with cube
-            initParticles();
-            animateParticles();
             
             // Nav button click handler
             navButtons.forEach(button => {
