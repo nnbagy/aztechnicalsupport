@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -15,20 +16,17 @@
         
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
-            min-height: 100vh;
-            color: #e0e0e0;
+            background-color: #f5f5f5;
         }
         
         /* NAVIGATION BAR */
         .navbar {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: #1a3c34; /* Dark green/blue similar to image */
             padding: 15px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         /* LEFT SIDE - LOGO SPACE */
@@ -41,386 +39,84 @@
         }
         
         .logo-placeholder {
-            color: #00ffff;
+            color: white;
             font-size: 24px;
             font-weight: bold;
-            background-color: rgba(0, 255, 255, 0.05);
+            background-color: rgba(255, 255, 255, 0.1);
             padding: 10px 15px;
             border-radius: 5px;
             min-width: 180px;
             text-align: center;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
         }
         
         /* CENTER - NAVIGATION BUTTONS */
         .nav-center {
             display: flex;
-            gap: 15px;
+            gap: 25px;
         }
         
         .nav-btn {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: #2a5c4f;
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: none;
             padding: 12px 24px;
             font-size: 16px;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
-            min-width: 120px;
+            min-width: 140px;
             text-align: center;
         }
         
         .nav-btn:hover {
-            background-color: rgba(0, 255, 255, 0.1);
-            border-color: rgba(0, 255, 255, 0.5);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            background-color: #3a7c6f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
-        /* ACTIVE STATE FOR NAV BUTTONS */
-        .nav-btn.active {
-            background-color: rgba(0, 255, 255, 0.15);
-            border-color: rgba(0, 255, 255, 0.7);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-        }
-        
-        /* Hover should still work on active buttons */
-        .nav-btn.active:hover {
-            background-color: rgba(0, 255, 255, 0.25);
-            border-color: rgba(0, 255, 255, 0.9);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
-        }
-        
-        /* RIGHT SIDE - TOP CORNER BUTTONS (YOUR NEON BUTTONS) */
+        /* RIGHT SIDE - TOP CORNER BUTTONS */
         .nav-right {
             display: flex;
             gap: 15px;
         }
         
-        /* ALL BUTTONS COMMON STYLES - YOUR NEON BUTTONS */
-        .neon-btn {
-            position: relative;
-            background: transparent;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 24px;
+        .top-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
             font-size: 14px;
-            font-weight: bold;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 80px;
+            font-weight: 500;
+            min-width: 110px;
             text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            height: 45px;
-            box-sizing: border-box;
-            overflow: hidden;
-            z-index: 1;
         }
         
-        /* BUTTON TEXT */
-        .neon-btn .btn-text {
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* REMOVE BAYRAQ ICONS - SHOW ONLY TEXT */
-        .btn-icon {
-            display: none; /* Hide the flag icons */
-        }
-        
-        /* ALL LANGUAGE BUTTONS - CYAN NEON (SAME AS AZ BUTTON) */
-        .aze-btn, .rus-btn, .eng-btn {
-            color: #00ffff;
-            border: 2px solid #00ffff;
-            box-shadow: 
-                0 0 8px #00ffff,
-                0 0 15px #00ffff,
-                inset 0 0 8px rgba(0, 255, 255, 0.1);
-        }
-        
-        /* SHARED ::before FOR ALL LANGUAGE BUTTONS */
-        .aze-btn::before,
-        .rus-btn::before,
-        .eng-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(0, 255, 255, 0.08) 50%, 
-                transparent 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        /* SHARED HOVER EFFECTS FOR ALL LANGUAGE BUTTONS */
-        .aze-btn:hover::before,
-        .rus-btn:hover::before,
-        .eng-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .aze-btn:hover,
-        .rus-btn:hover,
-        .eng-btn:hover {
-            background: rgba(0, 255, 255, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 0 15px #00ffff,
-                0 0 25px #00ffff,
-                0 0 35px rgba(0, 255, 255, 0.5),
-                inset 0 0 15px rgba(0, 255, 255, 0.15);
-        }
-        
-        /* ACTIVE STATE - SIMPLE AND SUBTLE */
-        .neon-btn.active {
-            background: rgba(0, 255, 255, 0.1); /* Very subtle background */
-            color: #ffffff !important; /* White text */
-            font-weight: bold;
-            box-shadow: 
-                0 0 12px #00ffff,
-                0 0 20px rgba(0, 255, 255, 0.3),
-                inset 0 0 10px rgba(0, 255, 255, 0.1);
-            transform: scale(1.02);
-            border-color: #00ffff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        
-        /* Hover on active button - very subtle change */
-        .neon-btn.active:hover {
-            background: rgba(0, 255, 255, 0.15);
-            box-shadow: 
-                0 0 15px #00ffff,
-                0 0 25px rgba(0, 255, 255, 0.4),
-                inset 0 0 12px rgba(0, 255, 255, 0.15);
-            transform: scale(1.03) translateY(-1px);
+        .top-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
         }
         
         /* MAIN CONTENT */
         .content {
-            padding: 60px 40px;
+            padding: 40px;
             text-align: center;
         }
         
         .company-name {
             font-size: 48px;
-            color: #00ffff;
+            color: #1a3c34;
             margin-bottom: 10px;
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
         
         .company-subtitle {
             font-size: 20px;
-            color: #88ffff;
+            color: #666;
             margin-bottom: 40px;
-        }
-        
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 40px;
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
-        }
-        
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-        }
-        
-        .hero p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            color: #aaffff;
-        }
-        
-        /* CONTACT SECTION */
-        .contact-section {
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-        }
-        
-        .contact-title {
-            text-align: center;
-            font-size: 36px;
-            color: #00ffff;
-            margin-bottom: 40px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-        
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-        }
-        
-        .contact-item {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-        }
-        
-        .contact-item h3 {
-            color: #00ffff;
-            font-size: 18px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .contact-item h3 i {
-            color: #00ffff;
-            width: 20px;
-        }
-        
-        .contact-item p {
-            color: #cccccc;
-            line-height: 1.6;
-            margin-left: 30px;
-        }
-        
-        .contact-item strong {
-            color: #ffffff;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            color: #00ffff;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: rgba(0, 10, 10, 0.7);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 5px;
-            color: #ffffff;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #00ffff;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .required {
-            color: #ff5555;
-        }
-        
-        .submit-btn {
-            background: rgba(0, 255, 255, 0.1);
-            color: #00ffff;
-            border: 2px solid #00ffff;
-            padding: 14px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-        }
-        
-        .submit-btn:hover {
-            background: rgba(0, 255, 255, 0.2);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        /* PHONE INPUT - FIXED CURSOR POSITION */
-        #phone {
-            font-family: monospace;
-            letter-spacing: 1px;
-        }
-        
-        /* Format hint below input */
-        .phone-format-hint {
-            font-size: 12px;
-            color: #888;
-            margin-top: 5px;
-            font-family: monospace;
-        }
-        
-        /* CONTENT BOX */
-        .content-box {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            text-align: left;
-        }
-        
-        .content-box h2 {
-            color: #00ffff;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
-            padding-bottom: 10px;
-        }
-        
-        .content-box p {
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #cccccc;
         }
         
         /* MOBILE STYLES */
@@ -430,24 +126,19 @@
             }
             
             .nav-center {
-                gap: 10px;
+                gap: 15px;
             }
             
             .nav-btn {
-                padding: 10px 15px;
-                font-size: 14px;
-                min-width: 100px;
+                padding: 10px 18px;
+                font-size: 15px;
+                min-width: 120px;
             }
             
-            .neon-btn {
-                padding: 10px 15px;
+            .top-btn {
+                padding: 8px 15px;
                 font-size: 13px;
-                min-width: 70px;
-                height: 40px;
-            }
-            
-            .contact-title {
-                font-size: 32px;
+                min-width: 90px;
             }
         }
         
@@ -466,13 +157,13 @@
             .nav-center {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 10px;
+                gap: 12px;
             }
             
             .nav-btn {
-                min-width: 90px;
-                padding: 8px 12px;
-                font-size: 13px;
+                min-width: 100px;
+                padding: 10px 15px;
+                font-size: 14px;
             }
             
             .nav-right {
@@ -481,11 +172,10 @@
                 gap: 10px;
             }
             
-            .neon-btn {
-                min-width: 70px;
+            .top-btn {
+                min-width: 80px;
                 padding: 8px 12px;
                 font-size: 12px;
-                height: 38px;
             }
             
             .company-name {
@@ -493,23 +183,6 @@
             }
             
             .company-subtitle {
-                font-size: 18px;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .contact-info,
-            .contact-form {
-                min-width: 100%;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .hero p {
                 font-size: 18px;
             }
         }
@@ -529,7 +202,7 @@
                 width: 100%;
             }
             
-            .neon-btn {
+            .top-btn {
                 flex: 1;
                 min-width: auto;
             }
@@ -541,42 +214,29 @@
             .company-subtitle {
                 font-size: 16px;
             }
-            
-            .contact-title {
-                font-size: 28px;
-            }
-            
-            .hero {
-                padding: 60px 20px;
-            }
-            
-            .hero h1 {
-                font-size: 28px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
         }
         
-        /* FOOTER */
-        .footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 30px 20px;
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(26, 60, 52, 0.9), rgba(26, 60, 52, 0.8)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 40px;
             text-align: center;
-            border-top: 1px solid rgba(0, 255, 255, 0.1);
-            margin-top: 60px;
+            margin-bottom: 40px;
         }
         
-        .footer p {
-            color: #88ffff;
-            margin-bottom: 10px;
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
         }
         
-        .copyright {
-            color: #66cccc;
-            font-size: 14px;
-            margin-top: 20px;
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -586,7 +246,7 @@
         <!-- LEFT - LOGO SPACE -->
         <div class="logo-space">
             <div class="logo-placeholder">
-                AZHYDRO
+                AZHYDRO LOGO
             </div>
         </div>
         
@@ -597,22 +257,15 @@
             <button class="nav-btn">KATALOQ</button>
             <button class="nav-btn">XİDMƏTLƏR</button>
             <button class="nav-btn">LAYİHƏLƏR</button>
-            <button class="nav-btn active">ƏLAQƏ</button>
+            <button class="nav-btn">ƏLAQƏ</button>
         </div>
         
-        <!-- RIGHT - TOP CORNER BUTTONS (YOUR NEON BUTTONS) -->
+        <!-- RIGHT - TOP CORNER BUTTONS -->
         <div class="nav-right">
-            <button class="neon-btn aze-btn active">
-                <span class="btn-text">AZ</span>
-            </button>
-            
-            <button class="neon-btn rus-btn">
-                <span class="btn-text">RUS</span>
-            </button>
-            
-            <button class="neon-btn eng-btn">
-                <span class="btn-text">ENG</span>
-            </button>
+            <button class="top-btn">AZ</button>
+            <button class="top-btn">RU</button>
+            <button class="top-btn">EN</button>
+            <button class="top-btn"><i class="fas fa-phone"></i> ƏLAQƏ</button>
         </div>
     </nav>
     
@@ -622,461 +275,69 @@
         <p>2020-ci ildən fəaliyyətdədir. Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
     
-    <!-- CONTACT SECTION -->
-    <div class="contact-section" id="elaqe">
-        <h2 class="contact-title">Bizim ilə Əlaqə</h2>
-        
-        <div class="contact-container">
-            <!-- CONTACT INFORMATION -->
-            <div class="contact-info">
-                <div class="contact-item">
-                    <h3><i class="fas fa-map-marker-alt"></i> Ünvan</h3>
-                    <p><strong>Bakı şəhəri, Buzovna Krutoy Zona</strong></p>
-                </div>
-                
-                <div class="contact-item">
-                    <h3><i class="fas fa-phone"></i> Telefon</h3>
-                    <p><strong>+994 (10) 212-12-mənki</strong></p>
-                </div>
-                
-                <div class="contact-item">
-                    <h3><i class="fas fa-envelope"></i> Email</h3>
-                    <p><strong>rasim88ismayilov@mail.ru</strong></p>
-                </div>
-                
-                <div class="contact-item">
-                    <h3><i class="fas fa-clock"></i> İş Saatları</h3>
-                    <p><strong>Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
-                </div>
-                
-                <div class="contact-item">
-                    <h3><i class="fas fa-info-circle"></i> Qeyd</h3>
-                    <p>Bütün sahələri doldurduqdan sonra "Göndər" düyməsini klikləyin. Müraciətiniz bizə göndəriləcək və ən qısa zamanda sizə cavab verəcəyik.</p>
-                </div>
-            </div>
-            
-            <!-- CONTACT FORM -->
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Adı, soyadı <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required placeholder="Adınızı və soyadınızı daxil edin">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Mobil nömrə <span class="required">*</span></label>
-                        <input type="text" id="phone" name="phone" required placeholder="+994 (__) ___ __ __">
-                        <div class="phone-format-hint">Format: +994 (XX) XXX XX XX</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required placeholder="email@example.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Şirkətin adı <span class="required">*</span></label>
-                        <input type="text" id="company" name="company" required placeholder="Şirkətinizin adını daxil edin">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Mətn <span class="required">*</span></label>
-                        <textarea id="message" name="message" required placeholder="Müraciətinizi bura yazın..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">GÖNDƏR</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- MAIN CONTENT (for other pages) -->
-    <div class="content" id="home-content" style="display: none;">
+    <!-- MAIN CONTENT -->
+    <div class="content">
         <h1 class="company-name">AZHYDRO</h1>
         <p class="company-subtitle">2020-ci ildən fəaliyyətdədir</p>
         
-        <div class="content-box">
-            <h2>Şirkətimiz Haqqında</h2>
-            <p>
+        <div style="margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: left; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h2 style="color: #1a3c34; margin-bottom: 20px;">Şirkətimiz Haqqında</h2>
+            <p style="line-height: 1.8; margin-bottom: 20px; color: #555;">
                 AZHYDRO şirkəti 2020-ci ildən etibarən su təchizatı, kanalizasiya sistemlərinin quraşdırılması və texniki xidməti sahəsində fəaliyyət göstərir. 
                 Yüksək keyfiyyətli iş və müştəri məmnuniyyəti bizim əsas prinsipimizdir.
             </p>
-            <p>
+            <p style="line-height: 1.8; color: #555;">
                 Peşəkar komandamız və müasir texnologiyalar sayəsində ən mürəkkəb layihələri də uğurla həyata keçiririk.
             </p>
         </div>
     </div>
-    
-    <!-- FOOTER -->
-    <div class="footer">
-        <p>AZHYDRO - 2020-ci ildən fəaliyyətdədir</p>
-        <p>Bütün hüquqlar qorunur © 2025</p>
-        <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
-    </div>
 
     <script>
-        // Phone mask with correct cursor positioning
+        // Add active state to navigation buttons
         document.addEventListener('DOMContentLoaded', function() {
-            const phoneInput = document.getElementById('phone');
             const navButtons = document.querySelectorAll('.nav-btn');
-            const neonButtons = document.querySelectorAll('.neon-btn');
+            const topButtons = document.querySelectorAll('.top-btn');
             
-            // Set ƏLAQƏ button as active by default (contact page)
-            navButtons[5].classList.add('active');
-            
-            // Set AZ button as active by default
-            document.querySelector('.aze-btn').classList.add('active');
-            
-            // Show contact section by default, hide home content
-            document.getElementById('elaqe').style.display = 'block';
-            document.getElementById('home-content').style.display = 'none';
-            
-            // Phone mask implementation
-            // We have 12 digits total for user to input (after +994)
-            // Format: +994 (XX) XXX XX XX
-            // User digits positions: 0,1 (first parentheses), 2,3,4 (three digits), 5,6 (space), 7,8 (last)
-            
-            let userDigits = ['', '', '', '', '', '', '', '', '', '', '', '']; // 12 digits
-            let cursorPosition = 0; // Position in userDigits array (0-11)
-            
-            // Update phone display
-            function updatePhoneDisplay() {
-                // Build the formatted display
-                // Fixed parts: +994 ( )   
-                let display = '+994 (';
-                
-                // First 2 digits (inside parentheses)
-                display += (userDigits[0] || '_') + (userDigits[1] || '_');
-                display += ') ';
-                
-                // Next 3 digits
-                display += (userDigits[2] || '_') + (userDigits[3] || '_') + (userDigits[4] || '_');
-                display += ' ';
-                
-                // Next 2 digits
-                display += (userDigits[5] || '_') + (userDigits[6] || '_');
-                display += ' ';
-                
-                // Last 2 digits
-                display += (userDigits[7] || '_') + (userDigits[8] || '_');
-                display += ' ';
-                
-                // Last 3 digits (we have 12 total, but format shows 9, let's adjust)
-                // Actually for +994 (XX) XXX XX XX we need 9 digits, not 12
-                // Let me fix: +994 is fixed, user enters 9 digits
-                // Re-initialize with 9 digits
-                
-                phoneInput.value = display;
-                
-                // Calculate cursor position in the displayed string
-                let cursorPosInDisplay = 0;
-                
-                // Map cursor position in userDigits to position in display
-                if (cursorPosition === 0) cursorPosInDisplay = 6; // After "+994 ("
-                else if (cursorPosition === 1) cursorPosInDisplay = 7;
-                else if (cursorPosition === 2) cursorPosInDisplay = 10; // After ") "
-                else if (cursorPosition === 3) cursorPosInDisplay = 11;
-                else if (cursorPosition === 4) cursorPosInDisplay = 12;
-                else if (cursorPosition === 5) cursorPosInDisplay = 14; // After space
-                else if (cursorPosition === 6) cursorPosInDisplay = 15;
-                else if (cursorPosition === 7) cursorPosInDisplay = 17; // After space
-                else if (cursorPosition === 8) cursorPosInDisplay = 18;
-                else if (cursorPosition === 9) cursorPosInDisplay = 20; // End
-                
-                // Set cursor position
-                setTimeout(() => {
-                    phoneInput.setSelectionRange(cursorPosInDisplay, cursorPosInDisplay);
-                }, 0);
+            // Set first nav button as active
+            if (navButtons.length > 0) {
+                navButtons[0].style.backgroundColor = '#3a7c6f';
+                navButtons[0].style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
             }
             
-            // Initialize with empty digits (9 digits for user input)
-            userDigits = ['', '', '', '', '', '', '', '', '']; // 9 digits
-            cursorPosition = 0;
-            updatePhoneDisplay();
-            
-            // Handle phone input
-            phoneInput.addEventListener('keydown', function(e) {
-                // Allow control keys
-                if ([8, 9, 13, 37, 38, 39, 40, 46, 36, 35].includes(e.keyCode)) {
-                    // Handle backspace
-                    if (e.keyCode === 8) { // Backspace
-                        e.preventDefault();
-                        if (cursorPosition > 0) {
-                            cursorPosition--;
-                            userDigits[cursorPosition] = '';
-                            updatePhoneDisplay();
-                        }
-                        return;
-                    }
-                    // Handle delete
-                    else if (e.keyCode === 46) { // Delete
-                        e.preventDefault();
-                        if (cursorPosition < userDigits.length) {
-                            userDigits[cursorPosition] = '';
-                            updatePhoneDisplay();
-                        }
-                        return;
-                    }
-                    // Handle arrow keys
-                    else if (e.keyCode === 37) { // Left arrow
-                        e.preventDefault();
-                        if (cursorPosition > 0) {
-                            cursorPosition--;
-                            updatePhoneDisplay();
-                        }
-                        return;
-                    }
-                    else if (e.keyCode === 39) { // Right arrow
-                        e.preventDefault();
-                        if (cursorPosition < userDigits.length) {
-                            cursorPosition++;
-                            updatePhoneDisplay();
-                        }
-                        return;
-                    }
-                    else if (e.keyCode === 36) { // Home
-                        e.preventDefault();
-                        cursorPosition = 0;
-                        updatePhoneDisplay();
-                        return;
-                    }
-                    else if (e.keyCode === 35) { // End
-                        e.preventDefault();
-                        // Find last filled position
-                        let lastPos = userDigits.length - 1;
-                        while (lastPos >= 0 && !userDigits[lastPos]) {
-                            lastPos--;
-                        }
-                        cursorPosition = Math.min(lastPos + 1, userDigits.length);
-                        updatePhoneDisplay();
-                        return;
-                    }
-                    // Let tab and enter pass through
-                    return;
-                }
-                
-                // Handle number input (0-9)
-                if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
-                    e.preventDefault();
-                    
-                    // Only allow if we haven't reached max digits (9 digits)
-                    if (cursorPosition < userDigits.length) {
-                        const digit = e.key.replace(/\D/g, '');
-                        if (digit) {
-                            // Insert digit at cursor position
-                            userDigits[cursorPosition] = digit;
-                            cursorPosition++;
-                            
-                            // Auto-advance to next position
-                            while (cursorPosition < userDigits.length && userDigits[cursorPosition]) {
-                                cursorPosition++;
-                            }
-                            
-                            updatePhoneDisplay();
-                        }
-                    }
-                    return;
-                }
-                
-                // Prevent any other input
-                e.preventDefault();
-            });
-            
-            // Handle focus - cursor starts at first digit inside parentheses
-            phoneInput.addEventListener('focus', function() {
-                // If empty, position cursor at first digit (inside parentheses)
-                if (userDigits.every(d => !d)) {
-                    cursorPosition = 0;
-                } else {
-                    // Find first empty position
-                    for (let i = 0; i < userDigits.length; i++) {
-                        if (!userDigits[i]) {
-                            cursorPosition = i;
-                            break;
-                        }
-                    }
-                    // If all filled, position at end
-                    if (userDigits.every(d => d)) {
-                        cursorPosition = userDigits.length;
-                    }
-                }
-                updatePhoneDisplay();
-            });
-            
-            // Handle click to position cursor
-            phoneInput.addEventListener('click', function(e) {
-                // Estimate which digit was clicked based on click position
-                const rect = phoneInput.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                const totalWidth = phoneInput.offsetWidth;
-                const clickPercent = clickX / totalWidth;
-                
-                // Map click position to digit index
-                // Display positions: 0-5: "+994 (", 6-7: first 2 digits, 8-9: ") ", 10-12: next 3 digits, 13: space, 14-15: next 2 digits, 16: space, 17-18: last 2 digits
-                
-                let estimatedDigit = 0;
-                if (clickPercent < 0.3) estimatedDigit = 0; // First digit in parentheses
-                else if (clickPercent < 0.4) estimatedDigit = 1; // Second digit in parentheses
-                else if (clickPercent < 0.5) estimatedDigit = 2; // First of next 3
-                else if (clickPercent < 0.55) estimatedDigit = 3; // Second of next 3
-                else if (clickPercent < 0.6) estimatedDigit = 4; // Third of next 3
-                else if (clickPercent < 0.65) estimatedDigit = 5; // First of next 2
-                else if (clickPercent < 0.7) estimatedDigit = 6; // Second of next 2
-                else if (clickPercent < 0.8) estimatedDigit = 7; // First of last 2
-                else estimatedDigit = 8; // Second of last 2
-                
-                cursorPosition = Math.min(estimatedDigit, userDigits.length);
-                updatePhoneDisplay();
-            });
-            
-            // Handle paste
-            phoneInput.addEventListener('paste', function(e) {
-                e.preventDefault();
-                const pastedText = e.clipboardData.getData('text');
-                const numbers = pastedText.replace(/\D/g, '');
-                
-                // Insert numbers at cursor position
-                for (let i = 0; i < numbers.length; i++) {
-                    const digit = numbers[i];
-                    const pos = cursorPosition + i;
-                    
-                    if (pos < userDigits.length) {
-                        userDigits[pos] = digit;
-                    }
-                }
-                
-                // Update cursor position
-                cursorPosition = Math.min(cursorPosition + numbers.length, userDigits.length);
-                updatePhoneDisplay();
-            });
+            // Set first language button as active
+            if (topButtons.length > 0) {
+                topButtons[0].style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                topButtons[0].style.borderColor = 'rgba(255, 255, 255, 0.7)';
+            }
             
             // Nav button click handler
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all nav buttons
                     navButtons.forEach(btn => {
-                        btn.classList.remove('active');
+                        btn.style.backgroundColor = '#2a5c4f';
+                        btn.style.boxShadow = 'none';
                     });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Show/hide content based on button clicked
-                    const buttonText = this.textContent.trim();
-                    
-                    if (buttonText === 'ƏLAQƏ') {
-                        document.getElementById('elaqe').style.display = 'block';
-                        document.getElementById('home-content').style.display = 'none';
-                    } else {
-                        document.getElementById('elaqe').style.display = 'none';
-                        document.getElementById('home-content').style.display = 'block';
-                    }
+                    this.style.backgroundColor = '#3a7c6f';
+                    this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
                 });
             });
             
-            // Neon button click handler (for language buttons)
-            neonButtons.forEach(button => {
+            // Top button click handler (for language/contact buttons)
+            topButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all language buttons
-                    document.querySelectorAll('.aze-btn, .rus-btn, .eng-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Show which language is selected (for demonstration)
-                    const lang = this.querySelector('.btn-text').textContent;
-                    console.log('Selected language:', lang);
-                    
-                    // Here you can add language switching logic
-                    // For now, just show an alert
-                    if (lang === 'AZ') {
-                        document.querySelector('.contact-title').textContent = 'Bizim ilə Əlaqə';
-                        document.querySelector('.submit-btn').textContent = 'GÖNDƏR';
-                    } else if (lang === 'RUS') {
-                        document.querySelector('.contact-title').textContent = 'Свяжитесь с нами';
-                        document.querySelector('.submit-btn').textContent = 'ОТПРАВИТЬ';
-                    } else if (lang === 'ENG') {
-                        document.querySelector('.contact-title').textContent = 'Contact Us';
-                        document.querySelector('.submit-btn').textContent = 'SEND';
+                    // If it's a language button (AZ, RU, EN)
+                    if (this.textContent === 'AZ' || this.textContent === 'RU' || this.textContent === 'EN') {
+                        topButtons.forEach(btn => {
+                            if (btn.textContent === 'AZ' || btn.textContent === 'RU' || btn.textContent === 'EN') {
+                                btn.style.backgroundColor = 'transparent';
+                                btn.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                            }
+                        });
+                        this.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                        this.style.borderColor = 'rgba(255, 255, 255, 0.7)';
                     }
                 });
             });
-            
-            // Contact form submission handler - WITH SECURITY FIX
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Validate phone number - must have all 9 digits filled
-                    const allDigitsFilled = userDigits.every(digit => digit !== '');
-                    
-                    if (!allDigitsFilled) {
-                        alert('Zəhmət olmasa bütün telefon nömrəsi rəqəmlərini daxil edin: +994 (XX) XXX XX XX');
-                        phoneInput.focus();
-                        
-                        // Position cursor at first empty digit
-                        for (let i = 0; i < userDigits.length; i++) {
-                            if (!userDigits[i]) {
-                                cursorPosition = i;
-                                updatePhoneDisplay();
-                                break;
-                            }
-                        }
-                        
-                        return;
-                    }
-                    
-                    // Get form data
-                    const fullPhoneNumber = '+994' + 
-                        userDigits[0] + userDigits[1] + // First 2 digits
-                        userDigits[2] + userDigits[3] + userDigits[4] + // Next 3 digits
-                        userDigits[5] + userDigits[6] + // Next 2 digits
-                        userDigits[7] + userDigits[8]; // Last 2 digits
-                    
-                    const formData = {
-                        name: document.getElementById('name').value,
-                        phone: fullPhoneNumber,
-                        email: document.getElementById('email').value,
-                        company: document.getElementById('company').value,
-                        message: document.getElementById('message').value
-                    };
-                    
-                    // In a real application, you would send this data to a server
-                    // For this example, we'll simulate sending an email
-                    const emailBody = `
-                        Yeni müraciət:
-                        
-                        Ad, Soyad: ${formData.name}
-                        Telefon: ${formData.phone}
-                        Email: ${formData.email}
-                        Şirkət: ${formData.company}
-                        
-                        Mesaj:
-                        ${formData.message}
-                        
-                        Göndərilmə tarixi: ${new Date().toLocaleString()}
-                    `;
-                    
-                    // Simulate sending to gozalovsamir@gmail.com
-                    console.log('Email would be sent to: gozalovsamir@gmail.com');
-                    console.log('Email content:', emailBody);
-                    
-                    // Show success message
-                    alert('Müraciətiniz uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.');
-                    
-                    // ==== SECURITY FIX: CLEAR PHONE NUMBER HISTORY ====
-                    // Clear phone number first (before resetting other fields)
-                    userDigits = ['', '', '', '', '', '', '', '', ''];
-                    cursorPosition = 0;
-                    updatePhoneDisplay();
-                    
-                    // Reset other form fields
-                    contactForm.reset();
-                });
-            }
         });
     </script>
 </body>
