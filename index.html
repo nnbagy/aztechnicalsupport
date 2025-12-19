@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neon Buttons</title>
     <style>
-        /* ARKA FON - YENİ GRADIENT RƏNG (digər koddan götürülüb) */
-        body {
-            background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
+        /* ARKA FON - YENİ GRADIENT RƏNG (APPLIED TO ALL DEVICES) */
+        html, body {
             margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #000000 0%, #001a1a 100%) !important;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -232,13 +238,8 @@
             transform: scale(1.03);
         }
         
-        /* RESPONSIVE DESIGN - EYNİ QALIR */
+        /* RESPONSIVE DESIGN - EYNİ QALIR, BUT WITHOUT BACKGROUND OVERRIDE */
         @media (max-width: 768px) {
-            /* BACKGROUND GRADIENT FOR PHONES TOO - SAME AS PC */
-            body {
-                background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
-            }
-            
             .buttons-container {
                 gap: 15px; /* Reduced gap */
             }
@@ -277,11 +278,6 @@
         }
         
         @media (max-width: 480px) {
-            /* BACKGROUND GRADIENT FOR VERY SMALL PHONES TOO */
-            body {
-                background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
-            }
-            
             .buttons-container {
                 flex-direction: column;
                 gap: 12px;
@@ -295,7 +291,10 @@
             }
         }
         
-        /* BACKGROUND EFFECT - SİLİNDİ, ÇÜNKÜ YUXARIDA YENİ GRADIENT VAR */
+        /* BACKGROUND FIX FOR ALL BROWSERS */
+        * {
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -345,6 +344,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Make AZE button active
             document.querySelector('.aze-btn').classList.add('active');
+            
+            // Force gradient background on body (extra safety)
+            document.body.style.background = 'linear-gradient(135deg, #000000 0%, #001a1a 100%)';
         });
     </script>
 </body>
