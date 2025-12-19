@@ -200,18 +200,10 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 100px 40px;
+            padding: 80px 40px;
             text-align: center;
             margin-bottom: 40px;
             border-bottom: 2px solid rgba(0, 255, 255, 0.2);
-        }
-        
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            line-height: 1.2;
         }
         
         /* TWO-LINE COMPANY NAME STYLES */
@@ -219,6 +211,7 @@
             display: inline-block;
             text-align: center;
             line-height: 1;
+            margin-bottom: 20px;
         }
         
         .company-name-two-line .line1 {
@@ -236,14 +229,6 @@
             color: #00ffff;
             text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
             margin-top: 5px;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            color: #aaffff;
         }
         
         /* CONTACT SECTION */
@@ -444,10 +429,6 @@
             .hero h1 {
                 font-size: 32px;
             }
-            
-            .hero p {
-                font-size: 18px;
-            }
         }
         
         @media (max-width: 480px) {
@@ -492,14 +473,6 @@
             
             .hero {
                 padding: 60px 20px;
-            }
-            
-            .hero h1 {
-                font-size: 28px;
-            }
-            
-            .hero p {
-                font-size: 16px;
             }
         }
         
@@ -546,9 +519,9 @@
         
         <!-- RIGHT - LANGUAGE BUTTONS (HORIZONTAL) -->
         <div class="nav-right">
-            <button class="lang-btn active" onclick="showContent('aze')" id="aze-btn">AZE</button>
-            <button class="lang-btn" onclick="showContent('rus')" id="rus-btn">RUS</button>
-            <button class="lang-btn" onclick="showContent('eng')" id="eng-btn">ENG</button>
+            <button class="lang-btn active" onclick="changeLanguage('aze')" id="aze-btn">AZE</button>
+            <button class="lang-btn" onclick="changeLanguage('rus')" id="rus-btn">RUS</button>
+            <button class="lang-btn" onclick="changeLanguage('eng')" id="eng-btn">ENG</button>
         </div>
     </nav>
     
@@ -558,7 +531,6 @@
             <span class="line1">AZTECHNICAL</span>
             <span class="line2">SUPPORT</span>
         </div>
-        <p>2020-ci ildən fəaliyyətdədir. Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
     
     <!-- CONTACT SECTION -->
@@ -569,23 +541,23 @@
             <!-- CONTACT INFORMATION -->
             <div class="contact-info">
                 <div class="contact-item">
-                    <h3><i class="fas fa-map-marker-alt"></i> Ünvan</h3>
-                    <p><strong>Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
+                    <h3><i class="fas fa-map-marker-alt"></i> <span class="address-label">Ünvan</span></h3>
+                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
                 </div>
                 
                 <div class="contact-item">
-                    <h3><i class="fas fa-phone"></i> Telefon</h3>
-                    <p><strong>+994 (10) 250 54 53</strong></p>
+                    <h3><i class="fas fa-phone"></i> <span class="phone-label">Telefon</span></h3>
+                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
                 </div>
                 
                 <div class="contact-item">
-                    <h3><i class="fas fa-envelope"></i> Email</h3>
-                    <p><strong>office@aztechnicalsupport.az</strong></p>
+                    <h3><i class="fas fa-envelope"></i> <span class="email-label">Email</span></h3>
+                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
                 </div>
                 
                 <div class="contact-item">
-                    <h3><i class="fas fa-clock"></i> İş Saatları</h3>
-                    <p><strong>Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
+                    <h3><i class="fas fa-clock"></i> <span class="hours-label">İş Saatları</span></h3>
+                    <p><strong class="hours-text">Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
                 </div>
             </div>
         </div>
@@ -616,8 +588,45 @@
     </div>
 
     <script>
-        // Function to show content and update button states
-        function showContent(lang) {
+        // Language data
+        const translations = {
+            aze: {
+                contactTitle: "Bizim ilə Əlaqə",
+                addressLabel: "Ünvan",
+                addressText: "Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37",
+                phoneLabel: "Telefon",
+                phoneText: "+994 (10) 250 54 53",
+                emailLabel: "Email",
+                emailText: "office@aztechnicalsupport.az",
+                hoursLabel: "İş Saatları",
+                hoursText: "Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər"
+            },
+            rus: {
+                contactTitle: "Свяжитесь с нами",
+                addressLabel: "Адрес",
+                addressText: "город Баку, Бинагадинский район, улица Мир Джалал 37",
+                phoneLabel: "Телефон",
+                phoneText: "+994 (10) 250 54 53",
+                emailLabel: "Эл. почта",
+                emailText: "office@aztechnicalsupport.az",
+                hoursLabel: "Часы работы",
+                hoursText: "Понедельник - Пятница: с 9:00 до 18:00"
+            },
+            eng: {
+                contactTitle: "Contact Us",
+                addressLabel: "Address",
+                addressText: "Baku city, Binagadi district, Mir Celal street 37",
+                phoneLabel: "Phone",
+                phoneText: "+994 (10) 250 54 53",
+                emailLabel: "Email",
+                emailText: "office@aztechnicalsupport.az",
+                hoursLabel: "Working Hours",
+                hoursText: "Monday - Friday: 9:00 AM to 6:00 PM"
+            }
+        };
+
+        // Function to change language
+        function changeLanguage(lang) {
             // Remove active class from all buttons
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -626,14 +635,27 @@
             // Add active class to selected button
             document.getElementById(lang + '-btn').classList.add('active');
             
-            // Update contact title based on language
-            if (lang === 'aze') {
-                document.querySelector('.contact-title').textContent = 'Bizim ilə Əlaqə';
-            } else if (lang === 'rus') {
-                document.querySelector('.contact-title').textContent = 'Свяжитесь с нами';
-            } else if (lang === 'eng') {
-                document.querySelector('.contact-title').textContent = 'Contact Us';
-            }
+            // Update all text content
+            const t = translations[lang];
+            
+            // Update contact title
+            document.querySelector('.contact-title').textContent = t.contactTitle;
+            
+            // Update address
+            document.querySelector('.address-label').textContent = t.addressLabel;
+            document.querySelector('.address-text').textContent = t.addressText;
+            
+            // Update phone
+            document.querySelector('.phone-label').textContent = t.phoneLabel;
+            document.querySelector('.phone-text').textContent = t.phoneText;
+            
+            // Update email
+            document.querySelector('.email-label').textContent = t.emailLabel;
+            document.querySelector('.email-text').textContent = t.emailText;
+            
+            // Update working hours
+            document.querySelector('.hours-label').textContent = t.hoursLabel;
+            document.querySelector('.hours-text').textContent = t.hoursText;
         }
         
         // Initialize
@@ -679,23 +701,7 @@
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const lang = this.textContent.trim().toLowerCase();
-                    
-                    // Remove active class from all language buttons
-                    document.querySelectorAll('.lang-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Update contact title based on language
-                    if (lang === 'aze') {
-                        document.querySelector('.contact-title').textContent = 'Bizim ilə Əlaqə';
-                    } else if (lang === 'rus') {
-                        document.querySelector('.contact-title').textContent = 'Свяжитесь с нами';
-                    } else if (lang === 'eng') {
-                        document.querySelector('.contact-title').textContent = 'Contact Us';
-                    }
+                    changeLanguage(lang);
                 });
             });
         });
