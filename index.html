@@ -27,11 +27,10 @@
             padding: 20px;
         }
         
-        /* ALL BUTTONS COMMON STYLES */
+        /* ALL BUTTONS COMMON STYLES - ORIGINAL WITHOUT WHITE COLOR */
         .neon-btn {
             position: relative;
             background: transparent;
-            color: white;
             border: none;
             border-radius: 12px;
             padding: 20px 35px;
@@ -63,7 +62,7 @@
             display: none; /* Hide the flag icons */
         }
         
-        /* AZE BUTTON - CYAN NEON */
+        /* AZE BUTTON - CYAN NEON (ORIGINAL COLOR) */
         .aze-btn {
             color: #00ffff;
             border: 2px solid #00ffff;
@@ -103,7 +102,7 @@
                 inset 0 0 15px rgba(0, 255, 255, 0.15);
         }
         
-        /* RUS BUTTON - PURPLE NEON */
+        /* RUS BUTTON - PURPLE NEON (ORIGINAL COLOR) */
         .rus-btn {
             color: #ff00ff;
             border: 2px solid #ff00ff;
@@ -143,7 +142,7 @@
                 inset 0 0 15px rgba(255, 0, 255, 0.15);
         }
         
-        /* ENG BUTTON - LIME NEON */
+        /* ENG BUTTON - LIME NEON (ORIGINAL COLOR) */
         .eng-btn {
             color: #00ff00;
             border: 2px solid #00ff00;
@@ -183,7 +182,7 @@
                 inset 0 0 15px rgba(0, 255, 0, 0.15);
         }
         
-        /* WHATSAPP BUTTON - GREEN NEON */
+        /* WHATSAPP BUTTON - GREEN NEON (ORIGINAL COLOR) */
         .whatsapp-btn {
             color: #25d366;
             border: 2px solid #25d366;
@@ -233,54 +232,56 @@
             transform: scale(1.03);
         }
         
-        /* RESPONSIVE DESIGN */
+        /* RESPONSIVE DESIGN - MADE SMALLER FOR PHONES */
         @media (max-width: 768px) {
             .buttons-container {
-                gap: 20px;
+                gap: 15px; /* Reduced gap */
             }
             
             .neon-btn {
-                padding: 18px 30px;
-                font-size: 16px;
-                min-width: 120px;
-                height: 65px;
+                padding: 10px 20px; /* Much smaller padding for phones */
+                font-size: 14px; /* Smaller font */
+                min-width: 100px; /* Smaller width */
+                height: 50px; /* Much shorter height */
             }
             
-            /* MOBILE'DA DAHA AZ GLOW */
+            /* SMALLER GLOW FOR MOBILE */
             .aze-btn, .rus-btn, .eng-btn, .whatsapp-btn {
                 box-shadow: 
-                    0 0 6px currentColor,
-                    0 0 12px currentColor,
-                    inset 0 0 6px rgba(255, 255, 255, 0.08);
+                    0 0 5px currentColor,
+                    0 0 10px currentColor,
+                    inset 0 0 5px rgba(255, 255, 255, 0.08);
             }
             
             .neon-btn:hover {
                 box-shadow: 
-                    0 0 12px currentColor,
-                    0 0 20px currentColor,
-                    0 0 28px rgba(255, 255, 255, 0.4),
-                    inset 0 0 12px rgba(255, 255, 255, 0.12);
+                    0 0 10px currentColor,
+                    0 0 18px currentColor,
+                    0 0 25px rgba(255, 255, 255, 0.4),
+                    inset 0 0 10px rgba(255, 255, 255, 0.12);
+                transform: translateY(-2px); /* Smaller hover movement */
             }
             
             .neon-btn.active {
                 box-shadow: 
-                    0 0 12px currentColor,
-                    0 0 20px currentColor,
-                    inset 0 0 12px rgba(255, 255, 255, 0.12);
+                    0 0 10px currentColor,
+                    0 0 18px currentColor,
+                    inset 0 0 10px rgba(255, 255, 255, 0.12);
+                transform: scale(1.02); /* Smaller active scale */
             }
         }
         
         @media (max-width: 480px) {
             .buttons-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
             }
             
             .neon-btn {
-                padding: 16px 25px;
-                font-size: 15px;
-                min-width: 200px;
-                height: 60px;
+                padding: 8px 16px; /* Even smaller for very small phones */
+                font-size: 13px;
+                min-width: 120px; /* Better width for vertical layout */
+                height: 45px; /* Even shorter */
             }
         }
         
