@@ -678,10 +678,10 @@
         <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
 
-    <!-- THREE.JS CUBE ANIMATION CODE - WITH FIXED PARTICLE MOVEMENT -->
+    <!-- YOUR EXACT THREE.JS CUBE ANIMATION CODE - NO CHANGES -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // FIXED CODE - Particles now move in same direction as mouse
+        // YOUR EXACT CODE - NO CHANGES
         let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
 
         init();
@@ -720,36 +720,21 @@
                 uniforms,
                 vertexShader: `
                     uniform vec3 uMouse;
-                    uniform float uTime;
 
                     void main() {
                         vec3 pos = position;
-                        
-                        // Calculate direction TO the mouse (FIXED: not FROM mouse)
-                        vec3 dirToMouse = uMouse - pos;
-                        float distToMouse = length(dirToMouse);
-                        
-                        // Attract particles toward mouse (FIXED: not push away)
-                        // Smaller distance = stronger attraction
-                        if (distToMouse > 0.0) {
-                            float strength = 0.2 / (distToMouse * distToMouse + 0.1);
-                            pos += normalize(dirToMouse) * strength;
-                        }
-                        
-                        // Add some organic movement with time
-                        pos.x += sin(uTime + pos.y * 2.0) * 0.01;
-                        pos.y += cos(uTime + pos.x * 1.5) * 0.01;
-                        
-                        gl_PointSize = 1.0;
+
+                        float dist = distance(pos, uMouse);
+                        pos += normalize(pos - uMouse) * (0.15 / dist);
+
+                        gl_PointSize = 1.0;   // kvadrat + sharik tam yox olur
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     }
                 `,
                 fragmentShader: `
                     void main() {
-                        // Make particles slightly glow
-                        float alpha = 1.0;
-                        vec3 color = vec3(0.2, 0.6, 1.0);
-                        gl_FragColor = vec4(color, alpha);
+                        // Hissəcik real piksel kimi görünür, heç bir forma yoxdur.
+                        gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
                     }
                 `,
                 transparent: true
