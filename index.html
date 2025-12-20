@@ -678,8 +678,11 @@
 
     <!-- Hidden canvas for logo processing -->
     <canvas id="logo-canvas" style="display: none;"></canvas>
+    
+    <!-- Hidden image element for logo -->
+    <img id="logo-image" src="Aztechnical-1.png" style="display: none;" alt="AZTECHNICAL SUPPORT Logo">
 
-    <!-- THREE.JS CODE MODIFIED FOR LOGO PARTICLES -->
+    <!-- THREE.JS CODE MODIFIED FOR PNG LOGO PARTICLES -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // Global variables
@@ -688,9 +691,55 @@
         let isLogoMode = false;
         let transitionProgress = 0;
         const count = 50000;
+        
+        // Logo loading and processing
+        let logoImageLoaded = false;
+        let logoImageData = null;
 
-        // Create logo texture programmatically
-        function createLogoTexture() {
+        // Load and process PNG logo
+        function loadLogoImage() {
+            return new Promise((resolve, reject) => {
+                const img = document.getElementById('logo-image');
+                
+                img.onload = function() {
+                    console.log('Logo image loaded:', img.width, 'x', img.height);
+                    
+                    // Create canvas for processing
+                    const canvas = document.getElementById('logo-canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Set canvas size to image size
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    // Draw image to canvas
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    // Get image data
+                    logoImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    logoImageLoaded = true;
+                    
+                    console.log('Logo processed, pixels:', canvas.width * canvas.height);
+                    resolve();
+                };
+                
+                img.onerror = function() {
+                    console.error('Failed to load logo image');
+                    // Fallback to generated logo
+                    createFallbackLogo();
+                    resolve();
+                };
+                
+                // If image is already loaded
+                if (img.complete && img.naturalWidth !== 0) {
+                    img.onload();
+                }
+            });
+        }
+
+        // Fallback if PNG fails to load
+        function createFallbackLogo() {
             const canvas = document.getElementById('logo-canvas');
             const ctx = canvas.getContext('2d');
             
@@ -716,81 +765,129 @@
             ctx.font = 'bold 50px Arial';
             ctx.fillText('SUPPORT', canvas.width / 2, canvas.height / 2 + 40);
             
-            return canvas;
+            // Get image data
+            logoImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            logoImageLoaded = true;
+            
+            console.log('Created fallback logo');
         }
 
         // Process logo to get particle positions
         function getLogoParticlePositions() {
-            const canvas = createLogoTexture();
-            const ctx = canvas.getContext('2d');
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const data = imageData.data;
+            if (!logoImageLoaded || !logoImageData) {
+                console.error('Logo not loaded yet');
+                return null;
+            }
             
-            // Collect bright pixels
-            const brightPixels = [];
+            const data = logoImageData.data;
+            const width = logoImageData.width;
+            const height = logoImageData.height;
             
-            for (let y = 0; y < canvas.height; y++) {
-                for (let x = 0; x < canvas.width; x++) {
-                    const index = (y * canvas.width + x) * 4;
+            console.log('Processing logo for particles:', width, 'x', height);
+            
+            // Collect non-transparent pixels
+            const logoPixels = [];
+            
+            // Analyze image to find min/max brightness for better distribution
+            let minBrightness = 255;
+            let maxBrightness = 0;
+            
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    const index = (y * width + x) * 4;
                     const r = data[index];
                     const g = data[index + 1];
                     const b = data[index + 2];
                     const a = data[index + 3];
                     
-                    // Check if pixel is bright enough (not transparent/black)
-                    if (r > 100 || g > 100 || b > 100 || a > 100) {
-                        brightPixels.push({
-                            x: (x / canvas.width) * 2 - 1,  // -1 to 1
-                            y: -(y / canvas.height) * 2 + 1, // -1 to 1 (inverted)
-                            brightness: (r + g + b) / 765 // 0 to 1
+                    // Calculate brightness
+                    const brightness = (r + g + b) / 3;
+                    
+                    // Update min/max
+                    if (brightness < minBrightness) minBrightness = brightness;
+                    if (brightness > maxBrightness) maxBrightness = brightness;
+                    
+                    // Only use pixels with some opacity and brightness
+                    if (a > 50 && brightness > 30) {
+                        logoPixels.push({
+                            x: x,
+                            y: y,
+                            r: r,
+                            g: g,
+                            b: b,
+                            a: a,
+                            brightness: brightness
                         });
                     }
                 }
             }
             
-            // If not enough bright pixels, create some
-            if (brightPixels.length < count) {
-                const needed = count - brightPixels.length;
-                for (let i = 0; i < needed; i++) {
-                    brightPixels.push({
-                        x: (Math.random() - 0.5) * 2,
-                        y: (Math.random() - 0.5) * 2,
-                        brightness: 0.5
-                    });
+            console.log('Found', logoPixels.length, 'suitable pixels in logo');
+            console.log('Brightness range:', minBrightness, 'to', maxBrightness);
+            
+            // If we have logo pixels, use them
+            if (logoPixels.length > 0) {
+                // Normalize brightness
+                const brightnessRange = Math.max(1, maxBrightness - minBrightness);
+                
+                // Create positions array
+                const positions = new Float32Array(count * 3);
+                
+                // Distribute particles based on logo pixels
+                // If we have more particles than logo pixels, reuse logo pixels
+                const pixelsToUse = Math.min(logoPixels.length, count);
+                
+                // First, fill with actual logo pixels
+                for (let i = 0; i < pixelsToUse; i++) {
+                    const pixel = logoPixels[i % logoPixels.length];
+                    
+                    // Convert pixel coordinates to normalized coordinates (-1 to 1)
+                    const normalizedX = (pixel.x / width) * 2 - 1;
+                    const normalizedY = -(pixel.y / height) * 2 + 1; // Invert Y for Three.js
+                    
+                    // Normalize brightness (0 to 1)
+                    const normalizedBrightness = (pixel.brightness - minBrightness) / brightnessRange;
+                    
+                    positions[i * 3] = normalizedX * 1.5;      // X position
+                    positions[i * 3 + 1] = normalizedY * 1.5;  // Y position
+                    positions[i * 3 + 2] = (normalizedBrightness - 0.5) * 0.3; // Z depth based on brightness
                 }
+                
+                // If we have more particles than logo pixels, fill the rest with distributed positions
+                if (count > pixelsToUse) {
+                    for (let i = pixelsToUse; i < count; i++) {
+                        // Use random logo pixel as base but add some noise
+                        const basePixel = logoPixels[i % logoPixels.length];
+                        const normalizedX = (basePixel.x / width) * 2 - 1;
+                        const normalizedY = -(basePixel.y / height) * 2 + 1;
+                        
+                        // Add some noise to spread particles around logo shape
+                        const noiseX = (Math.random() - 0.5) * 0.1;
+                        const noiseY = (Math.random() - 0.5) * 0.1;
+                        
+                        positions[i * 3] = (normalizedX + noiseX) * 1.5;
+                        positions[i * 3 + 1] = (normalizedY + noiseY) * 1.5;
+                        positions[i * 3 + 2] = (Math.random() - 0.5) * 0.1;
+                    }
+                }
+                
+                return positions;
             }
             
-            // Shuffle and take exactly 'count' positions
-            shuffleArray(brightPixels);
-            const selectedPixels = brightPixels.slice(0, count);
-            
-            // Create positions array
-            const positions = new Float32Array(count * 3);
-            
-            for (let i = 0; i < count; i++) {
-                const pixel = selectedPixels[i % selectedPixels.length];
-                positions[i * 3] = pixel.x * 1.2;      // X position
-                positions[i * 3 + 1] = pixel.y * 1.2;  // Y position
-                positions[i * 3 + 2] = (pixel.brightness - 0.5) * 0.5; // Z position based on brightness
-            }
-            
-            return positions;
-        }
-
-        // Utility function to shuffle array
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
+            // Fallback: random positions
+            console.log('No logo pixels found, using fallback');
+            return null;
         }
 
         // Initialize
         init();
-        animate();
 
-        function init() {
+        async function init() {
             const cubeContainer = document.getElementById('cube-animation');
+            
+            // Load logo first
+            console.log('Loading logo image...');
+            await loadLogoImage();
             
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(60, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
@@ -808,8 +905,8 @@
                 originalPositions[i * 3 + 2] = (Math.random() - 0.5) * 2;
             }
 
-            // Create logo positions
-            logoPositions = getLogoParticlePositions();
+            // Create logo positions from PNG
+            logoPositions = getLogoParticlePositions() || originalPositions.slice();
 
             // Create geometry with original positions
             particleGeometry = new THREE.BufferGeometry();
@@ -818,7 +915,8 @@
             uniforms = {
                 uTime: { value: 0.0 },
                 uMouse: { value: new THREE.Vector3(0,0,0) },
-                uTransition: { value: 0.0 }
+                uTransition: { value: 0.0 },
+                uLogoMode: { value: 0.0 }
             };
 
             const material = new THREE.ShaderMaterial({
@@ -827,35 +925,45 @@
                     uniform vec3 uMouse;
                     uniform float uTime;
                     uniform float uTransition;
+                    uniform float uLogoMode;
 
                     void main() {
                         vec3 pos = position;
                         
-                        // Smooth transition between modes
-                        vec3 targetPos = pos;
+                        // Apply transition between modes
                         if (uTransition > 0.0) {
-                            // In logo mode, particles move toward mouse
-                            float dist = distance(pos, uMouse);
-                            targetPos += normalize(uMouse - pos) * (0.15 / (dist + 0.1));
-                        } else {
-                            // In random mode, particles flow naturally
-                            targetPos.x += sin(uTime + pos.y * 2.0) * 0.01;
-                            targetPos.y += cos(uTime + pos.x * 1.5) * 0.01;
+                            // Different behaviors for different modes
+                            if (uLogoMode > 0.5) {
+                                // Logo mode: subtle movement and mouse interaction
+                                float dist = distance(pos, uMouse);
+                                pos += normalize(uMouse - pos) * (0.1 / (dist + 0.1));
+                                
+                                // Add gentle floating motion
+                                pos.x += sin(uTime * 0.5 + pos.y) * 0.005;
+                                pos.y += cos(uTime * 0.5 + pos.x) * 0.005;
+                            } else {
+                                // Random mode: more active movement
+                                pos.x += sin(uTime + pos.y * 2.0) * 0.01;
+                                pos.y += cos(uTime + pos.x * 1.5) * 0.01;
+                                pos.z += sin(uTime * 0.7 + pos.x) * 0.005;
+                            }
                         }
                         
-                        // Apply transition
-                        pos = mix(position, targetPos, uTransition);
-                        
-                        gl_PointSize = 1.5;
+                        gl_PointSize = mix(1.2, 1.8, uTransition); // Slightly larger in logo mode
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     }
                 `,
                 fragmentShader: `
                     void main() {
-                        // Cyan color with slight glow
+                        // Cyan-blue color with glow effect
                         float alpha = 1.0;
-                        vec3 color = vec3(0.2, 0.8, 1.0);
-                        gl_FragColor = vec4(color, alpha);
+                        vec3 color = vec3(0.2, 0.7, 1.0);
+                        
+                        // Add slight glow based on distance from center
+                        float glow = 1.0 - length(gl_PointCoord - vec2(0.5)) * 2.0;
+                        glow = max(0.0, glow * 0.5 + 0.5);
+                        
+                        gl_FragColor = vec4(color * glow, alpha);
                     }
                 `,
                 transparent: true,
@@ -884,6 +992,9 @@
                 camera.updateProjectionMatrix();
                 renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
             });
+
+            // Start animation
+            animate();
         }
 
         // Toggle between random and logo modes
@@ -891,6 +1002,9 @@
             isLogoMode = !isLogoMode;
             const btn = document.getElementById('mode-toggle');
             btn.textContent = isLogoMode ? 'Random Mode' : 'Logo Mode';
+            
+            // Update uniform for mode
+            uniforms.uLogoMode.value = isLogoMode ? 1.0 : 0.0;
             
             // Animate transition
             animateTransition();
@@ -907,14 +1021,15 @@
                 
                 // Ease function for smooth transition
                 const easeProgress = easeInOutCubic(transitionProgress);
-                uniforms.uTransition.value = isLogoMode ? easeProgress : 1 - easeProgress;
+                uniforms.uTransition.value = easeProgress;
                 
                 // Update particle positions
                 const positions = particleGeometry.attributes.position.array;
                 const targetPositions = isLogoMode ? logoPositions : originalPositions;
+                const sourcePositions = isLogoMode ? originalPositions : logoPositions;
                 
                 for (let i = 0; i < count * 3; i++) {
-                    const startPos = isLogoMode ? originalPositions[i] : logoPositions[i];
+                    const startPos = sourcePositions[i];
                     const endPos = targetPositions[i];
                     positions[i] = startPos + (endPos - startPos) * easeProgress;
                 }
@@ -937,9 +1052,8 @@
         function animate() {
             uniforms.uTime.value += 0.01;
             
-            // Gentle rotation in both modes
+            // Gentle continuous rotation
             sphere.rotation.y += 0.001;
-            sphere.rotation.x += 0.0005;
             
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
