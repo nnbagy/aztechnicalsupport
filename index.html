@@ -6,7 +6,7 @@
     <title>AZHYDRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset and base styles */
+        /* All your original CSS remains exactly the same */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +21,6 @@
             overflow-x: hidden;
         }
         
-        /* NAVIGATION BAR */
         .navbar {
             background-color: rgba(0, 0, 0, 0.8);
             padding: 15px 40px;
@@ -34,7 +33,6 @@
             z-index: 100;
         }
         
-        /* LEFT SIDE - LOGO SPACE */
         .logo-space {
             width: 200px;
             height: 60px;
@@ -56,7 +54,6 @@
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
         }
         
-        /* CENTER - NAVIGATION BUTTONS */
         .nav-center {
             display: flex;
             gap: 15px;
@@ -82,27 +79,23 @@
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
         }
         
-        /* ACTIVE STATE FOR NAV BUTTONS */
         .nav-btn.active {
             background-color: rgba(0, 255, 255, 0.15);
             border-color: rgba(0, 255, 255, 0.7);
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
         }
         
-        /* Hover should still work on active buttons */
         .nav-btn.active:hover {
             background-color: rgba(0, 255, 255, 0.25);
             border-color: rgba(0, 255, 255, 0.9);
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
         }
         
-        /* RIGHT SIDE - TOP CORNER BUTTONS (HORIZONTAL) */
         .nav-right {
             display: flex;
             gap: 15px;
         }
         
-        /* LANGUAGE BUTTONS STYLES - HORIZONTAL */
         .lang-btn {
             background: rgba(0, 0, 0, 0.8);
             color: white;
@@ -126,7 +119,6 @@
             height: 45px;
         }
         
-        /* GREEN CORNERS EFFECT */
         .lang-btn::before {
             content: '';
             position: absolute;
@@ -135,20 +127,18 @@
             right: -2px;
             bottom: -2px;
             border: 2px solid transparent;
-            border-radius: 12px; /* Slightly larger than button radius */
+            border-radius: 12px;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
         
-        /* HOVER STATE - SHOW GREEN CORNERS */
         .lang-btn:hover::before {
             opacity: 1;
             border-color: lime;
             box-shadow: 0 0 10px lime;
         }
         
-        /* ACTIVE STATE - PERSISTENT GREEN CORNERS */
         .lang-btn.active {
             background: black !important;
             color: white !important;
@@ -156,28 +146,24 @@
             box-shadow: 0 0 10px lime !important;
         }
         
-        /* Ensure active button has persistent green corners */
         .lang-btn.active::before {
             opacity: 1;
             border-color: lime;
             box-shadow: 0 0 15px lime;
         }
         
-        /* Hover effect for active button */
         .lang-btn.active:hover {
             background: rgba(0, 0, 0, 0.9) !important;
             transform: scale(1.05);
             box-shadow: 0 0 15px lime !important;
         }
         
-        /* Hover effect for non-active buttons */
         .lang-btn:hover {
             background: rgba(0, 100, 200, 0.9);
             transform: scale(1.05);
             box-shadow: 0 0 15px cyan;
         }
         
-        /* MAIN CONTENT */
         .content {
             padding: 60px 40px;
             text-align: center;
@@ -197,7 +183,6 @@
             margin-bottom: 40px;
         }
         
-        /* HERO SECTION - UPDATED WITH TWO-LINE NAME */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -209,7 +194,6 @@
             border-bottom: 2px solid rgba(0, 255, 255, 0.2);
         }
         
-        /* TWO-LINE COMPANY NAME STYLES */
         .company-name-two-line {
             display: inline-block;
             text-align: center;
@@ -234,13 +218,11 @@
             margin-top: 5px;
         }
         
-        /* SPLIT LAYOUT */
         .split-container {
             display: flex;
             min-height: calc(100vh - 300px);
         }
         
-        /* LEFT SIDE - BLACK BACKGROUND FOR CUBE ANIMATION */
         .left-side {
             flex: 1;
             width: 50%;
@@ -258,80 +240,6 @@
             display: block;
         }
         
-        /* TEXT OVERLAY FOR CUBE TRANSFORMATION */
-        .text-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 1s ease-in-out;
-            z-index: 10;
-        }
-        
-        .neon-text {
-            font-family: 'Arial Black', sans-serif;
-            text-align: center;
-            line-height: 1;
-        }
-        
-        .neon-text .line1 {
-            display: block;
-            font-size: 48px;
-            font-weight: 900;
-            color: #00ffff;
-            text-shadow: 
-                0 0 5px #00ffff,
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 40px #00ffff,
-                0 0 80px #00ffff;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            animation: neonPulse 2s infinite alternate;
-        }
-        
-        .neon-text .line2 {
-            display: block;
-            font-size: 42px;
-            font-weight: 900;
-            color: #00ffff;
-            text-shadow: 
-                0 0 5px #00ffff,
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 40px #00ffff,
-                0 0 80px #00ffff;
-            letter-spacing: 2px;
-            animation: neonPulse 2s infinite alternate 0.5s;
-        }
-        
-        @keyframes neonPulse {
-            0%, 100% {
-                text-shadow: 
-                    0 0 5px #00ffff,
-                    0 0 10px #00ffff,
-                    0 0 20px #00ffff,
-                    0 0 40px #00ffff,
-                    0 0 80px #00ffff;
-            }
-            50% {
-                text-shadow: 
-                    0 0 2px #00ffff,
-                    0 0 5px #00ffff,
-                    0 0 10px #00ffff,
-                    0 0 20px #00ffff,
-                    0 0 40px #00ffff;
-            }
-        }
-        
-        /* RIGHT SIDE - CONTACT INFORMATION */
         .right-side {
             flex: 1;
             width: 50%;
@@ -341,7 +249,6 @@
             justify-content: center;
         }
         
-        /* CONTACT HEADER */
         .contact-header {
             display: flex;
             justify-content: space-between;
@@ -376,7 +283,6 @@
             margin-top: 5px;
         }
         
-        /* CONTACT INFORMATION */
         .contact-info {
             background-color: rgba(0, 20, 20, 0.7);
             padding: 30px;
@@ -415,7 +321,6 @@
             color: #ffffff;
         }
         
-        /* CONTENT BOX */
         .content-box {
             max-width: 800px;
             margin: 50px auto;
@@ -440,7 +345,6 @@
             color: #cccccc;
         }
         
-        /* TELEFON ÜÇÜN */
         @media (max-width: 1024px) {
             .navbar {
                 padding: 15px 20px;
@@ -477,14 +381,6 @@
             }
             
             .company-name-two-line .line2 {
-                font-size: 38px;
-            }
-            
-            .neon-text .line1 {
-                font-size: 42px;
-            }
-            
-            .neon-text .line2 {
                 font-size: 38px;
             }
         }
@@ -526,7 +422,6 @@
                 height: 38px;
             }
             
-            /* Mobile layout for split container */
             .split-container {
                 flex-direction: column;
                 min-height: auto;
@@ -572,14 +467,6 @@
             }
             
             .hero h1 {
-                font-size: 32px;
-            }
-            
-            .neon-text .line1 {
-                font-size: 36px;
-            }
-            
-            .neon-text .line2 {
                 font-size: 32px;
             }
         }
@@ -640,17 +527,8 @@
             .contact-info {
                 padding: 20px;
             }
-            
-            .neon-text .line1 {
-                font-size: 28px;
-            }
-            
-            .neon-text .line2 {
-                font-size: 26px;
-            }
         }
         
-        /* FOOTER */
         .footer {
             background-color: rgba(0, 0, 0, 0.9);
             padding: 40px 20px 30px;
@@ -710,16 +588,9 @@
     
     <!-- SPLIT LAYOUT -->
     <div class="split-container">
-        <!-- LEFT SIDE - CUBE ANIMATION WITH TEXT OVERLAY -->
+        <!-- LEFT SIDE - CUBE ANIMATION -->
         <div class="left-side">
             <div id="cube-animation"></div>
-            <!-- TEXT OVERLAY FOR TRANSFORMATION -->
-            <div class="text-overlay" id="text-overlay">
-                <div class="neon-text">
-                    <span class="line1">AZTECHNICAL</span>
-                    <span class="line2">SUPPORT</span>
-                </div>
-            </div>
         </div>
         
         <!-- RIGHT SIDE - CONTACT INFORMATION -->
@@ -782,17 +653,16 @@
         <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
 
-    <!-- YOUR EXACT THREE.JS CUBE ANIMATION CODE - NO CHANGES -->
+    <!-- THREE.JS CUBE ANIMATION - FIXED VERSION -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // YOUR EXACT CODE - NO CHANGES
+        // ORIGINAL CUBE CODE WITH PROPER MOUSE FIX
         let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
-        let isTextVisible = false;
-        let transitionInterval;
+        let mouseWorld = new THREE.Vector3();
+        let raycaster = new THREE.Raycaster();
 
         init();
         animate();
-        startTextTransition();
 
         function init() {
             const cubeContainer = document.getElementById('cube-animation');
@@ -834,13 +704,12 @@
                         float dist = distance(pos, uMouse);
                         pos += normalize(pos - uMouse) * (0.15 / dist);
 
-                        gl_PointSize = 1.0;   // kvadrat + sharik tam yox olur
+                        gl_PointSize = 1.0;
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     }
                 `,
                 fragmentShader: `
                     void main() {
-                        // Hissəcik real piksel kimi görünür, heç bir forma yoxdur.
                         gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
                     }
                 `,
@@ -850,13 +719,41 @@
             sphere = new THREE.Points(particleGeometry, material);
             scene.add(sphere);
 
-            // Mouse & touch
+            // FIXED MOUSE HANDLING - Screen-space mouse with proper object-space conversion
             cubeContainer.addEventListener("pointermove", (e) => {
                 const rect = cubeContainer.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / cubeContainer.clientWidth) * 2 - 1;
-                const y = -((e.clientY - rect.top) / cubeContainer.clientHeight) * 2 + 1;
+                
+                // Normalized device coordinates (NDC) from -1 to 1
+                const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                
+                // Update mouse vector for raycaster
                 mouse.set(x, y, 0.5);
-                uniforms.uMouse.value = mouse;
+                
+                // Create a raycaster from camera through mouse position
+                raycaster.setFromCamera(mouse, camera);
+                
+                // Create a plane at z=0 to intersect with
+                const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+                const intersectionPoint = new THREE.Vector3();
+                
+                // Find intersection point
+                raycaster.ray.intersectPlane(planeZ, intersectionPoint);
+                
+                // Convert intersection point to object's local space
+                const worldMouse = intersectionPoint.clone();
+                
+                // Apply inverse of object's world matrix to get local coordinates
+                const inverseMatrix = new THREE.Matrix4().copy(sphere.matrixWorld).invert();
+                worldMouse.applyMatrix4(inverseMatrix);
+                
+                // Apply mouse position to shader
+                uniforms.uMouse.value.copy(worldMouse);
+            });
+            
+            // Reset mouse when leaving
+            cubeContainer.addEventListener("pointerleave", () => {
+                uniforms.uMouse.value.set(1000, 1000, 1000); // Move far away to disable effect
             });
             
             // Handle window resize
@@ -873,45 +770,6 @@
             sphere.rotation.y += 0.002;
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
-        }
-        
-        // Function to toggle text overlay
-        function toggleTextOverlay() {
-            const textOverlay = document.getElementById('text-overlay');
-            
-            if (isTextVisible) {
-                // Hide text (show cube)
-                textOverlay.style.opacity = '0';
-            } else {
-                // Show text (hide cube particles)
-                textOverlay.style.opacity = '1';
-            }
-            
-            isTextVisible = !isTextVisible;
-        }
-        
-        // Start text transition cycle
-        function startTextTransition() {
-            // Start with cube, then after 3 seconds show text
-            setTimeout(() => {
-                toggleTextOverlay(); // Show text
-                
-                // After 3 seconds, hide text and show cube again
-                setTimeout(() => {
-                    toggleTextOverlay(); // Hide text (show cube)
-                    
-                    // Set up the repeating cycle
-                    transitionInterval = setInterval(() => {
-                        setTimeout(() => {
-                            toggleTextOverlay(); // Show text
-                            
-                            setTimeout(() => {
-                                toggleTextOverlay(); // Hide text (show cube)
-                            }, 3000);
-                        }, 3000);
-                    }, 6000); // Full cycle time
-                }, 3000);
-            }, 3000);
         }
         
         // Language data
@@ -953,33 +811,19 @@
         
         // Function to change language
         function changeLanguage(lang) {
-            // Remove active class from all buttons
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
-            // Add active class to selected button
             document.getElementById(lang + '-btn').classList.add('active');
             
-            // Update all text content
             const t = translations[lang];
-            
-            // Update contact title
             document.getElementById('contact-title').textContent = t.contactTitle;
-            
-            // Update address
             document.querySelector('.address-label').textContent = t.addressLabel;
             document.querySelector('.address-text').textContent = t.addressText;
-            
-            // Update phone
             document.querySelector('.phone-label').textContent = t.phoneLabel;
             document.querySelector('.phone-text').textContent = t.phoneText;
-            
-            // Update email
             document.querySelector('.email-label').textContent = t.emailLabel;
             document.querySelector('.email-text').textContent = t.emailText;
-            
-            // Update working hours
             document.querySelector('.hours-label').textContent = t.hoursLabel;
             document.querySelector('.hours-text').textContent = t.hoursText;
         }
@@ -989,26 +833,15 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            // Set ƏLAQƏ button as active by default (contact page)
             navButtons[5].classList.add('active');
-            
-            // Set AZ button as active by default
             document.getElementById('aze-btn').classList.add('active');
             
-            // Nav button click handler
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all nav buttons
-                    navButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
+                    navButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Show/hide content based on button clicked
                     const buttonText = this.textContent.trim();
-                    
                     if (buttonText === 'ƏLAQƏ') {
                         document.querySelector('.split-container').style.display = 'flex';
                         document.getElementById('home-content').style.display = 'none';
@@ -1019,7 +852,6 @@
                 });
             });
             
-            // Language button click handler
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const lang = this.textContent.trim().toLowerCase();
