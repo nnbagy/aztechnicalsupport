@@ -183,28 +183,44 @@
             margin-bottom: 40px;
         }
         
-        /* VIDEO SECTION - WHERE YOU WROTE "VIDEO MUST BE HERE IN FULL SCREEN" */
-        .video-section {
-            width: 100%;
-            height: 60vh; /* Takes 60% of screen height */
+        .hero {
             background: black;
-            margin: 0 40px 40px; /* Same margins as original */
-            border: 2px solid cyan;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 0 20px cyan;
+            color: white;
+            padding: 0;
+            text-align: center;
+            margin: 0 40px 40px; /* Keep side margins */
+            border: 2px solid cyan; /* Add cyan border */
+            border-radius: 15px; /* Rounded corners */
             position: relative;
+            overflow: hidden;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px cyan; /* Glow effect */
         }
         
-        .fullscreen-video {
+        /* Video fills the entire hero section */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Fill the container completely */
+            z-index: 1;
+            overflow: hidden;
+            border-radius: 13px; /* Match parent border radius */
         }
         
-        /* HERO SECTION - KEEP IT BUT MAKE IT SMALLER OR HIDE */
-        .hero {
-            display: none; /* Hide the hero section since video replaces it */
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Remove ALL text from hero section */
+        .company-name-two-line {
+            display: none !important;
         }
         
         .split-container {
@@ -370,8 +386,8 @@
                 font-size: 28px;
             }
             
-            .video-section {
-                height: 50vh;
+            .hero {
+                height: 300px;
                 margin: 0 20px 30px;
             }
             
@@ -458,8 +474,8 @@
                 font-size: 18px;
             }
             
-            .video-section {
-                height: 40vh;
+            .hero {
+                height: 250px;
                 margin: 0 15px 20px;
             }
             
@@ -509,9 +525,14 @@
                 font-size: 16px;
             }
             
+            .hero {
+                height: 200px;
+                margin: 0 10px 15px;
+            }
+            
             .right-side {
                 padding: 20px 15px;
-                margin: 0 10px 20px 10px;
+                margin: 0 10px 15px 10px;
             }
             
             .contact-info {
@@ -519,12 +540,7 @@
             }
             
             .left-side {
-                margin: 0 10px 20px 10px;
-            }
-            
-            .video-section {
-                height: 35vh;
-                margin: 0 10px 15px;
+                margin: 0 10px 15px 10px;
             }
         }
         
@@ -577,12 +593,24 @@
         </div>
     </nav>
     
-    <!-- VIDEO SECTION - REPLACES THE "VIDEO MUST BE HERE IN FULL SCREEN" AREA -->
-    <div class="video-section">
-        <video class="fullscreen-video" autoplay muted loop playsinline>
-            <source src="https://drive.google.com/uc?export=download&id=1Sj1dijdUjWlgl-qmr5Luy5MzVVR8ZKvv" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <!-- HERO SECTION - ONLY VIDEO, NO TEXT -->
+    <div class="hero">
+        <!-- Video from Google Drive -->
+        <div class="video-container">
+            <!-- This is the PROPER Google Drive embed code -->
+            <!-- Replace VIDEO_ID with your actual Google Drive video ID -->
+            <!-- Your video ID is: 1Sj1dijdUjWlgl-qmr5Luy5MzVVR8ZKvv -->
+            <iframe 
+                src="https://drive.google.com/file/d/1Sj1dijdUjWlgl-qmr5Luy5MzVVR8ZKvv/preview"
+                width="100%" 
+                height="100%"
+                frameborder="0"
+                allow="autoplay"
+                style="border-radius: 13px;"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <!-- NO TEXT HERE - Completely removed -->
     </div>
     
     <!-- SPLIT LAYOUT -->
