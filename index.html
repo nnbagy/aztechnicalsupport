@@ -183,49 +183,13 @@
             margin-bottom: 40px;
         }
         
-        .hero {
-            background: black;
-            color: white;
-            padding: 0;
-            text-align: center;
-            margin: 0 40px 40px; /* Keep side margins */
-            border: 2px solid cyan; /* Add cyan border */
-            border-radius: 15px; /* Rounded corners */
-            position: relative;
-            overflow: hidden;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px cyan; /* Glow effect */
-        }
+        /* REMOVED HERO SECTION COMPLETELY */
         
-        /* Video fills the entire hero section */
-        .video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-            border-radius: 13px; /* Match parent border radius */
-        }
-        
-        .hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Remove ALL text from hero section */
-        .company-name-two-line {
-            display: none !important;
-        }
-        
+        /* Increased cube height */
         .split-container {
             display: flex;
-            min-height: calc(100vh - 300px);
+            min-height: calc(100vh - 200px); /* Increased height */
+            margin-top: 40px; /* Added some top margin */
         }
         
         .left-side {
@@ -238,6 +202,7 @@
             border: 2px solid rgba(0, 255, 255, 0.3);
             margin: 0 20px 40px 40px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            height: 600px; /* Increased height */
         }
         
         #cube-animation {
@@ -257,6 +222,7 @@
             flex-direction: column;
             justify-content: center;
             margin: 0 40px 40px 20px;
+            height: 600px; /* Increased height to match left side */
         }
         
         .contact-header {
@@ -386,9 +352,15 @@
                 font-size: 28px;
             }
             
-            .hero {
-                height: 300px;
-                margin: 0 20px 30px;
+            /* Adjust heights for tablet */
+            .left-side,
+            .right-side {
+                height: 500px;
+            }
+            
+            .split-container {
+                min-height: calc(100vh - 180px);
+                margin-top: 30px;
             }
             
             .left-side {
@@ -440,17 +412,19 @@
             .split-container {
                 flex-direction: column;
                 min-height: auto;
+                margin-top: 20px;
             }
             
             .left-side,
             .right-side {
                 width: 100%;
-                height: 50vh;
+                height: 400px; /* Adjusted for mobile */
                 margin: 0 20px 20px 20px;
             }
             
             .right-side {
                 padding: 30px 20px;
+                height: auto; /* Auto height for mobile */
             }
             
             .contact-header {
@@ -472,11 +446,6 @@
             
             .company-subtitle {
                 font-size: 18px;
-            }
-            
-            .hero {
-                height: 250px;
-                margin: 0 15px 20px;
             }
             
             .left-side {
@@ -525,9 +494,10 @@
                 font-size: 16px;
             }
             
-            .hero {
-                height: 200px;
-                margin: 0 10px 15px;
+            .left-side,
+            .right-side {
+                height: 350px; /* Slightly smaller for small mobile */
+                margin: 0 10px 15px 10px;
             }
             
             .right-side {
@@ -593,29 +563,9 @@
         </div>
     </nav>
     
-    <!-- HERO SECTION - ONLY VIDEO, NO TEXT -->
-    <div class="hero">
-        <!-- Video from Google Drive -->
-        <div class="video-container">
-            <!-- This is the PROPER Google Drive embed code -->
-            <!-- Replace VIDEO_ID with your actual Google Drive video ID -->
-            <!-- Your video ID is: 1Sj1dijdUjWlgl-qmr5Luy5MzVVR8ZKvv -->
-            <iframe 
-                src="https://drive.google.com/file/d/1Sj1dijdUjWlgl-qmr5Luy5MzVVR8ZKvv/preview"
-                width="100%" 
-                height="100%"
-                frameborder="0"
-                allow="autoplay"
-                style="border-radius: 13px;"
-                allowfullscreen>
-            </iframe>
-        </div>
-        <!-- NO TEXT HERE - Completely removed -->
-    </div>
-    
-    <!-- SPLIT LAYOUT -->
+    <!-- SPLIT LAYOUT (Now directly after navbar) -->
     <div class="split-container">
-        <!-- LEFT SIDE - CUBE ANIMATION -->
+        <!-- LEFT SIDE - CUBE ANIMATION (Now taller) -->
         <div class="left-side">
             <div id="cube-animation"></div>
         </div>
