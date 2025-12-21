@@ -186,71 +186,38 @@
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 26, 26, 0.8));
             color: white;
-            padding: 80px 40px;
+            padding: 0; /* Remove padding to make video fill */
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            margin: 0 40px 40px; /* Keep side margins */
+            border: 2px solid rgba(0, 255, 255, 0.3); /* Keep border */
+            border-radius: 15px; /* Keep rounded corners */
             position: relative;
             overflow: hidden;
-            min-height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 350px; /* Fixed height for video area */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); /* Keep shadow */
         }
         
-        /* Full-width background video like aquarium */
-        .video-background {
+        /* Video inside the hero box */
+        .video-container {
+            width: 100%;
+            height: 100%;
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            z-index: 1;
             overflow: hidden;
+            border-radius: 13px; /* Match parent border radius */
         }
         
         .hero-video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Cover the entire area */
+            object-fit: cover; /* Fill the container */
         }
         
-        /* Video overlay to make text more readable */
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3); /* Dark overlay for better text contrast */
-            z-index: 0;
-        }
-        
+        /* Remove text from hero section */
         .company-name-two-line {
-            display: inline-block;
-            text-align: center;
-            line-height: 1;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
-        }
-        
-        .company-name-two-line .line1 {
-            display: block;
-            font-size: 48px;
-            font-weight: bold;
-            color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
-        }
-        
-        .company-name-two-line .line2 {
-            display: block;
-            font-size: 42px;
-            font-weight: bold;
-            color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
-            margin-top: 5px;
+            display: none; /* Hide the text */
         }
         
         .split-container {
@@ -264,6 +231,10 @@
             background: #000;
             position: relative;
             overflow: hidden;
+            border-radius: 15px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            margin: 0 20px 40px 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
         }
         
         #cube-animation {
@@ -282,6 +253,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin: 0 40px 40px 20px;
         }
         
         .contact-header {
@@ -411,12 +383,17 @@
                 font-size: 28px;
             }
             
-            .company-name-two-line .line1 {
-                font-size: 42px;
+            .hero {
+                height: 300px;
+                margin: 0 20px 40px;
             }
             
-            .company-name-two-line .line2 {
-                font-size: 38px;
+            .left-side {
+                margin: 0 10px 40px 20px;
+            }
+            
+            .right-side {
+                margin: 0 20px 40px 10px;
             }
         }
         
@@ -466,6 +443,7 @@
             .right-side {
                 width: 100%;
                 height: 50vh;
+                margin: 0 20px 20px 20px;
             }
             
             .right-side {
@@ -489,29 +467,21 @@
                 font-size: 36px;
             }
             
-            .company-name-two-line .line1 {
-                font-size: 36px;
-            }
-            
-            .company-name-two-line .line2 {
-                font-size: 32px;
-            }
-            
             .company-subtitle {
                 font-size: 18px;
             }
             
             .hero {
-                padding: 60px 20px;
-                min-height: 300px;
+                height: 250px;
+                margin: 0 20px 30px;
             }
             
-            .company-name-two-line .line1 {
-                font-size: 32px;
+            .left-side {
+                margin: 0 20px 20px 20px;
             }
             
-            .company-name-two-line .line2 {
-                font-size: 28px;
+            .right-side {
+                margin: 0 20px 40px 20px;
             }
         }
         
@@ -553,24 +523,21 @@
             }
             
             .hero {
-                padding: 40px 15px;
-                min-height: 250px;
+                height: 200px;
+                margin: 0 15px 20px;
             }
             
             .right-side {
                 padding: 20px 15px;
+                margin: 0 15px 20px 15px;
             }
             
             .contact-info {
                 padding: 20px;
             }
             
-            .company-name-two-line .line1 {
-                font-size: 28px;
-            }
-            
-            .company-name-two-line .line2 {
-                font-size: 24px;
+            .left-side {
+                margin: 0 15px 20px 15px;
             }
         }
         
@@ -623,22 +590,16 @@
         </div>
     </nav>
     
-    <!-- HERO SECTION WITH FULL-WIDTH BACKGROUND VIDEO -->
+    <!-- HERO SECTION - NOW WITH VIDEO INSIDE -->
     <div class="hero">
-        <!-- Full-width background video -->
-        <div class="video-background">
+        <!-- Video Container - fills the hero section -->
+        <div class="video-container">
             <video class="hero-video" autoplay muted loop playsinline>
                 <source src="https://drive.google.com/uc?export=download&id=1Sj1dijdUjWlgl-qmr5Luy5MzVVR8ZKvv" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <div class="video-overlay"></div>
         </div>
-        
-        <!-- AZTECHNICAL SUPPORT text overlay -->
-        <div class="company-name-two-line">
-            <span class="line1">AZTECHNICAL</span>
-            <span class="line2">SUPPORT</span>
-        </div>
+        <!-- Text removed from here -->
     </div>
     
     <!-- SPLIT LAYOUT -->
