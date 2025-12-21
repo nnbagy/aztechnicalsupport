@@ -6,7 +6,6 @@
     <title>AZHYDRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* All your original CSS remains exactly the same */
         * {
             margin: 0;
             padding: 0;
@@ -183,16 +182,15 @@
             margin-bottom: 40px;
         }
         
-        /* Increased cube height and width */
         .split-container {
             display: flex;
-            min-height: calc(100vh - 120px); /* Increased height */
-            margin-top: 30px; /* Added some top margin */
+            min-height: calc(100vh - 120px);
+            margin-top: 30px;
         }
         
         .left-side {
-            flex: 1.0; /* Increased flex ratio for cube */
-            width: 30%; /* Increased width */
+            flex: 1.0;
+            width: 30%;
             background: #000;
             position: relative;
             overflow: hidden;
@@ -200,7 +198,7 @@
             border: 2px solid rgba(0, 255, 255, 0.3);
             margin: 0 15px 40px 40px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-            height: 900px; /* Maximum height for cube */
+            height: 900px;
         }
         
         #cube-animation {
@@ -213,25 +211,25 @@
         }
         
         .right-side {
-            flex: 1.0; /* Reduced flex ratio for contact info */
-            width: 35%; /* Reduced width */
-            padding: 20px; /* Reduced padding */
+            flex: 1.0;
+            width: 35%;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             margin: 0 40px 40px 15px;
-            height: auto; /* Auto height for contact box */
+            height: auto;
         }
         
         .contact-header {
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align to top */
-            margin-bottom: 20px; /* Reduced margin */
+            align-items: flex-start;
+            margin-bottom: 20px;
         }
         
         .contact-title-left {
-            font-size: 28px; /* Smaller font */
+            font-size: 28px;
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
@@ -242,7 +240,7 @@
         
         .contact-title-right .line1 {
             display: block;
-            font-size: 24px; /* Smaller font */
+            font-size: 24px;
             font-weight: bold;
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
@@ -250,43 +248,40 @@
         
         .contact-title-right .line2 {
             display: block;
-            font-size: 22px; /* Smaller font */
+            font-size: 22px;
             font-weight: bold;
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
             margin-top: 5px;
         }
         
-        /* Minimized contact info box */
         .contact-info {
             background-color: rgba(0, 20, 20, 0.7);
-            padding: 15px; /* Reduced padding */
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 255, 255, 0.1);
-            min-height: auto; /* Remove fixed height */
+            min-height: auto;
         }
         
-        /* NEW: Pulsating contact items */
         .contact-item {
-            margin-bottom: 15px; /* Reduced margin */
-            padding-bottom: 10px; /* Reduced padding */
+            margin-bottom: 15px;
+            padding-bottom: 10px;
             border-bottom: 1px solid rgba(0, 255, 255, 0.1);
             position: relative;
         }
         
         .contact-item h3 {
             color: #00ffff;
-            font-size: 14px; /* Smaller font */
-            margin-bottom: 4px; /* Reduced margin */
+            font-size: 14px;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
-            gap: 6px; /* Reduced gap */
+            gap: 6px;
             position: relative;
-            padding-left: 35px; /* Space for icon with ring */
+            padding-left: 35px;
         }
         
-        /* NEW: Pulsating icon ring */
         .contact-icon-container {
             position: absolute;
             left: 0;
@@ -303,17 +298,51 @@
             position: absolute;
             width: 36px;
             height: 36px;
-            border: 2px solid #0ff;
+            border: 2px solid;
             border-radius: 50%;
-            box-shadow: 0 0 10px #0ff, 0 0 30px #0ff;
-            animation: icon-pulse 1.5s infinite;
-            opacity: 0.8;
+            box-shadow: 
+                0 0 8px currentColor,
+                0 0 15px currentColor;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .address-icon .contact-icon-ring {
+            border-color: #00ffff;
+            color: #00ffff;
+            box-shadow: 
+                0 0 8px #00ffff,
+                0 0 15px #00ffff;
+        }
+        
+        .phone-icon .contact-icon-ring {
+            border-color: #ff00ff;
+            color: #ff00ff;
+            box-shadow: 
+                0 0 8px #ff00ff,
+                0 0 15px #ff00ff;
+        }
+        
+        .email-icon .contact-icon-ring {
+            border-color: #00ff00;
+            color: #00ff00;
+            box-shadow: 
+                0 0 8px #00ff00,
+                0 0 15px #00ff00;
+        }
+        
+        .hours-icon .contact-icon-ring {
+            border-color: #25d366;
+            color: #25d366;
+            box-shadow: 
+                0 0 8px #25d366,
+                0 0 15px #25d366;
         }
         
         .contact-item h3 i {
             position: relative;
             z-index: 10;
-            color: #0ff;
+            color: #fff;
             font-size: 18px;
             width: 24px;
             height: 24px;
@@ -322,35 +351,25 @@
             justify-content: center;
         }
         
-        /* NEW: Pulsation animation */
-        @keyframes icon-pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 10px #0ff, 0 0 30px #0ff;
-                opacity: 0.8;
-            }
-            50% {
-                transform: scale(1.1);
-                box-shadow: 0 0 15px #0ff, 0 0 40px #0ff;
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 10px #0ff, 0 0 30px #0ff;
-                opacity: 0.8;
-            }
+        .contact-item:hover .contact-icon-ring {
+            box-shadow: 
+                0 0 12px currentColor,
+                0 0 20px currentColor,
+                0 0 30px currentColor;
+            opacity: 1;
+            transform: scale(1.05);
         }
         
         .contact-item p {
             color: #cccccc;
             line-height: 1.4;
-            margin-left: 35px; /* Reduced margin */
-            font-size: 13px; /* Smaller font */
+            margin-left: 35px;
+            font-size: 13px;
         }
         
         .contact-item strong {
             color: #ffffff;
-            font-size: 14px; /* Slightly smaller */
+            font-size: 14px;
         }
         
         .content-box {
@@ -408,7 +427,6 @@
                 font-size: 22px;
             }
             
-            /* Adjust heights for tablet */
             .left-side {
                 height: 600px;
                 flex: 1.3;
@@ -423,7 +441,6 @@
                 margin: 0 20px 40px 10px;
             }
             
-            /* Adjust icon size for tablet */
             .contact-icon-container {
                 width: 28px;
                 height: 28px;
@@ -496,7 +513,7 @@
             }
             
             .left-side {
-                height: 500px; /* Taller cube on mobile */
+                height: 500px;
                 flex: none;
                 width: 100%;
             }
@@ -529,7 +546,6 @@
                 font-size: 18px;
             }
             
-            /* Adjust icon size for mobile */
             .contact-icon-container {
                 width: 26px;
                 height: 26px;
@@ -602,7 +618,7 @@
             }
             
             .left-side {
-                height: 400px; /* Maximum height for small mobile */
+                height: 400px;
                 margin: 0 10px 15px 10px;
             }
             
@@ -615,7 +631,6 @@
                 padding: 15px;
             }
             
-            /* Adjust icon size for small mobile */
             .contact-icon-container {
                 width: 24px;
                 height: 24px;
@@ -709,12 +724,11 @@
         <!-- CONTACT HEADER -->
         <div class="contact-header">
             <div class="contact-title-left" id="contact-title">Bizim ilə Əlaqə</div>
-            <!-- AZTECHNICAL SUPPORT SİLİNDİ -->
         </div>
         
         <!-- CONTACT INFORMATION (Minimized box) -->
         <div class="contact-info">
-            <div class="contact-item">
+            <div class="contact-item address-icon">
                 <div class="contact-icon-container">
                     <div class="contact-icon-ring"></div>
                     <i class="fas fa-map-marker-alt"></i>
@@ -723,7 +737,7 @@
                 <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
             </div>
             
-            <div class="contact-item">
+            <div class="contact-item phone-icon">
                 <div class="contact-icon-container">
                     <div class="contact-icon-ring"></div>
                     <i class="fas fa-phone"></i>
@@ -732,7 +746,7 @@
                 <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
             </div>
             
-            <div class="contact-item">
+            <div class="contact-item email-icon">
                 <div class="contact-icon-container">
                     <div class="contact-icon-ring"></div>
                     <i class="fas fa-envelope"></i>
@@ -741,7 +755,7 @@
                 <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
             </div>
             
-            <div class="contact-item">
+            <div class="contact-item hours-icon">
                 <div class="contact-icon-container">
                     <div class="contact-icon-ring"></div>
                     <i class="fas fa-clock"></i>
