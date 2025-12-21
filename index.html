@@ -218,7 +218,7 @@
             padding: 20px; /* Reduced padding */
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Align to top */
+            justify-content: center;
             margin: 0 40px 40px 15px;
             height: auto; /* Auto height for contact box */
         }
@@ -582,48 +582,41 @@
         </div>
     </nav>
     
-    <!-- SPLIT LAYOUT (Now directly after navbar) -->
-    <div class="split-container">
-        <!-- LEFT SIDE - CUBE ANIMATION (Maximum size) -->
-        <div class="left-side">
-            <div id="cube-animation"></div>
-        </div>
+<!-- SPLIT LAYOUT (Now directly after navbar) -->
+<div class="split-container">
+    <!-- LEFT SIDE - CUBE ANIMATION (Maximum size) -->
+    <div class="left-side">
+        <div id="cube-animation"></div>
+    </div>
+    
+    <!-- RIGHT SIDE - CONTACT INFORMATION (Minimized) -->
+    <div class="right-side">
+        <!-- CONTACT HEADER SİLİNDİ - HEÇ BİR BAŞLIQ YOXDUR -->
         
-        <!-- RIGHT SIDE - CONTACT INFORMATION (Minimized) -->
-        <div class="right-side">
-            <!-- CONTACT HEADER -->
-            <div class="contact-header">
-                <div class="contact-title-left" id="contact-title">Bizim ilə Əlaqə</div>
-                <div class="contact-title-right">
-                    <span class="line1">AZTECHNICAL</span>
-                    <span class="line2">SUPPORT</span>
-                </div>
+        <!-- CONTACT INFORMATION (Minimized box) -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3><i class="fas fa-map-marker-alt"></i> <span class="address-label">Ünvan</span></h3>
+                <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
             </div>
             
-            <!-- CONTACT INFORMATION (Minimized box) -->
-            <div class="contact-info">
-                <div class="contact-item">
-                    <h3><i class="fas fa-map-marker-alt"></i> <span class="address-label">Ünvan</span></h3>
-                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
-                </div>
-                
-                <div class="contact-item">
-                    <h3><i class="fas fa-phone"></i> <span class="phone-label">Telefon</span></h3>
-                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
-                </div>
-                
-                <div class="contact-item">
-                    <h3><i class="fas fa-envelope"></i> <span class="email-label">Email</span></h3>
-                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
-                </div>
-                
-                <div class="contact-item">
-                    <h3><i class="fas fa-clock"></i> <span class="hours-label">İş Saatları</span></h3>
-                    <p><strong class="hours-text">Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
-                </div>
+            <div class="contact-item">
+                <h3><i class="fas fa-phone"></i> <span class="phone-label">Telefon</span></h3>
+                <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
+            </div>
+            
+            <div class="contact-item">
+                <h3><i class="fas fa-envelope"></i> <span class="email-label">Email</span></h3>
+                <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
+            </div>
+            
+            <div class="contact-item">
+                <h3><i class="fas fa-clock"></i> <span class="hours-label">İş Saatları</span></h3>
+                <p><strong class="hours-text">Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
             </div>
         </div>
     </div>
+</div>
 
     <!-- MAIN CONTENT (for other pages) -->
     <div class="content" id="home-content" style="display: none;">
