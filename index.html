@@ -184,14 +184,46 @@
         }
         
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 26, 26, 0.8));
             color: white;
             padding: 80px 40px;
             text-align: center;
             margin-bottom: 40px;
             border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Full-width background video like aquarium */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the entire area */
+        }
+        
+        /* Video overlay to make text more readable */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); /* Dark overlay for better text contrast */
+            z-index: 0;
         }
         
         .company-name-two-line {
@@ -199,6 +231,9 @@
             text-align: center;
             line-height: 1;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
         }
         
         .company-name-two-line .line1 {
@@ -206,7 +241,7 @@
             font-size: 48px;
             font-weight: bold;
             color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
         }
         
         .company-name-two-line .line2 {
@@ -214,7 +249,7 @@
             font-size: 42px;
             font-weight: bold;
             color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
             margin-top: 5px;
         }
         
@@ -466,8 +501,17 @@
                 font-size: 18px;
             }
             
-            .hero h1 {
+            .hero {
+                padding: 60px 20px;
+                min-height: 300px;
+            }
+            
+            .company-name-two-line .line1 {
                 font-size: 32px;
+            }
+            
+            .company-name-two-line .line2 {
+                font-size: 28px;
             }
         }
         
@@ -495,14 +539,6 @@
                 font-size: 28px;
             }
             
-            .company-name-two-line .line1 {
-                font-size: 28px;
-            }
-            
-            .company-name-two-line .line2 {
-                font-size: 26px;
-            }
-            
             .contact-title-left,
             .contact-title-right .line1 {
                 font-size: 28px;
@@ -517,7 +553,8 @@
             }
             
             .hero {
-                padding: 60px 20px;
+                padding: 40px 15px;
+                min-height: 250px;
             }
             
             .right-side {
@@ -526,6 +563,14 @@
             
             .contact-info {
                 padding: 20px;
+            }
+            
+            .company-name-two-line .line1 {
+                font-size: 28px;
+            }
+            
+            .company-name-two-line .line2 {
+                font-size: 24px;
             }
         }
         
@@ -578,8 +623,18 @@
         </div>
     </nav>
     
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH FULL-WIDTH BACKGROUND VIDEO -->
     <div class="hero">
+        <!-- Full-width background video -->
+        <div class="video-background">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="https://drive.google.com/uc?export=download&id=1Sj1dijdUjWlgl-qmr5Luy5MzVVR8ZKvv" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <!-- AZTECHNICAL SUPPORT text overlay -->
         <div class="company-name-two-line">
             <span class="line1">AZTECHNICAL</span>
             <span class="line2">SUPPORT</span>
