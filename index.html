@@ -186,13 +186,13 @@
         /* Increased cube height and width */
         .split-container {
             display: flex;
-            min-height: calc(100vh - 150px); /* Increased height */
+            min-height: calc(100vh - 120px); /* Increased height */
             margin-top: 30px; /* Added some top margin */
         }
         
         .left-side {
-            flex: 1.2; /* Increased flex ratio for cube */
-            width: 60%; /* Increased width */
+            flex: 1.5; /* Increased flex ratio for cube */
+            width: 65%; /* Increased width */
             background: #000;
             position: relative;
             overflow: hidden;
@@ -200,7 +200,7 @@
             border: 2px solid rgba(0, 255, 255, 0.3);
             margin: 0 15px 40px 40px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-            height: 700px; /* Maximum height for cube */
+            height: 800px; /* Maximum height for cube */
         }
         
         #cube-animation {
@@ -213,9 +213,9 @@
         }
         
         .right-side {
-            flex: 0.8; /* Reduced flex ratio for contact info */
-            width: 40%; /* Reduced width */
-            padding: 30px; /* Reduced padding */
+            flex: 0.7; /* Reduced flex ratio for contact info */
+            width: 35%; /* Reduced width */
+            padding: 20px; /* Reduced padding */
             display: flex;
             flex-direction: column;
             justify-content: flex-start; /* Align to top */
@@ -227,11 +227,11 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start; /* Align to top */
-            margin-bottom: 30px; /* Reduced margin */
+            margin-bottom: 20px; /* Reduced margin */
         }
         
         .contact-title-left {
-            font-size: 32px; /* Slightly smaller */
+            font-size: 28px; /* Smaller font */
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
@@ -242,7 +242,7 @@
         
         .contact-title-right .line1 {
             display: block;
-            font-size: 28px; /* Smaller font */
+            font-size: 24px; /* Smaller font */
             font-weight: bold;
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
@@ -250,7 +250,7 @@
         
         .contact-title-right .line2 {
             display: block;
-            font-size: 26px; /* Smaller font */
+            font-size: 22px; /* Smaller font */
             font-weight: bold;
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
@@ -260,7 +260,7 @@
         /* Minimized contact info box */
         .contact-info {
             background-color: rgba(0, 20, 20, 0.7);
-            padding: 20px; /* Reduced padding */
+            padding: 15px; /* Reduced padding */
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 255, 255, 0.1);
@@ -268,36 +268,36 @@
         }
         
         .contact-item {
-            margin-bottom: 20px; /* Reduced margin */
-            padding-bottom: 12px; /* Reduced padding */
+            margin-bottom: 15px; /* Reduced margin */
+            padding-bottom: 10px; /* Reduced padding */
             border-bottom: 1px solid rgba(0, 255, 255, 0.1);
         }
         
         .contact-item h3 {
             color: #00ffff;
-            font-size: 16px; /* Smaller font */
-            margin-bottom: 6px; /* Reduced margin */
+            font-size: 14px; /* Smaller font */
+            margin-bottom: 4px; /* Reduced margin */
             display: flex;
             align-items: center;
-            gap: 8px; /* Reduced gap */
+            gap: 6px; /* Reduced gap */
         }
         
         .contact-item h3 i {
             color: #00ffff;
-            width: 18px; /* Smaller icon */
-            font-size: 14px; /* Smaller icon */
+            width: 16px; /* Smaller icon */
+            font-size: 12px; /* Smaller icon */
         }
         
         .contact-item p {
             color: #cccccc;
-            line-height: 1.5;
-            margin-left: 26px; /* Reduced margin */
-            font-size: 14px; /* Smaller font */
+            line-height: 1.4;
+            margin-left: 22px; /* Reduced margin */
+            font-size: 13px; /* Smaller font */
         }
         
         .contact-item strong {
             color: #ffffff;
-            font-size: 15px; /* Slightly smaller */
+            font-size: 14px; /* Slightly smaller */
         }
         
         .content-box {
@@ -348,30 +348,30 @@
             
             .contact-title-left,
             .contact-title-right .line1 {
-                font-size: 28px;
+                font-size: 24px;
             }
             
             .contact-title-right .line2 {
-                font-size: 24px;
+                font-size: 22px;
             }
             
             /* Adjust heights for tablet */
             .left-side {
-                height: 550px;
-                flex: 1.1;
-                width: 55%;
+                height: 600px;
+                flex: 1.3;
+                width: 60%;
                 margin: 0 10px 40px 20px;
             }
             
             .right-side {
                 flex: 0.9;
-                width: 45%;
-                padding: 25px;
+                width: 40%;
+                padding: 20px;
                 margin: 0 20px 40px 10px;
             }
             
             .split-container {
-                min-height: calc(100vh - 160px);
+                min-height: calc(100vh - 140px);
                 margin-top: 25px;
             }
         }
@@ -426,12 +426,14 @@
             }
             
             .left-side {
-                height: 450px; /* Taller cube on mobile */
+                height: 500px; /* Taller cube on mobile */
                 flex: none;
+                width: 100%;
             }
             
             .right-side {
                 flex: none;
+                width: 100%;
                 padding: 25px 20px;
                 height: auto;
             }
@@ -492,11 +494,11 @@
             
             .contact-title-left,
             .contact-title-right .line1 {
-                font-size: 24px;
+                font-size: 22px;
             }
             
             .contact-title-right .line2 {
-                font-size: 22px;
+                font-size: 20px;
             }
             
             .company-subtitle {
@@ -514,20 +516,20 @@
             }
             
             .contact-info {
-                padding: 20px;
+                padding: 15px;
             }
             
             .contact-item h3 {
-                font-size: 15px;
+                font-size: 13px;
             }
             
             .contact-item p {
-                font-size: 13px;
-                margin-left: 22px;
+                font-size: 12px;
+                margin-left: 20px;
             }
             
             .contact-item strong {
-                font-size: 14px;
+                font-size: 13px;
             }
         }
         
