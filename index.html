@@ -267,10 +267,12 @@
             min-height: auto; /* Remove fixed height */
         }
         
+        /* NEW: Pulsating contact items */
         .contact-item {
             margin-bottom: 15px; /* Reduced margin */
             padding-bottom: 10px; /* Reduced padding */
             border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            position: relative;
         }
         
         .contact-item h3 {
@@ -280,18 +282,69 @@
             display: flex;
             align-items: center;
             gap: 6px; /* Reduced gap */
+            position: relative;
+            padding-left: 35px; /* Space for icon with ring */
+        }
+        
+        /* NEW: Pulsating icon ring */
+        .contact-icon-container {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-icon-ring {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            border: 2px solid #0ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #0ff, 0 0 30px #0ff;
+            animation: icon-pulse 1.5s infinite;
+            opacity: 0.8;
         }
         
         .contact-item h3 i {
-            color: #00ffff;
-            width: 16px; /* Smaller icon */
-            font-size: 12px; /* Smaller icon */
+            position: relative;
+            z-index: 10;
+            color: #0ff;
+            font-size: 18px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* NEW: Pulsation animation */
+        @keyframes icon-pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 10px #0ff, 0 0 30px #0ff;
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 15px #0ff, 0 0 40px #0ff;
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 10px #0ff, 0 0 30px #0ff;
+                opacity: 0.8;
+            }
         }
         
         .contact-item p {
             color: #cccccc;
             line-height: 1.4;
-            margin-left: 22px; /* Reduced margin */
+            margin-left: 35px; /* Reduced margin */
             font-size: 13px; /* Smaller font */
         }
         
@@ -368,6 +421,23 @@
                 width: 40%;
                 padding: 20px;
                 margin: 0 20px 40px 10px;
+            }
+            
+            /* Adjust icon size for tablet */
+            .contact-icon-container {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .contact-icon-ring {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .contact-item h3 i {
+                font-size: 16px;
+                width: 20px;
+                height: 20px;
             }
             
             .split-container {
@@ -459,6 +529,32 @@
                 font-size: 18px;
             }
             
+            /* Adjust icon size for mobile */
+            .contact-icon-container {
+                width: 26px;
+                height: 26px;
+            }
+            
+            .contact-icon-ring {
+                width: 30px;
+                height: 30px;
+                border-width: 1.5px;
+            }
+            
+            .contact-item h3 i {
+                font-size: 15px;
+                width: 18px;
+                height: 18px;
+            }
+            
+            .contact-item h3 {
+                padding-left: 32px;
+            }
+            
+            .contact-item p {
+                margin-left: 32px;
+            }
+            
             .left-side {
                 margin: 0 15px 20px 15px;
             }
@@ -519,13 +615,32 @@
                 padding: 15px;
             }
             
+            /* Adjust icon size for small mobile */
+            .contact-icon-container {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .contact-icon-ring {
+                width: 28px;
+                height: 28px;
+                border-width: 1.5px;
+            }
+            
+            .contact-item h3 i {
+                font-size: 14px;
+                width: 16px;
+                height: 16px;
+            }
+            
             .contact-item h3 {
                 font-size: 13px;
+                padding-left: 30px;
             }
             
             .contact-item p {
                 font-size: 12px;
-                margin-left: 20px;
+                margin-left: 30px;
             }
             
             .contact-item strong {
@@ -600,22 +715,38 @@
         <!-- CONTACT INFORMATION (Minimized box) -->
         <div class="contact-info">
             <div class="contact-item">
-                <h3><i class="fas fa-map-marker-alt"></i> <span class="address-label">Ünvan</span></h3>
+                <div class="contact-icon-container">
+                    <div class="contact-icon-ring"></div>
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3><span class="address-label">Ünvan</span></h3>
                 <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
             </div>
             
             <div class="contact-item">
-                <h3><i class="fas fa-phone"></i> <span class="phone-label">Telefon</span></h3>
+                <div class="contact-icon-container">
+                    <div class="contact-icon-ring"></div>
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3><span class="phone-label">Telefon</span></h3>
                 <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
             </div>
             
             <div class="contact-item">
-                <h3><i class="fas fa-envelope"></i> <span class="email-label">Email</span></h3>
+                <div class="contact-icon-container">
+                    <div class="contact-icon-ring"></div>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3><span class="email-label">Email</span></h3>
                 <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
             </div>
             
             <div class="contact-item">
-                <h3><i class="fas fa-clock"></i> <span class="hours-label">İş Saatları</span></h3>
+                <div class="contact-icon-container">
+                    <div class="contact-icon-ring"></div>
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3><span class="hours-label">İş Saatları</span></h3>
                 <p><strong class="hours-text">Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
             </div>
         </div>
