@@ -169,10 +169,6 @@
         .content {
             padding: 40px 30px;
             text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: calc(100vh - 200px);
         }
         
         .company-name {
@@ -199,8 +195,8 @@
         }
         
         .left-side {
-            flex: 1.2;
-            width: 40%;
+            flex: 0.8;
+            width: 28%;
             background: #000;
             position: relative;
             overflow: hidden;
@@ -208,8 +204,7 @@
             border: 2px solid rgba(0, 255, 255, 0.3);
             margin: 0 10px 6px 25px;
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-            height: 400px;
-            min-height: 400px;
+            height: 280px;
         }
         
         #cube-animation {
@@ -222,8 +217,8 @@
         }
         
         .right-side {
-            flex: 0.8;
-            width: 38%;
+            flex: 1.2;
+            width: 42%;
             padding: 15px;
             display: flex;
             flex-direction: column;
@@ -392,7 +387,6 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 255, 255, 0.1);
             text-align: left;
-            flex-grow: 1;
         }
         
         .content-box h2 {
@@ -443,14 +437,7 @@
             display: flex;
         }
         
-        /* Əsas content container */
-        .main-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* MEDIA QUERIES - HEÇ NƏYƏ TOXUNMADIM */
+        /* УМЕНЬШИЛ КУБ ДЛЯ 15.6" */
         @media screen and (min-width: 1440px) and (min-height: 900px) {
             .navbar {
                 padding: 14px 30px;
@@ -498,14 +485,13 @@
             }
             
             .left-side {
-                height: 450px;
-                width: 42%;
-                min-height: 450px;
+                height: 300px;
+                width: 30%;
                 margin: 0 12px 6px 30px;
             }
             
             .right-side {
-                width: 36%;
+                width: 40%;
                 padding: 18px;
                 margin: 0 30px 6px 12px;
             }
@@ -527,6 +513,7 @@
             }
         }
         
+        /* УМЕНЬШИЛ КУБ ДЛЯ 16" */
         @media screen and (min-width: 1600px) and (min-height: 1000px) {
             .navbar {
                 padding: 15px 35px;
@@ -574,14 +561,13 @@
             }
             
             .left-side {
-                height: 500px;
-                width: 44%;
-                min-height: 500px;
+                height: 320px;
+                width: 32%;
                 margin: 0 15px 6px 35px;
             }
             
             .right-side {
-                width: 34%;
+                width: 38%;
                 padding: 20px;
                 margin: 0 35px 6px 15px;
             }
@@ -621,6 +607,7 @@
             }
         }
         
+        /* УМЕНЬШИЛ КУБ ДЛЯ ПЛАНШЕТОВ */
         @media (max-width: 1365px) {
             .navbar {
                 padding: 15px 20px;
@@ -653,16 +640,15 @@
             }
             
             .left-side {
-                height: 380px;
-                flex: 1.5;
-                width: 60%;
-                min-height: 380px;
+                height: 280px;
+                flex: 1.2;
+                width: 55%;
                 margin: 0 10px 6px 20px;
             }
             
             .right-side {
-                flex: 0.7;
-                width: 40%;
+                flex: 0.9;
+                width: 45%;
                 padding: 20px;
                 margin: 0 20px 6px 10px;
             }
@@ -697,6 +683,7 @@
             }
         }
         
+        /* УМЕНЬШИЛ КУБ ДЛЯ МОБИЛЬНЫХ */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -747,10 +734,9 @@
             }
             
             .left-side {
-                height: 350px;
+                height: 240px;
                 flex: none;
                 width: 100%;
-                min-height: 350px;
             }
             
             .right-side {
@@ -815,6 +801,7 @@
             }
         }
         
+        /* УМЕНЬШИЛ КУБ ДЛЯ МАЛЕНЬКИХ МОБИЛЬНЫХ */
         @media (max-width: 480px) {
             .nav-center {
                 flex-direction: column;
@@ -853,9 +840,8 @@
             }
             
             .left-side {
-                height: 300px;
+                height: 200px;
                 margin: 0 10px 5px 10px;
-                min-height: 300px;
             }
             
             .right-side {
@@ -930,7 +916,7 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION - DÜZƏLDİM: Digər bölmələr kimi etdim -->
+        <!-- HOME SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="home-section">
             <div class="content">
                 <h1 class="company-name">AZHYDRO</h1>
@@ -949,7 +935,7 @@
             </div>
         </div>
         
-        <!-- ABOUT SECTION - DÜZƏLDİM: Digər bölmələr kimi etdim -->
+        <!-- ABOUT SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="about-section">
             <div class="content">
                 <h1 class="company-name">HAQQIMIZDA</h1>
@@ -967,7 +953,7 @@
             </div>
         </div>
         
-        <!-- CATALOG SECTION - EYNİ QALDI -->
+        <!-- CATALOG SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="catalog-section">
             <div class="content">
                 <h1 class="company-name">KATALOQ</h1>
@@ -982,7 +968,7 @@
             </div>
         </div>
         
-        <!-- SERVICES SECTION - EYNİ QALDI -->
+        <!-- SERVICES SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="services-section">
             <div class="content">
                 <h1 class="company-name">XİDMƏTLƏR</h1>
@@ -997,7 +983,7 @@
             </div>
         </div>
         
-        <!-- PROJECTS SECTION - EYNİ QALDI -->
+        <!-- PROJECTS SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="projects-section">
             <div class="content">
                 <h1 class="company-name">LAYİHƏLƏR</h1>
@@ -1012,7 +998,7 @@
             </div>
         </div>
         
-        <!-- CONTACT SECTION - EYNİ QALDI -->
+        <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO - ONLY HERE) -->
         <div class="page-section active" id="contact-section">
             <div class="split-container">
                 <!-- LEFT SIDE - CUBE ANIMATION (ONLY IN CONTACT SECTION) -->
@@ -1068,7 +1054,7 @@
         </div>
     </div>
     
-    <!-- FOOTER - İNDİ BÜTÜN 6 SECTİON'DA GÖRÜNƏCƏK -->
+    <!-- FOOTER - VISIBLE ON ALL 6 SECTIONS -->
     <div class="footer">
         <p>AZHYDRO - 2020-ci ildən fəaliyyətdədir</p>
         <p>Bütün hüquqlar qorunur © 2025</p>
