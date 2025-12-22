@@ -18,11 +18,13 @@
             min-height: 100vh;
             color: #e0e0e0;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
         }
         
         .navbar {
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 12px 25px; /* Уменьшил для 14" */
+            padding: 12px 25px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -30,11 +32,12 @@
             border-bottom: 1px solid rgba(0, 255, 255, 0.1);
             position: relative;
             z-index: 100;
+            flex-shrink: 0;
         }
         
         .logo-space {
-            width: 170px; /* Уменьшил для 14" */
-            height: 50px; /* Уменьшил для 14" */
+            width: 170px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -42,12 +45,12 @@
         
         .logo-placeholder {
             color: #00ffff;
-            font-size: 20px; /* Уменьшил для 14" */
+            font-size: 20px;
             font-weight: bold;
             background-color: rgba(0, 255, 255, 0.05);
-            padding: 8px 12px; /* Уменьшил для 14" */
+            padding: 8px 12px;
             border-radius: 5px;
-            min-width: 150px; /* Уменьшил для 14" */
+            min-width: 150px;
             text-align: center;
             border: 1px solid rgba(0, 255, 255, 0.2);
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
@@ -55,20 +58,20 @@
         
         .nav-center {
             display: flex;
-            gap: 8px; /* Уменьшил для 14" */
+            gap: 8px;
         }
         
         .nav-btn {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 16px; /* Уменьшил для 14" */
-            font-size: 13px; /* Уменьшил для 14" */
+            padding: 8px 16px;
+            font-size: 13px;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
-            min-width: 95px; /* Уменьшил для 14" */
+            min-width: 95px;
             text-align: center;
         }
         
@@ -92,7 +95,7 @@
         
         .nav-right {
             display: flex;
-            gap: 8px; /* Уменьшил для 14" */
+            gap: 8px;
         }
         
         .lang-btn {
@@ -100,12 +103,12 @@
             color: white;
             border: 2px solid cyan;
             border-radius: 10px;
-            padding: 8px 16px; /* Уменьшил для 14" */
-            font-size: 13px; /* Уменьшил для 14" */
+            padding: 8px 16px;
+            font-size: 13px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 65px; /* Уменьшил для 14" */
+            min-width: 65px;
             text-align: center;
             box-shadow: 0 0 10px cyan;
             text-decoration: none;
@@ -115,7 +118,7 @@
             gap: 6px;
             position: relative;
             overflow: hidden;
-            height: 38px; /* Уменьшил для 14" */
+            height: 38px;
         }
         
         .lang-btn::before {
@@ -164,43 +167,45 @@
         }
         
         .content {
-            padding: 40px 30px; /* Уменьшил для 14" */
+            padding: 40px 30px;
             text-align: center;
         }
         
         .company-name {
-            font-size: 36px; /* Уменьшил для 14" */
+            font-size: 36px;
             color: #00ffff;
-            margin-bottom: 8px; /* Уменьшил для 14" */
+            margin-bottom: 8px;
             font-weight: bold;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
         
         .company-subtitle {
-            font-size: 16px; /* Уменьшил для 14" */
+            font-size: 16px;
             color: #88ffff;
-            margin-bottom: 30px; /* Уменьшил для 14" */
+            margin-bottom: 30px;
         }
         
+        /* ИЗМЕНИЛ ГЛАВНЫЙ КОНТЕЙНЕР */
         .split-container {
             display: flex;
-            min-height: calc(100vh - 140px); /* Уменьшил для 14" */
-            margin-top: 15px; /* Уменьшил для 14" */
-            margin-bottom: 15px; /* Уменьшил для 14" */
+            min-height: calc(100vh - 220px); /* УВЕЛИЧИЛ отступ для футера */
+            margin-top: 15px;
+            margin-bottom: 10px; /* УМЕНЬШИЛ отступ снизу */
+            flex-grow: 1;
         }
         
         /* ОПТИМИЗАЦИЯ ДЛЯ 14" */
         .left-side {
-            flex: 0.8; /* Уменьшил для 14" */
-            width: 28%; /* Уменьшил для 14" */
+            flex: 0.8;
+            width: 28%;
             background: #000;
             position: relative;
             overflow: hidden;
-            border-radius: 12px; /* Уменьшил для 14" */
+            border-radius: 12px;
             border: 2px solid rgba(0, 255, 255, 0.3);
-            margin: 0 10px 15px 25px; /* Уменьшил для 14" */
+            margin: 0 10px 10px 25px; /* УМЕНЬШИЛ margin-bottom */
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-            height: 380px; /* Уменьшил для 14" */
+            height: 350px; /* ЕЩЕ УМЕНЬШИЛ высоту куба */
         }
         
         #cube-animation {
@@ -213,13 +218,13 @@
         }
         
         .right-side {
-            flex: 1.2; /* Увеличил для 14" */
-            width: 42%; /* Увеличил для 14" */
-            padding: 15px; /* Уменьшил для 14" */
+            flex: 1.2;
+            width: 42%;
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            margin: 0 25px 15px 10px; /* Уменьшил для 14" */
+            justify-content: flex-start; /* ИЗМЕНИЛ на flex-start */
+            margin: 0 25px 10px 10px; /* УМЕНЬШИЛ margin-bottom */
             height: auto;
         }
         
@@ -227,11 +232,11 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            margin-bottom: 15px; /* Уменьшил для 14" */
+            margin-bottom: 15px;
         }
         
         .contact-title-left {
-            font-size: 22px; /* Уменьшил для 14" */
+            font-size: 22px;
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
@@ -242,7 +247,7 @@
         
         .contact-title-right .line1 {
             display: block;
-            font-size: 20px; /* Уменьшил для 14" */
+            font-size: 20px;
             font-weight: bold;
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
@@ -250,38 +255,38 @@
         
         .contact-title-right .line2 {
             display: block;
-            font-size: 18px; /* Уменьшил для 14" */
+            font-size: 18px;
             font-weight: bold;
             color: #00ffff;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-            margin-top: 3px; /* Уменьшил для 14" */
+            margin-top: 3px;
         }
         
         .contact-info {
             background-color: rgba(0, 20, 20, 0.7);
-            padding: 12px; /* Уменьшил для 14" */
-            border-radius: 8px; /* Уменьшил для 14" */
+            padding: 12px;
+            border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 255, 255, 0.1);
             min-height: auto;
         }
         
         .contact-item {
-            margin-bottom: 12px; /* Уменьшил для 14" */
-            padding-bottom: 8px; /* Уменьшил для 14" */
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid rgba(0, 255, 255, 0.1);
             position: relative;
         }
         
         .contact-item h3 {
             color: #00ffff;
-            font-size: 13px; /* Уменьшил для 14" */
-            margin-bottom: 3px; /* Уменьшил для 14" */
+            font-size: 13px;
+            margin-bottom: 3px;
             display: flex;
             align-items: center;
-            gap: 5px; /* Уменьшил для 14" */
+            gap: 5px;
             position: relative;
-            padding-left: 38px; /* Уменьшил для 14" */
+            padding-left: 38px;
         }
         
         .contact-icon-container {
@@ -289,8 +294,8 @@
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            width: 26px; /* Уменьшил для 14" */
-            height: 26px; /* Уменьшил для 14" */
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -298,8 +303,8 @@
         
         .contact-icon-ring {
             position: absolute;
-            width: 32px; /* Уменьшил для 14" */
-            height: 32px; /* Уменьшил для 14" */
+            width: 32px;
+            height: 32px;
             border: 2px solid;
             border-radius: 50%;
             box-shadow: 
@@ -345,9 +350,9 @@
             position: relative;
             z-index: 10;
             color: #fff;
-            font-size: 16px; /* Уменьшил для 14" */
-            width: 20px; /* Уменьшил для 14" */
-            height: 20px; /* Уменьшил для 14" */
+            font-size: 16px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -365,20 +370,20 @@
         .contact-item p {
             color: #cccccc;
             line-height: 1.4;
-            margin-left: 38px; /* Уменьшил для 14" */
-            font-size: 12px; /* Уменьшил для 14" */
+            margin-left: 38px;
+            font-size: 12px;
         }
         
         .contact-item strong {
             color: #ffffff;
-            font-size: 13px; /* Уменьшил для 14" */
+            font-size: 13px;
         }
         
         .content-box {
-            max-width: 700px; /* Уменьшил для 14" */
-            margin: 40px auto; /* Уменьшил для 14" */
+            max-width: 700px;
+            margin: 40px auto;
             background-color: rgba(0, 20, 20, 0.7);
-            padding: 25px; /* Уменьшил для 14" */
+            padding: 25px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 255, 255, 0.1);
@@ -387,17 +392,40 @@
         
         .content-box h2 {
             color: #00ffff;
-            margin-bottom: 15px; /* Уменьшил для 14" */
+            margin-bottom: 15px;
             border-bottom: 1px solid rgba(0, 255, 255, 0.3);
-            padding-bottom: 8px; /* Уменьшил для 14" */
-            font-size: 20px; /* Добавил для 14" */
+            padding-bottom: 8px;
+            font-size: 20px;
         }
         
         .content-box p {
-            line-height: 1.6; /* Уменьшил для 14" */
-            margin-bottom: 15px; /* Уменьшил для 14" */
+            line-height: 1.6;
+            margin-bottom: 15px;
             color: #cccccc;
-            font-size: 14px; /* Добавил для 14" */
+            font-size: 14px;
+        }
+        
+        /* ПОДНЯЛ ФУТЕР ВВЕРХ */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px 20px 15px; /* УМЕНЬШИЛ padding */
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            margin-top: auto; /* ВАЖНО: автоматический отступ сверху */
+            flex-shrink: 0;
+        }
+        
+        .footer p {
+            color: #88ffff;
+            margin-bottom: 8px; /* УМЕНЬШИЛ отступ */
+            line-height: 1.4; /* УМЕНЬШИЛ межстрочный интервал */
+            font-size: 14px;
+        }
+        
+        .copyright {
+            color: #66cccc;
+            font-size: 12px;
+            margin-top: 8px; /* УМЕНЬШИЛ отступ */
         }
         
         /* ОПТИМИЗАЦИЯ ДЛЯ 15.6" */
@@ -443,20 +471,20 @@
             }
             
             .split-container {
-                min-height: calc(100vh - 150px);
+                min-height: calc(100vh - 240px); /* УВЕЛИЧИЛ для 15.6" */
                 margin-top: 20px;
             }
             
             .left-side {
-                height: 420px;
+                height: 380px; /* УМЕНЬШИЛ для 15.6" */
                 width: 30%;
-                margin: 0 12px 15px 30px;
+                margin: 0 12px 10px 30px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .right-side {
                 width: 40%;
                 padding: 18px;
-                margin: 0 30px 15px 12px;
+                margin: 0 30px 10px 12px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .contact-title-left {
@@ -469,6 +497,10 @@
             
             .contact-title-right .line2 {
                 font-size: 20px;
+            }
+            
+            .footer {
+                padding: 22px 20px 18px;
             }
         }
         
@@ -515,20 +547,20 @@
             }
             
             .split-container {
-                min-height: calc(100vh - 160px);
+                min-height: calc(100vh - 250px); /* УВЕЛИЧИЛ для 16" */
                 margin-top: 25px;
             }
             
             .left-side {
-                height: 450px;
+                height: 400px; /* УМЕНЬШИЛ для 16" */
                 width: 32%;
-                margin: 0 15px 20px 35px;
+                margin: 0 15px 10px 35px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .right-side {
                 width: 38%;
                 padding: 20px;
-                margin: 0 35px 20px 15px;
+                margin: 0 35px 10px 15px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .contact-title-left {
@@ -559,6 +591,10 @@
             
             .contact-item strong {
                 font-size: 14px;
+            }
+            
+            .footer {
+                padding: 24px 20px 20px;
             }
         }
         
@@ -595,17 +631,17 @@
             }
             
             .left-side {
-                height: 350px;
+                height: 320px; /* УМЕНЬШИЛ для планшетов */
                 flex: 1.2;
                 width: 55%;
-                margin: 0 10px 15px 20px;
+                margin: 0 10px 10px 20px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .right-side {
                 flex: 0.9;
                 width: 45%;
                 padding: 20px;
-                margin: 0 20px 15px 10px;
+                margin: 0 20px 10px 10px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .contact-icon-container {
@@ -633,7 +669,7 @@
             }
             
             .split-container {
-                min-height: calc(100vh - 160px);
+                min-height: calc(100vh - 200px); /* УВЕЛИЧИЛ */
                 margin-top: 20px;
             }
         }
@@ -684,11 +720,11 @@
             .left-side,
             .right-side {
                 width: 100%;
-                margin: 0 20px 15px 20px;
+                margin: 0 20px 10px 20px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .left-side {
-                height: 320px;
+                height: 280px; /* УМЕНЬШИЛ для мобильных */
                 flex: none;
                 width: 100%;
             }
@@ -747,11 +783,11 @@
             }
             
             .left-side {
-                margin: 0 15px 15px 15px;
+                margin: 0 15px 10px 15px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .right-side {
-                margin: 0 15px 15px 15px;
+                margin: 0 15px 10px 15px; /* УМЕНЬШИЛ margin-bottom */
             }
         }
         
@@ -793,13 +829,13 @@
             }
             
             .left-side {
-                height: 280px;
-                margin: 0 10px 10px 10px;
+                height: 240px; /* УМЕНЬШИЛ для маленьких мобильных */
+                margin: 0 10px 8px 10px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .right-side {
                 padding: 15px;
-                margin: 0 10px 10px 10px;
+                margin: 0 10px 8px 10px; /* УМЕНЬШИЛ margin-bottom */
             }
             
             .contact-info {
@@ -836,27 +872,6 @@
             .contact-item strong {
                 font-size: 13px;
             }
-        }
-        
-        .footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 25px 20px 20px; /* Уменьшил для 14" */
-            text-align: center;
-            border-top: 1px solid rgba(0, 255, 255, 0.1);
-            margin-top: 0;
-        }
-        
-        .footer p {
-            color: #88ffff;
-            margin-bottom: 10px; /* Уменьшил для 14" */
-            line-height: 1.5;
-            font-size: 14px; /* Уменьшил для 14" */
-        }
-        
-        .copyright {
-            color: #66cccc;
-            font-size: 12px; /* Уменьшил для 14" */
-            margin-top: 10px; /* Уменьшил для 14" */
         }
     </style>
 </head>
@@ -955,12 +970,12 @@
                 Yüksək keyfiyyətli iş və müştəri məmnuniyyəti bizim əsas prinsipimizdir.
             </p>
             <p>
-                Peşəkar komandamız и müasir texnologiyalar sayəsində ən mürəkkəb layihələri də uğurla həyata keçiririk.
+                Peşəkar komandamız и müasir texnologiyalar sayəsində ən mürəkkəб layihələri də uğurla həyata keçiririk.
             </p>
         </div>
     </div>
     
-    <!-- FOOTER -->
+    <!-- FOOTER - ТЕПЕРЬ ВСЕ ТРИ СТРОКИ ДОЛЖНЫ БЫТЬ ВИДНЫ -->
     <div class="footer">
         <p>AZHYDRO - 2020-ci ildən fəaliyyətdədir</p>
         <p>Bütün hüquqlar qorunur © 2025</p>
@@ -983,7 +998,6 @@
             
             scene = new THREE.Scene();
 
-            // Оптимизировано для 14"
             camera = new THREE.PerspectiveCamera(50, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
             camera.position.z = 3.5;
 
@@ -991,7 +1005,6 @@
             renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
             cubeContainer.appendChild(renderer.domElement);
 
-            // Меньше частиц для 14"
             const count = 25000;
             const positions = new Float32Array(count * 3);
 
@@ -1035,7 +1048,6 @@
             sphere = new THREE.Points(particleGeometry, material);
             scene.add(sphere);
 
-            // FIXED MOUSE HANDLING
             cubeContainer.addEventListener("pointermove", (e) => {
                 const rect = cubeContainer.getBoundingClientRect();
                 
@@ -1078,7 +1090,6 @@
             requestAnimationFrame(animate);
         }
         
-        // Language data
         const translations = {
             aze: {
                 contactTitle: "Bizim ilə Əlaqə",
