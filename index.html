@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AZHYDRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+
     <style>
         * {
             margin: 0;
@@ -396,17 +400,21 @@
             color: #cccccc;
         }
         
-        /* ========== ОПТИМИЗАЦИЯ ДЛЯ НОУТБУКОВ ========== */
+        /* ========== ОПТИМИЗАЦИЯ ДЛЯ НОУТБУКОВ 14-16" ========== */
         
-        /* Для 14-15.6" ноутбуков (FullHD - 1920x1080) */
-        @media screen and (max-width: 1920px) and (max-height: 1080px) and (min-width: 1366px) {
+        /* Ноутбуки 14-15.6" FullHD (1366x768 - 1920x1080) */
+        @media screen and (max-width: 1920px) and (max-height: 1080px) and (min-width: 1366px) and (max-height: 1080px) {
+            .navbar {
+                padding: 12px 30px;
+            }
+            
             .split-container {
-                min-height: calc(100vh - 100px);
-                margin-top: 25px;
+                min-height: calc(100vh - 90px);
+                margin-top: 20px;
             }
             
             .left-side {
-                height: 800px;
+                height: 650px;
                 margin: 0 10px 30px 30px;
             }
             
@@ -416,202 +424,122 @@
             }
             
             .company-name {
-                font-size: 42px;
-            }
-            
-            .company-subtitle {
-                font-size: 18px;
-            }
-            
-            .nav-btn {
-                padding: 10px 20px;
-                font-size: 15px;
-                min-width: 110px;
-            }
-            
-            .lang-btn {
-                padding: 10px 20px;
-                font-size: 15px;
-                min-width: 70px;
-                height: 42px;
-            }
-        }
-        
-        /* Для 16" ноутбуков (2K - 2560x1440) */
-        @media screen and (min-width: 2560px) and (min-height: 1440px) {
-            .split-container {
-                min-height: calc(100vh - 140px);
-                margin-top: 40px;
-            }
-            
-            .left-side {
-                height: 950px;
-                margin: 0 20px 50px 50px;
-            }
-            
-            .right-side {
-                margin: 0 50px 50px 20px;
-                padding: 25px;
-            }
-            
-            .company-name {
-                font-size: 56px;
-            }
-            
-            .company-subtitle {
-                font-size: 24px;
-            }
-            
-            .contact-title-left {
-                font-size: 32px;
-            }
-            
-            .contact-title-right .line1 {
-                font-size: 28px;
-            }
-            
-            .contact-title-right .line2 {
-                font-size: 26px;
-            }
-            
-            .contact-item h3 {
-                font-size: 16px;
-                padding-left: 50px;
-            }
-            
-            .contact-item p {
-                font-size: 15px;
-                margin-left: 50px;
-            }
-            
-            .contact-item strong {
-                font-size: 16px;
-            }
-            
-            .nav-btn {
-                padding: 14px 28px;
-                font-size: 18px;
-                min-width: 140px;
-            }
-            
-            .lang-btn {
-                padding: 14px 28px;
-                font-size: 18px;
-                min-width: 90px;
-                height: 50px;
-            }
-            
-            .logo-placeholder {
-                font-size: 28px;
-                padding: 12px 20px;
-                min-width: 200px;
-            }
-        }
-        
-        /* Для 4K ноутбуков (3840x2160) */
-        @media screen and (min-width: 3840px) and (min-height: 2160px) {
-            .split-container {
-                min-height: calc(100vh - 160px);
-                margin-top: 50px;
-            }
-            
-            .left-side {
-                height: 1100px;
-                margin: 0 30px 60px 60px;
-            }
-            
-            .right-side {
-                margin: 0 60px 60px 30px;
-                padding: 30px;
-            }
-            
-            .company-name {
-                font-size: 68px;
-            }
-            
-            .company-subtitle {
-                font-size: 28px;
-            }
-            
-            .contact-title-left {
                 font-size: 36px;
             }
             
-            .contact-title-right .line1 {
-                font-size: 32px;
+            .company-subtitle {
+                font-size: 16px;
             }
             
-            .contact-title-right .line2 {
-                font-size: 30px;
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+                min-width: 100px;
+            }
+            
+            .lang-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+                min-width: 60px;
+                height: 38px;
+            }
+            
+            .contact-title-left {
+                font-size: 22px;
             }
             
             .contact-item h3 {
-                font-size: 18px;
-                padding-left: 60px;
+                font-size: 13px;
+                padding-left: 40px;
             }
             
             .contact-item p {
-                font-size: 16px;
-                margin-left: 60px;
+                font-size: 12px;
+                margin-left: 40px;
             }
             
             .contact-item strong {
+                font-size: 13px;
+            }
+            
+            .logo-placeholder {
+                font-size: 20px;
+                padding: 8px 12px;
+                min-width: 150px;
+            }
+        }
+        
+        /* Ноутбуки 14-16" 2K (2560x1440) - нормальные размеры */
+        @media screen and (min-width: 2000px) and (max-width: 2600px) and (min-height: 1400px) and (max-height: 1600px) {
+            .split-container {
+                min-height: calc(100vh - 110px);
+                margin-top: 25px;
+            }
+            
+            .left-side {
+                height: 750px;
+            }
+            
+            .right-side {
+                padding: 18px;
+            }
+            
+            .company-name {
+                font-size: 40px;
+            }
+            
+            .company-subtitle {
                 font-size: 18px;
             }
             
             .nav-btn {
-                padding: 16px 32px;
-                font-size: 20px;
-                min-width: 160px;
+                padding: 10px 18px;
+                font-size: 14px;
             }
             
             .lang-btn {
-                padding: 16px 32px;
-                font-size: 20px;
-                min-width: 100px;
-                height: 55px;
-            }
-            
-            .logo-placeholder {
-                font-size: 32px;
-                padding: 15px 25px;
-                min-width: 240px;
-            }
-            
-            .contact-icon-container {
-                width: 36px;
-                height: 36px;
-            }
-            
-            .contact-icon-ring {
-                width: 42px;
-                height: 42px;
-            }
-            
-            .contact-item h3 i {
-                font-size: 22px;
-                width: 28px;
-                height: 28px;
+                padding: 10px 18px;
+                font-size: 14px;
             }
         }
         
         /* ========== ОПТИМИЗАЦИЯ ДЛЯ МОНИТОРОВ ========== */
         
-        /* Для 19-24" мониторов FullHD */
-        @media screen and (min-width: 1921px) and (max-width: 2560px) and (min-height: 1080px) {
+        /* Мониторы 19-24" FullHD (1920x1080) */
+        @media screen and (min-width: 1920px) and (max-width: 2560px) and (min-height: 1080px) and (max-height: 1440px) {
             .split-container {
-                min-height: calc(100vh - 150px);
-                margin-top: 35px;
+                min-height: calc(100vh - 130px);
+                margin-top: 30px;
             }
             
             .left-side {
-                height: 850px;
-                margin: 0 20px 40px 40px;
+                height: 800px;
+            }
+            
+            .company-name {
+                font-size: 44px;
+            }
+            
+            .company-subtitle {
+                font-size: 19px;
+            }
+        }
+        
+        /* Мониторы 27-32" 2K (2560x1440) */
+        @media screen and (min-width: 2560px) and (max-width: 3840px) and (min-height: 1440px) and (max-height: 2160px) {
+            .split-container {
+                min-height: calc(100vh - 150px);
+                margin-top: 40px;
+            }
+            
+            .left-side {
+                height: 950px;
+                margin: 0 25px 50px 50px;
             }
             
             .right-side {
-                margin: 0 40px 40px 20px;
-                padding: 20px;
+                margin: 0 50px 50px 25px;
+                padding: 25px;
             }
             
             .company-name {
@@ -621,119 +549,29 @@
             .company-subtitle {
                 font-size: 22px;
             }
-        }
-        
-        /* Для 27-32" мониторов 2K */
-        @media screen and (min-width: 2561px) and (max-width: 3840px) and (min-height: 1440px) {
-            .split-container {
-                min-height: calc(100vh - 180px);
-                margin-top: 50px;
-            }
-            
-            .left-side {
-                height: 1000px;
-                margin: 0 30px 60px 60px;
-            }
-            
-            .right-side {
-                margin: 0 60px 60px 30px;
-                padding: 25px;
-            }
-            
-            .company-name {
-                font-size: 64px;
-            }
-            
-            .company-subtitle {
-                font-size: 26px;
-            }
             
             .contact-title-left {
-                font-size: 34px;
-            }
-            
-            .contact-title-right .line1 {
                 font-size: 30px;
-            }
-            
-            .contact-title-right .line2 {
-                font-size: 28px;
-            }
-        }
-        
-        /* Для 32"+ мониторов 4K */
-        @media screen and (min-width: 3841px) and (min-height: 2160px) {
-            .split-container {
-                min-height: calc(100vh - 200px);
-                margin-top: 60px;
-            }
-            
-            .left-side {
-                height: 1200px;
-                margin: 0 40px 80px 80px;
-            }
-            
-            .right-side {
-                margin: 0 80px 80px 40px;
-                padding: 35px;
-            }
-            
-            .company-name {
-                font-size: 72px;
-            }
-            
-            .company-subtitle {
-                font-size: 30px;
-            }
-            
-            .contact-title-left {
-                font-size: 40px;
-            }
-            
-            .contact-title-right .line1 {
-                font-size: 36px;
-            }
-            
-            .contact-title-right .line2 {
-                font-size: 34px;
-            }
-            
-            .contact-item h3 {
-                font-size: 20px;
-                padding-left: 65px;
-            }
-            
-            .contact-item p {
-                font-size: 18px;
-                margin-left: 65px;
-            }
-            
-            .contact-item strong {
-                font-size: 20px;
             }
             
             .nav-btn {
-                padding: 18px 36px;
-                font-size: 22px;
-                min-width: 180px;
+                padding: 14px 26px;
+                font-size: 17px;
+                min-width: 130px;
             }
             
             .lang-btn {
-                padding: 18px 36px;
-                font-size: 22px;
-                min-width: 120px;
-                height: 60px;
-            }
-            
-            .logo-placeholder {
-                font-size: 36px;
-                padding: 18px 30px;
-                min-width: 280px;
+                padding: 14px 26px;
+                font-size: 17px;
+                min-width: 85px;
+                height: 48px;
             }
         }
         
-        /* Общие адаптивные стили */
-        @media (max-width: 1024px) {
+        /* Мониторы 32"+ 4K (3840x2160 и выше) - ОСТАВИТЬ КАК ЕСТЬ */
+        
+        /* Общие адаптивные стили (для планшетов и мобильных) */
+        @media (max-width: 1365px) {
             .navbar {
                 padding: 15px 20px;
             }
@@ -1028,6 +866,8 @@
             margin-top: 15px;
         }
     </style>
+
+    
 </head>
 <body>
     <!-- NAVIGATION BAR -->
