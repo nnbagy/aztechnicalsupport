@@ -169,6 +169,7 @@
         .content {
             padding: 40px 30px;
             text-align: center;
+            flex-grow: 1;
         }
         
         .company-name {
@@ -187,13 +188,12 @@
         
         .split-container {
             display: flex;
-            min-height: calc(100vh - 240px); /* Увеличил для футера */
-            margin-top: 12px; /* Уменьшил сверху */
-            margin-bottom: 8px; /* Уменьшил снизу */
+            min-height: calc(100vh - 240px);
+            margin-top: 12px;
+            margin-bottom: 8px;
             flex-grow: 1;
         }
         
-        /* УМЕНЬШИЛ КУБ ДЛЯ 14" */
         .left-side {
             flex: 0.8;
             width: 28%;
@@ -202,9 +202,9 @@
             overflow: hidden;
             border-radius: 12px;
             border: 2px solid rgba(0, 255, 255, 0.3);
-            margin: 0 10px 6px 25px; /* Уменьшил margin-bottom */
+            margin: 0 10px 6px 25px;
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-            height: 280px; /* Уменьшил высоту куба */
+            height: 280px;
         }
         
         #cube-animation {
@@ -223,7 +223,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin: 0 25px 6px 10px; /* Уменьшил margin-bottom */
+            margin: 0 25px 6px 10px;
             height: auto;
         }
         
@@ -231,7 +231,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            margin-bottom: 12px; /* Уменьшил */
+            margin-bottom: 12px;
         }
         
         .contact-title-left {
@@ -263,7 +263,7 @@
         
         .contact-info {
             background-color: rgba(0, 20, 20, 0.7);
-            padding: 10px; /* Уменьшил */
+            padding: 10px;
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 255, 255, 0.1);
@@ -271,8 +271,8 @@
         }
         
         .contact-item {
-            margin-bottom: 10px; /* Уменьшил */
-            padding-bottom: 6px; /* Уменьшил */
+            margin-bottom: 10px;
+            padding-bottom: 6px;
             border-bottom: 1px solid rgba(0, 255, 255, 0.1);
             position: relative;
         }
@@ -280,7 +280,7 @@
         .contact-item h3 {
             color: #00ffff;
             font-size: 13px;
-            margin-bottom: 2px; /* Уменьшил */
+            margin-bottom: 2px;
             display: flex;
             align-items: center;
             gap: 5px;
@@ -406,7 +406,7 @@
         
         .footer {
             background-color: rgba(0, 0, 0, 0.9);
-            padding: 18px 20px 14px; /* Уменьшил padding */
+            padding: 18px 20px 14px;
             text-align: center;
             border-top: 1px solid rgba(0, 255, 255, 0.1);
             margin-top: auto;
@@ -415,17 +415,65 @@
         
         .footer p {
             color: #88ffff;
-            margin-bottom: 6px; /* Уменьшил отступ */
-            line-height: 1.3; /* Уменьшил межстрочный интервал */
+            margin-bottom: 6px;
+            line-height: 1.3;
             font-size: 14px;
         }
         
         .copyright {
             color: #66cccc;
             font-size: 12px;
-            margin-top: 6px; /* Уменьшил отступ */
+            margin-top: 6px;
         }
         
+        /* SECTIONS STYLES - ADDED FOR ALL 6 SECTIONS */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-section {
+            display: none;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .page-section.active {
+            display: flex;
+        }
+        
+        /* HOME SECTION */
+        #home-section .content-box {
+            margin-top: 20px;
+        }
+        
+        /* ABOUT SECTION */
+        #about-section .content {
+            padding: 40px 30px;
+        }
+        
+        /* CATALOG SECTION */
+        #catalog-section .content {
+            padding: 40px 30px;
+        }
+        
+        /* SERVICES SECTION */
+        #services-section .content {
+            padding: 40px 30px;
+        }
+        
+        /* PROJECTS SECTION */
+        #projects-section .content {
+            padding: 40px 30px;
+        }
+        
+        /* CONTACT SECTION - KEEPS SPLIT LAYOUT */
+        #contact-section {
+            display: flex;
+            flex-grow: 1;
+        }
+
         /* УМЕНЬШИЛ КУБ ДЛЯ 15.6" */
         @media screen and (min-width: 1440px) and (min-height: 900px) {
             .navbar {
@@ -469,20 +517,20 @@
             }
             
             .split-container {
-                min-height: calc(100vh - 250px); /* Увеличил */
+                min-height: calc(100vh - 250px);
                 margin-top: 15px;
             }
             
             .left-side {
-                height: 300px; /* Уменьшил с 380px */
+                height: 300px;
                 width: 30%;
-                margin: 0 12px 6px 30px; /* Уменьшил margin-bottom */
+                margin: 0 12px 6px 30px;
             }
             
             .right-side {
                 width: 40%;
                 padding: 18px;
-                margin: 0 30px 6px 12px; /* Уменьшил margin-bottom */
+                margin: 0 30px 6px 12px;
             }
             
             .contact-title-left {
@@ -545,20 +593,20 @@
             }
             
             .split-container {
-                min-height: calc(100vh - 260px); /* Увеличил */
+                min-height: calc(100vh - 260px);
                 margin-top: 20px;
             }
             
             .left-side {
-                height: 320px; /* Уменьшил с 400px */
+                height: 320px;
                 width: 32%;
-                margin: 0 15px 6px 35px; /* Уменьшил margin-bottom */
+                margin: 0 15px 6px 35px;
             }
             
             .right-side {
                 width: 38%;
                 padding: 20px;
-                margin: 0 35px 6px 15px; /* Уменьшил margin-bottom */
+                margin: 0 35px 6px 15px;
             }
             
             .contact-title-left {
@@ -629,17 +677,17 @@
             }
             
             .left-side {
-                height: 280px; /* Уменьшил с 320px */
+                height: 280px;
                 flex: 1.2;
                 width: 55%;
-                margin: 0 10px 6px 20px; /* Уменьшил margin-bottom */
+                margin: 0 10px 6px 20px;
             }
             
             .right-side {
                 flex: 0.9;
                 width: 45%;
                 padding: 20px;
-                margin: 0 20px 6px 10px; /* Уменьшил margin-bottom */
+                margin: 0 20px 6px 10px;
             }
             
             .contact-icon-container {
@@ -667,7 +715,7 @@
             }
             
             .split-container {
-                min-height: calc(100vh - 210px); /* Увеличил */
+                min-height: calc(100vh - 210px);
                 margin-top: 15px;
             }
         }
@@ -713,17 +761,17 @@
             .split-container {
                 flex-direction: column;
                 min-height: auto;
-                margin-top: 12px; /* Уменьшил */
+                margin-top: 12px;
             }
             
             .left-side,
             .right-side {
                 width: 100%;
-                margin: 0 20px 6px 20px; /* Уменьшил margin-bottom */
+                margin: 0 20px 6px 20px;
             }
             
             .left-side {
-                height: 240px; /* Уменьшил с 280px */
+                height: 240px;
                 flex: none;
                 width: 100%;
             }
@@ -737,9 +785,9 @@
             
             .contact-header {
                 flex-direction: column;
-                gap: 12px; /* Уменьшил */
+                gap: 12px;
                 text-align: center;
-                margin-bottom: 15px; /* Уменьшил */
+                margin-bottom: 15px;
             }
             
             .contact-title-left,
@@ -782,11 +830,11 @@
             }
             
             .left-side {
-                margin: 0 15px 6px 15px; /* Уменьшил margin-bottom */
+                margin: 0 15px 6px 15px;
             }
             
             .right-side {
-                margin: 0 15px 6px 15px; /* Уменьшил margin-bottom */
+                margin: 0 15px 6px 15px;
             }
         }
         
@@ -829,13 +877,13 @@
             }
             
             .left-side {
-                height: 200px; /* Уменьшил с 240px */
-                margin: 0 10px 5px 10px; /* Уменьшил margin-bottom */
+                height: 200px;
+                margin: 0 10px 5px 10px;
             }
             
             .right-side {
                 padding: 15px;
-                margin: 0 10px 5px 10px; /* Уменьшил margin-bottom */
+                margin: 0 10px 5px 10px;
             }
             
             .contact-info {
@@ -887,12 +935,12 @@
         
         <!-- CENTER - MAIN BUTTONS -->
         <div class="nav-center">
-            <button class="nav-btn">ANA SƏHİFƏ</button>
-            <button class="nav-btn">HAQQIMIZDA</button>
-            <button class="nav-btn">KATALOQ</button>
-            <button class="nav-btn">XİDMƏTLƏR</button>
-            <button class="nav-btn">LAYİHƏLƏR</button>
-            <button class="nav-btn active">ƏLAQƏ</button>
+            <button class="nav-btn" data-section="home">ANA SƏHİFƏ</button>
+            <button class="nav-btn" data-section="about">HAQQIMIZDA</button>
+            <button class="nav-btn" data-section="catalog">KATALOQ</button>
+            <button class="nav-btn" data-section="services">XİDMƏTLƏR</button>
+            <button class="nav-btn" data-section="projects">LAYİHƏLƏR</button>
+            <button class="nav-btn active" data-section="contact">ƏLAQƏ</button>
         </div>
         
         <!-- RIGHT - LANGUAGE BUTTONS (HORIZONTAL) -->
@@ -903,89 +951,196 @@
         </div>
     </nav>
     
-<!-- SPLIT LAYOUT (Now directly after navbar) -->
-<div class="split-container">
-    <!-- LEFT SIDE - CUBE ANIMATION (Maximum size) -->
-    <div class="left-side">
-        <div id="cube-animation"></div>
-    </div>
-    
-    <!-- RIGHT SIDE - CONTACT INFORMATION (Minimized) -->
-    <div class="right-side">
-        <!-- CONTACT HEADER -->
-        <div class="contact-header">
-            <div class="contact-title-left" id="contact-title">Bizim ilə Əlaqə</div>
+    <!-- MAIN CONTENT AREA -->
+    <div class="main-content">
+        <!-- HOME SECTION -->
+        <div class="page-section" id="home-section">
+            <div class="content">
+                <h1 class="company-name">AZHYDRO</h1>
+                <p class="company-subtitle">2020-ci ildən fəaliyyətdədir</p>
+                
+                <div class="content-box">
+                    <h2>Şirkətimiz Haqqında</h2>
+                    <p>
+                        AZHYDRO şirkəti 2020-ci ildən etibarən su təchizatı, kanalizasiya sistemlərinin quraşdırılması və texniki xidməti sahəsində fəaliyyət göstərir. 
+                        Yüksək keyfiyyətli iş və müştəri məmnuniyyəti bizim əsas prinsipimizdir.
+                    </p>
+                    <p>
+                        Peşəkar komandamız və müasir texnologiyalar sayəsində ən mürəkkəb layihələri də uğurla həyata keçiririk.
+                    </p>
+                </div>
+            </div>
         </div>
         
-        <!-- CONTACT INFORMATION (Minimized box) -->
-        <div class="contact-info">
-            <div class="contact-item address-icon">
-                <div class="contact-icon-container">
-                    <div class="contact-icon-ring"></div>
-                    <i class="fas fa-map-marker-alt"></i>
+        <!-- ABOUT SECTION -->
+        <div class="page-section" id="about-section">
+            <div class="content">
+                <h1 class="company-name">HAQQIMIZDA</h1>
+                <p class="company-subtitle">Şirkətimizin tarixi və missiyası</p>
+                
+                <div class="content-box">
+                    <h2>Biz Kimik?</h2>
+                    <p>
+                        AZHYDRO şirkəti 2020-ci ildə qurulmuş və o vaxtdan bəri su təchizatı və kanalizasiya sistemləri sahəsində lider olmuşdur.
+                    </p>
+                    <p>
+                        Missiyamız yüksək keyfiyyətli texniki xidmət və davamlı həllər təqdim etməkdir. Komandamız peşəkar mühəndislər və texniklərdən ibarətdir.
+                    </p>
+                    <p>
+                        Hər bir layihəyə fərdi yanaşır və müştərilərimizin ehtiyaclarına uyğun optimal həllər təklif edirik.
+                    </p>
                 </div>
-                <h3><span class="address-label">Ünvan</span></h3>
-                <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
-            </div>
-            
-            <div class="contact-item phone-icon">
-                <div class="contact-icon-container">
-                    <div class="contact-icon-ring"></div>
-                    <i class="fas fa-phone"></i>
-                </div>
-                <h3><span class="phone-label">Telefon</span></h3>
-                <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
-            </div>
-            
-            <div class="contact-item email-icon">
-                <div class="contact-icon-container">
-                    <div class="contact-icon-ring"></div>
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <h3><span class="email-label">Email</span></h3>
-                <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
-            </div>
-            
-            <div class="contact-item hours-icon">
-                <div class="contact-icon-container">
-                    <div class="contact-icon-ring"></div>
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h3><span class="hours-label">İş Saatları</span></h3>
-                <p><strong class="hours-text">Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
             </div>
         </div>
-    </div>
-</div>
-
-    <!-- MAIN CONTENT (for other pages) -->
-    <div class="content" id="home-content" style="display: none;">
-        <h1 class="company-name">AZHYDRO</h1>
-        <p class="company-subtitle">2020-ci ildən fəaliyyətdədir</p>
         
-        <div class="content-box">
-            <h2>Şirkətimiz Haqqında</h2>
-            <p>
-                AZHYDRO şirkəti 2020-ci ildən etibarən su təchizatı, kanalizasiya системlərinin quraşdırılması və texniki xidməti sahəsində fəaliyyət göstərir. 
-                Yüksək keyfiyyətli iş və müştəri məmnuniyyəti bizim əsas prinsipimizdir.
-            </p>
-            <p>
-                Peşəkar komandamız и müasir texnologiyalar sayəsində ən mürəkkəб layihələri də uğurla həyata keçiririk.
-            </p>
+        <!-- CATALOG SECTION -->
+        <div class="page-section" id="catalog-section">
+            <div class="content">
+                <h1 class="company-name">KATALOQ</h1>
+                <p class="company-subtitle">Məhsul və avadanlıqlarımız</p>
+                
+                <div class="content-box">
+                    <h2>Məhsul Kataloqu</h2>
+                    <p>
+                        Geniş çeşiddə su təchizatı və kanalizasiya avadanlıqları təqdim edirik:
+                    </p>
+                    <p>
+                        • Pompalar və nasos sistemləri<br>
+                        • Boru və fitinqlər (PVC, PE, çuqun, polad)<br>
+                        • Su təmizləmə sistemləri və filtrlər<br>
+                        • Avtomatika və idarəetmə sistemləri<br>
+                        • Su sayğacları və ölçmə cihazları<br>
+                        • Kanalizasiya pompa stansiyaları<br>
+                        • Yanğınsöndürmə sistemləri üçün avadanlıqlar
+                    </p>
+                    <p>
+                        Bütün məhsullarımız beynəlxalq standartlara uyğundur və zəmanət ilə təqdim olunur.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SERVICES SECTION -->
+        <div class="page-section" id="services-section">
+            <div class="content">
+                <h1 class="company-name">XİDMƏTLƏR</h1>
+                <p class="company-subtitle">Təqdim etdiyimiz xidmətlər</p>
+                
+                <div class="content-box">
+                    <h2>Xidmətlərimiz</h2>
+                    <p>
+                        Şirkətimiz aşağıdakı xidmətləri təqdim edir:
+                    </p>
+                    <p>
+                        • Su təchizatı sistemlərinin layihələndirilməsi və quraşdırılması<br>
+                        • Kanalizasiya sistemlərinin layihələndirilməsi və quraşdırılması<br>
+                        • Texniki xidmət, təmirlər və profilaktik baxış<br>
+                        • Məişət və sənaye su sistemləri<br>
+                        • Sistemlərin monitorinqi və idarə edilməsi<br>
+                        • Təcili xidmət (24/7)<br>
+                        • Konsultasiya və layihə məsləhətləri
+                    </p>
+                    <p>
+                        Bütün işlər peşəkar komandamız tərəfindən vaxtında və yüksək keyfiyyətlə həyata keçirilir.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PROJECTS SECTION -->
+        <div class="page-section" id="projects-section">
+            <div class="content">
+                <h1 class="company-name">LAYİHƏLƏR</h1>
+                <p class="company-subtitle">Həyata keçirdiyimiz layihələr</p>
+                
+                <div class="content-box">
+                    <h2>Uğurlu Layihələrimiz</h2>
+                    <p>
+                        Uğurla həyata keçirdiyimiz bəzi layihələr:
+                    </p>
+                    <p>
+                        • Bakı şəhəri yaşayış komplekslərinin su təchizatı sistemləri<br>
+                        • Sənaye müəssisələrinin kanalizasiya sistemləri<br>
+                        • Kənd təsərrüfatı su təchizatı layihələri<br>
+                        • Binaların drenaj sistemləri<br>
+                        • Su təmizləmə stansiyalarının quraşdırılması<br>
+                        • Ticarət mərkəzlərinin su sistemləri<br>
+                        • Xəstəxana və tibb müəssisələrinin su təchizatı
+                    </p>
+                    <p>
+                        Hər bir layihə müştəri tələblərinə tam uyğun olaraq həyata keçirilmişdir.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CONTACT SECTION - KEEPS SPLIT LAYOUT -->
+        <div class="page-section active" id="contact-section">
+            <div class="split-container">
+                <!-- LEFT SIDE - CUBE ANIMATION -->
+                <div class="left-side">
+                    <div id="cube-animation"></div>
+                </div>
+                
+                <!-- RIGHT SIDE - CONTACT INFORMATION -->
+                <div class="right-side">
+                    <div class="contact-header">
+                        <div class="contact-title-left" id="contact-title">Bizim ilə Əlaqə</div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item address-icon">
+                            <div class="contact-icon-container">
+                                <div class="contact-icon-ring"></div>
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3><span class="address-label">Ünvan</span></h3>
+                            <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
+                        </div>
+                        
+                        <div class="contact-item phone-icon">
+                            <div class="contact-icon-container">
+                                <div class="contact-icon-ring"></div>
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3><span class="phone-label">Telefon</span></h3>
+                            <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
+                        </div>
+                        
+                        <div class="contact-item email-icon">
+                            <div class="contact-icon-container">
+                                <div class="contact-icon-ring"></div>
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3><span class="email-label">Email</span></h3>
+                            <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
+                        </div>
+                        
+                        <div class="contact-item hours-icon">
+                            <div class="contact-icon-container">
+                                <div class="contact-icon-ring"></div>
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3><span class="hours-label">İş Saatları</span></h3>
+                            <p><strong class="hours-text">Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     
-    <!-- FOOTER - ТЕПЕРЬ ВСЕ ТРИ СТРОКИ ДОЛЖНЫ БЫТЬ ВИДНЫ -->
+    <!-- FOOTER - NOW VISIBLE ON ALL 6 SECTIONS -->
     <div class="footer">
         <p>AZHYDRO - 2020-ci ildən fəaliyyətdədir</p>
         <p>Bütün hüquqlar qorunur © 2025</p>
         <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
 
-    <!-- THREE.JS CUBE ANIMATION - OPTIMIZED FOR 14" -->
+    <!-- THREE.JS CUBE ANIMATION -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // OPTIMIZED CUBE CODE FOR 14"
+        // CUBE ANIMATION CODE - SAME AS YOUR ORIGINAL
         let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
         let mouseWorld = new THREE.Vector3();
         let raycaster = new THREE.Raycaster();
@@ -999,17 +1154,17 @@
             scene = new THREE.Scene();
 
             camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 3.2; // Немного ближе для меньшего куба
+            camera.position.z = 3.2;
 
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
             cubeContainer.appendChild(renderer.domElement);
 
-            const count = 20000; // Еще меньше частиц
+            const count = 20000;
             const positions = new Float32Array(count * 3);
 
             for (let i = 0; i < count; i++) {
-                positions[i*3] = (Math.random() - 0.5) * 1.3; // Меньший разброс
+                positions[i*3] = (Math.random() - 0.5) * 1.3;
                 positions[i*3+1] = (Math.random() - 0.5) * 1.3;
                 positions[i*3+2] = (Math.random() - 0.5) * 1.3;
             }
@@ -1031,9 +1186,9 @@
                         vec3 pos = position;
 
                         float dist = distance(pos, uMouse);
-                        pos += normalize(pos - uMouse) * (0.08 / dist); // Меньший эффект мыши
+                        pos += normalize(pos - uMouse) * (0.08 / dist);
 
-                        gl_PointSize = 0.6; // Меньшие точки
+                        gl_PointSize = 0.6;
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     }
                 `,
@@ -1084,12 +1239,13 @@
         }
 
         function animate() {
-            uniforms.uTime.value += 0.005; // Медленнее анимация
+            uniforms.uTime.value += 0.005;
             sphere.rotation.y += 0.001;
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
         }
         
+        // LANGUAGE TRANSLATIONS - SAME AS YOUR ORIGINAL
         const translations = {
             aze: {
                 contactTitle: "Bizim ilə Əlaqə",
@@ -1144,29 +1300,37 @@
             document.querySelector('.hours-text').textContent = t.hoursText;
         }
         
+        // SECTION SWITCHING - UPDATED
         document.addEventListener('DOMContentLoaded', function() {
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            navButtons[5].classList.add('active');
-            document.getElementById('aze-btn').classList.add('active');
+            // Hide all sections except contact initially
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('contact-section').classList.add('active');
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
+                    // Remove active class from all buttons
                     navButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    const buttonText = this.textContent.trim();
-                    if (buttonText === 'ƏLAQƏ') {
-                        document.querySelector('.split-container').style.display = 'flex';
-                        document.getElementById('home-content').style.display = 'none';
-                    } else {
-                        document.querySelector('.split-container').style.display = 'none';
-                        document.getElementById('home-content').style.display = 'block';
-                    }
+                    // Get the section to show
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    // Hide all sections
+                    document.querySelectorAll('.page-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Show the selected section
+                    document.getElementById(sectionId + '-section').classList.add('active');
                 });
             });
             
+            // Language switching
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const lang = this.textContent.trim().toLowerCase();
