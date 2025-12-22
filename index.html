@@ -169,7 +169,6 @@
         .content {
             padding: 40px 30px;
             text-align: center;
-            flex-grow: 1;
         }
         
         .company-name {
@@ -186,6 +185,7 @@
             margin-bottom: 30px;
         }
         
+        /* CONTACT SECTION SPECIFIC STYLES (Cube + Contact Info) */
         .split-container {
             display: flex;
             min-height: calc(100vh - 240px);
@@ -426,13 +426,7 @@
             margin-top: 6px;
         }
         
-        /* SECTIONS STYLES - ADDED FOR ALL 6 SECTIONS */
-        .main-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
+        /* PAGE SECTIONS */
         .page-section {
             display: none;
             flex-direction: column;
@@ -443,37 +437,6 @@
             display: flex;
         }
         
-        /* HOME SECTION */
-        #home-section .content-box {
-            margin-top: 20px;
-        }
-        
-        /* ABOUT SECTION */
-        #about-section .content {
-            padding: 40px 30px;
-        }
-        
-        /* CATALOG SECTION */
-        #catalog-section .content {
-            padding: 40px 30px;
-        }
-        
-        /* SERVICES SECTION */
-        #services-section .content {
-            padding: 40px 30px;
-        }
-        
-        /* PROJECTS SECTION */
-        #projects-section .content {
-            padding: 40px 30px;
-        }
-        
-        /* CONTACT SECTION - KEEPS SPLIT LAYOUT */
-        #contact-section {
-            display: flex;
-            flex-grow: 1;
-        }
-
         /* УМЕНЬШИЛ КУБ ДЛЯ 15.6" */
         @media screen and (min-width: 1440px) and (min-height: 900px) {
             .navbar {
@@ -953,7 +916,7 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION -->
+        <!-- HOME SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="home-section">
             <div class="content">
                 <h1 class="company-name">AZHYDRO</h1>
@@ -972,7 +935,7 @@
             </div>
         </div>
         
-        <!-- ABOUT SECTION -->
+        <!-- ABOUT SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="about-section">
             <div class="content">
                 <h1 class="company-name">HAQQIMIZDA</h1>
@@ -984,16 +947,13 @@
                         AZHYDRO şirkəti 2020-ci ildə qurulmuş və o vaxtdan bəri su təchizatı və kanalizasiya sistemləri sahəsində lider olmuşdur.
                     </p>
                     <p>
-                        Missiyamız yüksək keyfiyyətli texniki xidmət və davamlı həllər təqdim etməkdir. Komandamız peşəkar mühəndislər və texniklərdən ibarətdir.
-                    </p>
-                    <p>
-                        Hər bir layihəyə fərdi yanaşır və müştərilərimizin ehtiyaclarına uyğun optimal həllər təklif edirik.
+                        Missiyamız yüksək keyfiyyətli texniki xidmət və davamlı həllər təqdim etməkdir.
                     </p>
                 </div>
             </div>
         </div>
         
-        <!-- CATALOG SECTION -->
+        <!-- CATALOG SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="catalog-section">
             <div class="content">
                 <h1 class="company-name">KATALOQ</h1>
@@ -1002,25 +962,13 @@
                 <div class="content-box">
                     <h2>Məhsul Kataloqu</h2>
                     <p>
-                        Geniş çeşiddə su təchizatı və kanalizasiya avadanlıqları təqdim edirik:
-                    </p>
-                    <p>
-                        • Pompalar və nasos sistemləri<br>
-                        • Boru və fitinqlər (PVC, PE, çuqun, polad)<br>
-                        • Su təmizləmə sistemləri və filtrlər<br>
-                        • Avtomatika və idarəetmə sistemləri<br>
-                        • Su sayğacları və ölçmə cihazları<br>
-                        • Kanalizasiya pompa stansiyaları<br>
-                        • Yanğınsöndürmə sistemləri üçün avadanlıqlar
-                    </p>
-                    <p>
-                        Bütün məhsullarımız beynəlxalq standartlara uyğundur və zəmanət ilə təqdim olunur.
+                        Geniş çeşiddə su təchizatı və kanalizasiya avadanlıqları təqdim edirik.
                     </p>
                 </div>
             </div>
         </div>
         
-        <!-- SERVICES SECTION -->
+        <!-- SERVICES SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="services-section">
             <div class="content">
                 <h1 class="company-name">XİDMƏTLƏR</h1>
@@ -1029,60 +977,36 @@
                 <div class="content-box">
                     <h2>Xidmətlərimiz</h2>
                     <p>
-                        Şirkətimiz aşağıdakı xidmətləri təqdim edir:
-                    </p>
-                    <p>
-                        • Su təchizatı sistemlərinin layihələndirilməsi və quraşdırılması<br>
-                        • Kanalizasiya sistemlərinin layihələndirilməsi və quraşdırılması<br>
-                        • Texniki xidmət, təmirlər və profilaktik baxış<br>
-                        • Məişət və sənaye su sistemləri<br>
-                        • Sistemlərin monitorinqi və idarə edilməsi<br>
-                        • Təcili xidmət (24/7)<br>
-                        • Konsultasiya və layihə məsləhətləri
-                    </p>
-                    <p>
-                        Bütün işlər peşəkar komandamız tərəfindən vaxtında və yüksək keyfiyyətlə həyata keçirilir.
+                        Şirkətimiz aşağıdakı xidmətləri təqdim edir.
                     </p>
                 </div>
             </div>
         </div>
         
-        <!-- PROJECTS SECTION -->
+        <!-- PROJECTS SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="projects-section">
             <div class="content">
                 <h1 class="company-name">LAYİHƏLƏR</h1>
                 <p class="company-subtitle">Həyata keçirdiyimiz layihələr</p>
                 
                 <div class="content-box">
-                    <h2>Uğurlu Layihələrimiz</h2>
+                    <h2>Layihələrimiz</h2>
                     <p>
-                        Uğurla həyata keçirdiyimiz bəzi layihələr:
-                    </p>
-                    <p>
-                        • Bakı şəhəri yaşayış komplekslərinin su təchizatı sistemləri<br>
-                        • Sənaye müəssisələrinin kanalizasiya sistemləri<br>
-                        • Kənd təsərrüfatı su təchizatı layihələri<br>
-                        • Binaların drenaj sistemləri<br>
-                        • Su təmizləmə stansiyalarının quraşdırılması<br>
-                        • Ticarət mərkəzlərinin su sistemləri<br>
-                        • Xəstəxana və tibb müəssisələrinin su təchizatı
-                    </p>
-                    <p>
-                        Hər bir layihə müştəri tələblərinə tam uyğun olaraq həyata keçirilmişdir.
+                        Uğurla həyata keçirdiyimiz bəzi layihələr.
                     </p>
                 </div>
             </div>
         </div>
         
-        <!-- CONTACT SECTION - KEEPS SPLIT LAYOUT -->
+        <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO - ONLY HERE) -->
         <div class="page-section active" id="contact-section">
             <div class="split-container">
-                <!-- LEFT SIDE - CUBE ANIMATION -->
+                <!-- LEFT SIDE - CUBE ANIMATION (ONLY IN CONTACT SECTION) -->
                 <div class="left-side">
                     <div id="cube-animation"></div>
                 </div>
                 
-                <!-- RIGHT SIDE - CONTACT INFORMATION -->
+                <!-- RIGHT SIDE - CONTACT INFORMATION (ONLY IN CONTACT SECTION) -->
                 <div class="right-side">
                     <div class="contact-header">
                         <div class="contact-title-left" id="contact-title">Bizim ilə Əlaqə</div>
@@ -1130,17 +1054,17 @@
         </div>
     </div>
     
-    <!-- FOOTER - NOW VISIBLE ON ALL 6 SECTIONS -->
+    <!-- FOOTER - VISIBLE ON ALL 6 SECTIONS -->
     <div class="footer">
         <p>AZHYDRO - 2020-ci ildən fəaliyyətdədir</p>
         <p>Bütün hüquqlar qorunur © 2025</p>
         <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
 
-    <!-- THREE.JS CUBE ANIMATION -->
+    <!-- THREE.JS CUBE ANIMATION (ONLY FOR CONTACT SECTION) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // CUBE ANIMATION CODE - SAME AS YOUR ORIGINAL
+        // CUBE ANIMATION CODE - ONLY FOR CONTACT SECTION
         let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
         let mouseWorld = new THREE.Vector3();
         let raycaster = new THREE.Raycaster();
@@ -1150,6 +1074,7 @@
 
         function init() {
             const cubeContainer = document.getElementById('cube-animation');
+            if (!cubeContainer) return;
             
             scene = new THREE.Scene();
 
@@ -1232,6 +1157,8 @@
             
             window.addEventListener('resize', function() {
                 const cubeContainer = document.getElementById('cube-animation');
+                if (!cubeContainer) return;
+                
                 camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
@@ -1239,13 +1166,15 @@
         }
 
         function animate() {
+            if (!scene || !renderer || !camera) return;
+            
             uniforms.uTime.value += 0.005;
-            sphere.rotation.y += 0.001;
+            if (sphere) sphere.rotation.y += 0.001;
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
         }
         
-        // LANGUAGE TRANSLATIONS - SAME AS YOUR ORIGINAL
+        // LANGUAGE TRANSLATIONS
         const translations = {
             aze: {
                 contactTitle: "Bizim ilə Əlaqə",
@@ -1300,7 +1229,7 @@
             document.querySelector('.hours-text').textContent = t.hoursText;
         }
         
-        // SECTION SWITCHING - UPDATED
+        // SECTION SWITCHING
         document.addEventListener('DOMContentLoaded', function() {
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
