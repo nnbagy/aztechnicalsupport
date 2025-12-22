@@ -430,13 +430,33 @@
         .page-section {
             display: none;
             flex-direction: column;
-            flex-grow: 1;
+            flex-grow: 1; /* YENİ: Bu footer'ı aşağıda tutmaq üçün */
         }
         
         .page-section.active {
             display: flex;
         }
         
+        /* MAIN CONTENT - YENİ: Bu footer'ın aşağıda qalması üçün */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* YENİ: Bu iki səhifə üçün xüsusi CSS əlavə etdim */
+        #home-section .content,
+        #about-section .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #home-section .content-box,
+        #about-section .content-box {
+            flex-grow: 1;
+        }
+
         /* УМЕНЬШИЛ КУБ ДЛЯ 15.6" */
         @media screen and (min-width: 1440px) and (min-height: 900px) {
             .navbar {
