@@ -404,65 +404,17 @@
             font-size: 14px;
         }
         
-        .footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 18px 20px 14px;
-            text-align: center;
-            border-top: 1px solid rgba(0, 255, 255, 0.1);
-            margin-top: auto;
-            flex-shrink: 0;
-        }
-        
-        .footer p {
-            color: #88ffff;
-            margin-bottom: 6px;
-            line-height: 1.3;
-            font-size: 14px;
-        }
-        
-        .copyright {
-            color: #66cccc;
-            font-size: 12px;
-            margin-top: 6px;
-        }
-        
         /* PAGE SECTIONS */
         .page-section {
             display: none;
             flex-direction: column;
-            flex-grow: 1; /* YENİ: Bu footer'ı aşağıda tutmaq üçün */
+            flex-grow: 1;
         }
         
         .page-section.active {
             display: flex;
         }
         
-        /* MAIN CONTENT - YENİ: Bu footer'ın aşağıda qalması üçün */
-        .main-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* YENİ: Bu iki səhifə üçün xüsusi CSS əlavə etdim */
-        #home-section .content,
-        #about-section .content,
-        #catalog-section .content,
-        #services-section .content,
-        #projects-section .content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        #home-section .content-box,
-        #about-section .content-box,
-        #catalog-section .content-box,
-        #services-section .content-box,
-        #projects-section .content-box {
-            flex-grow: 1;
-        }
-
         /* УМЕНЬШИЛ КУБ ДЛЯ 15.6" */
         @media screen and (min-width: 1440px) and (min-height: 900px) {
             .navbar {
@@ -532,10 +484,6 @@
             
             .contact-title-right .line2 {
                 font-size: 20px;
-            }
-            
-            .footer {
-                padding: 20px 20px 16px;
             }
         }
         
@@ -626,10 +574,6 @@
             
             .contact-item strong {
                 font-size: 14px;
-            }
-            
-            .footer {
-                padding: 22px 20px 18px;
             }
         }
         
@@ -942,7 +886,7 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION -->
+        <!-- HOME SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="home-section">
             <div class="content">
                 <h1 class="company-name">AZHYDRO</h1>
@@ -961,7 +905,7 @@
             </div>
         </div>
         
-        <!-- ABOUT SECTION -->
+        <!-- ABOUT SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="about-section">
             <div class="content">
                 <h1 class="company-name">HAQQIMIZDA</h1>
@@ -979,7 +923,7 @@
             </div>
         </div>
         
-        <!-- CATALOG SECTION -->
+        <!-- CATALOG SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="catalog-section">
             <div class="content">
                 <h1 class="company-name">KATALOQ</h1>
@@ -994,7 +938,7 @@
             </div>
         </div>
         
-        <!-- SERVICES SECTION -->
+        <!-- SERVICES SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="services-section">
             <div class="content">
                 <h1 class="company-name">XİDMƏTLƏR</h1>
@@ -1009,7 +953,7 @@
             </div>
         </div>
         
-        <!-- PROJECTS SECTION -->
+        <!-- PROJECTS SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="projects-section">
             <div class="content">
                 <h1 class="company-name">LAYİHƏLƏR</h1>
@@ -1078,13 +1022,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- FOOTER - VISIBLE ON ALL 6 SECTIONS -->
-    <div class="footer">
-        <p>AZHYDRO - 2020-ci ildən fəaliyyətdədir</p>
-        <p>Bütün hüquqlar qorunur © 2025</p>
-        <p class="copyright">Su təchizatı və kanalizasiya sistemlərinin qurulması və texniki xidməti</p>
     </div>
 
     <!-- THREE.JS CUBE ANIMATION (ONLY FOR CONTACT SECTION) -->
