@@ -194,18 +194,19 @@
             flex-grow: 1;
         }
         
-        .left-side {
-            flex: 1;
-            width: 70%;
-            background: #000;
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            margin: 0 10px 6px 25px;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-            height: 600px;
-        }
+.left-side {
+    flex: 1;
+    width: 70%;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    margin: 0 10px 6px 25px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    height: 600px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* ƏLAVƏ EDİN */
+}
         
         #cube-animation {
             position: absolute;
@@ -216,16 +217,17 @@
             display: block;
         }
         
-        .right-side {
-            flex: 1;
-            width: 58%;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            margin: 0 25px 6px 10px;
-            height: auto;
-        }
+.right-side {
+    flex: 1;
+    width: 26%; /* 58% → 26% DÜZƏLDİN */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 25px 6px 10px;
+    height: auto;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* ƏLAVƏ EDİN */
+}
         
         .contact-header {
             display: flex;
@@ -262,14 +264,15 @@
             margin-top: 3px;
         }
         
-        .contact-info {
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 255, 255, 0.15);
-            min-height: auto;
-        }
+.contact-info {
+    background-color: rgba(0, 20, 20, 0.7);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    min-height: auto;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* ƏLAVƏ EDİN */
+}
         
         .contact-item {
             margin-bottom: 18px;
@@ -1023,7 +1026,7 @@
             scene = new THREE.Scene();
 
             camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 3.0; // Moved camera closer for larger cube
+            camera.position.z = 3.5; // 3.0 → 3.5
 
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
@@ -1034,10 +1037,11 @@
             const positions = new Float32Array(count * 3);
 
             // MUCH Larger cube dimensions
+// Xətt 900-902: Cube ölçüsünü artırın
 for (let i = 0; i < count; i++) {
-    positions[i*3] = (Math.random() - 0.5) * 2.0; // 2.0 → 2.5
-    positions[i*3+1] = (Math.random() - 0.5) * 2.0; // 2.0 → 2.5
-    positions[i*3+2] = (Math.random() - 0.5) * 2.0; // 2.0 → 2.5
+    positions[i*3] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
+    positions[i*3+1] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
+    positions[i*3+2] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
 }
 
             const particleGeometry = new THREE.BufferGeometry();
@@ -1059,7 +1063,7 @@ for (let i = 0; i < count; i++) {
                         float dist = distance(pos, uMouse);
                         pos += normalize(pos - uMouse) * (0.15 / dist); // Increased from 0.12
 
-                        gl_PointSize = 1.0; // Increased from 0.8
+                        gl_PointSize = 1.2; // 1.0 → 1.2
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     }
                 `,
