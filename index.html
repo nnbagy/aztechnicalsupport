@@ -1012,9 +1012,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // CUBE ANIMATION CODE - ONLY FOR CONTACT SECTION
-        let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
-        let mouseWorld = new THREE.Vector3();
-        let raycaster = new THREE.Raycaster();
+        let scene, camera, renderer, sphere;
+        let mouseX = 0, mouseY = 0;
+        let targetRotationX = 0, targetRotationY = 0;
+        let currentRotationX = 0, currentRotationY = 0;
+        let isHovering = false;
+        let rotationSpeed = 0.01;
+        let autoRotationSpeed = 0.002;
 
         init();
         animate();
@@ -1026,45 +1030,31 @@
             scene = new THREE.Scene();
 
             camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 3.5; // 3.0 → 3.5
+            camera.position.z = 3.5;
 
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
             cubeContainer.appendChild(renderer.domElement);
 
-            // Increase particle count for larger cube
-            const count = 40000; // Increased from 30000
+            // Particle count and positions
+            const count = 40000;
             const positions = new Float32Array(count * 3);
 
-            // MUCH Larger cube dimensions
-// Xətt 900-902: Cube ölçüsünü artırın
-for (let i = 0; i < count; i++) {
-    positions[i*3] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
-    positions[i*3+1] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
-    positions[i*3+2] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
-}
+            // Cube dimensions
+            for (let i = 0; i < count; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+1] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+2] = (Math.random() - 0.5) * 2.5;
+            }
 
             const particleGeometry = new THREE.BufferGeometry();
             particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-            uniforms = {
-                uTime: { value: 0.0 },
-                uMouse: { value: new THREE.Vector3(0,0,0) }
-            };
-
             const material = new THREE.ShaderMaterial({
-                uniforms,
                 vertexShader: `
-                    uniform vec3 uMouse;
-
                     void main() {
-                        vec3 pos = position;
-
-                        float dist = distance(pos, uMouse);
-                        pos += normalize(pos - uMouse) * (0.15 / dist); // Increased from 0.12
-
-                        gl_PointSize = 1.2; // 1.0 → 1.2
-                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                        gl_PointSize = 1.2;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
                     }
                 `,
                 fragmentShader: `
@@ -1078,33 +1068,30 @@ for (let i = 0; i < count; i++) {
             sphere = new THREE.Points(particleGeometry, material);
             scene.add(sphere);
 
-            cubeContainer.addEventListener("pointermove", (e) => {
+            // Mouse move event
+            cubeContainer.addEventListener("mousemove", (e) => {
                 const rect = cubeContainer.getBoundingClientRect();
                 
-                const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-                const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                // Calculate mouse position normalized to [-1, 1]
+                mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                mouseY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
                 
-                mouse.set(x, y, 0.5);
+                // Set target rotation based on mouse position
+                targetRotationY = mouseX * Math.PI;
+                targetRotationX = mouseY * Math.PI;
                 
-                raycaster.setFromCamera(mouse, camera);
-                
-                const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-                const intersectionPoint = new THREE.Vector3();
-                
-                raycaster.ray.intersectPlane(planeZ, intersectionPoint);
-                
-                const worldMouse = intersectionPoint.clone();
-                
-                const inverseMatrix = new THREE.Matrix4().copy(sphere.matrixWorld).invert();
-                worldMouse.applyMatrix4(inverseMatrix);
-                
-                uniforms.uMouse.value.copy(worldMouse);
+                isHovering = true;
             });
             
-            cubeContainer.addEventListener("pointerleave", () => {
-                uniforms.uMouse.value.set(1000, 1000, 1000);
+            // Mouse leave event
+            cubeContainer.addEventListener("mouseleave", () => {
+                isHovering = false;
+                // Reset target rotation to 0 when mouse leaves
+                targetRotationX = 0;
+                targetRotationY = 0;
             });
             
+            // Window resize event
             window.addEventListener('resize', function() {
                 const cubeContainer = document.getElementById('cube-animation');
                 if (!cubeContainer) return;
@@ -1118,13 +1105,27 @@ for (let i = 0; i < count; i++) {
         function animate() {
             if (!scene || !renderer || !camera) return;
             
-            uniforms.uTime.value += 0.005;
-            // ONLY Y rotation (360 degree rotation)
-            if (sphere) {
-                sphere.rotation.y += 0.001; // Only Y rotation
-            }
-            renderer.render(scene, camera);
             requestAnimationFrame(animate);
+            
+            // Smooth interpolation to target rotation
+            if (isHovering) {
+                // When hovering, rotate towards mouse position
+                currentRotationY += (targetRotationY - currentRotationY) * 0.1;
+                currentRotationX += (targetRotationX - currentRotationX) * 0.1;
+                
+                // Apply the rotation
+                sphere.rotation.y = currentRotationY;
+                sphere.rotation.x = currentRotationX;
+            } else {
+                // When not hovering, continue 360 degree rotation on Y axis only
+                sphere.rotation.y += autoRotationSpeed;
+                
+                // Reset current rotation values for next hover
+                currentRotationX = 0;
+                currentRotationY = sphere.rotation.y;
+            }
+            
+            renderer.render(scene, camera);
         }
         
         // LANGUAGE TRANSLATIONS
