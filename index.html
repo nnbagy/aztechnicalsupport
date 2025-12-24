@@ -24,7 +24,7 @@
         
         .navbar {
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 12px 25px;
+            padding: 15px 25px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -33,22 +33,21 @@
             position: relative;
             z-index: 100;
             flex-shrink: 0;
+            height: 80px;
         }
         
         .logo-space {
             width: 170px;
-            height: 50px;
+            height: 60px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: flex-start;
-            overflow: visible; /* Əlavə edin - kəsilməsin */
-            position: relative; /* Əlavə edin */
+            padding-top: 5px;
         }
         
-        /* LOQO ÜÇÜN */
         .drive-logo {
-            max-height: 100px;
-            max-width: 250px;
+            max-height: 50px;
+            max-width: 220px;
             object-fit: contain;
             border-radius: 5px;
             border: 1px solid rgba(0, 255, 255, 0.3);
@@ -73,6 +72,7 @@
         .nav-center {
             display: flex;
             gap: 8px;
+            align-items: center;
         }
         
         .nav-btn {
@@ -110,8 +110,9 @@
         .nav-right {
             display: flex;
             gap: 8px;
-                align-items: flex-end; /* Əlavə edin - düymələri aşağı salır */
-    margin-bottom: 5px; /* Əlavə edin - aşağı salır */
+            align-items: flex-end;
+            height: 60px;
+            padding-bottom: 8px;
         }
         
         .lang-btn {
@@ -135,7 +136,7 @@
             position: relative;
             overflow: hidden;
             height: 38px;
-            margin-top: auto; /* Əlavə edin */
+            margin-top: auto;
         }
         
         .lang-btn::before {
@@ -202,7 +203,6 @@
             margin-bottom: 30px;
         }
         
-        /* CONTACT SECTION SPECIFIC STYLES (Cube + Contact Info) */
         .split-container {
             display: flex;
             min-height: calc(100vh - 100px);
@@ -345,7 +345,6 @@
             transition: all 0.3s ease;
         }
         
-        /* ALL ICONS NOW HAVE SAME NEON CYAN COLOR - WITH LESS LIGHT */
         .address-icon .contact-icon-ring,
         .phone-icon .contact-icon-ring,
         .email-icon .contact-icon-ring,
@@ -424,7 +423,6 @@
             font-size: 14px;
         }
         
-        /* PAGE SECTIONS */
         .page-section {
             display: none;
             flex-direction: column;
@@ -435,7 +433,6 @@
             display: flex;
         }
         
-        /* 14" ekranlar üçün (1366x768) */
         @media screen and (max-height: 800px) {
             .left-side {
                 height: 480px;
@@ -446,7 +443,6 @@
             }
         }
         
-        /* 15.6" ekranlar üçün (1920x1080) */
         @media screen and (min-height: 900px) and (max-height: 1080px) {
             .left-side {
                 height: 580px;
@@ -457,7 +453,6 @@
             }
         }
         
-        /* 16" və daha böyük ekranlar üçün */
         @media screen and (min-height: 1081px) {
             .left-side {
                 height: 650px;
@@ -468,7 +463,6 @@
             }
         }
         
-        /* Ekran hündürlüyü çox kiçik olduqda */
         @media screen and (max-height: 700px) {
             .left-side {
                 height: 420px;
@@ -484,7 +478,6 @@
             }
         }
         
-        /* Geniş ekranlar üçün */
         @media screen and (min-width: 1600px) {
             .left-side {
                 height: 620px;
@@ -497,7 +490,6 @@
             }
         }
         
-        /* Çox geniş ekranlar üçün */
         @media screen and (min-width: 1920px) {
             .left-side {
                 height: 680px;
@@ -517,23 +509,18 @@
     </style>
 </head>
 <body>
-    <!-- NAVIGATION BAR -->
     <nav class="navbar">
-        <!-- LEFT - LOGO SPACE -->
         <div class="logo-space">
-            <!-- ALTERNATİV LINK İLƏ LOQO -->
             <img src="https://drive.google.com/thumbnail?id=1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z&sz=w1000" 
                  alt="AZTECHNICAL SUPPORT Logo" 
                  class="drive-logo"
                  onerror="handleLogoError(this)">
             
-            <!-- PLACEHOLDER ƏGƏR ŞƏKİL YÜKLƏNMƏSƏ -->
             <div id="logo-placeholder" class="logo-placeholder" style="display: none;">
                 AZTECHNICAL
             </div>
         </div>
         
-        <!-- CENTER - MAIN BUTTONS -->
         <div class="nav-center">
             <button class="nav-btn" data-section="home">ANA SƏHİFƏ</button>
             <button class="nav-btn" data-section="about">HAQQIMIZDA</button>
@@ -543,7 +530,6 @@
             <button class="nav-btn active" data-section="contact">ƏLAQƏ</button>
         </div>
         
-        <!-- RIGHT - LANGUAGE BUTTONS (HORIZONTAL) -->
         <div class="nav-right">
             <button class="lang-btn active" onclick="changeLanguage('aze')" id="aze-btn">AZE</button>
             <button class="lang-btn" onclick="changeLanguage('rus')" id="rus-btn">RUS</button>
@@ -551,9 +537,7 @@
         </div>
     </nav>
     
-    <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="home-section">
             <div class="content">
                 <h1 class="company-name">AZHYDRO</h1>
@@ -575,7 +559,6 @@
             </div>
         </div>
         
-        <!-- ABOUT SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="about-section">
             <div class="content">
                 <h1 class="company-name">HAQQIMIZDA</h1>
@@ -593,7 +576,6 @@
             </div>
         </div>
         
-        <!-- CATALOG SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="catalog-section">
             <div class="content">
                 <h1 class="company-name">KATALOQ</h1>
@@ -625,7 +607,6 @@
             </div>
         </div>
         
-        <!-- SERVICES SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="services-section">
             <div class="content">
                 <h1 class="company-name">XİDMƏTLƏR</h1>
@@ -648,7 +629,6 @@
             </div>
         </div>
         
-        <!-- PROJECTS SECTION (NO CUBE, NO CONTACT INFO) -->
         <div class="page-section" id="projects-section">
             <div class="content">
                 <h1 class="company-name">LAYİHƏLƏR</h1>
@@ -663,15 +643,12 @@
             </div>
         </div>
         
-        <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO - ONLY HERE) -->
         <div class="page-section active" id="contact-section">
             <div class="split-container">
-                <!-- LEFT SIDE - CUBE ANIMATION (ONLY IN CONTACT SECTION) -->
                 <div class="left-side">
                     <div id="cube-animation"></div>
                 </div>
                 
-                <!-- RIGHT SIDE - CONTACT INFORMATION (ONLY IN CONTACT SECTION) -->
                 <div class="right-side">
                     <div class="contact-header">
                         <div class="contact-title-left" id="contact-title">Bizim ilə Əlaqə</div>
@@ -719,14 +696,11 @@
         </div>
     </div>
 
-    <!-- THREE.JS CUBE ANIMATION (ONLY FOR CONTACT SECTION) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // LOQO XƏTASINI IDARƏ ETMƏ FUNKSİYASI
         function handleLogoError(imgElement) {
             console.log("Loqo yüklənmədi, alternativ cəhd edilir...");
             
-            // Əvvəlcə başqa formatı sınayırıq
             const fileId = '1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z';
             const alternatives = [
                 `https://drive.google.com/uc?export=view&id=${fileId}`,
@@ -741,7 +715,6 @@
                     imgElement.src = alternatives[currentIndex];
                     currentIndex++;
                 } else {
-                    // Bütün alternativlər işləməzsə, placeholder göstər
                     imgElement.style.display = 'none';
                     document.getElementById('logo-placeholder').style.display = 'block';
                 }
@@ -751,7 +724,6 @@
             tryNextAlternative();
         }
         
-        // CUBE ANIMATION CODE - ONLY FOR CONTACT SECTION
         let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
         let mouseWorld = new THREE.Vector3();
         let raycaster = new THREE.Raycaster();
@@ -772,11 +744,9 @@
             renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
             cubeContainer.appendChild(renderer.domElement);
 
-            // Increase particle count for larger cube
             const count = 40000;
             const positions = new Float32Array(count * 3);
 
-            // MUCH Larger cube dimensions
             for (let i = 0; i < count; i++) {
                 positions[i*3] = (Math.random() - 0.5) * 2.5;
                 positions[i*3+1] = (Math.random() - 0.5) * 2.5;
@@ -858,7 +828,6 @@
             if (!scene || !renderer || !camera) return;
             
             uniforms.uTime.value += 0.005;
-            // ONLY Y rotation (360 degree rotation)
             if (sphere) {
                 sphere.rotation.y += 0.001;
             }
@@ -866,7 +835,6 @@
             requestAnimationFrame(animate);
         }
         
-        // LANGUAGE TRANSLATIONS
         const translations = {
             aze: {
                 contactTitle: "Bizim ilə Əlaqə",
@@ -921,12 +889,10 @@
             document.querySelector('.hours-text').textContent = t.hoursText;
         }
         
-        // SECTION SWITCHING
         document.addEventListener('DOMContentLoaded', function() {
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            // Hide all sections except contact initially
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
@@ -934,24 +900,19 @@
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
                     navButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Get the section to show
                     const sectionId = this.getAttribute('data-section');
                     
-                    // Hide all sections
                     document.querySelectorAll('.page-section').forEach(section => {
                         section.classList.remove('active');
                     });
                     
-                    // Show the selected section
                     document.getElementById(sectionId + '-section').classList.add('active');
                 });
             });
             
-            // Language switching
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const lang = this.textContent.trim().toLowerCase();
@@ -959,7 +920,6 @@
                 });
             });
             
-            // LOQONUN YÜKLƏNDİYİNİ YOXLA
             const logoImg = document.querySelector('.drive-logo');
             if (logoImg) {
                 logoImg.onload = function() {
