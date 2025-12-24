@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -171,6 +169,11 @@
         .content {
             padding: 40px 30px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: calc(100vh - 120px);
         }
         
         .company-name {
@@ -415,6 +418,53 @@
         .page-section.active {
             display: flex;
         }
+        
+        /* CONTACT INFO FOR ALL PAGES (FIXED POSITION) */
+        .contact-info-fixed {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            background-color: rgba(0, 20, 20, 0.9);
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            width: 320px;
+            z-index: 90;
+        }
+        
+        .contact-info-fixed .contact-item {
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .contact-info-fixed .contact-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .contact-info-fixed .contact-item h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding-left: 40px;
+        }
+        
+        .contact-info-fixed .contact-icon-container {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .contact-info-fixed .contact-icon-ring {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .contact-info-fixed .contact-item p {
+            margin-left: 40px;
+            font-size: 13px;
+        }
     </style>
 </head>
 <body>
@@ -447,7 +497,7 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION (NO CUBE, NO CONTACT INFO) -->
+        <!-- HOME SECTION -->
         <div class="page-section" id="home-section">
             <div class="content">
                 <h1 class="company-name">AZHYDRO</h1>
@@ -464,9 +514,39 @@
                     </p>
                 </div>
             </div>
+            
+            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
+            <div class="contact-info-fixed" id="contact-info-all">
+                <div class="contact-item address-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3><span class="address-label">Ünvan</span></h3>
+                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
+                </div>
+                
+                <div class="contact-item phone-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3><span class="phone-label">Telefon</span></h3>
+                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
+                </div>
+                
+                <div class="contact-item email-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3><span class="email-label">Email</span></h3>
+                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
+                </div>
+            </div>
         </div>
         
-        <!-- ABOUT SECTION (NO CUBE, NO CONTACT INFO) -->
+        <!-- ABOUT SECTION -->
         <div class="page-section" id="about-section">
             <div class="content">
                 <h1 class="company-name">HAQQIMIZDA</h1>
@@ -482,9 +562,39 @@
                     </p>
                 </div>
             </div>
+            
+            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
+            <div class="contact-info-fixed" id="contact-info-all">
+                <div class="contact-item address-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3><span class="address-label">Ünvan</span></h3>
+                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
+                </div>
+                
+                <div class="contact-item phone-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3><span class="phone-label">Telefon</span></h3>
+                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
+                </div>
+                
+                <div class="contact-item email-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3><span class="email-label">Email</span></h3>
+                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
+                </div>
+            </div>
         </div>
         
-        <!-- CATALOG SECTION (NO CUBE, NO CONTACT INFO) -->
+        <!-- CATALOG SECTION -->
         <div class="page-section" id="catalog-section">
             <div class="content">
                 <h1 class="company-name">KATALOQ</h1>
@@ -497,9 +607,39 @@
                     </p>
                 </div>
             </div>
+            
+            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
+            <div class="contact-info-fixed" id="contact-info-all">
+                <div class="contact-item address-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3><span class="address-label">Ünvan</span></h3>
+                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
+                </div>
+                
+                <div class="contact-item phone-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3><span class="phone-label">Telefon</span></h3>
+                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
+                </div>
+                
+                <div class="contact-item email-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3><span class="email-label">Email</span></h3>
+                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
+                </div>
+            </div>
         </div>
         
-        <!-- SERVICES SECTION (NO CUBE, NO CONTACT INFO) -->
+        <!-- SERVICES SECTION -->
         <div class="page-section" id="services-section">
             <div class="content">
                 <h1 class="company-name">XİDMƏTLƏR</h1>
@@ -512,9 +652,39 @@
                     </p>
                 </div>
             </div>
+            
+            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
+            <div class="contact-info-fixed" id="contact-info-all">
+                <div class="contact-item address-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3><span class="address-label">Ünvan</span></h3>
+                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
+                </div>
+                
+                <div class="contact-item phone-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3><span class="phone-label">Telefon</span></h3>
+                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
+                </div>
+                
+                <div class="contact-item email-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3><span class="email-label">Email</span></h3>
+                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
+                </div>
+            </div>
         </div>
         
-        <!-- PROJECTS SECTION (NO CUBE, NO CONTACT INFO) -->
+        <!-- PROJECTS SECTION -->
         <div class="page-section" id="projects-section">
             <div class="content">
                 <h1 class="company-name">LAYİHƏLƏR</h1>
@@ -525,6 +695,36 @@
                     <p>
                         Uğurla həyata keçirdiyimiz bəzi layihələr.
                     </p>
+                </div>
+            </div>
+            
+            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
+            <div class="contact-info-fixed" id="contact-info-all">
+                <div class="contact-item address-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3><span class="address-label">Ünvan</span></h3>
+                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
+                </div>
+                
+                <div class="contact-item phone-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3><span class="phone-label">Telefon</span></h3>
+                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
+                </div>
+                
+                <div class="contact-item email-icon">
+                    <div class="contact-icon-container">
+                        <div class="contact-icon-ring"></div>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3><span class="email-label">Email</span></h3>
+                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
                 </div>
             </div>
         </div>
@@ -748,14 +948,14 @@
             
             const t = translations[lang];
             document.getElementById('contact-title').textContent = t.contactTitle;
-            document.querySelector('.address-label').textContent = t.addressLabel;
-            document.querySelector('.address-text').textContent = t.addressText;
-            document.querySelector('.phone-label').textContent = t.phoneLabel;
-            document.querySelector('.phone-text').textContent = t.phoneText;
-            document.querySelector('.email-label').textContent = t.emailLabel;
-            document.querySelector('.email-text').textContent = t.emailText;
-            document.querySelector('.hours-label').textContent = t.hoursLabel;
-            document.querySelector('.hours-text').textContent = t.hoursText;
+            document.querySelectorAll('.address-label').forEach(el => el.textContent = t.addressLabel);
+            document.querySelectorAll('.address-text').forEach(el => el.textContent = t.addressText);
+            document.querySelectorAll('.phone-label').forEach(el => el.textContent = t.phoneLabel);
+            document.querySelectorAll('.phone-text').forEach(el => el.textContent = t.phoneText);
+            document.querySelectorAll('.email-label').forEach(el => el.textContent = t.emailLabel);
+            document.querySelectorAll('.email-text').forEach(el => el.textContent = t.emailText);
+            document.querySelectorAll('.hours-label').forEach(el => el.textContent = t.hoursLabel);
+            document.querySelectorAll('.hours-text').forEach(el => el.textContent = t.hoursText);
         }
         
         // SECTION SWITCHING
@@ -784,7 +984,7 @@
                     });
                     
                     // Show the selected section
-                    document.getElementById(sectionId + '-section').classlist.add('active');
+                    document.getElementById(sectionId + '-section').classList.add('active');
                 });
             });
             
