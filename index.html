@@ -33,22 +33,33 @@
             position: relative;
             z-index: 100;
             flex-shrink: 0;
-            height: 120px; /* BÖYÜK NAVBAR - LOQO ÜÇÜN */
+            height: 120px;
         }
         
         .logo-space {
-            width: 170px;
-            height: 100px; /* BÖYÜK LOQO ÜÇÜN */
+            width: 350px;
+            height: 100px;
             display: flex;
-            align-items: flex-start; /* YUXARI */
+            align-items: flex-start;
             justify-content: flex-start;
             padding-top: 10px;
+            gap: 20px;
         }
         
-        /* LOQO ÜÇÜN - 100 OLDUĞU KİMİ */
         .drive-logo {
-            max-height: 100px !important; /* 100 OLDUĞU KİMİ */
-            max-width: 250px !important;
+            max-height: 100px !important;
+            max-width: 150px !important;
+            object-fit: contain;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 3px;
+        }
+        
+        .drive-logo-second {
+            max-height: 100px !important;
+            max-width: 150px !important;
             object-fit: contain;
             border-radius: 5px;
             border: 1px solid rgba(0, 255, 255, 0.3);
@@ -74,7 +85,7 @@
             display: flex;
             gap: 8px;
             align-items: center;
-            margin-bottom: 20px; /* DÜYMƏLƏRİ AŞAĞI SAL */
+            margin-bottom: 20px;
         }
         
         .nav-btn {
@@ -112,9 +123,9 @@
         .nav-right {
             display: flex;
             gap: 8px;
-            align-items: flex-end; /* DİL DÜYMƏLƏRİ AŞAĞIDA */
+            align-items: flex-end;
             height: 100px;
-            padding-bottom: 25px; /* KONTRU AŞAĞI SAL */
+            padding-bottom: 25px;
         }
         
         .lang-btn {
@@ -138,8 +149,8 @@
             position: relative;
             overflow: hidden;
             height: 38px;
-            margin-top: auto; /* ƏN AŞAĞI */
-            transform: translateY(15px); /* DAHA AŞAĞI SAL */
+            margin-top: auto;
+            transform: translateY(15px);
         }
         
         .lang-btn::before {
@@ -517,7 +528,12 @@
             <img src="https://drive.google.com/thumbnail?id=1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z&sz=w1000" 
                  alt="AZTECHNICAL SUPPORT Logo" 
                  class="drive-logo"
-                 onerror="handleLogoError(this)">
+                 onerror="handleLogoError(this, 'first')">
+            
+            <img src="https://drive.google.com/thumbnail?id=1gzUNXAvaiduYu3vQdK0n2AsDdUJVvZC9&sz=w1000" 
+                 alt="Second Logo" 
+                 class="drive-logo-second"
+                 onerror="handleLogoError(this, 'second')">
             
             <div id="logo-placeholder" class="logo-placeholder" style="display: none;">
                 AZTECHNICAL
@@ -701,10 +717,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        function handleLogoError(imgElement) {
-            console.log("Loqo yüklənmədi, alternativ cəhd edilir...");
+        function handleLogoError(imgElement, logoType) {
+            console.log(logoType + " loqo yüklənmədi, alternativ cəhd edilir...");
             
-            const fileId = '1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z';
+            let fileId;
+            if (logoType === 'first') {
+                fileId = '1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z';
+            } else {
+                fileId = '1gzUNXAvaiduYu3vQdK0n2AsDdUJVvZC9';
+            }
+            
             const alternatives = [
                 `https://drive.google.com/uc?export=view&id=${fileId}`,
                 `https://lh3.googleusercontent.com/d/${fileId}`,
@@ -719,7 +741,9 @@
                     currentIndex++;
                 } else {
                     imgElement.style.display = 'none';
-                    document.getElementById('logo-placeholder').style.display = 'block';
+                    if (logoType === 'first') {
+                        document.getElementById('logo-placeholder').style.display = 'block';
+                    }
                 }
             }
             
