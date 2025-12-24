@@ -192,22 +192,22 @@
             margin-top: 12px;
             margin-bottom: 8px;
             flex-grow: 1;
-            padding: 0 15px; /* ƏLAVƏ EDİN: Yanlardan boşluq əlavə etdik */
+            padding: 0 15px;
         }
         
-.left-side {
-    flex: 1;
-    width: 35%;
-    background: #000;
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    border: 2px solid rgba(0, 255, 255, 0.3);
-    margin: 0 10px 6px 15px; /* DÜZƏLDİN: 25px → 15px */
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-    height: 600px;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
+        .left-side {
+            flex: 1;
+            width: 35%;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            margin: 0 10px 6px 15px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            height: 600px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
         
         #cube-animation {
             position: absolute;
@@ -218,17 +218,17 @@
             display: block;
         }
         
-.right-side {
-    flex: 1;
-    width: 45%; /* DÜZƏLDİN: 39% → 45% */
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 0 15px 6px 10px; /* DÜZƏLDİN: 25px → 15px */
-    height: auto;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
+        .right-side {
+            flex: 1;
+            width: 45%;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin: 0 15px 6px 10px;
+            height: auto;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
         
         .contact-header {
             display: flex;
@@ -265,17 +265,17 @@
             margin-top: 3px;
         }
         
-.contact-info {
-    background-color: rgba(0, 20, 20, 0.7);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(0, 255, 255, 0.15);
-    min-height: auto;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
-    width: 100%; /* ƏLAVƏ: Tam eni tutsun */
-    max-width: none; /* ƏLAVƏ EDİN: Maksimum eni ləğv et */
-}
+        .contact-info {
+            background-color: rgba(0, 20, 20, 0.7);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            min-height: auto;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            width: 100%;
+            max-width: none;
+        }
         
         .contact-item {
             margin-bottom: 18px;
@@ -287,7 +287,7 @@
         .contact-item h3 {
             color: #00ffff;
             font-size: 16px;
-            margin-bottom: 10px; /* DÜZƏLDİN: 5px → 10px */
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -358,19 +358,21 @@
             line-height: 1.5;
             margin-left: 50px;
             font-size: 15px;
-            word-break: break-word; /* ƏLAVƏ: Uzun mətnləri sındırmaq */
-            overflow-wrap: break-word; /* ƏLAVƏ: Uzun sözləri sındırmaq */
+            word-break: normal;
+            overflow-wrap: normal;
+            white-space: normal;
         }
         
         .contact-item strong {
             color: #ffffff;
             font-size: 16px;
-            word-break: break-word; /* ƏLAVƏ: Uzun mətnləri sındırmaq */
-            overflow-wrap: break-word; /* ƏLAVƏ: Uzun sözləri sındırmaq */
-            display: inline-block; /* ƏLAVƏ: Kənar boşluqları idarə etmək */
-            max-width: 100%; /* ƏLAVƏ: Maksimum en */
-            padding-top: 2px; /* ƏLAVƏ EDİN: Yuxarıdan boşluq */
-            line-height: 1.4; /* ƏLAVƏ EDİN: Sətir aralığı */
+            word-break: normal;
+            overflow-wrap: normal;
+            display: inline;
+            max-width: 100%;
+            padding-top: 2px;
+            line-height: 1.4;
+            white-space: normal;
         }
         
         .content-box {
@@ -455,19 +457,19 @@
             .split-container {
                 min-height: calc(100vh - 250px);
                 margin-top: 15px;
-                padding: 0 20px; /* ƏLAVƏ EDİN */
+                padding: 0 20px;
             }
             
             .left-side {
                 height: 650px;
                 width: 50%;
-                margin: 0 15px 6px 25px; /* DÜZƏLDİN */
+                margin: 0 15px 6px 25px;
             }
             
             .right-side {
                 width: 50%;
                 padding: 30px;
-                margin: 0 25px 6px 15px; /* DÜZƏLDİN */
+                margin: 0 25px 6px 15px;
             }
             
             .contact-title-left {
@@ -528,19 +530,19 @@
             .split-container {
                 min-height: calc(100vh - 260px);
                 margin-top: 20px;
-                padding: 0 20px; /* ƏLAVƏ EDİN */
+                padding: 0 20px;
             }
             
             .left-side {
                 height: 550px;
                 width: 52%;
-                margin: 0 15px 6px 25px; /* DÜZƏLDİN */
+                margin: 0 15px 6px 25px;
             }
             
             .right-side {
                 width: 48%;
                 padding: 35px;
-                margin: 0 25px 6px 15px; /* DÜZƏLDİN */
+                margin: 0 25px 6px 15px;
             }
             
             .contact-title-left {
@@ -562,18 +564,25 @@
             .contact-item h3 {
                 font-size: 18px;
                 padding-left: 55px;
-                margin-bottom: 12px; /* DÜZƏLDİN */
+                margin-bottom: 12px;
             }
             
             .contact-item p {
                 font-size: 16px;
                 margin-left: 55px;
+                word-break: normal;
+                overflow-wrap: normal;
+                white-space: normal;
             }
             
             .contact-item strong {
                 font-size: 17px;
-                padding-top: 3px; /* ƏLAVƏ EDİN */
-                line-height: 1.5; /* ƏLAVƏ EDİN */
+                padding-top: 3px;
+                line-height: 1.5;
+                word-break: normal;
+                overflow-wrap: normal;
+                display: inline;
+                white-space: normal;
             }
         }
         
@@ -613,14 +622,14 @@
                 height: 400px;
                 flex: 1.2;
                 width: 60%;
-                margin: 0 10px 6px 15px; /* DÜZƏLDİN */
+                margin: 0 10px 6px 15px;
             }
             
             .right-side {
                 flex: 0.9;
                 width: 40%;
                 padding: 25px;
-                margin: 0 15px 6px 10px; /* DÜZƏLDİN */
+                margin: 0 15px 6px 10px;
             }
             
             .contact-icon-container {
@@ -641,24 +650,31 @@
             
             .contact-item h3 {
                 padding-left: 48px;
-                margin-bottom: 8px; /* DÜZƏLDİN */
+                margin-bottom: 8px;
             }
             
             .contact-item p {
                 margin-left: 48px;
                 font-size: 14px;
+                word-break: normal;
+                overflow-wrap: normal;
+                white-space: normal;
             }
             
             .contact-item strong {
                 font-size: 15px;
-                padding-top: 2px; /* ƏLAVƏ EDİN */
-                line-height: 1.4; /* ƏLAVƏ EDİN */
+                padding-top: 2px;
+                line-height: 1.4;
+                word-break: normal;
+                overflow-wrap: normal;
+                display: inline;
+                white-space: normal;
             }
             
             .split-container {
                 min-height: calc(100vh - 210px);
                 margin-top: 15px;
-                padding: 0 10px; /* ƏLAVƏ EDİN */
+                padding: 0 10px;
             }
         }
         
@@ -704,13 +720,13 @@
                 flex-direction: column;
                 min-height: auto;
                 margin-top: 12px;
-                padding: 0 10px; /* ƏLAVƏ EDİN */
+                padding: 0 10px;
             }
             
             .left-side,
             .right-side {
                 width: 100%;
-                margin: 0 10px 6px 10px; /* DÜZƏLDİN */
+                margin: 0 10px 6px 10px;
             }
             
             .left-side {
@@ -766,18 +782,25 @@
             
             .contact-item h3 {
                 padding-left: 46px;
-                margin-bottom: 6px; /* DÜZƏLDİN */
+                margin-bottom: 6px;
             }
             
             .contact-item p {
                 margin-left: 46px;
                 font-size: 13px;
+                word-break: normal;
+                overflow-wrap: normal;
+                white-space: normal;
             }
             
             .contact-item strong {
                 font-size: 14px;
-                padding-top: 1px; /* ƏLAVƏ EDİN */
-                line-height: 1.3; /* ƏLAVƏ EDİN */
+                padding-top: 1px;
+                line-height: 1.3;
+                word-break: normal;
+                overflow-wrap: normal;
+                display: inline;
+                white-space: normal;
             }
         }
         
@@ -853,18 +876,25 @@
             .contact-item h3 {
                 font-size: 15px;
                 padding-left: 42px;
-                margin-bottom: 5px; /* DÜZƏLDİN */
+                margin-bottom: 5px;
             }
             
             .contact-item p {
                 font-size: 13px;
                 margin-left: 42px;
+                word-break: normal;
+                overflow-wrap: normal;
+                white-space: normal;
             }
             
             .contact-item strong {
                 font-size: 14px;
-                padding-top: 1px; /* ƏLAVƏ EDİN */
-                line-height: 1.3; /* ƏLAVƏ EDİN */
+                padding-top: 1px;
+                line-height: 1.3;
+                word-break: normal;
+                overflow-wrap: normal;
+                display: inline;
+                white-space: normal;
             }
         }
     </style>
@@ -1055,21 +1085,21 @@
             scene = new THREE.Scene();
 
             camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 3.5; // 3.0 → 3.5
+            camera.position.z = 3.5;
 
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
             cubeContainer.appendChild(renderer.domElement);
 
             // Increase particle count for larger cube
-            const count = 40000; // Increased from 30000
+            const count = 40000;
             const positions = new Float32Array(count * 3);
 
             // MUCH Larger cube dimensions
             for (let i = 0; i < count; i++) {
-                positions[i*3] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
-                positions[i*3+1] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
-                positions[i*3+2] = (Math.random() - 0.5) * 2.5; // 2.0 → 2.5
+                positions[i*3] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+1] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+2] = (Math.random() - 0.5) * 2.5;
             }
 
             const particleGeometry = new THREE.BufferGeometry();
@@ -1089,9 +1119,9 @@
                         vec3 pos = position;
 
                         float dist = distance(pos, uMouse);
-                        pos += normalize(pos - uMouse) * (0.15 / dist); // Increased from 0.12
+                        pos += normalize(pos - uMouse) * (0.15 / dist);
 
-                        gl_PointSize = 1.2; // 1.0 → 1.2
+                        gl_PointSize = 1.2;
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     }
                 `,
@@ -1149,7 +1179,7 @@
             uniforms.uTime.value += 0.005;
             // ONLY Y rotation (360 degree rotation)
             if (sphere) {
-                sphere.rotation.y += 0.001; // Only Y rotation
+                sphere.rotation.y += 0.001;
             }
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
