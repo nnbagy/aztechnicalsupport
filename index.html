@@ -192,6 +192,7 @@
             margin-top: 12px;
             margin-bottom: 8px;
             flex-grow: 1;
+            padding: 0 15px; /* ƏLAVƏ EDİN: Yanlardan boşluq əlavə etdik */
         }
         
 .left-side {
@@ -202,10 +203,10 @@
     overflow: hidden;
     border-radius: 12px;
     border: 2px solid rgba(0, 255, 255, 0.3);
-    margin: 0 10px 6px 25px;
+    margin: 0 10px 6px 15px; /* DÜZƏLDİN: 25px → 15px */
     box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
     height: 600px;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* ƏLAVƏ EDİN */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
         
         #cube-animation {
@@ -219,14 +220,14 @@
         
 .right-side {
     flex: 1;
-    width: 30%; /* 26% → 30% DÜZƏLDİN - qutunu böyütmək üçün */
+    width: 32%; /* DÜZƏLDİN: 30% → 32% */
     padding: 25px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 0 25px 6px 10px;
+    margin: 0 15px 6px 10px; /* DÜZƏLDİN: 25px → 15px */
     height: auto;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* ƏLAVƏ EDİN */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
         
         .contact-header {
@@ -523,18 +524,19 @@
             .split-container {
                 min-height: calc(100vh - 260px);
                 margin-top: 20px;
+                padding: 0 20px; /* ƏLAVƏ EDİN */
             }
             
             .left-side {
                 height: 550px;
                 width: 52%;
-                margin: 0 20px 6px 35px;
+                margin: 0 15px 6px 25px; /* DÜZƏLDİN */
             }
             
             .right-side {
                 width: 48%;
                 padding: 35px;
-                margin: 0 35px 6px 20px;
+                margin: 0 25px 6px 15px; /* DÜZƏLDİN */
             }
             
             .contact-title-left {
@@ -604,14 +606,14 @@
                 height: 400px;
                 flex: 1.2;
                 width: 60%;
-                margin: 0 10px 6px 20px;
+                margin: 0 10px 6px 15px; /* DÜZƏLDİN */
             }
             
             .right-side {
                 flex: 0.9;
                 width: 40%;
                 padding: 25px;
-                margin: 0 20px 6px 10px;
+                margin: 0 15px 6px 10px; /* DÜZƏLDİN */
             }
             
             .contact-icon-container {
@@ -646,6 +648,7 @@
             .split-container {
                 min-height: calc(100vh - 210px);
                 margin-top: 15px;
+                padding: 0 10px; /* ƏLAVƏ EDİN */
             }
         }
         
@@ -691,12 +694,13 @@
                 flex-direction: column;
                 min-height: auto;
                 margin-top: 12px;
+                padding: 0 10px; /* ƏLAVƏ EDİN */
             }
             
             .left-side,
             .right-side {
                 width: 100%;
-                margin: 0 20px 6px 20px;
+                margin: 0 10px 6px 10px; /* DÜZƏLDİN */
             }
             
             .left-side {
@@ -761,14 +765,6 @@
             
             .contact-item strong {
                 font-size: 14px;
-            }
-            
-            .left-side {
-                margin: 0 15px 6px 15px;
-            }
-            
-            .right-side {
-                margin: 0 15px 6px 15px;
             }
         }
         
