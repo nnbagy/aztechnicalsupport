@@ -22,9 +22,10 @@
             flex-direction: column;
         }
         
+        /* RESPONSIVE NAVBAR */
         .navbar {
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 12px 25px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -33,46 +34,59 @@
             position: relative;
             z-index: 100;
             flex-shrink: 0;
+            min-height: 70px;
+            flex-wrap: wrap;
         }
         
         .logo-space {
-            width: 170px;
-            height: 50px;
+            min-width: 180px;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: flex-start;
+            margin-right: 15px;
         }
         
         .logo-placeholder {
             color: #00ffff;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
             background-color: rgba(0, 255, 255, 0.05);
             padding: 8px 12px;
             border-radius: 5px;
-            min-width: 150px;
             text-align: center;
             border: 1px solid rgba(0, 255, 255, 0.2);
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
         }
         
         .nav-center {
             display: flex;
-            gap: 8px;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            flex: 1;
+            min-width: 0;
         }
         
         .nav-btn {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 16px;
-            font-size: 13px;
+            padding: 6px 12px;
+            font-size: 12px;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
-            min-width: 95px;
+            min-width: 0;
             text-align: center;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         
         .nav-btn:hover {
@@ -95,7 +109,10 @@
         
         .nav-right {
             display: flex;
-            gap: 8px;
+            gap: 6px;
+            align-items: center;
+            margin-left: auto;
+            flex-shrink: 0;
         }
         
         .lang-btn {
@@ -103,22 +120,24 @@
             color: white;
             border: 2px solid cyan;
             border-radius: 10px;
-            padding: 8px 16px;
-            font-size: 13px;
+            padding: 6px 12px;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 65px;
+            min-width: 60px;
             text-align: center;
             box-shadow: 0 0 10px cyan;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 4px;
             position: relative;
             overflow: hidden;
-            height: 38px;
+            height: 34px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         
         .lang-btn::before {
@@ -166,18 +185,20 @@
             box-shadow: 0 0 15px cyan;
         }
         
+        /* MAIN CONTENT RESPONSIVE */
         .content {
-            padding: 40px 30px;
+            padding: 30px 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            min-height: calc(100vh - 120px);
+            min-height: calc(100vh - 70px);
+            width: 100%;
         }
         
         .company-name {
-            font-size: 36px;
+            font-size: 28px;
             color: #00ffff;
             margin-bottom: 8px;
             font-weight: bold;
@@ -185,33 +206,32 @@
         }
         
         .company-subtitle {
-            font-size: 16px;
+            font-size: 14px;
             color: #88ffff;
             margin-bottom: 30px;
         }
         
-        /* CONTACT SECTION SPECIFIC STYLES (Cube + Contact Info) */
+        /* CONTACT SECTION RESPONSIVE */
         .split-container {
             display: flex;
-            min-height: calc(100vh - 100px);
-            margin-top: 12px;
-            margin-bottom: 8px;
+            min-height: calc(100vh - 70px);
             flex-grow: 1;
-            padding: 0 15px;
+            padding: 0 10px;
+            width: 100%;
+            flex-direction: column;
         }
         
         .left-side {
             flex: 1;
-            width: 35%;
             background: #000;
             position: relative;
             overflow: hidden;
             border-radius: 12px;
             border: 2px solid rgba(0, 255, 255, 0.3);
-            margin: 0 10px 6px 25px;
+            margin: 10px;
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-            height: 600px;
-            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            height: 400px;
+            width: calc(100% - 20px);
         }
         
         #cube-animation {
@@ -225,83 +245,58 @@
         
         .right-side {
             flex: 1;
-            width: 50%;
-            padding: 25px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin: 0 40px 6px 15px; /* DÜZƏLDİN: sağdan boşluğu artır */
+            margin: 10px;
             height: auto;
-            transition: box-shadow 0.3s ease, border-color 0.3s ease;
-            min-width: 550px;
-            margin-left: 0; /* DÜZƏLDİN: auto-u çıxart */
+            min-width: 0;
+            width: calc(100% - 20px);
         }
         
         .contact-header {
             display: flex;
-            justify-content: flex-start; /* DÜZƏLDİN: flex-start */
+            justify-content: flex-start;
             align-items: flex-start;
             margin-bottom: 20px;
-            margin-left: 20px; /* ƏLAVƏ EDİN: soldan boşluq */
+            margin-left: 0;
         }
         
         .contact-title-left {
-            font-size: 28px;
+            font-size: 24px;
             color: #00ffff;
             text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
             font-weight: bold;
         }
         
-        .contact-title-right {
-            text-align: right;
-        }
-        
-        .contact-title-right .line1 {
-            display: block;
-            font-size: 24px;
-            font-weight: bold;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-        
-        .contact-title-right .line2 {
-            display: block;
-            font-size: 22px;
-            font-weight: bold;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-            margin-top: 3px;
-        }
-        
         .contact-info {
             background-color: rgba(0, 20, 20, 0.7);
-            padding: 20px 25px 20px 25px; /* DÜZƏLDİN: soldan və sağdan boşluq */
+            padding: 15px 20px;
             border-radius: 12px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(0, 255, 255, 0.15);
             min-height: auto;
-            transition: box-shadow 0.3s ease, border-color 0.3s ease;
             width: 100%;
-            min-width: 450px;
-            margin-left: 20px; /* ƏLAVƏ EDİN: soldan boşluq */
+            min-width: 0;
         }
         
         .contact-item {
-            margin-bottom: 18px;
-            padding-bottom: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 1px solid rgba(0, 255, 255, 0.15);
             position: relative;
         }
         
         .contact-item h3 {
             color: #00ffff;
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-size: 14px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
             position: relative;
-            padding-left: 60px;
+            padding-left: 50px;
         }
         
         .contact-icon-container {
@@ -309,8 +304,8 @@
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -318,9 +313,9 @@
         
         .contact-icon-ring {
             position: absolute;
-            width: 46px;
-            height: 46px;
-            border: 3px solid;
+            width: 40px;
+            height: 40px;
+            border: 2px solid;
             border-radius: 50%;
             box-shadow: 
                 0 0 3px currentColor,
@@ -329,7 +324,6 @@
             transition: all 0.3s ease;
         }
         
-        /* ALL ICONS NOW HAVE SAME NEON CYAN COLOR - WITH LESS LIGHT */
         .address-icon .contact-icon-ring,
         .phone-icon .contact-icon-ring,
         .email-icon .contact-icon-ring,
@@ -345,9 +339,9 @@
             position: relative;
             z-index: 10;
             color: #fff;
-            font-size: 20px;
-            width: 24px;
-            height: 24px;
+            font-size: 18px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -364,29 +358,25 @@
         
         .contact-item p {
             color: #cccccc;
-            line-height: 1.5;
-            margin-left: 60px;
-            font-size: 15px;
-            white-space: nowrap;
+            line-height: 1.4;
+            margin-left: 50px;
+            font-size: 13px;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         
         .contact-item strong {
             color: #ffffff;
-            font-size: 14px;
+            font-size: 12px;
             display: inline;
-            max-width: 100%;
-            padding-top: 2px;
             line-height: 1.4;
-            white-space: nowrap;
         }
         
         .content-box {
-            max-width: 700px;
-            margin: 40px auto;
+            max-width: 100%;
+            margin: 30px auto;
             background-color: rgba(0, 20, 20, 0.7);
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 255, 255, 0.1);
@@ -398,14 +388,25 @@
             margin-bottom: 15px;
             border-bottom: 1px solid rgba(0, 255, 255, 0.3);
             padding-bottom: 8px;
-            font-size: 20px;
+            font-size: 18px;
         }
         
         .content-box p {
             line-height: 1.6;
             margin-bottom: 15px;
             color: #cccccc;
-            font-size: 14px;
+            font-size: 13px;
+        }
+        
+        .content-box ul {
+            color: #cccccc;
+            margin-left: 20px;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+        
+        .content-box li {
+            margin-bottom: 8px;
         }
         
         /* PAGE SECTIONS */
@@ -413,71 +414,343 @@
             display: none;
             flex-direction: column;
             flex-grow: 1;
+            width: 100%;
         }
         
         .page-section.active {
             display: flex;
         }
         
-        /* CONTACT INFO FOR ALL PAGES (FIXED POSITION) */
-        .contact-info-fixed {
-            position: fixed;
-            right: 40px;
-            bottom: 40px;
-            background-color: rgba(0, 20, 20, 0.9);
-            padding: 20px 25px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            width: 320px;
-            z-index: 90;
+        /* ========== RESPONSIVE BREAKPOINTS ========== */
+        
+        /* 14" ekranlar (1366x768 ve daha kicik) */
+        @media screen and (max-width: 1366px) {
+            .logo-placeholder {
+                font-size: 14px;
+                padding: 6px 10px;
+                max-width: 160px;
+            }
+            
+            .nav-btn {
+                padding: 5px 10px;
+                font-size: 11px;
+                min-width: 80px;
+            }
+            
+            .lang-btn {
+                padding: 5px 10px;
+                font-size: 11px;
+                min-width: 55px;
+                height: 32px;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .company-name {
+                font-size: 24px;
+            }
+            
+            .company-subtitle {
+                font-size: 13px;
+            }
+            
+            .content-box {
+                padding: 15px;
+            }
         }
         
-        .contact-info-fixed .contact-item {
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        /* 15.6" ve 16" ekranlar (1440x900 - 1920x1080) */
+        @media screen and (min-width: 1367px) and (max-width: 1920px) {
+            .logo-placeholder {
+                font-size: 15px;
+                padding: 7px 12px;
+                max-width: 170px;
+            }
+            
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+                min-width: 85px;
+            }
+            
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+                min-width: 60px;
+                height: 34px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            .company-name {
+                font-size: 26px;
+            }
+            
+            .company-subtitle {
+                font-size: 14px;
+            }
         }
         
-        .contact-info-fixed .contact-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+        /* 19" ve 24" ekranlar (1921px - 2560px) */
+        @media screen and (min-width: 1921px) and (max-width: 2560px) {
+            .navbar {
+                padding: 15px 30px;
+                min-height: 80px;
+            }
+            
+            .logo-placeholder {
+                font-size: 18px;
+                padding: 10px 15px;
+                max-width: 200px;
+            }
+            
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+                min-width: 100px;
+            }
+            
+            .lang-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+                min-width: 70px;
+                height: 40px;
+            }
+            
+            .content {
+                padding: 40px 30px;
+            }
+            
+            .company-name {
+                font-size: 32px;
+            }
+            
+            .company-subtitle {
+                font-size: 16px;
+            }
+            
+            .content-box {
+                padding: 25px;
+                max-width: 800px;
+            }
+            
+            .content-box h2 {
+                font-size: 20px;
+            }
+            
+            .content-box p, .content-box ul {
+                font-size: 14px;
+            }
         }
         
-        .contact-info-fixed .contact-item h3 {
-            font-size: 14px;
-            margin-bottom: 5px;
-            padding-left: 40px;
+        /* 27" ve 32" ekranlar (2561px ve daha boyuk) */
+        @media screen and (min-width: 2561px) {
+            .navbar {
+                padding: 20px 40px;
+                min-height: 90px;
+            }
+            
+            .logo-placeholder {
+                font-size: 20px;
+                padding: 12px 18px;
+                max-width: 220px;
+            }
+            
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+                min-width: 110px;
+            }
+            
+            .lang-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+                min-width: 80px;
+                height: 45px;
+            }
+            
+            .content {
+                padding: 50px 40px;
+            }
+            
+            .company-name {
+                font-size: 40px;
+            }
+            
+            .company-subtitle {
+                font-size: 18px;
+            }
+            
+            .content-box {
+                padding: 30px;
+                max-width: 900px;
+            }
+            
+            .content-box h2 {
+                font-size: 24px;
+            }
+            
+            .content-box p, .content-box ul {
+                font-size: 16px;
+            }
         }
         
-        .contact-info-fixed .contact-icon-container {
-            width: 30px;
-            height: 30px;
+        /* TABLET VE TELEFONLAR (768px ve daha kicik) */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+                gap: 10px;
+            }
+            
+            .logo-space {
+                width: 100%;
+                justify-content: center;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .logo-placeholder {
+                max-width: 100%;
+                font-size: 16px;
+            }
+            
+            .nav-center {
+                width: 100%;
+                justify-content: center;
+                gap: 5px;
+            }
+            
+            .nav-btn {
+                padding: 5px 8px;
+                font-size: 11px;
+                min-width: 70px;
+            }
+            
+            .nav-right {
+                width: 100%;
+                justify-content: center;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .lang-btn {
+                padding: 5px 10px;
+                font-size: 11px;
+                min-width: 60px;
+            }
+            
+            .split-container {
+                flex-direction: column;
+            }
+            
+            .left-side, .right-side {
+                width: calc(100% - 20px);
+                margin: 10px;
+            }
+            
+            .left-side {
+                height: 300px;
+            }
+            
+            .contact-info {
+                padding: 15px;
+            }
         }
         
-        .contact-info-fixed .contact-icon-ring {
-            width: 36px;
-            height: 36px;
+        /* CONTACT SECTION DESKTOP LAYOUT */
+        @media screen and (min-width: 1024px) {
+            .split-container {
+                flex-direction: row;
+                padding: 0 15px;
+            }
+            
+            .left-side {
+                width: 40%;
+                height: 500px;
+                margin: 0 10px 0 25px;
+            }
+            
+            .right-side {
+                width: 50%;
+                margin: 0 25px 0 10px;
+                padding: 25px;
+            }
+            
+            .contact-info {
+                min-width: 400px;
+            }
         }
         
-        .contact-info-fixed .contact-item p {
-            margin-left: 40px;
-            font-size: 13px;
+        /* WIDE DESKTOP LAYOUT */
+        @media screen and (min-width: 1600px) {
+            .split-container {
+                padding: 0 30px;
+            }
+            
+            .left-side {
+                height: 550px;
+                width: 42%;
+            }
+            
+            .right-side {
+                width: 48%;
+                padding: 30px;
+            }
+            
+            .contact-info {
+                min-width: 450px;
+            }
+        }
+        
+        /* ULTRA WIDE DESKTOP LAYOUT */
+        @media screen and (min-width: 2560px) {
+            .split-container {
+                padding: 0 60px;
+            }
+            
+            .left-side {
+                height: 650px;
+                width: 45%;
+            }
+            
+            .right-side {
+                width: 45%;
+                padding: 40px;
+            }
+            
+            .contact-info {
+                min-width: 500px;
+                padding: 25px;
+            }
+            
+            .contact-title-left {
+                font-size: 32px;
+            }
+            
+            .contact-item h3 {
+                font-size: 18px;
+            }
+            
+            .contact-item p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- NAVIGATION BAR -->
     <nav class="navbar">
-        <!-- LEFT - LOGO SPACE -->
         <div class="logo-space">
             <div class="logo-placeholder">
                 aztechnicalsupport
             </div>
         </div>
         
-        <!-- CENTER - MAIN BUTTONS -->
         <div class="nav-center">
             <button class="nav-btn" data-section="home">ANA SƏHİFƏ</button>
             <button class="nav-btn" data-section="about">HAQQIMIZDA</button>
@@ -487,7 +760,6 @@
             <button class="nav-btn active" data-section="contact">ƏLAQƏ</button>
         </div>
         
-        <!-- RIGHT - LANGUAGE BUTTONS (HORIZONTAL) -->
         <div class="nav-right">
             <button class="lang-btn active" onclick="changeLanguage('aze')" id="aze-btn">AZE</button>
             <button class="lang-btn" onclick="changeLanguage('rus')" id="rus-btn">RUS</button>
@@ -510,36 +782,6 @@
                     </p>
                 </div>
             </div>
-            
-            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
-            <div class="contact-info-fixed" id="contact-info-all">
-                <div class="contact-item address-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3><span class="address-label">Ünvan</span></h3>
-                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
-                </div>
-                
-                <div class="contact-item phone-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3><span class="phone-label">Telefon</span></h3>
-                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
-                </div>
-                
-                <div class="contact-item email-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3><span class="email-label">Email</span></h3>
-                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
-                </div>
-            </div>
         </div>
         
         <!-- ABOUT SECTION -->
@@ -558,36 +800,6 @@
                     </p>
                 </div>
             </div>
-            
-            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
-            <div class="contact-info-fixed" id="contact-info-all">
-                <div class="contact-item address-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3><span class="address-label">Ünvan</span></h3>
-                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
-                </div>
-                
-                <div class="contact-item phone-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3><span class="phone-label">Telefon</span></h3>
-                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
-                </div>
-                
-                <div class="contact-item email-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3><span class="email-label">Email</span></h3>
-                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
-                </div>
-            </div>
         </div>
         
         <!-- CATALOG SECTION -->
@@ -601,7 +813,7 @@
                     <p>
                         Kataloqa daxil olan əsas məhsul qrupları:
                     </p>
-                    <ul style="color: #cccccc; margin-left: 20px; line-height: 1.6;">
+                    <ul>
                         <li>Hidravlik nasoslar və motorlar</li>
                         <li>Hidravlik silindrlər</li>
                         <li>Hidravlik klapanlar və paylayıcılar</li>
@@ -610,7 +822,7 @@
                         <li>Hidravlik yağlar və aksesuarlar</li>
                         <li>Mexaniki ehtiyat hissələri və komponentlər</li>
                         <li>Körpülü kran ehtiyat hissələri, o cümlədən:</li>
-                        <ul style="margin-left: 20px;">
+                        <ul style="margin-left: 20px; margin-top: 5px;">
                             <li>Troslar və zəncirlər</li>
                             <li>Tormoz sistemləri və tormoz yastıqları</li>
                             <li>Elektrik mühərrikləri və reduktorlar</li>
@@ -618,36 +830,6 @@
                             <li>Limit açarları, sensorlar və təhlükəsizlik elementləri</li>
                         </ul>
                     </ul>
-                </div>
-            </div>
-            
-            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
-            <div class="contact-info-fixed" id="contact-info-all">
-                <div class="contact-item address-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3><span class="address-label">Ünvan</span></h3>
-                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
-                </div>
-                
-                <div class="contact-item phone-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3><span class="phone-label">Telefon</span></h3>
-                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
-                </div>
-                
-                <div class="contact-item email-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3><span class="email-label">Email</span></h3>
-                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
                 </div>
             </div>
         </div>
@@ -663,7 +845,7 @@
                     <p>
                         Əsas xidmət istiqamətlərimiz aşağıdakılardır:
                     </p>
-                    <ul style="color: #cccccc; margin-left: 20px; line-height: 1.6;">
+                    <ul>
                         <li>Hidravlik sistemlərin təchizatı, satışı və quraşdırılması</li>
                         <li>Hidravlik avadanlıqların diaqnostikası, texniki baxışı və təmiri</li>
                         <li>Mexaniki avadanlıqların servisi və texniki dəstəyi</li>
@@ -671,36 +853,6 @@
                         <li>Planlı texniki xidmət və fövqəladə servis dəstəyi</li>
                         <li>Müştəri tələblərinə uyğun texniki məsləhət və həllərin təqdim olunması</li>
                     </ul>
-                </div>
-            </div>
-            
-            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
-            <div class="contact-info-fixed" id="contact-info-all">
-                <div class="contact-item address-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3><span class="address-label">Ünvan</span></h3>
-                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
-                </div>
-                
-                <div class="contact-item phone-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3><span class="phone-label">Telefon</span></h3>
-                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
-                </div>
-                
-                <div class="contact-item email-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3><span class="email-label">Email</span></h3>
-                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
                 </div>
             </div>
         </div>
@@ -718,272 +870,9 @@
                     </p>
                 </div>
             </div>
-            
-            <!-- ƏLAQƏ MƏLUMATLARI HƏR SƏHİFƏDƏ -->
-            <div class="contact-info-fixed" id="contact-info-all">
-                <div class="contact-item address-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3><span class="address-label">Ünvan</span></h3>
-                    <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
-                </div>
-                
-                <div class="contact-item phone-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3><span class="phone-label">Telefon</span></h3>
-                    <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
-                </div>
-                
-                <div class="contact-item email-icon">
-                    <div class="contact-icon-container">
-                        <div class="contact-icon-ring"></div>
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3><span class="email-label">Email</span></h3>
-                    <p><strong class="email-text">office@aztechnicalsupport.az</strong></p>
-                </div>
-            </div>
         </div>
         
-        <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO - ONLY HERE) -->
-        <div class="page-section active" id="contact-section">
-            <div class="split-container">
-                <!-- LEFT SIDE - CUBE ANIMATION (ONLY IN CONTACT SECTION) -->
-                <div class="left-side">
-                    <div id="cube-animation"></div>
-                </div>
-                
-                <!-- RIGHT SIDE - CONTACT INFORMATION (ONLY IN CONTACT SECTION) -->
-                <div class="right-side">
-                    <div class="contact-header">
-                        <div class="contact-title-left" id="contact-title">Bizim ilə Əlaqə</div>
-                    </div>
-                    
-                    <div class="contact-info">
-                        <div class="contact-item address-icon">
-                            <div class="contact-icon-container">
-                                <div class="contact-icon-ring"></div>
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <h3><span class="address-label">Ünvan</span></h3>
-                            <p><strong class="address-text">Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37</strong></p>
-                        </div>
-                        
-                        <div class="contact-item phone-icon">
-                            <div class="contact-icon-container">
-                                <div class="contact-icon-ring"></div>
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h3><span class="phone-label">Telefon</span></h3>
-                            <p><strong class="phone-text">+994 (10) 250 54 53</strong></p>
-                        </div>
-                        
-                        <div class="contact-item email-icon {
-            position: relative;
-            z-index: 10;
-            color: #fff;
-            font-size: 20px;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .contact-item:hover .contact-icon-ring {
-            box-shadow: 
-                0 0 5px currentColor,
-                0 0 10px currentColor,
-                0 0 15px currentColor;
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        
-        .contact-item p {
-            color: #cccccc;
-            line-height: 1.5;
-            margin-left: 60px;
-            font-size: 15px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .contact-item strong {
-            color: #ffffff;
-            font-size: 14px;
-            display: inline;
-            max-width: 100%;
-            padding-top: 2px;
-            line-height: 1.4;
-            white-space: nowrap;
-        }
-        
-        .content-box {
-            max-width: 700px;
-            margin: 40px auto;
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            text-align: left;
-        }
-        
-        .content-box h2 {
-            color: #00ffff;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
-            padding-bottom: 8px;
-            font-size: 20px;
-        }
-        
-        .content-box p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #cccccc;
-            font-size: 14px;
-        }
-        
-        .page-section {
-            display: none;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
-        .page-section.active {
-            display: flex;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo-space">
-            <div class="logo-placeholder">
-                aztechnicalsupport
-            </div>
-        </div>
-        
-        <div class="nav-center">
-            <button class="nav-btn" data-section="home">ANA SƏHİFƏ</button>
-            <button class="nav-btn" data-section="about">HAQQIMIZDA</button>
-            <button class="nav-btn" data-section="catalog">KATALOQ</button>
-            <button class="nav-btn" data-section="services">XİDMƏTLƏR</button>
-            <button class="nav-btn" data-section="projects">LAYİHƏLƏR</button>
-            <button class="nav-btn active" data-section="contact">ƏLAQƏ</button>
-        </div>
-        
-        <div class="nav-right">
-            <button class="lang-btn active" onclick="changeLanguage('aze')" id="aze-btn">AZE</button>
-            <button class="lang-btn" onclick="changeLanguage('rus')" id="rus-btn">RUS</button>
-            <button class="lang-btn" onclick="changeLanguage('eng')" id="eng-btn">ENG</button>
-        </div>
-    </nav>
-    
-    <div class="main-content">
-        <div class="page-section" id="home-section">
-            <div class="content">
-                <h1 class="company-name">AZHYDRO</h1>
-                <p class="company-subtitle">2025-ci ildən fəaliyyətdədir</p>
-                
-                <div class="content-box">
-                    <h2>Şirkətimiz Haqqında</h2>
-                    <p>
-                        Şirkətimiz 2025-ci ildə Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq təsis edilmişdir. Əsas fəaliyyət sahəmiz neft-qaz və gəmiçilik sənayesində hidravlik və mexaniki istiqamətlər üzrə təchizat, satış və servis xidmətlərinin göstərilməsindən ibarətdir. Yeni təsis olunmuş şirkət olmağımıza baxmayaraq, komandamızın peşəkar təcrübəsi və müasir yanaşması sayəsində müştərilərimizə etibarlı, yüksək keyfiyyətli məhsullar təqdim etməyi və onların əməliyyatlarının fasiləsiz şəkildə davam etməsinə operativ dəstək göstərməyi hədəfləyirik.
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="page-section" id="about-section">
-            <div class="content">
-                <h1 class="company-name">HAQQIMIZDA</h1>
-                <p class="company-subtitle">Şirkətimizin tarixi və missiyası</p>
-                
-                <div class="content-box">
-                    <h2>Biz Kimik?</h2>
-                    <p>
-                        AZHYDRO şirkəti 2025-ci ildə qurulmuş və o vaxtdan bəri hidravlik sistemlər və mexaniki avadanlıqlar sahəsində lider olmaq üçün çalışır.
-                    </p>
-                    <p>
-                        Missiyamız yüksək keyfiyyətli texniki xidmət, etibarlı məhsullar və davamlı həllər təqdim etməkdir.
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="page-section" id="catalog-section">
-            <div class="content">
-                <h1 class="company-name">KATALOQ</h1>
-                <p class="company-subtitle">Məhsul və avadanlıqlarımız</p>
-                
-                <div class="content-box">
-                    <h2>Məhsul Kataloqu</h2>
-                    <p>
-                        Kataloqa daxil olan əsas məhsul qrupları:
-                    </p>
-                    <ul style="color: #cccccc; margin-left: 20px; line-height: 1.6;">
-                        <li>Hidravlik nasoslar və motorlar</li>
-                        <li>Hidravlik silindrlər</li>
-                        <li>Hidravlik klapanlar və paylayıcılar</li>
-                        <li>Hidravlik şlanqlar, borular və fitinqlər</li>
-                        <li>Filtrlər və filtr elementləri</li>
-                        <li>Hidravlik yağlar və aksesuarlar</li>
-                        <li>Mexaniki ehtiyat hissələri və komponentlər</li>
-                        <li>Körpülü kran ehtiyat hissələri, o cümlədən:</li>
-                        <ul style="margin-left: 20px;">
-                            <li>Troslar və zəncirlər</li>
-                            <li>Tormoz sistemləri və tormoz yastıqları</li>
-                            <li>Elektrik mühərrikləri və reduktorlar</li>
-                            <li>Arabacı (trolley) və körpü mexanizmləri</li>
-                            <li>Limit açarları, sensorlar və təhlükəsizlik elementləri</li>
-                        </ul>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="page-section" id="services-section">
-            <div class="content">
-                <h1 class="company-name">XİDMƏTLƏR</h1>
-                <p class="company-subtitle">Təqdim etdiyimiz xidmətlər</p>
-                
-                <div class="content-box">
-                    <h2>Xidmətlərimiz</h2>
-                    <p>
-                        Əsas xidmət istiqamətlərimiz aşağıdakılardır:
-                    </p>
-                    <ul style="color: #cccccc; margin-left: 20px; line-height: 1.6;">
-                        <li>Hidravlik sistemlərin təchizatı, satışı və quraşdırılması</li>
-                        <li>Hidravlik avadanlıqların diaqnostikası, texniki baxışı və təmiri</li>
-                        <li>Mexaniki avadanlıqların servisi və texniki dəstəyi</li>
-                        <li>Ehtiyat hissələrinin satışı və operativ çatdırılması</li>
-                        <li>Planlı texniki xidmət və fövqəladə servis dəstəyi</li>
-                        <li>Müştəri tələblərinə uyğun texniki məsləhət və həllərin təqdim olunması</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="page-section" id="projects-section">
-            <div class="content">
-                <h1 class="company-name">LAYİHƏLƏR</h1>
-                <p class="company-subtitle">Həyata keçirdiyimiz layihələr</p>
-                
-                <div class="content-box">
-                    <h2>Layihələrimiz</h2>
-                    <p>
-                        Uğurla həyata keçirdiyimiz bəzi layihələr.
-                    </p>
-                </div>
-            </div>
-        </div>
-        
+        <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO) -->
         <div class="page-section active" id="contact-section">
             <div class="split-container">
                 <div class="left-side">
@@ -1039,7 +928,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // CUBE ANIMATION CODE - ONLY FOR CONTACT SECTION
+        // CUBE ANIMATION CODE
         let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
         let mouseWorld = new THREE.Vector3();
         let raycaster = new THREE.Raycaster();
@@ -1060,11 +949,9 @@
             renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
             cubeContainer.appendChild(renderer.domElement);
 
-            // Increase particle count for larger cube
             const count = 40000;
             const positions = new Float32Array(count * 3);
 
-            // MUCH Larger cube dimensions
             for (let i = 0; i < count; i++) {
                 positions[i*3] = (Math.random() - 0.5) * 2.5;
                 positions[i*3+1] = (Math.random() - 0.5) * 2.5;
@@ -1146,7 +1033,6 @@
             if (!scene || !renderer || !camera) return;
             
             uniforms.uTime.value += 0.005;
-            // ONLY Y rotation (360 degree rotation)
             if (sphere) {
                 sphere.rotation.y += 0.001;
             }
@@ -1154,7 +1040,6 @@
             requestAnimationFrame(animate);
         }
         
-        // LANGUAGE TRANSLATIONS
         const translations = {
             aze: {
                 contactTitle: "Bizim ilə Əlaqə",
@@ -1199,22 +1084,20 @@
             
             const t = translations[lang];
             document.getElementById('contact-title').textContent = t.contactTitle;
-            document.querySelector('.address-label').textContent = t.addressLabel;
-            document.querySelector('.address-text').textContent = t.addressText;
-            document.querySelector('.phone-label').textContent = t.phoneLabel;
-            document.querySelector('.phone-text').textContent = t.phoneText;
-            document.querySelector('.email-label').textContent = t.emailLabel;
-            document.querySelector('.email-text').textContent = t.emailText;
-            document.querySelector('.hours-label').textContent = t.hoursLabel;
-            document.querySelector('.hours-text').textContent = t.hoursText;
+            document.querySelectorAll('.address-label').forEach(el => el.textContent = t.addressLabel);
+            document.querySelectorAll('.address-text').forEach(el => el.textContent = t.addressText);
+            document.querySelectorAll('.phone-label').forEach(el => el.textContent = t.phoneLabel);
+            document.querySelectorAll('.phone-text').forEach(el => el.textContent = t.phoneText);
+            document.querySelectorAll('.email-label').forEach(el => el.textContent = t.emailLabel);
+            document.querySelectorAll('.email-text').forEach(el => el.textContent = t.emailText);
+            document.querySelectorAll('.hours-label').forEach(el => el.textContent = t.hoursLabel);
+            document.querySelectorAll('.hours-text').forEach(el => el.textContent = t.hoursText);
         }
         
-        // SECTION SWITCHING
         document.addEventListener('DOMContentLoaded', function() {
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            // Hide all sections except contact initially
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
@@ -1222,24 +1105,19 @@
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
                     navButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Get the section to show
                     const sectionId = this.getAttribute('data-section');
                     
-                    // Hide all sections
                     document.querySelectorAll('.page-section').forEach(section => {
                         section.classList.remove('active');
                     });
                     
-                    // Show the selected section
                     document.getElementById(sectionId + '-section').classList.add('active');
                 });
             });
             
-            // Language switching
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const lang = this.textContent.trim().toLowerCase();
