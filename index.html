@@ -43,17 +43,25 @@
             justify-content: flex-start;
         }
         
-        .logo-placeholder {
-            color: #00ffff;
-            font-size: 20px;
-            font-weight: bold;
-            background-color: rgba(0, 255, 255, 0.05);
-            padding: 8px 12px;
+        /* LOGO YERİNE PNG ŞƏKİL QOYMALI */
+        .logo-image {
+            max-height: 50px;
+            width: auto;
+            object-fit: contain;
             border-radius: 5px;
-            min-width: 150px;
-            text-align: center;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+        
+        /* Hər iki logonu göstərmək üçün container */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+        
+        .logo-variant {
+            max-height: 22px;
+            width: auto;
         }
         
         .nav-center {
@@ -504,8 +512,12 @@
     <nav class="navbar">
         <!-- LEFT - LOGO SPACE -->
         <div class="logo-space">
-            <div class="logo-placeholder">
-                AZHYDRO
+            <!-- HƏR İKİ LOGO VARIANTI ALT-ALTA -->
+            <div class="logo-container">
+                <!-- Birinci variant -->
+                <img src="Aztechnical-1.png" alt="AZTECHNICAL SUPPORT Logo" class="logo-variant" style="border: 1px solid #00ffff; padding: 2px;">
+                <!-- İkinci variant -->
+                <img src="Aztechnical-2.png" alt="AZTECHNICAL SUPPORT Logo" class="logo-variant" style="border: 1px solid #00ffff; padding: 2px;">
             </div>
         </div>
         
