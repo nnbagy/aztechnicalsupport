@@ -43,16 +43,16 @@
             justify-content: flex-start;
         }
         
-        /* GOOGLE DRIVE'DAN GƏLƏN LOGO ÜÇÜN */
+        /* LOQO ÜÇÜN */
         .drive-logo {
             max-height: 45px;
-            width: auto;
+            max-width: 160px;
             object-fit: contain;
             border-radius: 5px;
             border: 1px solid rgba(0, 255, 255, 0.3);
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
             background-color: rgba(255, 255, 255, 0.05);
-            padding: 5px;
+            padding: 3px;
         }
         
         .logo-placeholder {
@@ -516,11 +516,11 @@
     <nav class="navbar">
         <!-- LEFT - LOGO SPACE -->
         <div class="logo-space">
-            <!-- GOOGLE DRIVE'DAN GƏLƏN LOGO -->
-            <img src="https://drive.google.com/uc?export=view&id=1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z" 
+            <!-- ALTERNATİV LINK İLƏ LOQO -->
+            <img src="https://drive.google.com/thumbnail?id=1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z&sz=w1000" 
                  alt="AZTECHNICAL SUPPORT Logo" 
                  class="drive-logo"
-                 onerror="this.onerror=null; this.style.display='none'; document.getElementById('logo-placeholder').style.display='block';">
+                 onerror="handleLogoError(this)">
             
             <!-- PLACEHOLDER ƏGƏR ŞƏKİL YÜKLƏNMƏSƏ -->
             <div id="logo-placeholder" class="logo-placeholder" style="display: none;">
@@ -717,6 +717,35 @@
     <!-- THREE.JS CUBE ANIMATION (ONLY FOR CONTACT SECTION) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        // LOQO XƏTASINI IDARƏ ETMƏ FUNKSİYASI
+        function handleLogoError(imgElement) {
+            console.log("Loqo yüklənmədi, alternativ cəhd edilir...");
+            
+            // Əvvəlcə başqa formatı sınayırıq
+            const fileId = '1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z';
+            const alternatives = [
+                `https://drive.google.com/uc?export=view&id=${fileId}`,
+                `https://lh3.googleusercontent.com/d/${fileId}`,
+                `https://docs.google.com/uc?id=${fileId}`
+            ];
+            
+            let currentIndex = 0;
+            
+            function tryNextAlternative() {
+                if (currentIndex < alternatives.length) {
+                    imgElement.src = alternatives[currentIndex];
+                    currentIndex++;
+                } else {
+                    // Bütün alternativlər işləməzsə, placeholder göstər
+                    imgElement.style.display = 'none';
+                    document.getElementById('logo-placeholder').style.display = 'block';
+                }
+            }
+            
+            imgElement.onerror = tryNextAlternative;
+            tryNextAlternative();
+        }
+        
         // CUBE ANIMATION CODE - ONLY FOR CONTACT SECTION
         let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
         let mouseWorld = new THREE.Vector3();
@@ -925,16 +954,11 @@
                 });
             });
             
-            // LOGO YÜKLƏNİB-YÜKLƏNMƏDİYİNİ YOXLA
+            // LOQONUN YÜKLƏNDİYİNİ YOXLA
             const logoImg = document.querySelector('.drive-logo');
             if (logoImg) {
                 logoImg.onload = function() {
-                    console.log("Logo yükləndi");
-                };
-                logoImg.onerror = function() {
-                    console.log("Logo yüklənmədi, placeholder göstərilir");
-                    this.style.display = 'none';
-                    document.getElementById('logo-placeholder').style.display = 'block';
+                    console.log("AZTECHNICAL SUPPORT logo uğurla yükləndi");
                 };
             }
         });
