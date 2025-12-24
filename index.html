@@ -55,7 +55,6 @@
             padding: 5px;
         }
         
-        /* Həmçinin drive linki işləməsə alternativ mətn */
         .logo-placeholder {
             color: #00ffff;
             font-size: 20px;
@@ -521,7 +520,12 @@
             <img src="https://drive.google.com/uc?export=view&id=1Q6AKGUvt8mxMsKAWte9-4FHrEoIl0K4z" 
                  alt="AZTECHNICAL SUPPORT Logo" 
                  class="drive-logo"
-                 onerror="this.onerror=null; this.src='https://via.placeholder.com/150x45/0a0a1a/00ffff?text=AZTECHNICAL+LOGO';">
+                 onerror="this.onerror=null; this.style.display='none'; document.getElementById('logo-placeholder').style.display='block';">
+            
+            <!-- PLACEHOLDER ƏGƏR ŞƏKİL YÜKLƏNMƏSƏ -->
+            <div id="logo-placeholder" class="logo-placeholder" style="display: none;">
+                AZTECHNICAL
+            </div>
         </div>
         
         <!-- CENTER - MAIN BUTTONS -->
@@ -920,6 +924,19 @@
                     changeLanguage(lang);
                 });
             });
+            
+            // LOGO YÜKLƏNİB-YÜKLƏNMƏDİYİNİ YOXLA
+            const logoImg = document.querySelector('.drive-logo');
+            if (logoImg) {
+                logoImg.onload = function() {
+                    console.log("Logo yükləndi");
+                };
+                logoImg.onerror = function() {
+                    console.log("Logo yüklənmədi, placeholder göstərilir");
+                    this.style.display = 'none';
+                    document.getElementById('logo-placeholder').style.display = 'block';
+                };
+            }
         });
     </script>
 </body>
