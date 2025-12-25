@@ -164,7 +164,7 @@
             background: black !important;
             color: white !important;
             border-color: lime !important;
-            box-shadow = 0 0 10px lime !important;
+            box-shadow: 0 0 10px lime !important;
         }
         
         .lang-btn.active::before {
@@ -235,7 +235,7 @@
             width: calc(100% - 20px);
         }
         
-        .animation-container {
+        #cube-animation {
             position: absolute;
             top: 0;
             left: 0;
@@ -422,43 +422,9 @@
             display: flex;
         }
         
-        /* FULL SCREEN ANIMATION FOR PROJECTS */
-        .fullscreen-animation-container {
-            width: 100%;
-            height: calc(100vh - 70px);
-            background: #000;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* CONTACT LEFT SIDE - KUB YOXDUR */
-        .contact-left-empty {
-            flex: 1;
-            background: rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            border: 2px solid rgba(0, 255, 255, 0.1);
-            margin: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-            height: 400px;
-            width: calc(100% - 20px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .contact-left-text {
-            color: #00ffff;
-            font-size: 24px;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            opacity: 0.5;
-            text-align: center;
-            padding: 20px;
-        }
-        
         /* ========== RESPONSIVE BREAKPOINTS ========== */
         
+        /* 14" ekranlar (1366x768 ve daha kicik) */
         @media screen and (max-width: 1366px) {
             .logo-placeholder {
                 font-size: 14px;
@@ -490,12 +456,9 @@
             .content-box {
                 padding: 15px;
             }
-            
-            .contact-left-text {
-                font-size: 20px;
-            }
         }
         
+        /* 15.6" ve 16" ekranlar (1440x900 - 1920x1080) */
         @media screen and (min-width: 1367px) and (max-width: 1920px) {
             .logo-placeholder {
                 font-size: 15px;
@@ -523,12 +486,9 @@
             .company-name {
                 font-size: 26px;
             }
-            
-            .contact-left-text {
-                font-size: 22px;
-            }
         }
         
+        /* 19" ve 24" ekranlar (1921px - 2560px) */
         @media screen and (min-width: 1921px) and (max-width: 2560px) {
             .navbar {
                 padding: 15px 30px;
@@ -574,12 +534,9 @@
             .content-box p, .content-box ul {
                 font-size: 14px;
             }
-            
-            .contact-left-text {
-                font-size: 28px;
-            }
         }
         
+        /* 27" ve 32" ekranlar (2561px ve daha boyuk) */
         @media screen and (min-width: 2561px) {
             .navbar {
                 padding: 20px 40px;
@@ -625,12 +582,9 @@
             .content-box p, .content-box ul {
                 font-size: 16px;
             }
-            
-            .contact-left-text {
-                font-size: 32px;
-            }
         }
         
+        /* TABLET VE TELEFONLAR (768px ve daha kicik) */
         @media screen and (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -691,16 +645,9 @@
             .contact-info {
                 padding: 15px;
             }
-            
-            .contact-left-empty {
-                height: 250px;
-            }
-            
-            .contact-left-text {
-                font-size: 18px;
-            }
         }
         
+        /* CONTACT SECTION DESKTOP LAYOUT */
         @media screen and (min-width: 1024px) {
             .split-container {
                 flex-direction: row;
@@ -722,14 +669,9 @@
             .contact-info {
                 min-width: 400px;
             }
-            
-            .contact-left-empty {
-                width: 40%;
-                height: 500px;
-                margin: 0 10px 0 25px;
-            }
         }
         
+        /* WIDE DESKTOP LAYOUT */
         @media screen and (min-width: 1600px) {
             .split-container {
                 padding: 0 30px;
@@ -748,13 +690,9 @@
             .contact-info {
                 min-width: 450px;
             }
-            
-            .contact-left-empty {
-                height: 550px;
-                width: 42%;
-            }
         }
         
+        /* ULTRA WIDE DESKTOP LAYOUT */
         @media screen and (min-width: 2560px) {
             .split-container {
                 padding: 0 60px;
@@ -785,15 +723,6 @@
             
             .contact-item p {
                 font-size: 16px;
-            }
-            
-            .contact-left-empty {
-                height: 650px;
-                width: 45%;
-            }
-            
-            .contact-left-text {
-                font-size: 32px;
             }
         }
     </style>
@@ -828,7 +757,12 @@
         <!-- HOME SECTION -->
         <div class="page-section" id="home-section">
             <div class="content">
-                <!-- Ana səhifə tamamilə boşdur -->
+                <div class="content-box">
+                    <h2 data-translate="homeTitle">Şirkətimiz Haqqında</h2>
+                    <p data-translate="homeText">
+                        Şirkətimiz 2025-ci ildə Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq təsis edilmişdir. Əsas fəaliyyət sahəmiz neft-qaz və gəmiçilik sənayesində hidravlik və mexaniki istiqamətlər üzrə təchizat, satış və servis xidmətlərinin göstərilməsindən ibarətdir. Yeni təsis olunmuş şirkət olmağımıza baxmayaraq, komandamızın peşəkar təcrübəsi və müasir yanaşması sayəsində müştərilərimizə etibarlı, yüksək keyfiyyətli məhsullar təqdim etməyi və onların əməliyyatlarının fasiləsiz şəkildə davam etməsinə operativ dəstək göstərməyi hədəfləyirik.
+                    </p>
+                </div>
             </div>
         </div>
         
@@ -836,11 +770,9 @@
         <div class="page-section" id="about-section">
             <div class="content">
                 <div class="content-box">
-                    <p>
-                        Şirkətimiz 2025-ci ildə Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq təsis edilmişdir. Əsas fəaliyyət sahəmiz neft-qaz və gəmiçilik sənayesində hidravlik və mexaniki istiqamətlər üzrə təchizat, satış və servis xidmətlərinin göstərilməsindən ibarətdir. Yeni təsis olunmuş şirkət olmağımıza baxmayaraq, komandamızın peşəkar təcrübəsi və müasir yanaşması sayəsində müştərilərimizə etibarlı, yüksək keyfiyyətli məhsullar təqdim etməyi və onların əməliyyatlarının fasiləsiz şəkildə davam etməsinə operativ dəstək göstərməyi hədəfləyirik.
-                    </p>
-                    <p>
-                        Missiyamız yüksək keyfiyyətli texniki xidmət, etibarlı məhsullar və davamlı həllər təqdim etməkdir.
+                    <h2 data-translate="aboutTitle">Haqqımızda</h2>
+                    <p data-translate="aboutText">
+                        Missiyamız yüksək keyfiyyətli texniki xidmət, etibarlı məhsullar və davamlı həllər təqdim etməkdir. Biz müştərilərimizə yüksək səviyyəli texniki dəstək və peşəkar xidmət göstərməyə sadiqik.
                     </p>
                 </div>
             </div>
@@ -850,24 +782,25 @@
         <div class="page-section" id="catalog-section">
             <div class="content">
                 <div class="content-box">
-                    <p>
+                    <h2 data-translate="catalogTitle">Kataloq</h2>
+                    <p data-translate="catalogText">
                         Kataloqa daxil olan əsas məhsul qrupları:
                     </p>
                     <ul>
-                        <li>Hidravlik nasoslar və motorlar</li>
-                        <li>Hidravlik silindrlər</li>
-                        <li>Hidravlik klapanlar və paylayıcılar</li>
-                        <li>Hidravlik şlanqlar, borular və fitinqlər</li>
-                        <li>Filtrlər və filtr elementləri</li>
-                        <li>Hidravlik yağlar və aksesuarlar</li>
-                        <li>Mexaniki ehtiyat hissələri və komponentlər</li>
-                        <li>Körpülü kran ehtiyat hissələri, o cümlədən:</li>
+                        <li data-translate="catalogItem1">Hidravlik nasoslar və motorlar</li>
+                        <li data-translate="catalogItem2">Hidravlik silindrlər</li>
+                        <li data-translate="catalogItem3">Hidravlik klapanlar və paylayıcılar</li>
+                        <li data-translate="catalogItem4">Hidravlik şlanqlar, borular və fitinqlər</li>
+                        <li data-translate="catalogItem5">Filtrlər və filtr elementləri</li>
+                        <li data-translate="catalogItem6">Hidravlik yağlar və aksesuarlar</li>
+                        <li data-translate="catalogItem7">Mexaniki ehtiyat hissələri və komponentlər</li>
+                        <li data-translate="catalogItem8">Körpülü kran ehtiyat hissələri, o cümlədən:</li>
                         <ul style="margin-left: 20px; margin-top: 5px;">
-                            <li>Troslar və zəncirlər</li>
-                            <li>Tormoz sistemləri və tormoz yastıqları</li>
-                            <li>Elektrik mühərrikləri və reduktorlar</li>
-                            <li>Arabacı (trolley) və körpü mexanizmləri</li>
-                            <li>Limit açarları, sensorlar və təhlükəsizlik elementləri</li>
+                            <li data-translate="catalogSubItem1">Troslar və zəncirlər</li>
+                            <li data-translate="catalogSubItem2">Tormoz sistemləri və tormoz yastıqları</li>
+                            <li data-translate="catalogSubItem3">Elektrik mühərrikləri və reduktorlar</li>
+                            <li data-translate="catalogSubItem4">Arabacı (trolley) və körpü mexanizmləri</li>
+                            <li data-translate="catalogSubItem5">Limit açarları, sensorlar və təhlükəsizlik elementləri</li>
                         </ul>
                     </ul>
                 </div>
@@ -877,25 +810,40 @@
         <!-- SERVICES SECTION -->
         <div class="page-section" id="services-section">
             <div class="content">
-                <!-- Xidmətlər bölməsi tamamilə boşdur -->
+                <div class="content-box">
+                    <h2 data-translate="servicesTitle">Xidmətlər</h2>
+                    <p data-translate="servicesText">
+                        Əsas xidmət istiqamətlərimiz aşağıdakılardır:
+                    </p>
+                    <ul>
+                        <li data-translate="serviceItem1">Hidravlik sistemlərin təchizatı, satışı və quraşdırılması</li>
+                        <li data-translate="serviceItem2">Hidravlik avadanlıqların diaqnostikası, texniki baxışı və təmiri</li>
+                        <li data-translate="serviceItem3">Mexaniki avadanlıqların servisi və texniki dəstəyi</li>
+                        <li data-translate="serviceItem4">Ehtiyat hissələrinin satışı və operativ çatdırılması</li>
+                        <li data-translate="serviceItem5">Planlı texniki xidmət və fövqəladə servis dəstəyi</li>
+                        <li data-translate="serviceItem6">Müştəri tələblərinə uyğun texniki məsləhət və həllərin təqdim olunması</li>
+                    </ul>
+                </div>
             </div>
         </div>
         
-        <!-- PROJECTS SECTION - YALNIZ BU SƏHİFƏDƏ KUB VAR -->
+        <!-- PROJECTS SECTION -->
         <div class="page-section" id="projects-section">
-            <div class="fullscreen-animation-container">
-                <div class="animation-container" id="projects-animation"></div>
+            <div class="content">
+                <div class="content-box">
+                    <h2 data-translate="projectsTitle">Layihələr</h2>
+                    <p data-translate="projectsText">
+                        Uğurla həyata keçirdiyimiz bəzi layihələr. Şirkətimiz neft-qaz və gəmiçilik sənayesində mürəkkəb texniki layihələrin həyata keçirilməsində geniş təcrübəyə malikdir.
+                    </p>
+                </div>
             </div>
         </div>
         
-        <!-- CONTACT SECTION - KUB YOXDUR -->
+        <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO) -->
         <div class="page-section active" id="contact-section">
             <div class="split-container">
-                <!-- Sol tərəf kub yoxdur -->
-                <div class="contact-left-empty">
-                    <div class="contact-left-text">
-                        Əlaqə Məlumatları
-                    </div>
+                <div class="left-side">
+                    <div id="cube-animation"></div>
                 </div>
                 
                 <div class="right-side">
@@ -947,109 +895,335 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // YALNIZ LAYİHƏLƏR BÖLMƏSİ ÜÇÜN KUB ANİMASİYASI
-        let scene, camera, renderer, cube;
-        let isAnimating = true;
-        let rotationSpeed = 0.01;
+        // CUBE ANIMATION CODE
+        let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
+        let mouseWorld = new THREE.Vector3();
+        let raycaster = new THREE.Raycaster();
 
-        function initProjectsAnimation() {
-            const projectsContainer = document.getElementById('projects-animation');
-            if (!projectsContainer) return;
+        init();
+        animate();
+
+        function init() {
+            const cubeContainer = document.getElementById('cube-animation');
+            if (!cubeContainer) return;
             
-            // Sahə yarat
             scene = new THREE.Scene();
-            
-            // Kamera yarat
-            camera = new THREE.PerspectiveCamera(75, projectsContainer.clientWidth / projectsContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 5;
-            
-            // Renderer yarat
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(projectsContainer.clientWidth, projectsContainer.clientHeight);
-            renderer.setClearColor(0x000000, 0); // Şəffaf fon
-            projectsContainer.appendChild(renderer.domElement);
-            
-            // Kub yarat
-            const geometry = new THREE.BoxGeometry(2, 2, 2);
-            
-            // Material yarat - hər üz üçün fərqli rəng
-            const materials = [
-                new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false }), // Ön
-                new THREE.MeshBasicMaterial({ color: 0xff00ff, wireframe: false }), // Arxa
-                new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: false }), // Üst
-                new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false }), // Alt
-                new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false }), // Sağ
-                new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: false })  // Sol
-            ];
-            
-            cube = new THREE.Mesh(geometry, materials);
-            scene.add(cube);
-            
-            // İşıq əlavə et
-            const light = new THREE.DirectionalLight(0xffffff, 1);
-            light.position.set(1, 1, 1).normalize();
-            scene.add(light);
-            
-            // Ambient light əlavə et
-            const ambientLight = new THREE.AmbientLight(0x404040);
-            scene.add(ambientLight);
-            
-            // Mouse interaktivliyi
-            let mouseX = 0;
-            let mouseY = 0;
-            let targetRotationX = 0;
-            let targetRotationY = 0;
-            
-            projectsContainer.addEventListener('mousemove', (event) => {
-                const rect = projectsContainer.getBoundingClientRect();
-                mouseX = ((event.clientX - rect.left) / projectsContainer.clientWidth) * 2 - 1;
-                mouseY = -((event.clientY - rect.top) / projectsContainer.clientHeight) * 2 + 1;
-                
-                targetRotationY = mouseX * Math.PI;
-                targetRotationX = mouseY * Math.PI;
-            });
-            
-            projectsContainer.addEventListener('mouseleave', () => {
-                isAnimating = true;
-            });
-            
-            projectsContainer.addEventListener('mouseenter', () => {
-                isAnimating = false;
-            });
-            
-            // Resize listener
-            window.addEventListener('resize', () => {
-                if (!projectsContainer) return;
-                
-                camera.aspect = projectsContainer.clientWidth / projectsContainer.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(projectsContainer.clientWidth, projectsContainer.clientHeight);
-            });
-            
-            // Animasiya funksiyası
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                if (isAnimating) {
-                    // Avtomatik fırlanma
-                    cube.rotation.x += rotationSpeed;
-                    cube.rotation.y += rotationSpeed;
-                } else {
-                    // Mouse ilə fırlanma
-                    cube.rotation.x += (targetRotationX - cube.rotation.x) * 0.05;
-                    cube.rotation.y += (targetRotationY - cube.rotation.y) * 0.05;
-                }
-                
-                renderer.render(scene, camera);
+
+            camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
+            camera.position.z = 3.5;
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+            cubeContainer.appendChild(renderer.domElement);
+
+            const count = 40000;
+            const positions = new Float32Array(count * 3);
+
+            for (let i = 0; i < count; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+1] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+2] = (Math.random() - 0.5) * 2.5;
             }
+
+            const particleGeometry = new THREE.BufferGeometry();
+            particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+            uniforms = {
+                uTime: { value: 0.0 },
+                uMouse: { value: new THREE.Vector3(0,0,0) }
+            };
+
+            const material = new THREE.ShaderMaterial({
+                uniforms,
+                vertexShader: `
+                    uniform vec3 uMouse;
+
+                    void main() {
+                        vec3 pos = position;
+
+                        float dist = distance(pos, uMouse);
+                        pos += normalize(pos - uMouse) * (0.15 / dist);
+
+                        gl_PointSize = 1.2;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    void main() {
+                        gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
+                    }
+                `,
+                transparent: true
+            });
+
+            sphere = new THREE.Points(particleGeometry, material);
+            scene.add(sphere);
+
+            cubeContainer.addEventListener("pointermove", (e) => {
+                const rect = cubeContainer.getBoundingClientRect();
+                
+                const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                
+                mouse.set(x, y, 0.5);
+                
+                raycaster.setFromCamera(mouse, camera);
+                
+                const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+                const intersectionPoint = new THREE.Vector3();
+                
+                raycaster.ray.intersectPlane(planeZ, intersectionPoint);
+                
+                const worldMouse = intersectionPoint.clone();
+                
+                const inverseMatrix = new THREE.Matrix4().copy(sphere.matrixWorld).invert();
+                worldMouse.applyMatrix4(inverseMatrix);
+                
+                uniforms.uMouse.value.copy(worldMouse);
+            });
             
-            animate();
+            cubeContainer.addEventListener("pointerleave", () => {
+                uniforms.uMouse.value.set(1000, 1000, 1000);
+            });
+            
+            window.addEventListener('resize', function() {
+                const cubeContainer = document.getElementById('cube-animation');
+                if (!cubeContainer) return;
+                
+                camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+            });
+        }
+
+        function animate() {
+            if (!scene || !renderer || !camera) return;
+            
+            uniforms.uTime.value += 0.005;
+            if (sphere) {
+                sphere.rotation.y += 0.001;
+            }
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
         }
         
-        // Sayt yüklənəndə animasiyanı başlat
-        document.addEventListener('DOMContentLoaded', function() {
-            initProjectsAnimation();
+        const translations = {
+            aze: {
+                // Navigation
+                home: "ANA SƏHİFƏ",
+                about: "HAQQIMIZDA",
+                catalog: "KATALOQ",
+                services: "XİDMƏTLƏR",
+                projects: "LAYİHƏLƏR",
+                contact: "ƏLAQƏ",
+                
+                // Home Section
+                homeTitle: "Şirkətimiz Haqqında",
+                homeText: "Şirkətimiz 2025-ci ildə Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq təsis edilmişdir. Əsas fəaliyyət sahəmiz neft-qaz və gəmiçilik sənayesində hidravlik və mexaniki istiqamətlər üzrə təchizat, satış və servis xidmətlərinin göstərilməsindən ibarətdir. Yeni təsis olunmuş şirkət olmağımıza baxmayaraq, komandamızın peşəkar təcrübəsi və müasir yanaşması sayəsində müştərilərimizə etibarlı, yüksək keyfiyyətli məhsullar təqdim etməyi və onların əməliyyatlarının fasiləsiz şəkildə davam etməsinə operativ dəstək göstərməyi hədəfləyirik.",
+                
+                // About Section
+                aboutTitle: "Haqqımızda",
+                aboutText: "Missiyamız yüksək keyfiyyətli texniki xidmət, etibarlı məhsullar və davamlı həllər təqdim etməkdir. Biz müştərilərimizə yüksək səviyyəli texniki dəstək və peşəkar xidmət göstərməyə sadiqik.",
+                
+                // Catalog Section
+                catalogTitle: "Kataloq",
+                catalogText: "Kataloqa daxil olan əsas məhsul qrupları:",
+                catalogItem1: "Hidravlik nasoslar və motorlar",
+                catalogItem2: "Hidravlik silindrlər",
+                catalogItem3: "Hidravlik klapanlar və paylayıcılar",
+                catalogItem4: "Hidravlik şlanqlar, borular və fitinqlər",
+                catalogItem5: "Filtrlər və filtr elementləri",
+                catalogItem6: "Hidravlik yağlar və aksesuarlar",
+                catalogItem7: "Mexaniki ehtiyat hissələri və komponentlər",
+                catalogItem8: "Körpülü kran ehtiyat hissələri, o cümlədən:",
+                catalogSubItem1: "Troslar və zəncirlər",
+                catalogSubItem2: "Tormoz sistemləri və tormoz yastıqları",
+                catalogSubItem3: "Elektrik mühərrikləri və reduktorlar",
+                catalogSubItem4: "Arabacı (trolley) və körpü mexanizmləri",
+                catalogSubItem5: "Limit açarları, sensorlar və təhlükəsizlik elementləri",
+                
+                // Services Section
+                servicesTitle: "Xidmətlər",
+                servicesText: "Əsas xidmət istiqamətlərimiz aşağıdakılardır:",
+                serviceItem1: "Hidravlik sistemlərin təchizatı, satışı və quraşdırılması",
+                serviceItem2: "Hidravlik avadanlıqların diaqnostikası, texniki baxışı və təmiri",
+                serviceItem3: "Mexaniki avadanlıqların servisi və texniki dəstəyi",
+                serviceItem4: "Ehtiyat hissələrinin satışı və operativ çatdırılması",
+                serviceItem5: "Planlı texniki xidmət və fövqəladə servis dəstəyi",
+                serviceItem6: "Müştəri tələblərinə uyğun texniki məsləhət və həllərin təqdim olunması",
+                
+                // Projects Section
+                projectsTitle: "Layihələr",
+                projectsText: "Uğurla həyata keçirdiyimiz bəzi layihələr. Şirkətimiz neft-qaz və gəmiçilik sənayesində mürəkkəb texniki layihələrin həyata keçirilməsində geniş təcrübəyə malikdir.",
+                
+                // Contact Section
+                contactTitle: "Bizim ilə Əlaqə",
+                addressLabel: "Ünvan",
+                addressText: "Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37",
+                phoneLabel: "Telefon",
+                phoneText: "+994 (10) 250 54 53",
+                emailLabel: "Email",
+                emailText: "office@aztechnicalsupport.az",
+                hoursLabel: "İş Saatları",
+                hoursText: "Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər"
+            },
+            rus: {
+                // Navigation
+                home: "ГЛАВНАЯ",
+                about: "О НАС",
+                catalog: "КАТАЛОГ",
+                services: "УСЛУГИ",
+                projects: "ПРОЕКТЫ",
+                contact: "КОНТАКТЫ",
+                
+                // Home Section
+                homeTitle: "О нашей компании",
+                homeText: "Наша компания была основана в 2025 году в соответствии с законодательством Азербайджанской Республики. Основное направление нашей деятельности заключается в поставке, продаже и сервисном обслуживании гидравлического и механического оборудования для нефтегазовой и судоходной промышленности. Несмотря на то, что мы являемся новой компанией, благодаря профессиональному опыту нашей команды и современному подходу мы стремимся предоставлять нашим клиентам надежную, высококачественную продукцию и оперативную поддержку для бесперебойного продолжения их операций.",
+                
+                // About Section
+                aboutTitle: "О нас",
+                aboutText: "Наша миссия — предоставлять высококачественные технические услуги, надежную продукцию и устойчивые решения. Мы стремимся предоставлять нашим клиентам высококвалифицированную техническую поддержку и профессиональные услуги.",
+                
+                // Catalog Section
+                catalogTitle: "Каталог",
+                catalogText: "Основные группы продукции, включенные в каталог:",
+                catalogItem1: "Гидравлические насосы и двигатели",
+                catalogItem2: "Гидравлические цилиндры",
+                catalogItem3: "Гидравлические клапаны и распределители",
+                catalogItem4: "Гидравлические шланги, трубы и фитинги",
+                catalogItem5: "Фильтры и фильтрующие элементы",
+                catalogItem6: "Гидравлические масла и аксессуары",
+                catalogItem7: "Механические запасные части и компоненты",
+                catalogItem8: "Запасные части для мостовых кранов, включая:",
+                catalogSubItem1: "Тросы и цепи",
+                catalogSubItem2: "Тормозные системы и тормозные колодки",
+                catalogSubItem3: "Электродвигатели и редукторы",
+                catalogSubItem4: "Тельферы и мостовые механизмы",
+                catalogSubItem5: "Концевые выключатели, датчики и элементы безопасности",
+                
+                // Services Section
+                servicesTitle: "Услуги",
+                servicesText: "Основные направления наших услуг:",
+                serviceItem1: "Поставка, продажа и установка гидравлических систем",
+                serviceItem2: "Диагностика, техническое обслуживание и ремонт гидравлического оборудования",
+                serviceItem3: "Сервис и техническая поддержка механического оборудования",
+                serviceItem4: "Продажа и оперативная доставка запасных частей",
+                serviceItem5: "Плановое техническое обслуживание и экстренная сервисная поддержка",
+                serviceItem6: "Предоставление технических консультаций и решений в соответствии с требованиями клиентов",
+                
+                // Projects Section
+                projectsTitle: "Проекты",
+                projectsText: "Некоторые из успешно реализованных нами проектов. Наша компания имеет обширный опыт в реализации сложных технических проектов в нефтегазовой и судоходной отраслях.",
+                
+                // Contact Section
+                contactTitle: "Свяжитесь с нами",
+                addressLabel: "Адрес",
+                addressText: "город Баку, Бинагадинский район, улица Мир Джалал 37",
+                phoneLabel: "Телефон",
+                phoneText: "+994 (10) 250 54 53",
+                emailLabel: "Эл. почта",
+                emailText: "office@aztechnicalsupport.az",
+                hoursLabel: "Часы работы",
+                hoursText: "Понедельник - Пятница: с 9:00 до 18:00"
+            },
+            eng: {
+                // Navigation
+                home: "HOME",
+                about: "ABOUT",
+                catalog: "CATALOG",
+                services: "SERVICES",
+                projects: "PROJECTS",
+                contact: "CONTACT",
+                
+                // Home Section
+                homeTitle: "About Our Company",
+                homeText: "Our company was established in 2025 in accordance with the legislation of the Republic of Azerbaijan. Our main area of activity is the supply, sale, and service of hydraulic and mechanical equipment for the oil-gas and shipping industries. Although we are a newly established company, thanks to the professional experience of our team and modern approach, we aim to provide our customers with reliable, high-quality products and operational support for the uninterrupted continuation of their operations.",
+                
+                // About Section
+                aboutTitle: "About Us",
+                aboutText: "Our mission is to provide high-quality technical service, reliable products, and sustainable solutions. We are committed to providing our customers with high-level technical support and professional service.",
+                
+                // Catalog Section
+                catalogTitle: "Catalog",
+                catalogText: "Main product groups included in the catalog:",
+                catalogItem1: "Hydraulic pumps and motors",
+                catalogItem2: "Hydraulic cylinders",
+                catalogItem3: "Hydraulic valves and distributors",
+                catalogItem4: "Hydraulic hoses, pipes, and fittings",
+                catalogItem5: "Filters and filter elements",
+                catalogItem6: "Hydraulic oils and accessories",
+                catalogItem7: "Mechanical spare parts and components",
+                catalogItem8: "Bridge crane spare parts, including:",
+                catalogSubItem1: "Cables and chains",
+                catalogSubItem2: "Brake systems and brake pads",
+                catalogSubItem3: "Electric motors and reducers",
+                catalogSubItem4: "Trolleys and bridge mechanisms",
+                catalogSubItem5: "Limit switches, sensors, and safety elements",
+                
+                // Services Section
+                servicesTitle: "Services",
+                servicesText: "Our main service directions are:",
+                serviceItem1: "Supply, sale, and installation of hydraulic systems",
+                serviceItem2: "Diagnostics, maintenance, and repair of hydraulic equipment",
+                serviceItem3: "Service and technical support of mechanical equipment",
+                serviceItem4: "Sale and operational delivery of spare parts",
+                serviceItem5: "Planned technical maintenance and emergency service support",
+                serviceItem6: "Provision of technical advice and solutions according to customer requirements",
+                
+                // Projects Section
+                projectsTitle: "Projects",
+                projectsText: "Some of the projects we have successfully implemented. Our company has extensive experience in implementing complex technical projects in the oil-gas and shipping industries.",
+                
+                // Contact Section
+                contactTitle: "Contact Us",
+                addressLabel: "Address",
+                addressText: "Baku city, Binagadi district, Mir Celal street 37",
+                phoneLabel: "Phone",
+                phoneText: "+994 (10) 250 54 53",
+                emailLabel: "Email",
+                emailText: "office@aztechnicalsupport.az",
+                hoursLabel: "Working Hours",
+                hoursText: "Monday - Friday: 9:00 AM to 6:00 PM"
+            }
+        };
+        
+        function changeLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(lang + '-btn').classList.add('active');
             
+            const t = translations[lang];
+            
+            // Navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                const section = btn.getAttribute('data-section');
+                if (t[section]) {
+                    btn.textContent = t[section];
+                }
+            });
+            
+            // All translatable elements
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            
+            // Contact section
+            document.getElementById('contact-title').textContent = t.contactTitle;
+            document.querySelectorAll('.address-label').forEach(el => el.textContent = t.addressLabel);
+            document.querySelectorAll('.address-text').forEach(el => el.textContent = t.addressText);
+            document.querySelectorAll('.phone-label').forEach(el => el.textContent = t.phoneLabel);
+            document.querySelectorAll('.phone-text').forEach(el => el.textContent = t.phoneText);
+            document.querySelectorAll('.email-label').forEach(el => el.textContent = t.emailLabel);
+            document.querySelectorAll('.email-text').forEach(el => el.textContent = t.emailText);
+            document.querySelectorAll('.hours-label').forEach(el => el.textContent = t.hoursLabel);
+            document.querySelectorAll('.hours-text').forEach(el => el.textContent = t.hoursText);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
@@ -1080,60 +1254,6 @@
                 });
             });
         });
-        
-        const translations = {
-            aze: {
-                contactTitle: "Bizim ilə Əlaqə",
-                addressLabel: "Ünvan",
-                addressText: "Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37",
-                phoneLabel: "Telefon",
-                phoneText: "+994 (10) 250 54 53",
-                emailLabel: "Email",
-                emailText: "office@aztechnicalsupport.az",
-                hoursLabel: "İş Saatları",
-                hoursText: "Bazar ertəsi - Cümə: səhər 9:00-dan 18:00-a qədər"
-            },
-            rus: {
-                contactTitle: "Свяжитесь с нами",
-                addressLabel: "Адрес",
-                addressText: "город Баку, Бинагадинский район, улица Мир Джалал 37",
-                phoneLabel: "Телефон",
-                phoneText: "+994 (10) 250 54 53",
-                emailLabel: "Эл. почта",
-                emailText: "office@aztechnicalsupport.az",
-                hoursLabel: "Часы работы",
-                hoursText: "Понедельник - Пятница: с 9:00 до 18:00"
-            },
-            eng: {
-                contactTitle: "Contact Us",
-                addressLabel: "Address",
-                addressText: "Baku city, Binagadi district, Mir Celal street 37",
-                phoneLabel: "Phone",
-                phoneText: "+994 (10) 250 54 53",
-                emailLabel: "Email",
-                emailText: "office@aztechnicalsupport.az",
-                hoursLabel: "Working Hours",
-                hoursText: "Monday - Friday: 9:00 AM to 6:00 PM"
-            }
-        };
-        
-        function changeLanguage(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.getElementById(lang + '-btn').classList.add('active');
-            
-            const t = translations[lang];
-            document.getElementById('contact-title').textContent = t.contactTitle;
-            document.querySelectorAll('.address-label').forEach(el => el.textContent = t.addressLabel);
-            document.querySelectorAll('.address-text').forEach(el => el.textContent = t.addressText);
-            document.querySelectorAll('.phone-label').forEach(el => el.textContent = t.phoneLabel);
-            document.querySelectorAll('.phone-text').forEach(el => el.textContent = t.phoneText);
-            document.querySelectorAll('.email-label').forEach(el => el.textContent = t.emailLabel);
-            document.querySelectorAll('.email-text').forEach(el => el.textContent = t.emailText);
-            document.querySelectorAll('.hours-label').forEach(el => el.textContent = t.hoursLabel);
-            document.querySelectorAll('.hours-text').forEach(el => el.textContent = t.hoursText);
-        }
     </script>
 </body>
 </html>
