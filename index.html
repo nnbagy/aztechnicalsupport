@@ -422,16 +422,13 @@
             display: flex;
         }
         
-        /* EMPTY SECTION STYLE */
-        .empty-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 300px;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 24px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        /* FULL SCREEN ANIMATION FOR PROJECTS */
+        .fullscreen-animation-container {
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: #000;
+            position: relative;
+            overflow: hidden;
         }
         
         /* ========== RESPONSIVE BREAKPOINTS ========== */
@@ -824,8 +821,8 @@
         
         <!-- PROJECTS SECTION -->
         <div class="page-section" id="projects-section">
-            <div class="content">
-                <!-- Layihələr bölməsi tamamilə boşdur -->
+            <div class="fullscreen-animation-container">
+                <div class="animation-container" id="projects-animation"></div>
             </div>
         </div>
         
@@ -833,7 +830,7 @@
         <div class="page-section active" id="contact-section">
             <div class="split-container">
                 <div class="left-side">
-                    <div class="animation-container" id="cube-animation"></div>
+                    <div class="animation-container" id="contact-animation"></div>
                 </div>
                 
                 <div class="right-side">
@@ -885,34 +882,32 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // CUBE ANIMATION CODE
-        let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
-        let mouseWorld = new THREE.Vector3();
-        let raycaster = new THREE.Raycaster();
-
-        init();
-        animate();
-
-        function init() {
-            const cubeContainer = document.getElementById('cube-animation');
-            if (!cubeContainer) return;
+        // ANIMATION FUNCTIONS
+        function createParticleAnimation(containerId, isFullScreen = false) {
+            const container = document.getElementById(containerId);
+            if (!container) return null;
             
+            let scene, camera, renderer, sphere, uniforms;
+            let mouse = new THREE.Vector3();
+            let raycaster = new THREE.Raycaster();
+
             scene = new THREE.Scene();
 
-            camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 3.5;
+            camera = new THREE.PerspectiveCamera(55, container.clientWidth/container.clientHeight, 0.1, 1000);
+            camera.position.z = isFullScreen ? 4.0 : 3.5;
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
-            cubeContainer.appendChild(renderer.domElement);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
 
-            const count = 40000;
+            const count = isFullScreen ? 50000 : 40000;
             const positions = new Float32Array(count * 3);
 
             for (let i = 0; i < count; i++) {
-                positions[i*3] = (Math.random() - 0.5) * 2.5;
-                positions[i*3+1] = (Math.random() - 0.5) * 2.5;
-                positions[i*3+2] = (Math.random() - 0.5) * 2.5;
+                const size = isFullScreen ? 3.5 : 2.5;
+                positions[i*3] = (Math.random() - 0.5) * size;
+                positions[i*3+1] = (Math.random() - 0.5) * size;
+                positions[i*3+2] = (Math.random() - 0.5) * size;
             }
 
             const particleGeometry = new THREE.BufferGeometry();
@@ -932,9 +927,10 @@
                         vec3 pos = position;
 
                         float dist = distance(pos, uMouse);
-                        pos += normalize(pos - uMouse) * (0.15 / dist);
+                        float force = ${isFullScreen ? '0.25' : '0.15'} / (dist + 0.1);
+                        pos += normalize(pos - uMouse) * force;
 
-                        gl_PointSize = 1.2;
+                        gl_PointSize = ${isFullScreen ? '1.8' : '1.2'};
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     }
                 `,
@@ -949,8 +945,8 @@
             sphere = new THREE.Points(particleGeometry, material);
             scene.add(sphere);
 
-            cubeContainer.addEventListener("pointermove", (e) => {
-                const rect = cubeContainer.getBoundingClientRect();
+            container.addEventListener("pointermove", (e) => {
+                const rect = container.getBoundingClientRect();
                 
                 const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
                 const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
@@ -972,30 +968,106 @@
                 uniforms.uMouse.value.copy(worldMouse);
             });
             
-            cubeContainer.addEventListener("pointerleave", () => {
+            container.addEventListener("pointerleave", () => {
                 uniforms.uMouse.value.set(1000, 1000, 1000);
             });
             
-            window.addEventListener('resize', function() {
-                const cubeContainer = document.getElementById('cube-animation');
-                if (!cubeContainer) return;
+            function animate() {
+                if (!scene || !renderer || !camera) return;
                 
-                camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
+                uniforms.uTime.value += 0.005;
+                if (sphere) {
+                    sphere.rotation.y += isFullScreen ? 0.0015 : 0.001;
+                    if (isFullScreen) {
+                        sphere.rotation.x += 0.0005;
+                    }
+                }
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // Resize handler
+            const resizeHandler = function() {
+                if (!container) return;
+                
+                camera.aspect = container.clientWidth / container.clientHeight;
                 camera.updateProjectionMatrix();
-                renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
-            });
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            };
+            
+            window.addEventListener('resize', resizeHandler);
+            
+            return {
+                cleanup: function() {
+                    window.removeEventListener('resize', resizeHandler);
+                    if (renderer && renderer.domElement && renderer.domElement.parentNode) {
+                        renderer.domElement.parentNode.removeChild(renderer.domElement);
+                    }
+                    renderer = null;
+                    scene = null;
+                    sphere = null;
+                }
+            };
         }
 
-        function animate() {
-            if (!scene || !renderer || !camera) return;
+        // ANIMATION CONTROLLERS
+        let contactAnimation = null;
+        let projectsAnimation = null;
+        
+        // INITIALIZE ANIMATIONS WHEN PAGE LOADS
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const langButtons = document.querySelectorAll('.lang-btn');
             
-            uniforms.uTime.value += 0.005;
-            if (sphere) {
-                sphere.rotation.y += 0.001;
-            }
-            renderer.render(scene, camera);
-            requestAnimationFrame(animate);
-        }
+            // Initialize animations
+            setTimeout(() => {
+                contactAnimation = createParticleAnimation('contact-animation', false);
+                projectsAnimation = createParticleAnimation('projects-animation', true);
+            }, 100);
+            
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('contact-section').classList.add('active');
+            
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    document.querySelectorAll('.page-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    document.getElementById(sectionId + '-section').classList.add('active');
+                });
+            });
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.textContent.trim().toLowerCase();
+                    changeLanguage(lang);
+                });
+            });
+            
+            // Reinitialize animations on resize
+            window.addEventListener('resize', function() {
+                setTimeout(() => {
+                    if (contactAnimation) {
+                        contactAnimation.cleanup();
+                        contactAnimation = createParticleAnimation('contact-animation', false);
+                    }
+                    if (projectsAnimation) {
+                        projectsAnimation.cleanup();
+                        projectsAnimation = createParticleAnimation('projects-animation', true);
+                    }
+                }, 100);
+            });
+        });
         
         const translations = {
             aze: {
@@ -1050,38 +1122,6 @@
             document.querySelectorAll('.hours-label').forEach(el => el.textContent = t.hoursLabel);
             document.querySelectorAll('.hours-text').forEach(el => el.textContent = t.hoursText);
         }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const navButtons = document.querySelectorAll('.nav-btn');
-            const langButtons = document.querySelectorAll('.lang-btn');
-            
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('contact-section').classList.add('active');
-            
-            navButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    navButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const sectionId = this.getAttribute('data-section');
-                    
-                    document.querySelectorAll('.page-section').forEach(section => {
-                        section.classList.remove('active');
-                    });
-                    
-                    document.getElementById(sectionId + '-section').classList.add('active');
-                });
-            });
-            
-            langButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const lang = this.textContent.trim().toLowerCase();
-                    changeLanguage(lang);
-                });
-            });
-        });
     </script>
 </body>
 </html>
