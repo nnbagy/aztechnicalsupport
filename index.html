@@ -235,7 +235,7 @@
             width: calc(100% - 20px);
         }
         
-        #cube-animation {
+        .animation-container {
             position: absolute;
             top: 0;
             left: 0;
@@ -420,6 +420,18 @@
         
         .page-section.active {
             display: flex;
+        }
+        
+        /* EMPTY SECTION STYLE */
+        .empty-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
         }
         
         /* ========== RESPONSIVE BREAKPOINTS ========== */
@@ -808,18 +820,14 @@
         <!-- SERVICES SECTION -->
         <div class="page-section" id="services-section">
             <div class="content">
-                <div class="content-box">
-                    <!-- Bu bölmədə heç bir yazı yoxdur -->
-                </div>
+                <!-- Xidmətlər bölməsi tamamilə boşdur -->
             </div>
         </div>
         
         <!-- PROJECTS SECTION -->
         <div class="page-section" id="projects-section">
             <div class="content">
-                <div class="content-box">
-                    <!-- Bu bölmədə heç bir yazı yoxdur -->
-                </div>
+                <!-- Layihələr bölməsi tamamilə boşdur -->
             </div>
         </div>
         
@@ -827,7 +835,7 @@
         <div class="page-section active" id="contact-section">
             <div class="split-container">
                 <div class="left-side">
-                    <div id="cube-animation"></div>
+                    <div class="animation-container" id="cube-animation"></div>
                 </div>
                 
                 <div class="right-side">
