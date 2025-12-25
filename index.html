@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -165,7 +164,7 @@
             background: black !important;
             color: white !important;
             border-color: lime !important;
-            box-shadow: 0 0 10px lime !important;
+            box-shadow = 0 0 10px lime !important;
         }
         
         .lang-btn.active::before {
@@ -236,7 +235,7 @@
             width: calc(100% - 20px);
         }
         
-        #cube-animation {
+        .animation-container {
             position: absolute;
             top: 0;
             left: 0;
@@ -421,6 +420,15 @@
         
         .page-section.active {
             display: flex;
+        }
+        
+        /* FULL SCREEN ANIMATION FOR PROJECTS */
+        .fullscreen-animation-container {
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: #000;
+            position: relative;
+            overflow: hidden;
         }
         
         /* ========== RESPONSIVE BREAKPOINTS ========== */
@@ -620,7 +628,7 @@
             .nav-right {
                 width: 100%;
                 justify-content: center;
-                margin-left: 0;
+                margin-left = 0;
                 margin-top: 10px;
             }
             
@@ -700,7 +708,7 @@
             }
             
             .left-side {
-                height: 650px;
+                height = 650px;
                 width: 45%;
             }
             
@@ -758,12 +766,7 @@
         <!-- HOME SECTION -->
         <div class="page-section" id="home-section">
             <div class="content">
-                <div class="content-box">
-                    <h2>Şirkətimiz Haqqında</h2>
-                    <p>
-                        Şirkətimiz 2025-ci ildə Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq təsis edilmişdir. Əsas fəaliyyət sahəmiz neft-qaz və gəmiçilik sənayesində hidravlik və mexaniki istiqamətlər üzrə təchizat, satış və servis xidmətlərinin göstərilməsindən ibarətdir. Yeni təsis olunmuş şirkət olmağımıza baxmayaraq, komandamızın peşəkar təcrübəsi və müasir yanaşması sayəsində müştərilərimizə etibarlı, yüksək keyfiyyətli məhsullar təqdim etməyi və onların əməliyyatlarının fasiləsiz şəkildə davam etməsinə operativ dəstək göstərməyi hədəfləyirik.
-                    </p>
-                </div>
+                <!-- Ana səhifə tamamilə boşdur -->
             </div>
         </div>
         
@@ -771,6 +774,9 @@
         <div class="page-section" id="about-section">
             <div class="content">
                 <div class="content-box">
+                    <p>
+                        Şirkətimiz 2025-ci ildə Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq təsis edilmişdir. Əsas fəaliyyət sahəmiz neft-qaz və gəmiçilik sənayesində hidravlik və mexaniki istiqamətlər üzrə təchizat, satış və servis xidmətlərinin göstərilməsindən ibarətdir. Yeni təsis olunmuş şirkət olmağımıza baxmayaraq, komandamızın peşəkar təcrübəsi və müasir yanaşması sayəsində müştərilərimizə etibarlı, yüksək keyfiyyətli məhsullar təqdim etməyi və onların əməliyyatlarının fasiləsiz şəkildə davam etməsinə operativ dəstək göstərməyi hədəfləyirik.
+                    </p>
                     <p>
                         Missiyamız yüksək keyfiyyətli texniki xidmət, etibarlı məhsullar və davamlı həllər təqdim etməkdir.
                     </p>
@@ -809,30 +815,14 @@
         <!-- SERVICES SECTION -->
         <div class="page-section" id="services-section">
             <div class="content">
-                <div class="content-box">
-                    <p>
-                        Əsas xidmət istiqamətlərimiz aşağıdakılardır:
-                    </p>
-                    <ul>
-                        <li>Hidravlik sistemlərin təchizatı, satışı və quraşdırılması</li>
-                        <li>Hidravlik avadanlıqların diaqnostikası, texniki baxışı və təmiri</li>
-                        <li>Mexaniki avadanlıqların servisi və texniki dəstəyi</li>
-                        <li>Ehtiyat hissələrinin satışı və operativ çatdırılması</li>
-                        <li>Planlı texniki xidmət və fövqəladə servis dəstəyi</li>
-                        <li>Müştəri tələblərinə uyğun texniki məsləhət və həllərin təqdim olunması</li>
-                    </ul>
-                </div>
+                <!-- Xidmətlər bölməsi tamamilə boşdur -->
             </div>
         </div>
         
-        <!-- PROJECTS SECTION -->
+        <!-- PROJECTS SECTION - KUB BU SƏHİFƏDƏ DƏ VAR -->
         <div class="page-section" id="projects-section">
-            <div class="content">
-                <div class="content-box">
-                    <p>
-                        Uğurla həyata keçirdiyimiz bəzi layihələr.
-                    </p>
-                </div>
+            <div class="fullscreen-animation-container">
+                <div class="animation-container" id="projects-animation"></div>
             </div>
         </div>
         
@@ -840,7 +830,7 @@
         <div class="page-section active" id="contact-section">
             <div class="split-container">
                 <div class="left-side">
-                    <div id="cube-animation"></div>
+                    <div class="animation-container" id="cube-animation"></div>
                 </div>
                 
                 <div class="right-side">
@@ -892,26 +882,23 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // CUBE ANIMATION CODE
-        let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
-        let mouseWorld = new THREE.Vector3();
-        let raycaster = new THREE.Raycaster();
+        // CUBE ANIMATION CODE FOR CONTACT SECTION
+        let contactScene, contactCamera, contactRenderer, contactSphere, contactUniforms;
+        let contactMouse = new THREE.Vector3();
+        let contactRaycaster = new THREE.Raycaster();
 
-        init();
-        animate();
-
-        function init() {
-            const cubeContainer = document.getElementById('cube-animation');
-            if (!cubeContainer) return;
+        function initContact() {
+            const contactContainer = document.getElementById('cube-animation');
+            if (!contactContainer) return;
             
-            scene = new THREE.Scene();
+            contactScene = new THREE.Scene();
 
-            camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 3.5;
+            contactCamera = new THREE.PerspectiveCamera(55, contactContainer.clientWidth/contactContainer.clientHeight, 0.1, 1000);
+            contactCamera.position.z = 3.5;
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
-            cubeContainer.appendChild(renderer.domElement);
+            contactRenderer = new THREE.WebGLRenderer({ antialias: true });
+            contactRenderer.setSize(contactContainer.clientWidth, contactContainer.clientHeight);
+            contactContainer.appendChild(contactRenderer.domElement);
 
             const count = 40000;
             const positions = new Float32Array(count * 3);
@@ -925,13 +912,13 @@
             const particleGeometry = new THREE.BufferGeometry();
             particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-            uniforms = {
+            contactUniforms = {
                 uTime: { value: 0.0 },
                 uMouse: { value: new THREE.Vector3(0,0,0) }
             };
 
             const material = new THREE.ShaderMaterial({
-                uniforms,
+                uniforms: contactUniforms,
                 vertexShader: `
                     uniform vec3 uMouse;
 
@@ -953,56 +940,203 @@
                 transparent: true
             });
 
-            sphere = new THREE.Points(particleGeometry, material);
-            scene.add(sphere);
+            contactSphere = new THREE.Points(particleGeometry, material);
+            contactScene.add(contactSphere);
 
-            cubeContainer.addEventListener("pointermove", (e) => {
-                const rect = cubeContainer.getBoundingClientRect();
+            contactContainer.addEventListener("pointermove", (e) => {
+                const rect = contactContainer.getBoundingClientRect();
                 
                 const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
                 const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
                 
-                mouse.set(x, y, 0.5);
+                contactMouse.set(x, y, 0.5);
                 
-                raycaster.setFromCamera(mouse, camera);
+                contactRaycaster.setFromCamera(contactMouse, contactCamera);
                 
                 const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
                 const intersectionPoint = new THREE.Vector3();
                 
-                raycaster.ray.intersectPlane(planeZ, intersectionPoint);
+                contactRaycaster.ray.intersectPlane(planeZ, intersectionPoint);
                 
                 const worldMouse = intersectionPoint.clone();
                 
-                const inverseMatrix = new THREE.Matrix4().copy(sphere.matrixWorld).invert();
+                const inverseMatrix = new THREE.Matrix4().copy(contactSphere.matrixWorld).invert();
                 worldMouse.applyMatrix4(inverseMatrix);
                 
-                uniforms.uMouse.value.copy(worldMouse);
+                contactUniforms.uMouse.value.copy(worldMouse);
             });
             
-            cubeContainer.addEventListener("pointerleave", () => {
-                uniforms.uMouse.value.set(1000, 1000, 1000);
+            contactContainer.addEventListener("pointerleave", () => {
+                contactUniforms.uMouse.value.set(1000, 1000, 1000);
             });
             
             window.addEventListener('resize', function() {
-                const cubeContainer = document.getElementById('cube-animation');
-                if (!cubeContainer) return;
+                const contactContainer = document.getElementById('cube-animation');
+                if (!contactContainer) return;
                 
-                camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+                contactCamera.aspect = contactContainer.clientWidth / contactContainer.clientHeight;
+                contactCamera.updateProjectionMatrix();
+                contactRenderer.setSize(contactContainer.clientWidth, contactContainer.clientHeight);
             });
         }
 
-        function animate() {
-            if (!scene || !renderer || !camera) return;
+        function animateContact() {
+            if (!contactScene || !contactRenderer || !contactCamera) return;
             
-            uniforms.uTime.value += 0.005;
-            if (sphere) {
-                sphere.rotation.y += 0.001;
+            contactUniforms.uTime.value += 0.005;
+            if (contactSphere) {
+                contactSphere.rotation.y += 0.001;
             }
-            renderer.render(scene, camera);
-            requestAnimationFrame(animate);
+            contactRenderer.render(contactScene, contactCamera);
+            requestAnimationFrame(animateContact);
         }
+
+        // CUBE ANIMATION CODE FOR PROJECTS SECTION
+        let projectsScene, projectsCamera, projectsRenderer, projectsSphere, projectsUniforms;
+        let projectsMouse = new THREE.Vector3();
+        let projectsRaycaster = new THREE.Raycaster();
+
+        function initProjects() {
+            const projectsContainer = document.getElementById('projects-animation');
+            if (!projectsContainer) return;
+            
+            projectsScene = new THREE.Scene();
+
+            projectsCamera = new THREE.PerspectiveCamera(55, projectsContainer.clientWidth/projectsContainer.clientHeight, 0.1, 1000);
+            projectsCamera.position.z = 3.5;
+
+            projectsRenderer = new THREE.WebGLRenderer({ antialias: true });
+            projectsRenderer.setSize(projectsContainer.clientWidth, projectsContainer.clientHeight);
+            projectsContainer.appendChild(projectsRenderer.domElement);
+
+            const count = 40000;
+            const positions = new Float32Array(count * 3);
+
+            for (let i = 0; i < count; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+1] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+2] = (Math.random() - 0.5) * 2.5;
+            }
+
+            const particleGeometry = new THREE.BufferGeometry();
+            particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+            projectsUniforms = {
+                uTime: { value: 0.0 },
+                uMouse: { value: new THREE.Vector3(0,0,0) }
+            };
+
+            const material = new THREE.ShaderMaterial({
+                uniforms: projectsUniforms,
+                vertexShader: `
+                    uniform vec3 uMouse;
+
+                    void main() {
+                        vec3 pos = position;
+
+                        float dist = distance(pos, uMouse);
+                        pos += normalize(pos - uMouse) * (0.15 / dist);
+
+                        gl_PointSize = 1.2;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    void main() {
+                        gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
+                    }
+                `,
+                transparent: true
+            });
+
+            projectsSphere = new THREE.Points(particleGeometry, material);
+            projectsScene.add(projectsSphere);
+
+            projectsContainer.addEventListener("pointermove", (e) => {
+                const rect = projectsContainer.getBoundingClientRect();
+                
+                const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                
+                projectsMouse.set(x, y, 0.5);
+                
+                projectsRaycaster.setFromCamera(projectsMouse, projectsCamera);
+                
+                const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+                const intersectionPoint = new THREE.Vector3();
+                
+                projectsRaycaster.ray.intersectPlane(planeZ, intersectionPoint);
+                
+                const worldMouse = intersectionPoint.clone();
+                
+                const inverseMatrix = new THREE.Matrix4().copy(projectsSphere.matrixWorld).invert();
+                worldMouse.applyMatrix4(inverseMatrix);
+                
+                projectsUniforms.uMouse.value.copy(worldMouse);
+            });
+            
+            projectsContainer.addEventListener("pointerleave", () => {
+                projectsUniforms.uMouse.value.set(1000, 1000, 1000);
+            });
+            
+            window.addEventListener('resize', function() {
+                const projectsContainer = document.getElementById('projects-animation');
+                if (!projectsContainer) return;
+                
+                projectsCamera.aspect = projectsContainer.clientWidth / projectsContainer.clientHeight;
+                projectsCamera.updateProjectionMatrix();
+                projectsRenderer.setSize(projectsContainer.clientWidth, projectsContainer.clientHeight);
+            });
+        }
+
+        function animateProjects() {
+            if (!projectsScene || !projectsRenderer || !projectsCamera) return;
+            
+            projectsUniforms.uTime.value += 0.005;
+            if (projectsSphere) {
+                projectsSphere.rotation.y += 0.001;
+            }
+            projectsRenderer.render(projectsScene, projectsCamera);
+            requestAnimationFrame(animateProjects);
+        }
+        
+        // Initialize both animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initContact();
+            animateContact();
+            initProjects();
+            animateProjects();
+            
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('contact-section').classList.add('active');
+            
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    document.querySelectorAll('.page-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    document.getElementById(sectionId + '-section').classList.add('active');
+                });
+            });
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.textContent.trim().toLowerCase();
+                    changeLanguage(lang);
+                });
+            });
+        });
         
         const translations = {
             aze: {
@@ -1057,38 +1191,6 @@
             document.querySelectorAll('.hours-label').forEach(el => el.textContent = t.hoursLabel);
             document.querySelectorAll('.hours-text').forEach(el => el.textContent = t.hoursText);
         }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const navButtons = document.querySelectorAll('.nav-btn');
-            const langButtons = document.querySelectorAll('.lang-btn');
-            
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('contact-section').classList.add('active');
-            
-            navButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    navButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const sectionId = this.getAttribute('data-section');
-                    
-                    document.querySelectorAll('.page-section').forEach(section => {
-                        section.classList.remove('active');
-                    });
-                    
-                    document.getElementById(sectionId + '-section').classList.add('active');
-                });
-            });
-            
-            langButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const lang = this.textContent.trim().toLowerCase();
-                    changeLanguage(lang);
-                });
-            });
-        });
     </script>
 </body>
 </html>
