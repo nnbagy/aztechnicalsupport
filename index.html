@@ -1064,7 +1064,10 @@
                 
                 uniforms.uTime.value += 0.005;
                 if (sphere) {
-                    sphere.rotation.y += 0.001;
+                    // KUBU 360 DƏRƏCƏ FIRLAT - SÜRƏTİ ARTIRIRAM
+                    sphere.rotation.x += 0.005;  // X oxunda fırlanma
+                    sphere.rotation.y += 0.01;   // Y oxunda fırlanma (əsas fırlanma)
+                    sphere.rotation.z += 0.003;  // Z oxunda fırlanma
                 }
                 renderer.render(scene, camera);
                 requestAnimationFrame(animate);
