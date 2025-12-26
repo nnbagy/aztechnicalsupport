@@ -1098,7 +1098,7 @@
                 contactTitle: "Bizim ilə Əlaqə",
                 addressLabel: "Ünvan",
                 addressText: "Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37",
-                phoneLabel: "Teleфон",
+                phoneLabel: "Telefon",
                 phoneText: "+994 (10) 250 54 53",
                 emailLabel: "Email",
                 emailText: "office@aztechnicalsupport.az",
@@ -1263,10 +1263,8 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('home-section').classList.add('active');
+            // Home page is already active by default (HTML'de active class var)
+            // No need to change anything here
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
