@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -196,6 +195,27 @@
             justify-content: flex-start;
             min-height: calc(100vh - 70px);
             width: 100%;
+        }
+        
+        .home-image-container {
+            max-width: 900px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .home-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .home-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.6);
         }
         
         .company-name {
@@ -676,6 +696,11 @@
             .contact-info {
                 padding: 15px;
             }
+            
+            .home-image-container {
+                width: 95%;
+                padding: 10px;
+            }
         }
         
         /* CONTACT SECTION DESKTOP LAYOUT */
@@ -785,10 +810,14 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION - TAMAMİLƏ BOŞ -->
+        <!-- HOME SECTION WITH IMAGE -->
         <div class="page-section" id="home-section">
             <div class="content">
-                <!-- Ana səhifə tamamilə boşdur - heç bir mətn və ya kontent yoxdur -->
+                <div class="home-image-container">
+                    <a href="https://ibb.co/JFKt6ncZ" target="_blank">
+                        <img src="https://i.ibb.co/Z1VX4df9/marine-offshore-1.png" alt="marine offshore 1" class="home-image">
+                    </a>
+                </div>
             </div>
         </div>
         
