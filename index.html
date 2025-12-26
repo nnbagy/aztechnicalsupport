@@ -235,7 +235,7 @@
             width: calc(100% - 20px);
         }
         
-        #cube-animation, #projects-cube-animation, #home-cube-animation {
+        #cube-animation, #projects-cube-animation {
             position: absolute;
             top: 0;
             left: 0;
@@ -422,15 +422,28 @@
             display: flex;
         }
         
-        /* HOME SECTION - KUB ANİMASİYASI İLƏ */
+        /* HOME SECTION - TAMAMİLƏ BOŞ */
         #home-section {
-            height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 70px);
         }
         
-        /* PROJECTS SECTION WITH CUBE */
-        .projects-cube-container {
+        /* PROJECTS SECTION WITH CUBE - TAM EKRAN */
+        #projects-section {
+            position: fixed;
+            top: 70px;
+            left: 0;
             width: 100%;
             height: calc(100vh - 70px);
+            background: #000;
+            z-index: 1;
+        }
+        
+        .projects-cube-container {
+            width: 100%;
+            height: 100%;
             background: #000;
             position: relative;
             overflow: hidden;
@@ -768,10 +781,10 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION - KUB ANİMASİYASI İLƏ -->
+        <!-- HOME SECTION - TAMAMİLƏ BOŞ -->
         <div class="page-section" id="home-section">
-            <div class="projects-cube-container">
-                <div id="home-cube-animation"></div>
+            <div class="content">
+                <!-- Ana səhifə tamamilə boşdur - heç bir mətn və ya kontent yoxdur -->
             </div>
         </div>
         
@@ -839,7 +852,7 @@
             </div>
         </div>
         
-        <!-- PROJECTS SECTION - KUB ANİMASİYASI -->
+        <!-- PROJECTS SECTION - KUB DUBLİKATI BU SƏHİFƏDƏ -->
         <div class="page-section" id="projects-section">
             <div class="projects-cube-container">
                 <div id="projects-cube-animation"></div>
@@ -902,11 +915,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // ORTAQ KUB ANİMASİYASI FUNKSİYASI
+        // ORTAQ KUB ANİMASİYASI FUNKSİYASI - DÜZƏLDİLMİŞ VERSİYA
         function createCubeAnimation(containerId) {
             let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
             let mouseWorld = new THREE.Vector3();
             let raycaster = new THREE.Raycaster();
+            let animationId = null;
 
             function init() {
                 const cubeContainer = document.getElementById(containerId);
@@ -996,7 +1010,7 @@
                 
                 window.addEventListener('resize', function() {
                     const cubeContainer = document.getElementById(containerId);
-                    if (!cubeContainer) return;
+                    if (!cubeContainer || !camera || !renderer) return;
                     
                     camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
                     camera.updateProjectionMatrix();
@@ -1012,11 +1026,21 @@
                     sphere.rotation.y += 0.001;
                 }
                 renderer.render(scene, camera);
-                requestAnimationFrame(animate);
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            function stopAnimation() {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
             }
 
             init();
             animate();
+            
+            // Animasiyanı dayandırmaq üçün funksiya qaytarırıq
+            return stopAnimation;
         }
         
         const translations = {
@@ -1229,16 +1253,17 @@
         // KUB ANİMASİYALARININ İDARƏ EDİLMƏSİ
         let cubeInstances = {
             'cube-animation': null,
-            'projects-cube-animation': null,
-            'home-cube-animation': null
+            'projects-cube-animation': null
         };
+        let activeCubeId = null;
         
         document.addEventListener('DOMContentLoaded', function() {
             // Aktiv olan səhifə üçün kub animasiyasını yarat
             const activeSection = document.querySelector('.page-section.active').id;
             
             if (activeSection === 'contact-section') {
-                createCubeAnimation('cube-animation');
+                cubeInstances['cube-animation'] = createCubeAnimation('cube-animation');
+                activeCubeId = 'cube-animation';
             }
             
             const navButtons = document.querySelectorAll('.nav-btn');
@@ -1258,27 +1283,27 @@
                     
                     sectionElement.classList.add('active');
                     
-                    // Aktiv səhifəyə uyğun kub animasiyasını yarat
+                    // Köhnə kub animasiyasını dayandır
+                    if (activeCubeId && cubeInstances[activeCubeId]) {
+                        cubeInstances[activeCubeId]();
+                        cubeInstances[activeCubeId] = null;
+                    }
+                    
+                    // Yeni kub animasiyasını başlat
                     setTimeout(() => {
+                        let newCubeId = null;
                         switch(sectionId) {
-                            case 'home':
-                                if (!cubeInstances['home-cube-animation']) {
-                                    createCubeAnimation('home-cube-animation');
-                                    cubeInstances['home-cube-animation'] = true;
-                                }
-                                break;
                             case 'projects':
-                                if (!cubeInstances['projects-cube-animation']) {
-                                    createCubeAnimation('projects-cube-animation');
-                                    cubeInstances['projects-cube-animation'] = true;
-                                }
+                                newCubeId = 'projects-cube-animation';
                                 break;
                             case 'contact':
-                                if (!cubeInstances['cube-animation']) {
-                                    createCubeAnimation('cube-animation');
-                                    cubeInstances['cube-animation'] = true;
-                                }
+                                newCubeId = 'cube-animation';
                                 break;
+                        }
+                        
+                        if (newCubeId && !cubeInstances[newCubeId]) {
+                            cubeInstances[newCubeId] = createCubeAnimation(newCubeId);
+                            activeCubeId = newCubeId;
                         }
                     }, 50);
                 });
@@ -1291,18 +1316,17 @@
                 });
             });
             
-            // Əgər birbaşa "Layihələr" və ya "Ana Səhifə" səhifəsinə daxil olunubsa
+            // Əgər birbaşa "Layihələr" səhifəsinə daxil olunubsa
             setTimeout(() => {
                 const activeSection = document.querySelector('.page-section.active').id;
                 
                 if (activeSection === 'projects-section' && !cubeInstances['projects-cube-animation']) {
-                    createCubeAnimation('projects-cube-animation');
-                    cubeInstances['projects-cube-animation'] = true;
-                }
-                
-                if (activeSection === 'home-section' && !cubeInstances['home-cube-animation']) {
-                    createCubeAnimation('home-cube-animation');
-                    cubeInstances['home-cube-animation'] = true;
+                    if (activeCubeId && cubeInstances[activeCubeId]) {
+                        cubeInstances[activeCubeId]();
+                        cubeInstances[activeCubeId] = null;
+                    }
+                    cubeInstances['projects-cube-animation'] = createCubeAnimation('projects-cube-animation');
+                    activeCubeId = 'projects-cube-animation';
                 }
             }, 100);
         });
