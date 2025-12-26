@@ -932,16 +932,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // ORTAQ KUB ANİMASİYASI FUNKSİYASI - SADƏ VERSİYA
+        let cubeAnimationInstances = {}; // Store animation instances
+        
         function createCubeAnimation(containerId) {
+            // If animation already exists for this container, don't create again
+            if (cubeAnimationInstances[containerId]) {
+                return cubeAnimationInstances[containerId];
+            }
+            
             let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
             let mouseWorld = new THREE.Vector3();
             let raycaster = new THREE.Raycaster();
+            let animationId;
 
             function init() {
                 const cubeContainer = document.getElementById(containerId);
                 if (!cubeContainer) {
                     console.error(`Container #${containerId} not found!`);
                     return;
+                }
+
+                // Clear any existing canvas
+                while (cubeContainer.firstChild) {
+                    cubeContainer.removeChild(cubeContainer.firstChild);
                 }
 
                 scene = new THREE.Scene();
@@ -1023,17 +1036,38 @@
                     uniforms.uMouse.value.set(1000, 1000, 1000);
                 });
                 
-                window.addEventListener('resize', function() {
+                // Store cleanup function
+                const handleResize = function() {
                     const cubeContainer = document.getElementById(containerId);
                     if (!cubeContainer) return;
                     
                     camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
                     camera.updateProjectionMatrix();
                     renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
-                });
+                };
+                
+                window.addEventListener('resize', handleResize);
+                
+                // Store the instance with cleanup methods
+                cubeAnimationInstances[containerId] = {
+                    cleanup: function() {
+                        window.removeEventListener('resize', handleResize);
+                        if (animationId) {
+                            cancelAnimationFrame(animationId);
+                        }
+                        if (renderer && renderer.domElement && renderer.domElement.parentNode) {
+                            renderer.domElement.parentNode.removeChild(renderer.domElement);
+                        }
+                        scene = null;
+                        renderer = null;
+                        camera = null;
+                        sphere = null;
+                    }
+                };
             }
 
             function animate() {
+                animationId = requestAnimationFrame(animate);
                 if (!scene || !renderer || !camera) return;
                 
                 uniforms.uTime.value += 0.005;
@@ -1041,11 +1075,12 @@
                     sphere.rotation.y += 0.001;
                 }
                 renderer.render(scene, camera);
-                requestAnimationFrame(animate);
             }
 
             init();
             animate();
+            
+            return cubeAnimationInstances[containerId];
         }
         
         const translations = {
@@ -1256,16 +1291,10 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Hər iki kub animasiyasını eyni anda başlat
-            createCubeAnimation('cube-animation'); // Əlaqələr bölməsi üçün
-            createCubeAnimation('projects-cube-animation'); // Layihələr bölməsi üçün
-            
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            // İlk açılışda ev səhifəsini aktiv et - ASLI KODDA BURASI CONTACT İÇİNDİ
-            // Değiştirdik: contact-section yerine home-section
-            
+            // İlk açılışda ev səhifəsini aktiv et
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
@@ -1282,7 +1311,21 @@
                         section.classList.remove('active');
                     });
                     
-                    document.getElementById(sectionId + '-section').classList.add('active');
+                    const sectionElement = document.getElementById(sectionId + '-section');
+                    sectionElement.classList.add('active');
+                    
+                    // Əgər kontakt və ya layihələr bölməsinə keçiriksə, kub animasiyasını başlat
+                    if (sectionId === 'contact') {
+                        // Small delay to ensure the container is visible before creating animation
+                        setTimeout(() => {
+                            createCubeAnimation('cube-animation');
+                        }, 50);
+                    } else if (sectionId === 'projects') {
+                        // Small delay to ensure the container is visible before creating animation
+                        setTimeout(() => {
+                            createCubeAnimation('projects-cube-animation');
+                        }, 50);
+                    }
                 });
             });
             
@@ -1292,6 +1335,10 @@
                     changeLanguage(lang);
                 });
             });
+            
+            // Original code initialized both animations on load
+            // But we only initialize projects animation since contact is hidden
+            createCubeAnimation('projects-cube-animation');
         });
     </script>
 </body>
