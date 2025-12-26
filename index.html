@@ -197,27 +197,6 @@
             width: 100%;
         }
         
-        .home-image-container {
-            max-width: 900px;
-            width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .home-image {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .home-image:hover {
-            transform: scale(1.01);
-            box-shadow: 0 0 35px rgba(0, 255, 255, 0.6);
-        }
-        
         .company-name {
             font-size: 28px;
             color: #00ffff;
@@ -696,11 +675,6 @@
             .contact-info {
                 padding: 15px;
             }
-            
-            .home-image-container {
-                width: 95%;
-                padding: 10px;
-            }
         }
         
         /* CONTACT SECTION DESKTOP LAYOUT */
@@ -810,7 +784,7 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION WITH TWO IMAGES SIDE BY SIDE -->
+        <!-- HOME SECTION - YENİ KOD -->
         <div class="page-section active" id="home-section">
             <div class="content" style="padding: 20px; width: 100%; max-width: 100%;">
                 <div style="display: flex; width: 100%; gap: 20px;">
@@ -1064,10 +1038,7 @@
                 
                 uniforms.uTime.value += 0.005;
                 if (sphere) {
-                    // KUBU 360 DƏRƏCƏ FIRLAT - SÜRƏTİ ARTIRIRAM
-                    sphere.rotation.x += 0.005;  // X oxunda fırlanma
-                    sphere.rotation.y += 0.01;   // Y oxunda fırlanma (əsas fırlanma)
-                    sphere.rotation.z += 0.003;  // Z oxunda fırlanma
+                    sphere.rotation.y += 0.001;
                 }
                 renderer.render(scene, camera);
                 requestAnimationFrame(animate);
@@ -1127,7 +1098,7 @@
                 contactTitle: "Bizim ilə Əlaqə",
                 addressLabel: "Ünvan",
                 addressText: "Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37",
-                phoneLabel: "Teleфон",
+                phoneLabel: "Telefon",
                 phoneText: "+994 (10) 250 54 53",
                 emailLabel: "Email",
                 emailText: "office@aztechnicalsupport.az",
