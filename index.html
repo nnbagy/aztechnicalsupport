@@ -767,12 +767,12 @@
         </div>
         
         <div class="nav-center">
-            <button class="nav-btn" data-section="home">ANA SƏHİFƏ</button>
+            <button class="nav-btn active" data-section="home">ANA SƏHİFƏ</button>
             <button class="nav-btn" data-section="about">HAQQIMIZDA</button>
             <button class="nav-btn" data-section="catalog">KATALOQ</button>
             <button class="nav-btn" data-section="services">XİDMƏTLƏR</button>
             <button class="nav-btn" data-section="projects">LAYİHƏLƏR</button>
-            <button class="nav-btn active" data-section="contact">ƏLAQƏ</button>
+            <button class="nav-btn" data-section="contact">ƏLAQƏ</button>
         </div>
         
         <div class="nav-right">
@@ -785,7 +785,7 @@
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
         <!-- HOME SECTION WITH TWO IMAGES SIDE BY SIDE -->
-        <div class="page-section" id="home-section">
+        <div class="page-section active" id="home-section">
             <div class="content" style="padding: 20px; width: 100%; max-width: 100%;">
                 <div style="display: flex; width: 100%; gap: 20px;">
                     <!-- LEFT SIDE 50% -->
@@ -876,7 +876,7 @@
         </div>
         
         <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO) -->
-        <div class="page-section active" id="contact-section">
+        <div class="page-section" id="contact-section">
             <div class="split-container">
                 <div class="left-side">
                     <div id="cube-animation"></div>
@@ -1098,7 +1098,7 @@
                 contactTitle: "Bizim ilə Əlaqə",
                 addressLabel: "Ünvan",
                 addressText: "Bakı şəhəri, Binəqədi rayonu, Mir Cəlal küçəsi 37",
-                phoneLabel: "Teleфон",
+                phoneLabel: "Telefon",
                 phoneText: "+994 (10) 250 54 53",
                 emailLabel: "Email",
                 emailText: "office@aztechnicalsupport.az",
@@ -1263,10 +1263,12 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
+            // Tüm sayfaları gizle
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
-            document.getElementById('contact-section').classList.add('active');
+            // Ana sayfayı göster - DEFAULT OLARAQ ANA SƏHİFƏ
+            document.getElementById('home-section').classList.add('active');
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
