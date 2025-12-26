@@ -793,12 +793,12 @@
         </div>
         
         <div class="nav-center">
-            <button class="nav-btn" data-section="home">ANA SƏHİFƏ</button>
+            <button class="nav-btn active" data-section="home">ANA SƏHİFƏ</button>
             <button class="nav-btn" data-section="about">HAQQIMIZDA</button>
             <button class="nav-btn" data-section="catalog">KATALOQ</button>
             <button class="nav-btn" data-section="services">XİDMƏTLƏR</button>
             <button class="nav-btn" data-section="projects">LAYİHƏLƏR</button>
-            <button class="nav-btn active" data-section="contact">ƏLAQƏ</button>
+            <button class="nav-btn" data-section="contact">ƏLAQƏ</button>
         </div>
         
         <div class="nav-right">
@@ -811,7 +811,7 @@
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
         <!-- HOME SECTION WITH IMAGE -->
-        <div class="page-section" id="home-section">
+        <div class="page-section active" id="home-section">
             <div class="content">
                 <div class="home-image-container">
                     <a href="https://ibb.co/JFKt6ncZ" target="_blank">
@@ -893,7 +893,7 @@
         </div>
         
         <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO) -->
-        <div class="page-section active" id="contact-section">
+        <div class="page-section" id="contact-section">
             <div class="split-container">
                 <div class="left-side">
                     <div id="cube-animation"></div>
@@ -1280,10 +1280,12 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
+            // Tüm sayfaları gizle
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
-            document.getElementById('contact-section').classList.add('active');
+            // Ana sayfayı göster
+            document.getElementById('home-section').classList.add('active');
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
