@@ -900,12 +900,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // ORTAQ KUB ANİMASİYASI FUNKSİYASI - DÜZƏLDİLMİŞ VERSİYA
+        // ORTAQ KUB ANİMASİYASI FUNKSİYASI - SADƏ VERSİYA
         function createCubeAnimation(containerId) {
             let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
             let mouseWorld = new THREE.Vector3();
             let raycaster = new THREE.Raycaster();
-            let animationId = null;
 
             function init() {
                 const cubeContainer = document.getElementById(containerId);
@@ -995,7 +994,7 @@
                 
                 window.addEventListener('resize', function() {
                     const cubeContainer = document.getElementById(containerId);
-                    if (!cubeContainer || !camera || !renderer) return;
+                    if (!cubeContainer) return;
                     
                     camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
                     camera.updateProjectionMatrix();
@@ -1011,21 +1010,11 @@
                     sphere.rotation.y += 0.001;
                 }
                 renderer.render(scene, camera);
-                animationId = requestAnimationFrame(animate);
-            }
-            
-            function stopAnimation() {
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                    animationId = null;
-                }
+                requestAnimationFrame(animate);
             }
 
             init();
             animate();
-            
-            // Animasiyanı dayandırmaq üçün funksiya qaytarırıq
-            return stopAnimation;
         }
         
         const translations = {
@@ -1235,24 +1224,18 @@
             document.querySelectorAll('.hours-text').forEach(el => el.textContent = t.hoursText);
         }
         
-        // KUB ANİMASİYALARININ İDARƏ EDİLMƏSİ
-        let cubeInstances = {
-            'cube-animation': null,
-            'projects-cube-animation': null
-        };
-        let activeCubeId = null;
-        
         document.addEventListener('DOMContentLoaded', function() {
-            // Aktiv olan səhifə üçün kub animasiyasını yarat
-            const activeSection = document.querySelector('.page-section.active').id;
-            
-            if (activeSection === 'contact-section') {
-                cubeInstances['cube-animation'] = createCubeAnimation('cube-animation');
-                activeCubeId = 'cube-animation';
-            }
+            // Hər iki kub animasiyasını eyni anda başlat
+            createCubeAnimation('cube-animation'); // Əlaqələr bölməsi üçün
+            createCubeAnimation('projects-cube-animation'); // Layihələr bölməsi üçün
             
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
+            
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('contact-section').classList.add('active');
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -1260,37 +1243,12 @@
                     this.classList.add('active');
                     
                     const sectionId = this.getAttribute('data-section');
-                    const sectionElement = document.getElementById(sectionId + '-section');
                     
                     document.querySelectorAll('.page-section').forEach(section => {
                         section.classList.remove('active');
                     });
                     
-                    sectionElement.classList.add('active');
-                    
-                    // Köhnə kub animasiyasını dayandır
-                    if (activeCubeId && cubeInstances[activeCubeId]) {
-                        cubeInstances[activeCubeId]();
-                        cubeInstances[activeCubeId] = null;
-                    }
-                    
-                    // Yeni kub animasiyasını başlat
-                    setTimeout(() => {
-                        let newCubeId = null;
-                        switch(sectionId) {
-                            case 'projects':
-                                newCubeId = 'projects-cube-animation';
-                                break;
-                            case 'contact':
-                                newCubeId = 'cube-animation';
-                                break;
-                        }
-                        
-                        if (newCubeId && !cubeInstances[newCubeId]) {
-                            cubeInstances[newCubeId] = createCubeAnimation(newCubeId);
-                            activeCubeId = newCubeId;
-                        }
-                    }, 50);
+                    document.getElementById(sectionId + '-section').classList.add('active');
                 });
             });
             
@@ -1300,20 +1258,6 @@
                     changeLanguage(lang);
                 });
             });
-            
-            // Əgər birbaşa "Layihələr" səhifəsinə daxil olunubsa
-            setTimeout(() => {
-                const activeSection = document.querySelector('.page-section.active').id;
-                
-                if (activeSection === 'projects-section' && !cubeInstances['projects-cube-animation']) {
-                    if (activeCubeId && cubeInstances[activeCubeId]) {
-                        cubeInstances[activeCubeId]();
-                        cubeInstances[activeCubeId] = null;
-                    }
-                    cubeInstances['projects-cube-animation'] = createCubeAnimation('projects-cube-animation');
-                    activeCubeId = 'projects-cube-animation';
-                }
-            }, 100);
         });
     </script>
 </body>
