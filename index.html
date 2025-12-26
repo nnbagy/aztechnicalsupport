@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -212,20 +213,6 @@
             margin-bottom: 30px;
         }
         
-        /* HOME SECTION BACKGROUND */
-        .home-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://drive.google.com/uc?export=view&id=1N7JrwAL3OMsels0gIiPJEpgAWGEwrld4');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: -1;
-        }
-        
         /* CONTACT SECTION RESPONSIVE */
         .split-container {
             display: flex;
@@ -434,11 +421,6 @@
         
         .page-section.active {
             display: flex;
-        }
-        
-        /* HOME SECTION STYLES */
-        #home-section {
-            position: relative;
         }
         
         /* PROJECTS SECTION WITH CUBE - TAM EKRAN */
@@ -694,10 +676,6 @@
             .contact-info {
                 padding: 15px;
             }
-            
-            .home-background {
-                background-attachment: scroll;
-            }
         }
         
         /* CONTACT SECTION DESKTOP LAYOUT */
@@ -781,9 +759,6 @@
     </style>
 </head>
 <body>
-    <!-- BACKGROUND IMAGE FOR HOME SECTION -->
-    <div class="home-background"></div>
-    
     <!-- NAVIGATION BAR -->
     <nav class="navbar">
         <div class="logo-space">
@@ -793,12 +768,12 @@
         </div>
         
         <div class="nav-center">
-            <button class="nav-btn active" data-section="home">ANA SƏHİFƏ</button>
+            <button class="nav-btn" data-section="home">ANA SƏHİFƏ</button>
             <button class="nav-btn" data-section="about">HAQQIMIZDA</button>
             <button class="nav-btn" data-section="catalog">KATALOQ</button>
             <button class="nav-btn" data-section="services">XİDMƏTLƏR</button>
             <button class="nav-btn" data-section="projects">LAYİHƏLƏR</button>
-            <button class="nav-btn" data-section="contact">ƏLAQƏ</button>
+            <button class="nav-btn active" data-section="contact">ƏLAQƏ</button>
         </div>
         
         <div class="nav-right">
@@ -810,10 +785,10 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION - BACKGROUND WALLPAPER ONLY -->
-        <div class="page-section active" id="home-section">
+        <!-- HOME SECTION - TAMAMİLƏ BOŞ -->
+        <div class="page-section" id="home-section">
             <div class="content">
-                <!-- Ana səhifə tamamilə boşdur - yalnız background şəkli var -->
+                <!-- Ana səhifə tamamilə boşdur - heç bir mətn və ya kontent yoxdur -->
             </div>
         </div>
         
@@ -889,7 +864,7 @@
         </div>
         
         <!-- CONTACT SECTION (WITH CUBE + CONTACT INFO) -->
-        <div class="page-section" id="contact-section">
+        <div class="page-section active" id="contact-section">
             <div class="split-container">
                 <div class="left-side">
                     <div id="cube-animation"></div>
@@ -944,7 +919,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // ORTAK KUB ANİMASİYASI FUNKSİYASI - SADƏ VERSİYA
+        // ORTAQ KUB ANİMASİYASI FUNKSİYASI - SADƏ VERSİYA
         function createCubeAnimation(containerId) {
             let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
             let mouseWorld = new THREE.Vector3();
@@ -1276,15 +1251,10 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            // Sayfa yükləndiyində Home section aktiv olsun
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
-            document.getElementById('home-section').classList.add('active');
-            
-            // Nav buttonlarını aktiv hala gətir
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('.nav-btn[data-section="home"]').classList.add('active');
+            document.getElementById('contact-section').classList.add('active');
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
