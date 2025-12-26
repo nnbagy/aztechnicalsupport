@@ -235,7 +235,7 @@
             width: calc(100% - 20px);
         }
         
-        #cube-animation, #projects-cube-animation {
+        #cube-animation, #projects-cube-animation, #home-cube-animation {
             position: absolute;
             top: 0;
             left: 0;
@@ -420,6 +420,11 @@
         
         .page-section.active {
             display: flex;
+        }
+        
+        /* HOME SECTION - KUB ANİMASİYASI İLƏ */
+        #home-section {
+            height: calc(100vh - 70px);
         }
         
         /* PROJECTS SECTION WITH CUBE */
@@ -763,10 +768,10 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION - TAMAMİLƏ BOŞ -->
+        <!-- HOME SECTION - KUB ANİMASİYASI İLƏ -->
         <div class="page-section" id="home-section">
-            <div class="content">
-                <!-- Ana səhifə tamamilə boşdur - heç bir mətn və ya kontent yoxdur -->
+            <div class="projects-cube-container">
+                <div id="home-cube-animation"></div>
             </div>
         </div>
         
@@ -834,7 +839,7 @@
             </div>
         </div>
         
-        <!-- PROJECTS SECTION - KUB DUBLİKATI BU SƏHİFƏDƏ -->
+        <!-- PROJECTS SECTION - KUB ANİMASİYASI -->
         <div class="page-section" id="projects-section">
             <div class="projects-cube-container">
                 <div id="projects-cube-animation"></div>
@@ -897,222 +902,121 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // ƏLAQƏ BÖLMƏSİ ÜÇÜN KUB ANİMASİYASI
-        let contactScene, contactCamera, contactRenderer, contactSphere, contactUniforms;
-        let contactMouse = new THREE.Vector3();
-        let contactRaycaster = new THREE.Raycaster();
+        // ORTAQ KUB ANİMASİYASI FUNKSİYASI
+        function createCubeAnimation(containerId) {
+            let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
+            let mouseWorld = new THREE.Vector3();
+            let raycaster = new THREE.Raycaster();
 
-        // LAYİHƏLƏR BÖLMƏSİ ÜÇÜN KUB ANİMASİYASI (DUBLİKAT)
-        let projectsScene, projectsCamera, projectsRenderer, projectsSphere, projectsUniforms;
-        let projectsMouse = new THREE.Vector3();
-        let projectsRaycaster = new THREE.Raycaster();
+            function init() {
+                const cubeContainer = document.getElementById(containerId);
+                if (!cubeContainer) {
+                    console.error(`Container #${containerId} not found!`);
+                    return;
+                }
 
-        function initContactCube() {
-            const cubeContainer = document.getElementById('cube-animation');
-            if (!cubeContainer) return;
-            
-            contactScene = new THREE.Scene();
+                scene = new THREE.Scene();
 
-            contactCamera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
-            contactCamera.position.z = 3.5;
+                camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth / cubeContainer.clientHeight, 0.1, 1000);
+                camera.position.z = 3.5;
 
-            contactRenderer = new THREE.WebGLRenderer({ antialias: true });
-            contactRenderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
-            cubeContainer.appendChild(contactRenderer.domElement);
+                renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+                cubeContainer.appendChild(renderer.domElement);
 
-            const count = 40000;
-            const positions = new Float32Array(count * 3);
+                const count = 40000;
+                const positions = new Float32Array(count * 3);
 
-            for (let i = 0; i < count; i++) {
-                positions[i*3] = (Math.random() - 0.5) * 2.5;
-                positions[i*3+1] = (Math.random() - 0.5) * 2.5;
-                positions[i*3+2] = (Math.random() - 0.5) * 2.5;
+                for (let i = 0; i < count; i++) {
+                    positions[i*3] = (Math.random() - 0.5) * 2.5;
+                    positions[i*3+1] = (Math.random() - 0.5) * 2.5;
+                    positions[i*3+2] = (Math.random() - 0.5) * 2.5;
+                }
+
+                const particleGeometry = new THREE.BufferGeometry();
+                particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+                uniforms = {
+                    uTime: { value: 0.0 },
+                    uMouse: { value: new THREE.Vector3(0,0,0) }
+                };
+
+                const material = new THREE.ShaderMaterial({
+                    uniforms,
+                    vertexShader: `
+                        uniform vec3 uMouse;
+
+                        void main() {
+                            vec3 pos = position;
+
+                            float dist = distance(pos, uMouse);
+                            pos += normalize(pos - uMouse) * (0.15 / dist);
+
+                            gl_PointSize = 1.2;
+                            gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                        }
+                    `,
+                    fragmentShader: `
+                        void main() {
+                            gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
+                        }
+                    `,
+                    transparent: true
+                });
+
+                sphere = new THREE.Points(particleGeometry, material);
+                scene.add(sphere);
+
+                cubeContainer.addEventListener("pointermove", (e) => {
+                    const rect = cubeContainer.getBoundingClientRect();
+                    
+                    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                    const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                    
+                    mouse.set(x, y, 0.5);
+                    
+                    raycaster.setFromCamera(mouse, camera);
+                    
+                    const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+                    const intersectionPoint = new THREE.Vector3();
+                    
+                    raycaster.ray.intersectPlane(planeZ, intersectionPoint);
+                    
+                    const worldMouse = intersectionPoint.clone();
+                    
+                    const inverseMatrix = new THREE.Matrix4().copy(sphere.matrixWorld).invert();
+                    worldMouse.applyMatrix4(inverseMatrix);
+                    
+                    uniforms.uMouse.value.copy(worldMouse);
+                });
+                
+                cubeContainer.addEventListener("pointerleave", () => {
+                    uniforms.uMouse.value.set(1000, 1000, 1000);
+                });
+                
+                window.addEventListener('resize', function() {
+                    const cubeContainer = document.getElementById(containerId);
+                    if (!cubeContainer) return;
+                    
+                    camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+                });
             }
 
-            const particleGeometry = new THREE.BufferGeometry();
-            particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-            contactUniforms = {
-                uTime: { value: 0.0 },
-                uMouse: { value: new THREE.Vector3(0,0,0) }
-            };
-
-            const material = new THREE.ShaderMaterial({
-                uniforms: contactUniforms,
-                vertexShader: `
-                    uniform vec3 uMouse;
-
-                    void main() {
-                        vec3 pos = position;
-
-                        float dist = distance(pos, uMouse);
-                        pos += normalize(pos - uMouse) * (0.15 / dist);
-
-                        gl_PointSize = 1.2;
-                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-                    }
-                `,
-                fragmentShader: `
-                    void main() {
-                        gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
-                    }
-                `,
-                transparent: true
-            });
-
-            contactSphere = new THREE.Points(particleGeometry, material);
-            contactScene.add(contactSphere);
-
-            cubeContainer.addEventListener("pointermove", (e) => {
-                const rect = cubeContainer.getBoundingClientRect();
+            function animate() {
+                if (!scene || !renderer || !camera) return;
                 
-                const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-                const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-                
-                contactMouse.set(x, y, 0.5);
-                
-                contactRaycaster.setFromCamera(contactMouse, contactCamera);
-                
-                const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-                const intersectionPoint = new THREE.Vector3();
-                
-                contactRaycaster.ray.intersectPlane(planeZ, intersectionPoint);
-                
-                const worldMouse = intersectionPoint.clone();
-                
-                const inverseMatrix = new THREE.Matrix4().copy(contactSphere.matrixWorld).invert();
-                worldMouse.applyMatrix4(inverseMatrix);
-                
-                contactUniforms.uMouse.value.copy(worldMouse);
-            });
-            
-            cubeContainer.addEventListener("pointerleave", () => {
-                contactUniforms.uMouse.value.set(1000, 1000, 1000);
-            });
-            
-            window.addEventListener('resize', function() {
-                const cubeContainer = document.getElementById('cube-animation');
-                if (!cubeContainer) return;
-                
-                contactCamera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
-                contactCamera.updateProjectionMatrix();
-                contactRenderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
-            });
-        }
-
-        function initProjectsCube() {
-            const projectsContainer = document.getElementById('projects-cube-animation');
-            if (!projectsContainer) return;
-            
-            projectsScene = new THREE.Scene();
-
-            projectsCamera = new THREE.PerspectiveCamera(55, projectsContainer.clientWidth/projectsContainer.clientHeight, 0.1, 1000);
-            projectsCamera.position.z = 3.5;
-
-            projectsRenderer = new THREE.WebGLRenderer({ antialias: true });
-            projectsRenderer.setSize(projectsContainer.clientWidth, projectsContainer.clientHeight);
-            projectsContainer.appendChild(projectsRenderer.domElement);
-
-            const count = 40000;
-            const positions = new Float32Array(count * 3);
-
-            for (let i = 0; i < count; i++) {
-                positions[i*3] = (Math.random() - 0.5) * 2.5;
-                positions[i*3+1] = (Math.random() - 0.5) * 2.5;
-                positions[i*3+2] = (Math.random() - 0.5) * 2.5;
+                uniforms.uTime.value += 0.005;
+                if (sphere) {
+                    sphere.rotation.y += 0.001;
+                }
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
             }
 
-            const particleGeometry = new THREE.BufferGeometry();
-            particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-            projectsUniforms = {
-                uTime: { value: 0.0 },
-                uMouse: { value: new THREE.Vector3(0,0,0) }
-            };
-
-            const material = new THREE.ShaderMaterial({
-                uniforms: projectsUniforms,
-                vertexShader: `
-                    uniform vec3 uMouse;
-
-                    void main() {
-                        vec3 pos = position;
-
-                        float dist = distance(pos, uMouse);
-                        pos += normalize(pos - uMouse) * (0.15 / dist);
-
-                        gl_PointSize = 1.2;
-                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-                    }
-                `,
-                fragmentShader: `
-                    void main() {
-                        gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
-                    }
-                `,
-                transparent: true
-            });
-
-            projectsSphere = new THREE.Points(particleGeometry, material);
-            projectsScene.add(projectsSphere);
-
-            projectsContainer.addEventListener("pointermove", (e) => {
-                const rect = projectsContainer.getBoundingClientRect();
-                
-                const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-                const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-                
-                projectsMouse.set(x, y, 0.5);
-                
-                projectsRaycaster.setFromCamera(projectsMouse, projectsCamera);
-                
-                const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-                const intersectionPoint = new THREE.Vector3();
-                
-                projectsRaycaster.ray.intersectPlane(planeZ, intersectionPoint);
-                
-                const worldMouse = intersectionPoint.clone();
-                
-                const inverseMatrix = new THREE.Matrix4().copy(projectsSphere.matrixWorld).invert();
-                worldMouse.applyMatrix4(inverseMatrix);
-                
-                projectsUniforms.uMouse.value.copy(worldMouse);
-            });
-            
-            projectsContainer.addEventListener("pointerleave", () => {
-                projectsUniforms.uMouse.value.set(1000, 1000, 1000);
-            });
-            
-            window.addEventListener('resize', function() {
-                const projectsContainer = document.getElementById('projects-cube-animation');
-                if (!projectsContainer) return;
-                
-                projectsCamera.aspect = projectsContainer.clientWidth / projectsContainer.clientHeight;
-                projectsCamera.updateProjectionMatrix();
-                projectsRenderer.setSize(projectsContainer.clientWidth, projectsContainer.clientHeight);
-            });
-        }
-
-        function animateContact() {
-            if (!contactScene || !contactRenderer || !contactCamera) return;
-            
-            contactUniforms.uTime.value += 0.005;
-            if (contactSphere) {
-                contactSphere.rotation.y += 0.001;
-            }
-            contactRenderer.render(contactScene, contactCamera);
-            requestAnimationFrame(animateContact);
-        }
-
-        function animateProjects() {
-            if (!projectsScene || !projectsRenderer || !projectsCamera) return;
-            
-            projectsUniforms.uTime.value += 0.005;
-            if (projectsSphere) {
-                projectsSphere.rotation.y += 0.001;
-            }
-            projectsRenderer.render(projectsScene, projectsCamera);
-            requestAnimationFrame(animateProjects);
+            init();
+            animate();
         }
         
         const translations = {
@@ -1322,22 +1226,23 @@
             document.querySelectorAll('.hours-text').forEach(el => el.textContent = t.hoursText);
         }
         
+        // KUB ANİMASİYALARININ İDARƏ EDİLMƏSİ
+        let cubeInstances = {
+            'cube-animation': null,
+            'projects-cube-animation': null,
+            'home-cube-animation': null
+        };
+        
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize both cube animations
-            initContactCube();
-            initProjectsCube();
+            // Aktiv olan səhifə üçün kub animasiyasını yarat
+            const activeSection = document.querySelector('.page-section.active').id;
             
-            // Start both animations
-            animateContact();
-            animateProjects();
+            if (activeSection === 'contact-section') {
+                createCubeAnimation('cube-animation');
+            }
             
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
-            
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('contact-section').classList.add('active');
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -1345,12 +1250,37 @@
                     this.classList.add('active');
                     
                     const sectionId = this.getAttribute('data-section');
+                    const sectionElement = document.getElementById(sectionId + '-section');
                     
                     document.querySelectorAll('.page-section').forEach(section => {
                         section.classList.remove('active');
                     });
                     
-                    document.getElementById(sectionId + '-section').classList.add('active');
+                    sectionElement.classList.add('active');
+                    
+                    // Aktiv səhifəyə uyğun kub animasiyasını yarat
+                    setTimeout(() => {
+                        switch(sectionId) {
+                            case 'home':
+                                if (!cubeInstances['home-cube-animation']) {
+                                    createCubeAnimation('home-cube-animation');
+                                    cubeInstances['home-cube-animation'] = true;
+                                }
+                                break;
+                            case 'projects':
+                                if (!cubeInstances['projects-cube-animation']) {
+                                    createCubeAnimation('projects-cube-animation');
+                                    cubeInstances['projects-cube-animation'] = true;
+                                }
+                                break;
+                            case 'contact':
+                                if (!cubeInstances['cube-animation']) {
+                                    createCubeAnimation('cube-animation');
+                                    cubeInstances['cube-animation'] = true;
+                                }
+                                break;
+                        }
+                    }, 50);
                 });
             });
             
@@ -1360,6 +1290,21 @@
                     changeLanguage(lang);
                 });
             });
+            
+            // Əgər birbaşa "Layihələr" və ya "Ana Səhifə" səhifəsinə daxil olunubsa
+            setTimeout(() => {
+                const activeSection = document.querySelector('.page-section.active').id;
+                
+                if (activeSection === 'projects-section' && !cubeInstances['projects-cube-animation']) {
+                    createCubeAnimation('projects-cube-animation');
+                    cubeInstances['projects-cube-animation'] = true;
+                }
+                
+                if (activeSection === 'home-section' && !cubeInstances['home-cube-animation']) {
+                    createCubeAnimation('home-cube-animation');
+                    cubeInstances['home-cube-animation'] = true;
+                }
+            }, 100);
         });
     </script>
 </body>
