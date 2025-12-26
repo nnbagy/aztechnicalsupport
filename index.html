@@ -1257,6 +1257,7 @@
         
         document.addEventListener('DOMContentLoaded', function() {
             // Hər iki kub animasiyasını eyni anda başlat
+            // Hər iki container üçün animasiyanı yaradırıq, görünsün və ya görünməsin
             createCubeAnimation('cube-animation'); // Əlaqələr bölməsi üçün
             createCubeAnimation('projects-cube-animation'); // Layihələr bölməsi üçün
             
@@ -1264,7 +1265,7 @@
             const langButtons = document.querySelectorAll('.lang-btn');
             
             // Home page is already active by default (HTML'de active class var)
-            // No need to change anything here
+            // Ancaq JavaScript ilə başlanğıc statusunu təyin etməyimiz lazım deyil
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -1277,7 +1278,13 @@
                         section.classList.remove('active');
                     });
                     
-                    document.getElementById(sectionId + '-section').classList.add('active');
+                    const sectionElement = document.getElementById(sectionId + '-section');
+                    sectionElement.classList.add('active');
+                    
+                    // Əgər kontakt bölməsinə keçiriksə, kub animasiyasını yenidən başlada bilərik
+                    if (sectionId === 'contact' || sectionId === 'projects') {
+                        // Animasiya artıq işləyir, heç nə etmək lazım deyil
+                    }
                 });
             });
             
