@@ -235,7 +235,7 @@
             width: calc(100% - 20px);
         }
         
-        #cube-animation {
+        #cube-animation, #projects-cube-animation {
             position: absolute;
             top: 0;
             left: 0;
@@ -420,6 +420,15 @@
         
         .page-section.active {
             display: flex;
+        }
+        
+        /* PROJECTS SECTION WITH CUBE */
+        .projects-cube-container {
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: #000;
+            position: relative;
+            overflow: hidden;
         }
         
         /* ========== RESPONSIVE BREAKPOINTS ========== */
@@ -761,7 +770,7 @@
             </div>
         </div>
         
-        <!-- ABOUT SECTION - ANA SƏHİFƏDƏKİ MƏTN BURADA -->
+        <!-- ABOUT SECTION -->
         <div class="page-section" id="about-section">
             <div class="content">
                 <div class="content-box">
@@ -825,15 +834,10 @@
             </div>
         </div>
         
-        <!-- PROJECTS SECTION -->
+        <!-- PROJECTS SECTION - KUB DUBLİKATI BU SƏHİFƏDƏ -->
         <div class="page-section" id="projects-section">
-            <div class="content">
-                <div class="content-box">
-                    <h2 data-translate="projectsTitle">Layihələr</h2>
-                    <p data-translate="projectsText">
-                        Uğurla həyata keçirdiyimiz bəzi layihələr. Şirkətimiz neft-qaz və gəmiçilik sənayesində mürəkkəb texniki layihələrin həyata keçirilməsində geniş təcrübəyə malikdir.
-                    </p>
-                </div>
+            <div class="projects-cube-container">
+                <div id="projects-cube-animation"></div>
             </div>
         </div>
         
@@ -893,26 +897,28 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // CUBE ANIMATION CODE
-        let scene, camera, renderer, sphere, uniforms, mouse = new THREE.Vector3();
-        let mouseWorld = new THREE.Vector3();
-        let raycaster = new THREE.Raycaster();
+        // ƏLAQƏ BÖLMƏSİ ÜÇÜN KUB ANİMASİYASI
+        let contactScene, contactCamera, contactRenderer, contactSphere, contactUniforms;
+        let contactMouse = new THREE.Vector3();
+        let contactRaycaster = new THREE.Raycaster();
 
-        init();
-        animate();
+        // LAYİHƏLƏR BÖLMƏSİ ÜÇÜN KUB ANİMASİYASI (DUBLİKAT)
+        let projectsScene, projectsCamera, projectsRenderer, projectsSphere, projectsUniforms;
+        let projectsMouse = new THREE.Vector3();
+        let projectsRaycaster = new THREE.Raycaster();
 
-        function init() {
+        function initContactCube() {
             const cubeContainer = document.getElementById('cube-animation');
             if (!cubeContainer) return;
             
-            scene = new THREE.Scene();
+            contactScene = new THREE.Scene();
 
-            camera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
-            camera.position.z = 3.5;
+            contactCamera = new THREE.PerspectiveCamera(55, cubeContainer.clientWidth/cubeContainer.clientHeight, 0.1, 1000);
+            contactCamera.position.z = 3.5;
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
-            cubeContainer.appendChild(renderer.domElement);
+            contactRenderer = new THREE.WebGLRenderer({ antialias: true });
+            contactRenderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+            cubeContainer.appendChild(contactRenderer.domElement);
 
             const count = 40000;
             const positions = new Float32Array(count * 3);
@@ -926,13 +932,13 @@
             const particleGeometry = new THREE.BufferGeometry();
             particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-            uniforms = {
+            contactUniforms = {
                 uTime: { value: 0.0 },
                 uMouse: { value: new THREE.Vector3(0,0,0) }
             };
 
             const material = new THREE.ShaderMaterial({
-                uniforms,
+                uniforms: contactUniforms,
                 vertexShader: `
                     uniform vec3 uMouse;
 
@@ -954,8 +960,8 @@
                 transparent: true
             });
 
-            sphere = new THREE.Points(particleGeometry, material);
-            scene.add(sphere);
+            contactSphere = new THREE.Points(particleGeometry, material);
+            contactScene.add(contactSphere);
 
             cubeContainer.addEventListener("pointermove", (e) => {
                 const rect = cubeContainer.getBoundingClientRect();
@@ -963,46 +969,150 @@
                 const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
                 const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
                 
-                mouse.set(x, y, 0.5);
+                contactMouse.set(x, y, 0.5);
                 
-                raycaster.setFromCamera(mouse, camera);
+                contactRaycaster.setFromCamera(contactMouse, contactCamera);
                 
                 const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
                 const intersectionPoint = new THREE.Vector3();
                 
-                raycaster.ray.intersectPlane(planeZ, intersectionPoint);
+                contactRaycaster.ray.intersectPlane(planeZ, intersectionPoint);
                 
                 const worldMouse = intersectionPoint.clone();
                 
-                const inverseMatrix = new THREE.Matrix4().copy(sphere.matrixWorld).invert();
+                const inverseMatrix = new THREE.Matrix4().copy(contactSphere.matrixWorld).invert();
                 worldMouse.applyMatrix4(inverseMatrix);
                 
-                uniforms.uMouse.value.copy(worldMouse);
+                contactUniforms.uMouse.value.copy(worldMouse);
             });
             
             cubeContainer.addEventListener("pointerleave", () => {
-                uniforms.uMouse.value.set(1000, 1000, 1000);
+                contactUniforms.uMouse.value.set(1000, 1000, 1000);
             });
             
             window.addEventListener('resize', function() {
                 const cubeContainer = document.getElementById('cube-animation');
                 if (!cubeContainer) return;
                 
-                camera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+                contactCamera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
+                contactCamera.updateProjectionMatrix();
+                contactRenderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
             });
         }
 
-        function animate() {
-            if (!scene || !renderer || !camera) return;
+        function initProjectsCube() {
+            const projectsContainer = document.getElementById('projects-cube-animation');
+            if (!projectsContainer) return;
             
-            uniforms.uTime.value += 0.005;
-            if (sphere) {
-                sphere.rotation.y += 0.001;
+            projectsScene = new THREE.Scene();
+
+            projectsCamera = new THREE.PerspectiveCamera(55, projectsContainer.clientWidth/projectsContainer.clientHeight, 0.1, 1000);
+            projectsCamera.position.z = 3.5;
+
+            projectsRenderer = new THREE.WebGLRenderer({ antialias: true });
+            projectsRenderer.setSize(projectsContainer.clientWidth, projectsContainer.clientHeight);
+            projectsContainer.appendChild(projectsRenderer.domElement);
+
+            const count = 40000;
+            const positions = new Float32Array(count * 3);
+
+            for (let i = 0; i < count; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+1] = (Math.random() - 0.5) * 2.5;
+                positions[i*3+2] = (Math.random() - 0.5) * 2.5;
             }
-            renderer.render(scene, camera);
-            requestAnimationFrame(animate);
+
+            const particleGeometry = new THREE.BufferGeometry();
+            particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+            projectsUniforms = {
+                uTime: { value: 0.0 },
+                uMouse: { value: new THREE.Vector3(0,0,0) }
+            };
+
+            const material = new THREE.ShaderMaterial({
+                uniforms: projectsUniforms,
+                vertexShader: `
+                    uniform vec3 uMouse;
+
+                    void main() {
+                        vec3 pos = position;
+
+                        float dist = distance(pos, uMouse);
+                        pos += normalize(pos - uMouse) * (0.15 / dist);
+
+                        gl_PointSize = 1.2;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    void main() {
+                        gl_FragColor = vec4(0.2, 0.6, 1.0, 1.0);
+                    }
+                `,
+                transparent: true
+            });
+
+            projectsSphere = new THREE.Points(particleGeometry, material);
+            projectsScene.add(projectsSphere);
+
+            projectsContainer.addEventListener("pointermove", (e) => {
+                const rect = projectsContainer.getBoundingClientRect();
+                
+                const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                
+                projectsMouse.set(x, y, 0.5);
+                
+                projectsRaycaster.setFromCamera(projectsMouse, projectsCamera);
+                
+                const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+                const intersectionPoint = new THREE.Vector3();
+                
+                projectsRaycaster.ray.intersectPlane(planeZ, intersectionPoint);
+                
+                const worldMouse = intersectionPoint.clone();
+                
+                const inverseMatrix = new THREE.Matrix4().copy(projectsSphere.matrixWorld).invert();
+                worldMouse.applyMatrix4(inverseMatrix);
+                
+                projectsUniforms.uMouse.value.copy(worldMouse);
+            });
+            
+            projectsContainer.addEventListener("pointerleave", () => {
+                projectsUniforms.uMouse.value.set(1000, 1000, 1000);
+            });
+            
+            window.addEventListener('resize', function() {
+                const projectsContainer = document.getElementById('projects-cube-animation');
+                if (!projectsContainer) return;
+                
+                projectsCamera.aspect = projectsContainer.clientWidth / projectsContainer.clientHeight;
+                projectsCamera.updateProjectionMatrix();
+                projectsRenderer.setSize(projectsContainer.clientWidth, projectsContainer.clientHeight);
+            });
+        }
+
+        function animateContact() {
+            if (!contactScene || !contactRenderer || !contactCamera) return;
+            
+            contactUniforms.uTime.value += 0.005;
+            if (contactSphere) {
+                contactSphere.rotation.y += 0.001;
+            }
+            contactRenderer.render(contactScene, contactCamera);
+            requestAnimationFrame(animateContact);
+        }
+
+        function animateProjects() {
+            if (!projectsScene || !projectsRenderer || !projectsCamera) return;
+            
+            projectsUniforms.uTime.value += 0.005;
+            if (projectsSphere) {
+                projectsSphere.rotation.y += 0.001;
+            }
+            projectsRenderer.render(projectsScene, projectsCamera);
+            requestAnimationFrame(animateProjects);
         }
         
         const translations = {
@@ -1071,7 +1181,7 @@
                 projects: "ПРОЕКТЫ",
                 contact: "КОНТАКТЫ",
                 
-                // About Section (ANA SƏHİFƏDƏKİ MƏTN BURADA)
+                // About Section (ANA SƏHİFƏDƏKİ МƏTN BURADA)
                 aboutTitle: "О нас",
                 aboutText1: "Наша компания была основана в 2025 году в соответствии с законодательством Азербайджанской Республики. Основное направление нашей деятельности заключается в поставке, продаже и сервисном обслуживании гидравлического и механического оборудования для нефтегазовой и судоходной промышленности. Несмотря на то, что мы являемся новой компанией, благодаря профессиональному опыту нашей команды и современному подходу мы стремимся предоставлять нашим клиентам надежную, высококачественную продукцию и оперативную поддержку для бесперебойного продолжения их операций.",
                 aboutText2: "Наша миссия — предоставлять высококачественные технические услуги, надежную продукцию и устойчивые решения. Мы стремимся предоставлять нашим клиентам высококвалифицированную техническую поддержку и профессиональные услуги.",
@@ -1127,7 +1237,7 @@
                 projects: "PROJECTS",
                 contact: "CONTACT",
                 
-                // About Section (ANA SƏHİFƏDƏKİ MƏTN BURADA)
+                // About Section (ANA SƏHİFƏDƏKİ МƏTN BURADA)
                 aboutTitle: "About Us",
                 aboutText1: "Our company was established in 2025 in accordance with the legislation of the Republic of Azerbaijan. Our main area of activity is the supply, sale, and service of hydraulic and mechanical equipment for the oil-gas and shipping industries. Although we are a newly established company, thanks to the professional experience of our team and modern approach, we aim to provide our customers with reliable, high-quality products and operational support for the uninterrupted continuation of their operations.",
                 aboutText2: "Our mission is to provide high-quality technical service, reliable products, and sustainable solutions. We are committed to providing our customers with high-level technical support and professional service.",
@@ -1213,6 +1323,14 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize both cube animations
+            initContactCube();
+            initProjectsCube();
+            
+            // Start both animations
+            animateContact();
+            animateProjects();
+            
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
