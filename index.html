@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -74,155 +73,157 @@
             min-width: 0;
         }
         
-        /* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ КНОПОК НАВИГАЦИИ */
-/* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ КНОПОК НАВИГАЦИИ - ЖЕЛТЫЙ ПО УМОЛЧАНИЮ */
-
+        /* СТИЛИ ДЛЯ КНОПОК НАВИГАЦИИ */
+        .nav-btn {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 2px solid cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
+            border-radius: 10px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 85px;
+            text-align: center;
+            box-shadow: 0 0 10px cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            position: relative;
+            overflow: hidden;
+            height: 34px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
         
-/* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ КНОПОК НАВИГАЦИИ - ЖЕЛТЫЙ ПО УМОЛЧАНИЮ */
-.nav-btn {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: 2px solid lime; /* ЖЕЛТЫЙ по умолчанию */
-    border-radius: 10px;
-    padding: 6px 12px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 85px;
-    text-align: center;
-    box-shadow: 0 0 10px lime; /* ЖЕЛТЫЙ по умолчанию */
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    position: relative;
-    overflow: hidden;
-    height: 34px;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.nav-btn::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.nav-btn:hover {
-    background: rgba(0, 100, 200, 0.9);
-    transform: scale(1.05);
-    box-shadow: 0 0 15px cyan; /* СИНИЙ при наведении */
-    border-color: cyan; /* СИНИЙ при наведении */
-}
-
-.nav-btn:hover::before {
-    opacity: 1;
-    border-color: cyan; /* СИНИЙ при наведении */
-    box-shadow: 0 0 10px cyan; /* СИНИЙ при наведении */
-}
-
-.nav-btn.active {
-    background: black !important;
-    color: white !important;
-    border-color: cyan !important; /* СИНИЙ активная */
-    box-shadow: 0 0 10px cyan !important; /* СИНИЙ активная */
-}
-
-.nav-btn.active::before {
-    opacity: 1;
-    border-color: cyan; /* СИНИЙ активная */
-    box-shadow: 0 0 15px cyan; /* СИНИЙ активная */
-}
-
-.nav-btn.active:hover {
-    background: rgba(0, 0, 0, 0.9) !important;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px cyan !important; /* СИНИЙ активная при наведении */
-    border-color: cyan; /* СИНИЙ активная при наведении */
-}
-
-/* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ЯЗЫКОВЫХ КНОПОК - ЖЕЛТЫЙ ПО УМОЛЧАНИЮ */
-.lang-btn {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: 2px solid lime; /* ЖЕЛТЫЙ по умолчанию */
-    border-radius: 10px;
-    padding: 6px 12px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 60px;
-    text-align: center;
-    box-shadow: 0 0 10px lime; /* ЖЕЛТЫЙ по умолчанию */
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    position: relative;
-    overflow: hidden;
-    height: 34px;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.lang-btn::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.lang-btn:hover {
-    background: rgba(0, 100, 200, 0.9);
-    transform: scale(1.05);
-    box-shadow: 0 0 15px cyan; /* СИНИЙ при наведении */
-    border-color: cyan; /* СИНИЙ при наведении */
-}
-
-.lang-btn:hover::before {
-    opacity: 1;
-    border-color: cyan; /* СИНИЙ при наведении */
-    box-shadow: 0 0 10px cyan; /* СИНИЙ при наведении */
-}
-
-.lang-btn.active {
-    background: black !important;
-    color: white !important;
-    border-color: cyan !important; /* СИНИЙ активная */
-    box-shadow: 0 0 10px cyan !important; /* СИНИЙ активная */
-}
-
-.lang-btn.active::before {
-    opacity: 1;
-    border-color: cyan; /* СИНИЙ активная */
-    box-shadow: 0 0 15px cyan; /* СИНИЙ активная */
-}
-
-.lang-btn.active:hover {
-    background: rgba(0, 0, 0, 0.9) !important;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px cyan !important; /* СИНИЙ активная при наведении */
-    border-color: cyan; /* СИНИЙ активная при наведении */
-}        /* MAIN CONTENT RESPONSIVE */
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(0, 100, 200, 0.9);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px cyan;
+        }
+        
+        .nav-btn:hover::before {
+            opacity: 1;
+            border-color: lime;
+            box-shadow: 0 0 10px lime;
+        }
+        
+        .nav-btn.active {
+            background: black !important;
+            color: white !important;
+            border-color: lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
+            box-shadow: 0 0 10px lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
+        }
+        
+        .nav-btn.active::before {
+            opacity: 1;
+            border-color: lime;
+            box-shadow: 0 0 15px lime;
+        }
+        
+        .nav-btn.active:hover {
+            background: rgba(0, 0, 0, 0.9) !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px lime !important;
+        }
+        
+        .nav-right {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        
+        /* СТИЛИ ДЛЯ ЯЗЫКОВЫХ КНОПОК */
+        .lang-btn {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 2px solid cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
+            border-radius: 10px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 60px;
+            text-align: center;
+            box-shadow: 0 0 10px cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            position: relative;
+            overflow: hidden;
+            height: 34px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lang-btn:hover::before {
+            opacity: 1;
+            border-color: lime;
+            box-shadow: 0 0 10px lime;
+        }
+        
+        .lang-btn.active {
+            background: black !important;
+            color: white !important;
+            border-color: lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
+            box-shadow: 0 0 10px lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
+        }
+        
+        .lang-btn.active::before {
+            opacity: 1;
+            border-color: lime;
+            box-shadow: 0 0 15px lime;
+        }
+        
+        .lang-btn.active:hover {
+            background: rgba(0, 0, 0, 0.9) !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px lime !important;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(0, 100, 200, 0.9);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px cyan;
+        }
+        
+        /* MAIN CONTENT RESPONSIVE */
         .content {
             padding: 30px 20px;
             text-align: center;
@@ -1212,11 +1213,11 @@
                 // Services Section
                 servicesTitle: "Xidmətlər",
                 servicesText: "Əsas xidmət istiqamətlərimiz aşağıdakılardır:",
-                serviceItem1: "Hidravlik sistemlərin təchizatı, satışı və quraşdırılması",
+                serviceItem1: "Hidravlik системlərin təchizatı, satışı və quraşdırılması",
                 serviceItem2: "Hidravlik avadanlıqların diaqnostikası, texniki baxışı və təmiri",
                 serviceItem3: "Mexaniki avadanlıqların servisi və texniki dəstəyi",
                 serviceItem4: "Ehtiyat hissələrinin satışı və operativ çatdırılması",
-                serviceItem5: "Planlı texniki xidmət və fövqəladə servis dəstəyi",
+                serviceItem5: "Planlı texniki xidmət və fövqəladə servis dəстəyi",
                 serviceItem6: "Müştəri tələblərinə uyğun texniki məsləhət və həllərin təqdim olunması",
                 
                 // Projects Section
