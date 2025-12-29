@@ -74,148 +74,152 @@
         }
         
         /* СТИЛИ ДЛЯ КНОПОК НАВИГАЦИИ */
-        .nav-btn {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: 2px solid cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
-            border-radius: 10px;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 85px;
-            text-align: center;
-            box-shadow: 0 0 10px cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            position: relative;
-            overflow: hidden;
-            height: 34px;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
+
+/* СТИЛИ ДЛЯ КНОПОК НАВИГАЦИИ */
+.nav-btn {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 2px solid cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
+    border-radius: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 85px;
+    text-align: center;
+    box-shadow: 0 0 10px cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+    overflow: hidden;
+    height: 34px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(0, 100, 200, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px cyan; /* ОСТАЕТСЯ СИНИЙ ПРИ НАВЕДЕНИИ */
+}
+
+.nav-btn:hover::before {
+    opacity: 1;
+    border-color: cyan; /* ОСТАЕТСЯ СИНИЙ ПРИ НАВЕДЕНИИ */
+    box-shadow: 0 0 10px cyan; /* ОСТАЕТСЯ СИНИЙ ПРИ НАВЕДЕНИИ */
+}
+
+.nav-btn.active {
+    background: black !important;
+    color: white !important;
+    border-color: lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
+    box-shadow: 0 0 10px lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
+}
+
+.nav-btn.active::before {
+    opacity: 1;
+    border-color: lime; /* ЖЕЛТЫЙ АКТИВНАЯ */
+    box-shadow: 0 0 15px lime; /* ЖЕЛТЫЙ АКТИВНАЯ */
+}
+
+.nav-btn.active:hover {
+    background: rgba(0, 0, 0, 0.9) !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ ПРИ НАВЕДЕНИИ */
+    border-color: lime; /* ЖЕЛТЫЙ АКТИВНАЯ ПРИ НАВЕДЕНИИ */
+}
+
+/* СТИЛИ ДЛЯ ЯЗЫКОВЫХ КНОПОК */
+.lang-btn {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 2px solid cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
+    border-radius: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    text-align: center;
+    box-shadow: 0 0 10px cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+    overflow: hidden;
+    height: 34px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.lang-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: rgba(0, 100, 200, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px cyan; /* ОСТАЕТСЯ СИНИЙ ПРИ НАВЕДЕНИИ */
+}
+
+.lang-btn:hover::before {
+    opacity: 1;
+    border-color: cyan; /* ОСТАЕТСЯ СИНИЙ ПРИ НАВЕДЕНИИ */
+    box-shadow: 0 0 10px cyan; /* ОСТАЕТСЯ СИНИЙ ПРИ НАВЕДЕНИИ */
+}
+
+.lang-btn.active {
+    background: black !important;
+    color: white !important;
+    border-color: lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
+    box-shadow: 0 0 10px lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
+}
+
+.lang-btn.active::before {
+    opacity: 1;
+    border-color: lime; /* ЖЕЛТЫЙ АКТИВНАЯ */
+    box-shadow: 0 0 15px lime; /* ЖЕЛТЫЙ АКТИВНАЯ */
+}
+
+.lang-btn.active:hover {
+    background: rgba(0, 0, 0, 0.9) !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ ПРИ НАВЕДЕНИИ */
+    border-color: lime; /* ЖЕЛТЫЙ АКТИВНАЯ ПРИ НАВЕДЕНИИ */
+}
+
         
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border: 2px solid transparent;
-            border-radius: 12px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .nav-btn:hover {
-            background: rgba(0, 100, 200, 0.9);
-            transform: scale(1.05);
-            box-shadow: 0 0 15px cyan;
-        }
-        
-        .nav-btn:hover::before {
-            opacity: 1;
-            border-color: lime;
-            box-shadow: 0 0 10px lime;
-        }
-        
-        .nav-btn.active {
-            background: black !important;
-            color: white !important;
-            border-color: lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
-            box-shadow: 0 0 10px lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
-        }
-        
-        .nav-btn.active::before {
-            opacity: 1;
-            border-color: lime;
-            box-shadow: 0 0 15px lime;
-        }
-        
-        .nav-btn.active:hover {
-            background: rgba(0, 0, 0, 0.9) !important;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px lime !important;
-        }
-        
-        .nav-right {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            margin-left: auto;
-            flex-shrink: 0;
-        }
-        
-        /* СТИЛИ ДЛЯ ЯЗЫКОВЫХ КНОПОК */
-        .lang-btn {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: 2px solid cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
-            border-radius: 10px;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 60px;
-            text-align: center;
-            box-shadow: 0 0 10px cyan; /* СИНИЙ ПО УМОЛЧАНИЮ */
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            position: relative;
-            overflow: hidden;
-            height: 34px;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        
-        .lang-btn::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border: 2px solid transparent;
-            border-radius: 12px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .lang-btn:hover::before {
-            opacity: 1;
-            border-color: lime;
-            box-shadow: 0 0 10px lime;
-        }
-        
-        .lang-btn.active {
-            background: black !important;
-            color: white !important;
-            border-color: lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
-            box-shadow: 0 0 10px lime !important; /* ЖЕЛТЫЙ АКТИВНАЯ */
-        }
-        
-        .lang-btn.active::before {
-            opacity: 1;
-            border-color: lime;
-            box-shadow: 0 0 15px lime;
-        }
-        
-        .lang-btn.active:hover {
-            background: rgba(0, 0, 0, 0.9) !important;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px lime !important;
-        }
         
         .lang-btn:hover {
             background: rgba(0, 100, 200, 0.9);
