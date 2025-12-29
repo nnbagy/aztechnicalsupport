@@ -197,42 +197,6 @@
             flex: 1;
         }
         
-        /* HOME SECTION - ВЕРТИКАЛЬНЫЙ МАКЕТ С ОПТИМИЗАЦИЕЙ ВЫСОТЫ */
-        .home-images-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-            max-width: 100%;
-            flex: 1;
-            min-height: calc(100vh - 110px); /* Минимальная высота: экран минус навбар и отступы */
-        }
-        
-        .home-image-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            width: 100%;
-            flex: 1; /* Каждое изображение занимает равную высоту */
-            min-height: 0; /* Важно для flex-контейнеров */
-        }
-        
-        .home-image {
-            width: 100%;
-            height: 100%; /* ВАЖНО: высота 100% от родительского контейнера */
-            object-fit: cover; /* Сохраняет пропорции, заполняя контейнер */
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        
-        .home-image:hover {
-            transform: scale(1.02);
-        }
-        
         .company-name {
             font-size: 28px;
             color: #00ffff;
@@ -246,6 +210,34 @@
             font-size: 14px;
             color: #88ffff;
             margin-bottom: 30px;
+        }
+        
+        /* HOME SECTION - ОРИГИНАЛЬНЫЙ МАКЕТ С ОПТИМИЗАЦИЕЙ ВЫСОТЫ */
+        .image-row {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            flex-wrap: nowrap;
+            margin-bottom: 20px;
+        }
+        
+        .image-container {
+            width: 50%;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .home-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .home-image:hover {
+            transform: scale(1.02);
         }
         
         /* CONTACT SECTION RESPONSIVE */
@@ -470,7 +462,70 @@
             z-index: 50;
         }
         
-        /* ========== RESPONSIVE BREAKPOINTS ========== */
+        /* ========== OPTIMIZATION FOR ALL SCREENS ========== */
+        /* Только увеличение высоты изображений для всех экранов */
+        
+        /* Для всех экранов - увеличение минимальной высоты */
+        .image-container {
+            min-height: 45vh; /* Минимальная высота для всех экранов */
+        }
+        
+        /* 14" экраны (1366x768) - больше высота */
+        @media screen and (max-width: 1366px) {
+            .image-container {
+                min-height: 40vh;
+            }
+        }
+        
+        /* 15.6" и 16" экраны (1440x900 - 1920x1080) */
+        @media screen and (min-width: 1367px) and (max-width: 1920px) {
+            .image-container {
+                min-height: 45vh;
+            }
+        }
+        
+        /* 19" и 24" экраны (1921px - 2560px) */
+        @media screen and (min-width: 1921px) and (max-width: 2560px) {
+            .image-container {
+                min-height: 50vh;
+            }
+        }
+        
+        /* 27" и 32" экраны (2561px и больше) */
+        @media screen and (min-width: 2561px) {
+            .image-container {
+                min-height: 55vh;
+            }
+        }
+        
+        /* Для 2K и 4K экранов с большой высотой */
+        @media screen and (min-height: 1440px) {
+            .image-container {
+                min-height: 50vh;
+            }
+        }
+        
+        @media screen and (min-height: 2160px) {
+            .image-container {
+                min-height: 55vh;
+            }
+        }
+        
+        /* Адаптация под разные соотношения сторон */
+        @media screen and (max-aspect-ratio: 16/10) {
+            .image-container {
+                min-height: 50vh; /* Больше высоты для менее широких экранов */
+            }
+        }
+        
+        /* Адаптация для очень широких экранов */
+        @media screen and (min-aspect-ratio: 21/9) {
+            .image-container {
+                min-height: 60vh; /* Ещё больше высоты для ультра-широких */
+            }
+        }
+        
+        /* ========== RESPONSIVE BREAKPOINTS (оригинальные) ========== */
         
         /* 14" экраны (1366x768 и меньше) */
         @media screen and (max-width: 1366px) {
@@ -498,12 +553,11 @@
             }
             
             .content {
-                padding: 15px;
+                padding: 20px 15px;
             }
             
-            .home-images-container {
+            .image-row {
                 gap: 15px;
-                min-height: calc(100vh - 100px);
             }
             
             .company-name {
@@ -541,12 +595,11 @@
             }
             
             .content {
-                padding: 20px;
+                padding: 25px 20px;
             }
             
-            .home-images-container {
+            .image-row {
                 gap: 20px;
-                min-height: calc(100vh - 110px);
             }
             
             .company-name {
@@ -585,12 +638,11 @@
             }
             
             .content {
-                padding: 30px;
+                padding: 40px 30px;
             }
             
-            .home-images-container {
-                gap: 25px;
-                min-height: calc(100vh - 130px);
+            .image-row {
+                gap: 30px;
             }
             
             .company-name {
@@ -642,12 +694,11 @@
             }
             
             .content {
-                padding: 40px;
+                padding: 50px 40px;
             }
             
-            .home-images-container {
-                gap: 30px;
-                min-height: calc(100vh - 150px);
+            .image-row {
+                gap: 40px;
             }
             
             .company-name {
@@ -665,24 +716,6 @@
             
             .content-box p, .content-box ul {
                 font-size: 16px;
-            }
-        }
-        
-        /* Для очень высоких экранов (2K, 4K с большой высотой) */
-        @media screen and (min-height: 1440px) {
-            .home-images-container {
-                min-height: calc(100vh - 150px);
-            }
-            
-            .home-image-wrapper {
-                max-height: 50vh;
-            }
-        }
-        
-        /* Для ультра-широких мониторов (соотношение больше 16:9) */
-        @media screen and (min-width: 2560px) and (min-aspect-ratio: 16/9) {
-            .home-images-container {
-                gap: 35px;
             }
         }
         
@@ -733,13 +766,14 @@
                 min-width: 60px;
             }
             
-            .content {
-                padding: 15px 10px;
+            .image-row {
+                flex-direction: column;
+                gap: 15px;
             }
             
-            .home-images-container {
-                gap: 15px;
-                min-height: calc(100vh - 130px);
+            .image-container {
+                width: 100%;
+                min-height: 35vh;
             }
             
             .split-container {
@@ -757,18 +791,6 @@
             
             .contact-info {
                 padding: 15px;
-            }
-        }
-        
-        /* Для очень маленьких экранов */
-        @media screen and (max-width: 480px) {
-            .home-images-container {
-                gap: 12px;
-                min-height: calc(100vh - 120px);
-            }
-            
-            .content {
-                padding: 10px;
             }
         }
         
@@ -879,21 +901,21 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION WITH TWO IMAGES VERTICALLY -->
+        <!-- HOME SECTION WITH TWO IMAGES SIDE BY SIDE - ОРИГИНАЛЬНАЯ СТРУКТУРА -->
         <div class="page-section active" id="home-section">
-            <div class="content">
-                <div class="home-images-container">
-                    <!-- FIRST IMAGE -->
-                    <div class="home-image-wrapper">
+            <div class="content" style="padding: 20px; width: 100%; max-width: 100%;">
+                <div class="image-row">
+                    <!-- LEFT SIDE 50% - ОРИГИНАЛЬНОЕ РАСПОЛОЖЕНИЕ -->
+                    <div class="image-container">
                         <img src="https://i.ibb.co/Z1VX4df9/marine-offshore-1.png" alt="marine offshore 1" 
-                             class="home-image" id="home-image-1">
+                             class="home-image">
                     </div>
                     
-                    <!-- SECOND IMAGE -->
-                    <div class="home-image-wrapper">
+                    <!-- RIGHT SIDE 50% - ОРИГИНАЛЬНОЕ РАСПОЛОЖЕНИЕ -->
+                    <div class="image-container">
                         <img src="https://i.ibb.co/4gntJBhz/plattform-med-gassturbin-shutterstock-377322847.jpg" 
                              alt="plattform med gassturbin shutterstock 377322847" 
-                             class="home-image" id="home-image-2">
+                             class="home-image">
                     </div>
                 </div>
             </div>
