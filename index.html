@@ -5,874 +5,867 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AZHYDRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
-            min-height: 100vh;
-            color: #e0e0e0;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* RESPONSIVE NAVBAR */
-        .navbar {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-            position: relative;
-            z-index: 100;
-            flex-shrink: 0;
-            min-height: 70px;
-            flex-wrap: wrap;
-        }
-        
-        .logo-space {
-            min-width: 240px;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-right: 15px;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
+        min-height: 100vh;
+        color: #e0e0e0;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* RESPONSIVE NAVBAR */
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        position: relative;
+        z-index: 100;
+        flex-shrink: 0;
+        min-height: 70px;
+        flex-wrap: wrap;
+    }
+    
+    .logo-space {
+        min-width: 240px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-right: 15px;
+    }
+    
+    .logo-placeholder {
+        color: #00ffff;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: rgba(0, 255, 255, 0.05);
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-align: center;
+        border: 1px solid rgba(0, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 240px;
+    }
+    
+    .nav-center {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .nav-btn {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        min-width: 0;
+        text-align: center;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    .nav-btn:hover {
+        background-color: rgba(0, 255, 255, 0.1);
+        border-color: rgba(0, 255, 255, 0.5);
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+    
+    .nav-btn.active {
+        background-color: rgba(0, 255, 255, 0.15);
+        border-color: rgba(0, 255, 255, 0.7);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    }
+    
+    .nav-btn.active:hover {
+        background-color: rgba(0, 255, 255, 0.25);
+        border-color: rgba(0, 255, 255, 0.9);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+    }
+    
+    .nav-right {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+    
+    .lang-btn {
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        border: 2px solid cyan;
+        border-radius: 10px;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 60px;
+        text-align: center;
+        box-shadow: 0 0 10px cyan;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        position: relative;
+        overflow: hidden;
+        height: 34px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    .lang-btn::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border: 2px solid transparent;
+        border-radius: 12px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .lang-btn:hover::before {
+        opacity: 1;
+        border-color: lime;
+        box-shadow: 0 0 10px lime;
+    }
+    
+    .lang-btn.active {
+        background: black !important;
+        color: white !important;
+        border-color: lime !important;
+        box-shadow: 0 0 10px lime !important;
+    }
+    
+    .lang-btn.active::before {
+        opacity: 1;
+        border-color: lime;
+        box-shadow: 0 0 15px lime;
+    }
+    
+    .lang-btn.active:hover {
+        background: rgba(0, 0, 0, 0.9) !important;
+        transform: scale(1.05);
+        box-shadow: 0 0 15px lime !important;
+    }
+    
+    .lang-btn:hover {
+        background: rgba(0, 100, 200, 0.9);
+        transform: scale(1.05);
+        box-shadow: 0 0 15px cyan;
+    }
+    
+    /* MAIN CONTENT RESPONSIVE */
+    .content {
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        flex: 1;
+    }
+    
+    .company-name {
+        font-size: 28px;
+        color: #00ffff;
+        margin-bottom: 8px;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        display: none;
+    }
+    
+    .company-subtitle {
+        font-size: 14px;
+        color: #88ffff;
+        margin-bottom: 30px;
+    }
+    
+    /* HOME SECTION - ИСПРАВЛЕННЫЙ - БЕЗ ПУСТЫХ МЕСТ */
+    .image-row {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+        flex-wrap: nowrap;
+        margin-bottom: 20px;
+    }
+    
+    .image-container {
+        width: 50%;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+        border: 2px solid rgba(0, 255, 255, 0.3);
+        height: 65vh;
+        min-height: 65vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .home-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+        transition: transform 0.3s ease;
+        object-fit: contain;
+    }
+    
+    .home-image:hover {
+        transform: scale(1.02);
+    }
+    
+    /* CONTACT SECTION RESPONSIVE */
+    .split-container {
+        display: flex;
+        min-height: calc(100vh - 70px);
+        flex-grow: 1;
+        padding: 0 10px;
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .left-side {
+        flex: 1;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 2px solid rgba(0, 255, 255, 0.3);
+        margin: 10px;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+        height: 400px;
+        width: calc(100% - 20px);
+    }
+    
+    #cube-animation, #projects-cube-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    
+    .right-side {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 10px;
+        height: auto;
+        min-width: 0;
+        width: calc(100% - 20px);
+    }
+    
+    .contact-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        margin-left: 0;
+    }
+    
+    .contact-title-left {
+        font-size: 24px;
+        color: #00ffff;
+        text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        font-weight: bold;
+    }
+    
+    .contact-info {
+        background-color: rgba(0, 20, 20, 0.7);
+        padding: 15px 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(0, 255, 255, 0.15);
+        min-height: auto;
+        width: 100%;
+        min-width: 0;
+    }
+    
+    .contact-item {
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+        position: relative;
+    }
+    
+    .contact-item h3 {
+        color: #00ffff;
+        font-size: 14px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        padding-left: 50px;
+    }
+    
+    .contact-icon-container {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .contact-icon-ring {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 2px solid;
+        border-radius: 50%;
+        box-shadow: 
+            0 0 3px currentColor,
+            0 0 6px currentColor;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+    
+    .address-icon .contact-icon-ring,
+    .phone-icon .contact-icon-ring,
+    .email-icon .contact-icon-ring,
+    .hours-icon .contact-icon-ring {
+        border-color: #00ffff;
+        color: #00ffff;
+        box-shadow: 
+            0 0 3px #00ffff,
+            0 0 6px #00ffff;
+    }
+    
+    .contact-item h3 i {
+        position: relative;
+        z-index: 10;
+        color: #fff;
+        font-size: 18px;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .contact-item:hover .contact-icon-ring {
+        box-shadow: 
+            0 0 5px currentColor,
+            0 0 10px currentColor,
+            0 0 15px currentColor;
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    
+    .contact-item p {
+        color: #cccccc;
+        line-height: 1.4;
+        margin-left: 50px;
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .contact-item strong {
+        color: #ffffff;
+        font-size: 12px;
+        display: inline;
+        line-height: 1.4;
+    }
+    
+    .content-box {
+        max-width: 100%;
+        margin: 30px auto;
+        background-color: rgba(0, 20, 20, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(0, 255, 255, 0.1);
+        text-align: left;
+    }
+    
+    .content-box h2 {
+        color: #00ffff;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        padding-bottom: 8px;
+        font-size: 18px;
+    }
+    
+    .content-box p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+        color: #cccccc;
+        font-size: 13px;
+    }
+    
+    .content-box ul {
+        color: #cccccc;
+        margin-left: 20px;
+        line-height: 1.6;
+        font-size: 13px;
+    }
+    
+    .content-box li {
+        margin-bottom: 8px;
+    }
+    
+    /* PAGE SECTIONS */
+    .page-section {
+        display: none;
+        flex-direction: column;
+        flex-grow: 1;
+        width: 100%;
+    }
+    
+    .page-section.active {
+        display: flex;
+    }
+    
+    /* PROJECTS SECTION WITH CUBE - TAM EKRAN */
+    .projects-cube-container {
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 50;
+    }
+    
+    /* ========== АДАПТАЦИЯ ДЛЯ РАЗНЫХ ЭКРАНОВ ========== */
+    /* 14" экраны (1366x768) */
+    @media screen and (max-width: 1366px) {
+        .image-container {
+            height: 60vh;
+            min-height: 60vh;
         }
         
         .logo-placeholder {
-            color: #00ffff;
-            font-size: 16px;
-            font-weight: bold;
-            background-color: rgba(0, 255, 255, 0.05);
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-align: center;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 240px;
+            font-size: 14px;
+            padding: 6px 12px;
+            max-width: 200px;
         }
         
-        .nav-center {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-            flex: 1;
-            min-width: 0;
+        .logo-space {
+            min-width: 200px;
         }
         
         .nav-btn {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 6px 12px;
-            font-size: 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            min-width: 0;
-            text-align: center;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        
-        .nav-btn:hover {
-            background-color: rgba(0, 255, 255, 0.1);
-            border-color: rgba(0, 255, 255, 0.5);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-        }
-        
-        .nav-btn.active {
-            background-color: rgba(0, 255, 255, 0.15);
-            border-color: rgba(0, 255, 255, 0.7);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-        }
-        
-        .nav-btn.active:hover {
-            background-color: rgba(0, 255, 255, 0.25);
-            border-color: rgba(0, 255, 255, 0.9);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
-        }
-        
-        .nav-right {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            margin-left: auto;
-            flex-shrink: 0;
+            padding: 5px 10px;
+            font-size: 11px;
+            min-width: 80px;
         }
         
         .lang-btn {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: 2px solid cyan;
-            border-radius: 10px;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 60px;
-            text-align: center;
-            box-shadow: 0 0 10px cyan;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            position: relative;
-            overflow: hidden;
-            height: 34px;
-            white-space: nowrap;
-            flex-shrink: 0;
+            padding: 5px 10px;
+            font-size: 11px;
+            min-width: 55px;
+            height: 32px;
         }
         
-        .lang-btn::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border: 2px solid transparent;
-            border-radius: 12px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .lang-btn:hover::before {
-            opacity: 1;
-            border-color: lime;
-            box-shadow: 0 0 10px lime;
-        }
-        
-        .lang-btn.active {
-            background: black !important;
-            color: white !important;
-            border-color: lime !important;
-            box-shadow: 0 0 10px lime !important;
-        }
-        
-        .lang-btn.active::before {
-            opacity: 1;
-            border-color: lime;
-            box-shadow: 0 0 15px lime;
-        }
-        
-        .lang-btn.active:hover {
-            background: rgba(0, 0, 0, 0.9) !important;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px lime !important;
-        }
-        
-        .lang-btn:hover {
-            background: rgba(0, 100, 200, 0.9);
-            transform: scale(1.05);
-            box-shadow: 0 0 15px cyan;
-        }
-        
-        /* MAIN CONTENT RESPONSIVE */
         .content {
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100%;
-            flex: 1;
+            padding: 20px 15px;
+        }
+        
+        .image-row {
+            gap: 15px;
         }
         
         .company-name {
-            font-size: 28px;
-            color: #00ffff;
-            margin-bottom: 8px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            display: none;
-        }
-        
-        .company-subtitle {
-            font-size: 14px;
-            color: #88ffff;
-            margin-bottom: 30px;
-        }
-        
-        /* HOME SECTION - ОРИГИНАЛЬНЫЙ МАКЕТ С ОПТИМИЗАЦИЕЙ ВЫСОТЫ */
-        .image-row {
-            display: flex;
-            width: 100%;
-            gap: 20px;
-            flex-wrap: nowrap;
-            margin-bottom: 20px;
-        }
-        
-        .image-container {
-            width: 50%;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-            border: 2px solid rgba(0, 255, 255, 0.3);
-        }
-        
-        .home-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        
-        .home-image:hover {
-            transform: scale(1.02);
-        }
-        
-        /* CONTACT SECTION RESPONSIVE */
-        .split-container {
-            display: flex;
-            min-height: calc(100vh - 70px);
-            flex-grow: 1;
-            padding: 0 10px;
-            width: 100%;
-            flex-direction: column;
-        }
-        
-        .left-side {
-            flex: 1;
-            background: #000;
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            margin: 10px;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-            height: 400px;
-            width: calc(100% - 20px);
-        }
-        
-        #cube-animation, #projects-cube-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        
-        .right-side {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            margin: 10px;
-            height: auto;
-            min-width: 0;
-            width: calc(100% - 20px);
-        }
-        
-        .contact-header {
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            margin-left: 0;
-        }
-        
-        .contact-title-left {
             font-size: 24px;
-            color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            font-weight: bold;
-        }
-        
-        .contact-info {
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 15px 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 255, 255, 0.15);
-            min-height: auto;
-            width: 100%;
-            min-width: 0;
-        }
-        
-        .contact-item {
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.15);
-            position: relative;
-        }
-        
-        .contact-item h3 {
-            color: #00ffff;
-            font-size: 14px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-            padding-left: 50px;
-        }
-        
-        .contact-icon-container {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .contact-icon-ring {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 2px solid;
-            border-radius: 50%;
-            box-shadow: 
-                0 0 3px currentColor,
-                0 0 6px currentColor;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
-        
-        .address-icon .contact-icon-ring,
-        .phone-icon .contact-icon-ring,
-        .email-icon .contact-icon-ring,
-        .hours-icon .contact-icon-ring {
-            border-color: #00ffff;
-            color: #00ffff;
-            box-shadow: 
-                0 0 3px #00ffff,
-                0 0 6px #00ffff;
-        }
-        
-        .contact-item h3 i {
-            position: relative;
-            z-index: 10;
-            color: #fff;
-            font-size: 18px;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .contact-item:hover .contact-icon-ring {
-            box-shadow: 
-                0 0 5px currentColor,
-                0 0 10px currentColor,
-                0 0 15px currentColor;
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        
-        .contact-item p {
-            color: #cccccc;
-            line-height: 1.4;
-            margin-left: 50px;
-            font-size: 13px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .contact-item strong {
-            color: #ffffff;
-            font-size: 12px;
-            display: inline;
-            line-height: 1.4;
         }
         
         .content-box {
-            max-width: 100%;
-            margin: 30px auto;
-            background-color: rgba(0, 20, 20, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            text-align: left;
+            padding: 15px;
+        }
+    }
+    
+    /* 15.6" и 16" экраны (1440x900 - 1920x1080) */
+    @media screen and (min-width: 1367px) and (max-width: 1920px) {
+        .image-container {
+            height: 65vh;
+            min-height: 65vh;
+        }
+        
+        .logo-placeholder {
+            font-size: 15px;
+            padding: 7px 14px;
+            max-width: 220px;
+        }
+        
+        .logo-space {
+            min-width: 220px;
+        }
+        
+        .nav-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+            min-width: 85px;
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+            min-width: 60px;
+            height: 34px;
+        }
+        
+        .content {
+            padding: 25px 20px;
+        }
+        
+        .image-row {
+            gap: 20px;
+        }
+        
+        .company-name {
+            font-size: 26px;
+        }
+    }
+    
+    /* 19" и 24" экраны (1921px - 2560px) */
+    @media screen and (min-width: 1921px) and (max-width: 2560px) {
+        .image-container {
+            height: 70vh;
+            min-height: 70vh;
+        }
+        
+        .navbar {
+            padding: 15px 30px;
+            min-height: 80px;
+        }
+        
+        .logo-placeholder {
+            font-size: 18px;
+            padding: 10px 18px;
+            max-width: 260px;
+        }
+        
+        .logo-space {
+            min-width: 260px;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            min-width: 100px;
+        }
+        
+        .lang-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            min-width: 70px;
+            height: 40px;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .image-row {
+            gap: 30px;
+        }
+        
+        .company-name {
+            font-size: 32px;
+        }
+        
+        .content-box {
+            padding: 25px;
+            max-width: 800px;
         }
         
         .content-box h2 {
-            color: #00ffff;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
-            padding-bottom: 8px;
-            font-size: 18px;
+            font-size: 20px;
         }
         
-        .content-box p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #cccccc;
-            font-size: 13px;
+        .content-box p, .content-box ul {
+            font-size: 14px;
+        }
+    }
+    
+    /* 27" и 32" экраны (2561px и больше) */
+    @media screen and (min-width: 2561px) {
+        .image-container {
+            height: 75vh;
+            min-height: 75vh;
         }
         
-        .content-box ul {
-            color: #cccccc;
-            margin-left: 20px;
-            line-height: 1.6;
-            font-size: 13px;
+        .navbar {
+            padding: 20px 40px;
+            min-height: 90px;
         }
         
-        .content-box li {
-            margin-bottom: 8px;
+        .logo-placeholder {
+            font-size: 20px;
+            padding: 12px 20px;
+            max-width: 280px;
         }
         
-        /* PAGE SECTIONS */
-        .page-section {
-            display: none;
+        .logo-space {
+            min-width: 280px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            min-width: 110px;
+        }
+        
+        .lang-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            min-width: 80px;
+            height: 45px;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .image-row {
+            gap: 40px;
+        }
+        
+        .company-name {
+            font-size: 40px;
+        }
+        
+        .content-box {
+            padding: 30px;
+            max-width: 900px;
+        }
+        
+        .content-box h2 {
+            font-size: 24px;
+        }
+        
+        .content-box p, .content-box ul {
+            font-size: 16px;
+        }
+    }
+    
+    /* Для 2K и 4K экранов с большой высотой */
+    @media screen and (min-height: 1440px) {
+        .image-container {
+            height: 70vh;
+            min-height: 70vh;
+        }
+    }
+    
+    @media screen and (min-height: 2160px) {
+        .image-container {
+            height: 75vh;
+            min-height: 75vh;
+        }
+    }
+    
+    /* Адаптация для очень широких экранов */
+    @media screen and (min-aspect-ratio: 21/9) {
+        .image-container {
+            height: 75vh;
+            min-height: 75vh;
+        }
+    }
+    
+    /* TABLETS AND PHONES (768px и меньше) */
+    @media screen and (max-width: 768px) {
+        .image-container {
+            height: 35vh;
+            min-height: 35vh;
+        }
+        
+        .navbar {
             flex-direction: column;
-            flex-grow: 1;
+            padding: 10px;
+            gap: 10px;
+        }
+        
+        .logo-space {
+            width: 100%;
+            min-width: 100%;
+            justify-content: center;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+        
+        .logo-placeholder {
+            max-width: 100%;
+            font-size: 16px;
+            padding: 8px 15px;
+        }
+        
+        .nav-center {
+            width: 100%;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .nav-btn {
+            padding: 5px 8px;
+            font-size: 11px;
+            min-width: 70px;
+        }
+        
+        .nav-right {
+            width: 100%;
+            justify-content: center;
+            margin-left: 0;
+            margin-top: 10px;
+        }
+        
+        .lang-btn {
+            padding: 5px 10px;
+            font-size: 11px;
+            min-width: 60px;
+        }
+        
+        .image-row {
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .image-container {
             width: 100%;
         }
         
-        .page-section.active {
-            display: flex;
+        .split-container {
+            flex-direction: column;
         }
         
-        /* PROJECTS SECTION WITH CUBE - TAM EKRAN */
-        .projects-cube-container {
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            z-index: 50;
+        .left-side, .right-side {
+            width: calc(100% - 20px);
+            margin: 10px;
         }
         
-        /* ========== OPTIMIZATION FOR ALL SCREENS ========== */
-        /* Только увеличение высоты изображений для всех экранов */
-        
-        /* Для всех экранов - увеличение минимальной высоты */
-        .image-container {
-            min-height: 45vh; /* Минимальная высота для всех экранов */
+        .left-side {
+            height: 300px;
         }
         
-        /* 14" экраны (1366x768) - больше высота */
-        @media screen and (max-width: 1366px) {
-            .image-container {
-                min-height: 40vh;
-            }
+        .contact-info {
+            padding: 15px;
+        }
+    }
+    
+    /* CONTACT SECTION DESKTOP LAYOUT */
+    @media screen and (min-width: 1024px) {
+        .split-container {
+            flex-direction: row;
+            padding: 0 15px;
         }
         
-        /* 15.6" и 16" экраны (1440x900 - 1920x1080) */
-        @media screen and (min-width: 1367px) and (max-width: 1920px) {
-            .image-container {
-                min-height: 45vh;
-            }
+        .left-side {
+            width: 40%;
+            height: 500px;
+            margin: 0 10px 0 25px;
         }
         
-        /* 19" и 24" экраны (1921px - 2560px) */
-        @media screen and (min-width: 1921px) and (max-width: 2560px) {
-            .image-container {
-                min-height: 50vh;
-            }
+        .right-side {
+            width: 50%;
+            margin: 0 25px 0 10px;
+            padding: 25px;
         }
         
-        /* 27" и 32" экраны (2561px и больше) */
-        @media screen and (min-width: 2561px) {
-            .image-container {
-                min-height: 55vh;
-            }
+        .contact-info {
+            min-width: 400px;
+        }
+    }
+    
+    /* WIDE DESKTOP LAYOUT */
+    @media screen and (min-width: 1600px) {
+        .split-container {
+            padding: 0 30px;
         }
         
-        /* Для 2K и 4K экранов с большой высотой */
-        @media screen and (min-height: 1440px) {
-            .image-container {
-                min-height: 50vh;
-            }
+        .left-side {
+            height: 550px;
+            width: 42%;
         }
         
-        @media screen and (min-height: 2160px) {
-            .image-container {
-                min-height: 55vh;
-            }
+        .right-side {
+            width: 48%;
+            padding: 30px;
         }
         
-        /* Адаптация под разные соотношения сторон */
-        @media screen and (max-aspect-ratio: 16/10) {
-            .image-container {
-                min-height: 50vh; /* Больше высоты для менее широких экранов */
-            }
+        .contact-info {
+            min-width: 450px;
+        }
+    }
+    
+    /* ULTRA WIDE DESKTOP LAYOUT */
+    @media screen and (min-width: 2560px) {
+        .split-container {
+            padding: 0 60px;
         }
         
-        /* Адаптация для очень широких экранов */
-        @media screen and (min-aspect-ratio: 21/9) {
-            .image-container {
-                min-height: 60vh; /* Ещё больше высоты для ультра-широких */
-            }
+        .left-side {
+            height: 650px;
+            width: 45%;
         }
         
-        /* ========== RESPONSIVE BREAKPOINTS (оригинальные) ========== */
-        
-        /* 14" экраны (1366x768 и меньше) */
-        @media screen and (max-width: 1366px) {
-            .logo-placeholder {
-                font-size: 14px;
-                padding: 6px 12px;
-                max-width: 200px;
-            }
-            
-            .logo-space {
-                min-width: 200px;
-            }
-            
-            .nav-btn {
-                padding: 5px 10px;
-                font-size: 11px;
-                min-width: 80px;
-            }
-            
-            .lang-btn {
-                padding: 5px 10px;
-                font-size: 11px;
-                min-width: 55px;
-                height: 32px;
-            }
-            
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .image-row {
-                gap: 15px;
-            }
-            
-            .company-name {
-                font-size: 24px;
-            }
-            
-            .content-box {
-                padding: 15px;
-            }
+        .right-side {
+            width: 45%;
+            padding: 40px;
         }
         
-        /* 15.6" и 16" экраны (1440x900 - 1920x1080) */
-        @media screen and (min-width: 1367px) and (max-width: 1920px) {
-            .logo-placeholder {
-                font-size: 15px;
-                padding: 7px 14px;
-                max-width: 220px;
-            }
-            
-            .logo-space {
-                min-width: 220px;
-            }
-            
-            .nav-btn {
-                padding: 6px 12px;
-                font-size: 12px;
-                min-width: 85px;
-            }
-            
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 12px;
-                min-width: 60px;
-                height: 34px;
-            }
-            
-            .content {
-                padding: 25px 20px;
-            }
-            
-            .image-row {
-                gap: 20px;
-            }
-            
-            .company-name {
-                font-size: 26px;
-            }
+        .contact-info {
+            min-width: 500px;
+            padding: 25px;
         }
         
-        /* 19" и 24" экраны (1921px - 2560px) */
-        @media screen and (min-width: 1921px) and (max-width: 2560px) {
-            .navbar {
-                padding: 15px 30px;
-                min-height: 80px;
-            }
-            
-            .logo-placeholder {
-                font-size: 18px;
-                padding: 10px 18px;
-                max-width: 260px;
-            }
-            
-            .logo-space {
-                min-width: 260px;
-            }
-            
-            .nav-btn {
-                padding: 8px 16px;
-                font-size: 14px;
-                min-width: 100px;
-            }
-            
-            .lang-btn {
-                padding: 8px 16px;
-                font-size: 14px;
-                min-width: 70px;
-                height: 40px;
-            }
-            
-            .content {
-                padding: 40px 30px;
-            }
-            
-            .image-row {
-                gap: 30px;
-            }
-            
-            .company-name {
-                font-size: 32px;
-            }
-            
-            .content-box {
-                padding: 25px;
-                max-width: 800px;
-            }
-            
-            .content-box h2 {
-                font-size: 20px;
-            }
-            
-            .content-box p, .content-box ul {
-                font-size: 14px;
-            }
+        .contact-title-left {
+            font-size: 32px;
         }
         
-        /* 27" и 32" экраны (2561px и больше) */
-        @media screen and (min-width: 2561px) {
-            .navbar {
-                padding: 20px 40px;
-                min-height: 90px;
-            }
-            
-            .logo-placeholder {
-                font-size: 20px;
-                padding: 12px 20px;
-                max-width: 280px;
-            }
-            
-            .logo-space {
-                min-width: 280px;
-            }
-            
-            .nav-btn {
-                padding: 10px 20px;
-                font-size: 16px;
-                min-width: 110px;
-            }
-            
-            .lang-btn {
-                padding: 10px 20px;
-                font-size: 16px;
-                min-width: 80px;
-                height: 45px;
-            }
-            
-            .content {
-                padding: 50px 40px;
-            }
-            
-            .image-row {
-                gap: 40px;
-            }
-            
-            .company-name {
-                font-size: 40px;
-            }
-            
-            .content-box {
-                padding: 30px;
-                max-width: 900px;
-            }
-            
-            .content-box h2 {
-                font-size: 24px;
-            }
-            
-            .content-box p, .content-box ul {
-                font-size: 16px;
-            }
+        .contact-item h3 {
+            font-size: 18px;
         }
         
-        /* TABLETS AND PHONES (768px и меньше) */
-        @media screen and (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 10px;
-                gap: 10px;
-            }
-            
-            .logo-space {
-                width: 100%;
-                min-width: 100%;
-                justify-content: center;
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .logo-placeholder {
-                max-width: 100%;
-                font-size: 16px;
-                padding: 8px 15px;
-            }
-            
-            .nav-center {
-                width: 100%;
-                justify-content: center;
-                gap: 5px;
-            }
-            
-            .nav-btn {
-                padding: 5px 8px;
-                font-size: 11px;
-                min-width: 70px;
-            }
-            
-            .nav-right {
-                width: 100%;
-                justify-content: center;
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            
-            .lang-btn {
-                padding: 5px 10px;
-                font-size: 11px;
-                min-width: 60px;
-            }
-            
-            .image-row {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .image-container {
-                width: 100%;
-                min-height: 35vh;
-            }
-            
-            .split-container {
-                flex-direction: column;
-            }
-            
-            .left-side, .right-side {
-                width: calc(100% - 20px);
-                margin: 10px;
-            }
-            
-            .left-side {
-                height: 300px;
-            }
-            
-            .contact-info {
-                padding: 15px;
-            }
+        .contact-item p {
+            font-size: 16px;
         }
-        
-        /* CONTACT SECTION DESKTOP LAYOUT */
-        @media screen and (min-width: 1024px) {
-            .split-container {
-                flex-direction: row;
-                padding: 0 15px;
-            }
-            
-            .left-side {
-                width: 40%;
-                height: 500px;
-                margin: 0 10px 0 25px;
-            }
-            
-            .right-side {
-                width: 50%;
-                margin: 0 25px 0 10px;
-                padding: 25px;
-            }
-            
-            .contact-info {
-                min-width: 400px;
-            }
-        }
-        
-        /* WIDE DESKTOP LAYOUT */
-        @media screen and (min-width: 1600px) {
-            .split-container {
-                padding: 0 30px;
-            }
-            
-            .left-side {
-                height: 550px;
-                width: 42%;
-            }
-            
-            .right-side {
-                width: 48%;
-                padding: 30px;
-            }
-            
-            .contact-info {
-                min-width: 450px;
-            }
-        }
-        
-        /* ULTRA WIDE DESKTOP LAYOUT */
-        @media screen and (min-width: 2560px) {
-            .split-container {
-                padding: 0 60px;
-            }
-            
-            .left-side {
-                height: 650px;
-                width: 45%;
-            }
-            
-            .right-side {
-                width: 45%;
-                padding: 40px;
-            }
-            
-            .contact-info {
-                min-width: 500px;
-                padding: 25px;
-            }
-            
-            .contact-title-left {
-                font-size: 32px;
-            }
-            
-            .contact-item h3 {
-                font-size: 18px;
-            }
-            
-            .contact-item p {
-                font-size: 16px;
-            }
-        }
-    </style>
+    }
+</style>
+
+
+    
 </head>
 <body>
     <!-- NAVIGATION BAR -->
