@@ -195,6 +195,34 @@
             justify-content: flex-start;
             min-height: calc(100vh - 70px);
             width: 100%;
+            flex-grow: 1;
+        }
+        
+        /* IMAGE CONTAINER FOR HOME PAGE */
+        .image-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            gap: 20px;
+            flex-grow: 1;
+            align-items: stretch;
+        }
+        
+        .image-side {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            flex-grow: 1;
         }
         
         .company-name {
@@ -210,40 +238,6 @@
             font-size: 14px;
             color: #88ffff;
             margin-bottom: 30px;
-        }
-        
-        /* HOME SECTION - FOTO YÜKSƏKLİYİ ARTIRILDI */
-        .home-images-container {
-            display: flex;
-            width: 100%;
-            gap: 20px;
-            flex-wrap: nowrap;
-            margin-bottom: 20px;
-            height: 75vh; /* YÜKSƏKLİK ARTIRILDI */
-            min-height: 75vh; /* YÜKSƏKLİK ARTIRILDI */
-        }
-        
-        .home-image-wrapper {
-            width: 50%; /* ENİ 50% QALDI */
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .home-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* FOTO TAM GÖRÜNƏCƏK */
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        
-        .home-image:hover {
-            transform: scale(1.02);
         }
         
         /* CONTACT SECTION RESPONSIVE */
@@ -470,13 +464,8 @@
         
         /* ========== RESPONSIVE BREAKPOINTS ========== */
         
-        /* 14" EKRANLAR (1366x768) - FOTO YÜKSƏKLİYİ 70vh */
+        /* 14" ekranlar (1366x768 ve daha kicik) */
         @media screen and (max-width: 1366px) {
-            .home-images-container {
-                height: 70vh;
-                min-height: 70vh;
-            }
-            
             .logo-placeholder {
                 font-size: 14px;
                 padding: 6px 12px;
@@ -504,6 +493,10 @@
                 padding: 20px 15px;
             }
             
+            .image-container {
+                gap: 15px;
+            }
+            
             .company-name {
                 font-size: 24px;
             }
@@ -513,13 +506,8 @@
             }
         }
         
-        /* 15.6" və 16" EKRANLAR (1440x900 - 1920x1080) - FOTO YÜKSƏKLİYİ 75vh */
+        /* 15.6" ve 16" ekranlar (1440x900 - 1920x1080) */
         @media screen and (min-width: 1367px) and (max-width: 1920px) {
-            .home-images-container {
-                height: 75vh;
-                min-height: 75vh;
-            }
-            
             .logo-placeholder {
                 font-size: 15px;
                 padding: 7px 14px;
@@ -547,18 +535,17 @@
                 padding: 25px 20px;
             }
             
+            .image-container {
+                gap: 20px;
+            }
+            
             .company-name {
                 font-size: 26px;
             }
         }
         
-        /* 19" və 24" EKRANLAR (1921px - 2560px) - FOTO YÜKSƏKLİYİ 80vh */
+        /* 19" ve 24" ekranlar (1921px - 2560px) */
         @media screen and (min-width: 1921px) and (max-width: 2560px) {
-            .home-images-container {
-                height: 80vh;
-                min-height: 80vh;
-            }
-            
             .navbar {
                 padding: 15px 30px;
                 min-height: 80px;
@@ -591,6 +578,10 @@
                 padding: 40px 30px;
             }
             
+            .image-container {
+                gap: 25px;
+            }
+            
             .company-name {
                 font-size: 32px;
             }
@@ -609,13 +600,8 @@
             }
         }
         
-        /* 27" və 32" EKRANLAR (2561px və daha böyük) - FOTO YÜKSƏKLİYİ 85vh */
+        /* 27" ve 32" ekranlar (2561px ve daha boyuk) */
         @media screen and (min-width: 2561px) {
-            .home-images-container {
-                height: 85vh;
-                min-height: 85vh;
-            }
-            
             .navbar {
                 padding: 20px 40px;
                 min-height: 90px;
@@ -648,6 +634,10 @@
                 padding: 50px 40px;
             }
             
+            .image-container {
+                gap: 30px;
+            }
+            
             .company-name {
                 font-size: 40px;
             }
@@ -666,19 +656,8 @@
             }
         }
         
-        /* TABLET VƏ TELEFONLAR (768px və daha kiçik) - FOTO YÜKSƏKLİYİ 60vh */
+        /* TABLET VE TELEFONLAR (768px ve daha kicik) */
         @media screen and (max-width: 768px) {
-            .home-images-container {
-                height: 60vh;
-                min-height: 60vh;
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .home-image-wrapper {
-                width: 100%; /* Mobilde 100% en */
-            }
-            
             .navbar {
                 flex-direction: column;
                 padding: 10px;
@@ -740,70 +719,15 @@
             .contact-info {
                 padding: 15px;
             }
-        }
-        
-        /* ƏLAVƏ EKRANLAR ÜÇÜN YÜKSƏKLİK AYARLARI */
-        
-        /* 16" EKRANLAR 2K (2560x1440) */
-        @media screen and (min-width: 2560px) and (max-width: 3440px) {
-            .home-images-container {
-                height: 82vh;
-                min-height: 82vh;
+            
+            .image-container {
+                flex-direction: column;
+                gap: 15px;
             }
-        }
-        
-        /* 27" EKRANLAR 2K (2560x1440) və 4K (3840x2160) */
-        @media screen and (min-width: 2561px) and (max-width: 3840px) {
-            .home-images-container {
-                height: 85vh;
-                min-height: 85vh;
-            }
-        }
-        
-        /* 32" EKRANLAR 4K (3840x2160) */
-        @media screen and (min-width: 3841px) and (max-width: 5120px) {
-            .home-images-container {
-                height: 88vh;
-                min-height: 88vh;
-            }
-        }
-        
-        /* 34" ULTRAENLİ EKRANLAR (3440x1440) */
-        @media screen and (min-width: 3440px) and (max-aspect-ratio: 21/9) {
-            .home-images-container {
-                height: 90vh;
-                min-height: 90vh;
-            }
-        }
-        
-        /* 4K EKRANLAR (3840x2160) */
-        @media screen and (min-width: 3840px) {
-            .home-images-container {
-                height: 88vh;
-                min-height: 88vh;
-            }
-        }
-        
-        /* 5K EKRANLAR (5120x2880) */
-        @media screen and (min-width: 5120px) {
-            .home-images-container {
-                height: 90vh;
-                min-height: 90vh;
-            }
-        }
-        
-        /* YÜKSƏK EKRANLAR ÜÇÜN (2K və 4K şaquli) */
-        @media screen and (min-height: 1440px) {
-            .home-images-container {
-                height: 80vh;
-                min-height: 80vh;
-            }
-        }
-        
-        @media screen and (min-height: 2160px) {
-            .home-images-container {
-                height: 85vh;
-                min-height: 85vh;
+            
+            .image-side {
+                width: 100%;
+                height: 50vh;
             }
         }
         
@@ -916,19 +840,17 @@
     <div class="main-content">
         <!-- HOME SECTION WITH TWO IMAGES SIDE BY SIDE -->
         <div class="page-section active" id="home-section">
-            <div class="content" style="padding: 20px; width: 100%; max-width: 100%;">
-                <div class="home-images-container">
-                    <!-- LEFT SIDE 50% - ENİ DƏYİŞMƏDİ -->
-                    <div class="home-image-wrapper">
-                        <img src="https://i.ibb.co/Z1VX4df9/marine-offshore-1.png" alt="marine offshore 1" 
-                             class="home-image">
+            <div class="content">
+                <div class="image-container">
+                    <!-- LEFT SIDE 50% -->
+                    <div class="image-side">
+                        <img src="https://i.ibb.co/Z1VX4df9/marine-offshore-1.png" alt="marine offshore 1">
                     </div>
                     
-                    <!-- RIGHT SIDE 50% - ENİ DƏYİŞMƏDİ -->
-                    <div class="home-image-wrapper">
+                    <!-- RIGHT SIDE 50% -->
+                    <div class="image-side">
                         <img src="https://i.ibb.co/4gntJBhz/plattform-med-gassturbin-shutterstock-377322847.jpg" 
-                             alt="plattform med gassturbin shutterstock 377322847" 
-                             class="home-image">
+                             alt="plattform med gassturbin shutterstock 377322847">
                     </div>
                 </div>
             </div>
@@ -1279,7 +1201,7 @@
                 projects: "ПРОЕКТЫ",
                 contact: "КОНТАКТЫ",
                 
-                // About Section (ANA SƏHİFƏDƏKИ МƏTN BURADA)
+                // About Section (ANA SƏHİFƏDƏKİ МƏTN BURADA)
                 aboutTitle: "О нас",
                 aboutText1: "Наша компания была основана в 2025 году в соответствии с законодательством Азербайджанской Республики. Основное направление нашей деятельности заключается в поставке, продаже и сервисном обслуживании гидравлического и механического оборудования для нефтегазовой и судоходной промышленности. Несмотря на то, что мы являемся новой компанией, благодаря профессиональному опыту нашей команды и современному подходу мы стремимся предоставлять нашим клиентам надежную, высококачественную продукцию и оперативную поддержку для бесперебойного продолжения их операций.",
                 aboutText2: "Наша миссия — предоставлять высококачественные технические услуги, надежную продукцию и устойчивые решения. Мы стремимся предоставлять нашим клиентам высококвалифицированную техническую поддержку и профессиональные услуги.",
