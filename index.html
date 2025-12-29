@@ -193,8 +193,40 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            min-height: calc(100vh - 70px);
             width: 100%;
+            flex: 1;
+        }
+        
+        /* HOME SECTION - ВЕРТИКАЛЬНЫЙ МАКЕТ */
+        .home-images-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 100%;
+            flex: 1;
+        }
+        
+        .home-image-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            width: 100%;
+        }
+        
+        .home-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .home-image:hover {
+            transform: scale(1.02);
         }
         
         .company-name {
@@ -436,7 +468,7 @@
         
         /* ========== RESPONSIVE BREAKPOINTS ========== */
         
-        /* 14" ekranlar (1366x768 ve daha kicik) */
+        /* 14" экраны (1366x768 и меньше) */
         @media screen and (max-width: 1366px) {
             .logo-placeholder {
                 font-size: 14px;
@@ -465,6 +497,10 @@
                 padding: 20px 15px;
             }
             
+            .home-images-container {
+                gap: 15px;
+            }
+            
             .company-name {
                 font-size: 24px;
             }
@@ -474,7 +510,7 @@
             }
         }
         
-        /* 15.6" ve 16" ekranlar (1440x900 - 1920x1080) */
+        /* 15.6" и 16" экраны (1440x900 - 1920x1080) */
         @media screen and (min-width: 1367px) and (max-width: 1920px) {
             .logo-placeholder {
                 font-size: 15px;
@@ -503,12 +539,16 @@
                 padding: 25px 20px;
             }
             
+            .home-images-container {
+                gap: 20px;
+            }
+            
             .company-name {
                 font-size: 26px;
             }
         }
         
-        /* 19" ve 24" ekranlar (1921px - 2560px) */
+        /* 19" и 24" экраны (1921px - 2560px) */
         @media screen and (min-width: 1921px) and (max-width: 2560px) {
             .navbar {
                 padding: 15px 30px;
@@ -542,6 +582,10 @@
                 padding: 40px 30px;
             }
             
+            .home-images-container {
+                gap: 30px;
+            }
+            
             .company-name {
                 font-size: 32px;
             }
@@ -560,7 +604,7 @@
             }
         }
         
-        /* 27" ve 32" ekranlar (2561px ve daha boyuk) */
+        /* 27" и 32" экраны (2561px и больше) */
         @media screen and (min-width: 2561px) {
             .navbar {
                 padding: 20px 40px;
@@ -594,6 +638,10 @@
                 padding: 50px 40px;
             }
             
+            .home-images-container {
+                gap: 40px;
+            }
+            
             .company-name {
                 font-size: 40px;
             }
@@ -612,7 +660,21 @@
             }
         }
         
-        /* TABLET VE TELEFONLAR (768px ve daha kicik) */
+        /* Для очень широких мониторов - делаем изображения рядом */
+        @media screen and (min-width: 1920px) and (min-aspect-ratio: 16/9) {
+            .home-images-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .home-image-wrapper {
+                width: 48%;
+                max-height: 80vh;
+            }
+        }
+        
+        /* TABLETS AND PHONES (768px и меньше) */
         @media screen and (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -657,6 +719,10 @@
                 padding: 5px 10px;
                 font-size: 11px;
                 min-width: 60px;
+            }
+            
+            .home-images-container {
+                gap: 15px;
             }
             
             .split-container {
@@ -784,21 +850,21 @@
     
     <!-- MAIN CONTENT AREA -->
     <div class="main-content">
-        <!-- HOME SECTION WITH TWO IMAGES SIDE BY SIDE -->
+        <!-- HOME SECTION WITH TWO IMAGES VERTICALLY -->
         <div class="page-section active" id="home-section">
-            <div class="content" style="padding: 20px; width: 100%; max-width: 100%;">
-                <div style="display: flex; width: 100%; gap: 20px;">
-                    <!-- LEFT SIDE 50% -->
-                    <div style="width: 50%;">
+            <div class="content">
+                <div class="home-images-container">
+                    <!-- FIRST IMAGE -->
+                    <div class="home-image-wrapper">
                         <img src="https://i.ibb.co/Z1VX4df9/marine-offshore-1.png" alt="marine offshore 1" 
-                             style="width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 0 25px rgba(0, 255, 255, 0.4); border: 2px solid rgba(0, 255, 255, 0.3);">
+                             class="home-image" id="home-image-1">
                     </div>
                     
-                    <!-- RIGHT SIDE 50% -->
-                    <div style="width: 50%;">
+                    <!-- SECOND IMAGE -->
+                    <div class="home-image-wrapper">
                         <img src="https://i.ibb.co/4gntJBhz/plattform-med-gassturbin-shutterstock-377322847.jpg" 
                              alt="plattform med gassturbin shutterstock 377322847" 
-                             style="width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 0 25px rgba(0, 255, 255, 0.4); border: 2px solid rgba(0, 255, 255, 0.3);">
+                             class="home-image" id="home-image-2">
                     </div>
                 </div>
             </div>
@@ -931,6 +997,30 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        // Функция для оптимизации высоты изображений
+        function optimizeHomeImages() {
+            const homeSection = document.getElementById('home-section');
+            if (!homeSection || !homeSection.classList.contains('active')) return;
+            
+            const screenHeight = window.innerHeight;
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const availableHeight = screenHeight - navbarHeight - 60; // 60px для отступов
+            
+            const imageWrappers = document.querySelectorAll('.home-image-wrapper');
+            const gap = window.innerWidth <= 768 ? 15 : 20;
+            
+            // Оптимальная высота для каждого изображения
+            const imageHeight = (availableHeight - gap) / 2;
+            
+            imageWrappers.forEach(wrapper => {
+                wrapper.style.height = `${imageHeight}px`;
+                wrapper.style.minHeight = `${imageHeight}px`;
+                wrapper.style.maxHeight = `${imageHeight}px`;
+            });
+            
+            console.log(`Screen: ${window.innerWidth}x${window.innerHeight}, Image height: ${imageHeight}px`);
+        }
+        
         // ORTAQ KUB ANİMASİYASI FUNKSİYASI - SADƏ VERSİYA
         let cubeAnimationInstances = {}; // Store animation instances
         
@@ -1294,11 +1384,8 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            // İlk açılışda ev səhifəsini aktiv et
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('home-section').classList.add('active');
+            // Optimize images on initial load
+            optimizeHomeImages();
             
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -1314,14 +1401,17 @@
                     const sectionElement = document.getElementById(sectionId + '-section');
                     sectionElement.classList.add('active');
                     
-                    // Əgər kontakt və ya layihələr bölməsinə keçiriksə, kub animasiyasını başlat
+                    // Если перешли на главную страницу, оптимизируем изображения
+                    if (sectionId === 'home') {
+                        setTimeout(optimizeHomeImages, 50);
+                    }
+                    
+                    // Если перешли на контакт или проекты, запускаем анимацию куба
                     if (sectionId === 'contact') {
-                        // Small delay to ensure the container is visible before creating animation
                         setTimeout(() => {
                             createCubeAnimation('cube-animation');
                         }, 50);
                     } else if (sectionId === 'projects') {
-                        // Small delay to ensure the container is visible before creating animation
                         setTimeout(() => {
                             createCubeAnimation('projects-cube-animation');
                         }, 50);
@@ -1336,9 +1426,14 @@
                 });
             });
             
-            // Original code initialized both animations on load
-            // But we only initialize projects animation since contact is hidden
-            createCubeAnimation('projects-cube-animation');
+            // Автоматическая оптимизация при изменении размера окна
+            window.addEventListener('resize', optimizeHomeImages);
+            
+            // Автоматическая оптимизация при загрузке изображений
+            const images = document.querySelectorAll('.home-image');
+            images.forEach(img => {
+                img.addEventListener('load', optimizeHomeImages);
+            });
         });
     </script>
 </body>
