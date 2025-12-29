@@ -187,7 +187,7 @@
         
         /* MAIN CONTENT RESPONSIVE */
         .content {
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -197,7 +197,7 @@
             flex: 1;
         }
         
-        /* HOME SECTION - ВЕРТИКАЛЬНЫЙ МАКЕТ */
+        /* HOME SECTION - ВЕРТИКАЛЬНЫЙ МАКЕТ С ОПТИМИЗАЦИЕЙ ВЫСОТЫ */
         .home-images-container {
             display: flex;
             flex-direction: column;
@@ -205,6 +205,7 @@
             width: 100%;
             max-width: 100%;
             flex: 1;
+            min-height: calc(100vh - 110px); /* Минимальная высота: экран минус навбар и отступы */
         }
         
         .home-image-wrapper {
@@ -216,11 +217,14 @@
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
             border: 2px solid rgba(0, 255, 255, 0.3);
             width: 100%;
+            flex: 1; /* Каждое изображение занимает равную высоту */
+            min-height: 0; /* Важно для flex-контейнеров */
         }
         
         .home-image {
             width: 100%;
-            height: auto;
+            height: 100%; /* ВАЖНО: высота 100% от родительского контейнера */
+            object-fit: cover; /* Сохраняет пропорции, заполняя контейнер */
             display: block;
             transition: transform 0.3s ease;
         }
@@ -494,11 +498,12 @@
             }
             
             .content {
-                padding: 20px 15px;
+                padding: 15px;
             }
             
             .home-images-container {
                 gap: 15px;
+                min-height: calc(100vh - 100px);
             }
             
             .company-name {
@@ -536,11 +541,12 @@
             }
             
             .content {
-                padding: 25px 20px;
+                padding: 20px;
             }
             
             .home-images-container {
                 gap: 20px;
+                min-height: calc(100vh - 110px);
             }
             
             .company-name {
@@ -579,11 +585,12 @@
             }
             
             .content {
-                padding: 40px 30px;
+                padding: 30px;
             }
             
             .home-images-container {
-                gap: 30px;
+                gap: 25px;
+                min-height: calc(100vh - 130px);
             }
             
             .company-name {
@@ -635,11 +642,12 @@
             }
             
             .content {
-                padding: 50px 40px;
+                padding: 40px;
             }
             
             .home-images-container {
-                gap: 40px;
+                gap: 30px;
+                min-height: calc(100vh - 150px);
             }
             
             .company-name {
@@ -660,17 +668,21 @@
             }
         }
         
-        /* Для очень широких мониторов - делаем изображения рядом */
-        @media screen and (min-width: 1920px) and (min-aspect-ratio: 16/9) {
+        /* Для очень высоких экранов (2K, 4K с большой высотой) */
+        @media screen and (min-height: 1440px) {
             .home-images-container {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
+                min-height: calc(100vh - 150px);
             }
             
             .home-image-wrapper {
-                width: 48%;
-                max-height: 80vh;
+                max-height: 50vh;
+            }
+        }
+        
+        /* Для ультра-широких мониторов (соотношение больше 16:9) */
+        @media screen and (min-width: 2560px) and (min-aspect-ratio: 16/9) {
+            .home-images-container {
+                gap: 35px;
             }
         }
         
@@ -721,8 +733,13 @@
                 min-width: 60px;
             }
             
+            .content {
+                padding: 15px 10px;
+            }
+            
             .home-images-container {
                 gap: 15px;
+                min-height: calc(100vh - 130px);
             }
             
             .split-container {
@@ -740,6 +757,18 @@
             
             .contact-info {
                 padding: 15px;
+            }
+        }
+        
+        /* Для очень маленьких экранов */
+        @media screen and (max-width: 480px) {
+            .home-images-container {
+                gap: 12px;
+                min-height: calc(100vh - 120px);
+            }
+            
+            .content {
+                padding: 10px;
             }
         }
         
@@ -997,30 +1026,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Функция для оптимизации высоты изображений
-        function optimizeHomeImages() {
-            const homeSection = document.getElementById('home-section');
-            if (!homeSection || !homeSection.classList.contains('active')) return;
-            
-            const screenHeight = window.innerHeight;
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
-            const availableHeight = screenHeight - navbarHeight - 60; // 60px для отступов
-            
-            const imageWrappers = document.querySelectorAll('.home-image-wrapper');
-            const gap = window.innerWidth <= 768 ? 15 : 20;
-            
-            // Оптимальная высота для каждого изображения
-            const imageHeight = (availableHeight - gap) / 2;
-            
-            imageWrappers.forEach(wrapper => {
-                wrapper.style.height = `${imageHeight}px`;
-                wrapper.style.minHeight = `${imageHeight}px`;
-                wrapper.style.maxHeight = `${imageHeight}px`;
-            });
-            
-            console.log(`Screen: ${window.innerWidth}x${window.innerHeight}, Image height: ${imageHeight}px`);
-        }
-        
         // ORTAQ KUB ANİMASİYASI FUNKSİYASI - SADƏ VERSİYA
         let cubeAnimationInstances = {}; // Store animation instances
         
@@ -1384,9 +1389,6 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            // Optimize images on initial load
-            optimizeHomeImages();
-            
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     navButtons.forEach(btn => btn.classList.remove('active'));
@@ -1400,11 +1402,6 @@
                     
                     const sectionElement = document.getElementById(sectionId + '-section');
                     sectionElement.classList.add('active');
-                    
-                    // Если перешли на главную страницу, оптимизируем изображения
-                    if (sectionId === 'home') {
-                        setTimeout(optimizeHomeImages, 50);
-                    }
                     
                     // Если перешли на контакт или проекты, запускаем анимацию куба
                     if (sectionId === 'contact') {
@@ -1426,14 +1423,9 @@
                 });
             });
             
-            // Автоматическая оптимизация при изменении размера окна
-            window.addEventListener('resize', optimizeHomeImages);
-            
-            // Автоматическая оптимизация при загрузке изображений
-            const images = document.querySelectorAll('.home-image');
-            images.forEach(img => {
-                img.addEventListener('load', optimizeHomeImages);
-            });
+            // Original code initialized both animations on load
+            // But we only initialize projects animation since contact is hidden
+            createCubeAnimation('projects-cube-animation');
         });
     </script>
 </body>
