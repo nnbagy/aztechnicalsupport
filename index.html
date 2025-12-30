@@ -1542,26 +1542,26 @@
         });
     </script>
     
-    <!-- ЗАЩИТА ОТ КОПИРОВАНИЯ -->
-    <script>
-        // Отключаем выделение текста
-        document.addEventListener('selectstart', function(e) {
-            e.preventDefault();
-        });
-        
-        // Предупреждение при попытке сохранить страницу
-        window.addEventListener('beforeunload', function(e) {
-            return 'Авторские права защищены © Samir Gozalov. Копирование кода запрещено.';
-        });
-        
-        // Добавляем водяной знак при копировании
-        document.addEventListener('copy', function(e) {
-            const selection = window.getSelection();
-            const copyright = '\n\n---\nАвторские права © 2025 Samir Gozalov\nКопирование запрещено\n---\n';
-            e.clipboardData.setData('text/plain', selection + copyright);
-            e.preventDefault();
-            alert('Авторские права защищены. Копирование запрещено.');
-        });
-    </script>
+<!-- ЗАЩИТА ОТ КОПИРОВАНИЯ -->
+<script>
+    // Отключаем выделение текста
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+    
+    // Предупреждение при попытке сохранить страницу
+    window.addEventListener('beforeunload', function(e) {
+        return 'Авторские права защищены © Samir Gozalov. Копирование кода запрещено.';
+    });
+    
+    // Добавляем водяной знак при копировании
+    document.addEventListener('copy', function(e) {
+        const selection = window.getSelection();
+        const copyright = '\n\n---\nАвторские права © 2025 Samir Gozalov\nКопирование запрещено\n---\n';
+        e.clipboardData.setData('text/plain', selection + copyright);
+        e.preventDefault();
+        alert('Авторские права защищены. Копирование запрещено.');
+    });
+</script>
 </body>
 </html>
