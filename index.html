@@ -13,34 +13,34 @@
             e.preventDefault();
         });
         
-        // Запрет на копирование через Ctrl+C, Ctrl+U, F12
-        document.addEventListener('keydown', function(e) {
-            // Блокировка Ctrl+U (просмотр исходного кода)
-            if (e.ctrlKey && e.key === 'u') {
-                e.preventDefault();
-                alert('Авторские права защищены © Samir Gozalov. Копирование кода запрещено.');
-                return false;
-            }
-            
-            // Блокировка Ctrl+Shift+I и F12 (инструменты разработчика)
-            if ((e.ctrlKey && e.shiftKey && e.key === 'I') || e.key === 'F12') {
-                e.preventDefault();
-                alert('Авторские права защищены © Samir Gozalov. Инструменты разработчика отключены.');
-                return false;
-            }
-            
-            // Блокировка Ctrl+S (сохранение страницы)
-            if (e.ctrlKey && e.key === 's') {
-                e.preventDefault();
-                alert('Авторские права защищены © Samir Gozalov. Сохранение страницы запрещено.');
-                return false;
-            }
-            
-            // Блокировка Ctrl+C, Ctrl+V, Ctrl+X
-            if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'x')) {
-                alert('Авторские права защищены © Samir Gozalov. Копирование контента запрещено.');
-            }
-        });
+// Запрет на копирование через Ctrl+C, Ctrl+U, F12
+document.addEventListener('keydown', function(e) {
+    // Блокировка Ctrl+U (просмотр исходного кода)
+    if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        alert('Доступ к исходному коду заблокирован. Авторские права защищены.');
+        return false;
+    }
+    
+    // Блокировка Ctrl+Shift+I и F12 (инструменты разработчика)
+    if ((e.ctrlKey && e.shiftKey && e.key === 'I') || e.key === 'F12') {
+        e.preventDefault();
+        alert('Инструменты разработчика отключены. Авторские права защищены.');
+        return false;
+    }
+    
+    // Блокировка Ctrl+S (сохранение страницы)
+    if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        alert('Сохранение страницы запрещено. Авторские права защищены.');
+        return false;
+    }
+    
+    // Блокировка Ctrl+C, Ctrl+V, Ctrl+X
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'x')) {
+        alert('Копирование контента запрещено. Авторские права защищены.');
+    }
+});
         
         // Скрытие кода при открытии через Ctrl+U
         window.addEventListener('load', function() {
@@ -1549,9 +1549,9 @@
         });
         
         // Предупреждение при попытке сохранить страницу
-        window.addEventListener('beforeunload', function(e) {
-            return 'Авторские права защищены © Samir Gozalov. Копирование кода запрещено.';
-        });
+window.addEventListener('beforeunload', function(e) {
+    return 'Внимание: Авторские права защищены. Копирование контента запрещено.';
+});
         
         // Добавляем водяной знак при копировании
         document.addEventListener('copy', function(e) {
