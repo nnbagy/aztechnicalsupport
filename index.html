@@ -47,21 +47,29 @@
             margin-right: 15px;
         }
         
-        .logo-placeholder {
-            color: #00ffff;
-            font-size: 16px;
-            font-weight: bold;
-            background-color: rgba(0, 255, 255, 0.05);
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-align: center;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 240px;
-        }
+.logo-placeholder {
+    color: white; /* Белый текст как у кнопок */
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.8); /* Черный фон как у кнопок */
+    padding: 6px 12px; /* Отступы как у кнопок */
+    border-radius: 10px; /* Скругление как у кнопок */
+    text-align: center;
+    border: 2px solid cyan; /* Синяя граница как у кнопок */
+    box-shadow: 0 0 10px cyan; /* Синее свечение как у кнопок */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 240px;
+    cursor: default; /* Обычный курсор (не кликабельный) */
+    height: 34px; /* Высота как у кнопок */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Убираем все hover эффекты: */
+    transition: none !important;
+}
         
         .nav-center {
             display: flex;
