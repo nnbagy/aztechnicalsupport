@@ -5,7 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AZHYDRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ЗАЩИТА АВТОРСКИХ ПРАВ -->
+    <script>
+        // Запрет на копирование кода
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        // Запрет на копирование через Ctrl+C, Ctrl+U, F12
+        document.addEventListener('keydown', function(e) {
+            // Блокировка Ctrl+U (просмотр исходного кода)
+            if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                alert('Авторские права защищены © Samir Gozalov. Копирование кода запрещено.');
+                return false;
+            }
+            
+            // Блокировка Ctrl+Shift+I и F12 (инструменты разработчика)
+            if ((e.ctrlKey && e.shiftKey && e.key === 'I') || e.key === 'F12') {
+                e.preventDefault();
+                alert('Авторские права защищены © Samir Gozalov. Инструменты разработчика отключены.');
+                return false;
+            }
+            
+            // Блокировка Ctrl+S (сохранение страницы)
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                alert('Авторские права защищены © Samir Gozalov. Сохранение страницы запрещено.');
+                return false;
+            }
+            
+            // Блокировка Ctrl+C, Ctrl+V, Ctrl+X
+            if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'x')) {
+                alert('Авторские права защищены © Samir Gozalov. Копирование контента запрещено.');
+            }
+        });
+        
+        // Скрытие кода при открытии через Ctrl+U
+        window.addEventListener('load', function() {
+            // Добавляем скрытый комментарий с предупреждением
+            const warning = document.createElement('div');
+            warning.id = 'copyright-warning';
+            warning.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: black;
+                color: red;
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                z-index: 999999;
+                padding: 20px;
+                display: none;
+            `;
+            warning.innerHTML = `
+                <div>
+                    <h1 style="color: yellow; font-size: 36px;">⚠ ВНИМАНИЕ ⚠</h1>
+                    <p style="color: white; font-size: 20px; margin: 20px 0;">
+                        АВТОРСКИЕ ПРАВА ЗАЩИЩЕНЫ © 2025 SAMIR GOZALOV
+                    </p>
+                    <p style="color: cyan; font-size: 18px;">
+                        Весь код, дизайн и контент этого сайта являются интеллектуальной собственностью.<br>
+                        Любое копирование, распространение или модификация кода ЗАПРЕЩЕНЫ.
+                    </p>
+                    <p style="color: lime; font-size: 16px; margin-top: 30px;">
+                        Для сотрудничества обращайтесь: office@aztechnicalsupport.az
+                    </p>
+                </div>
+            `;
+            document.body.appendChild(warning);
+        });
+    </script>
+    
     <style>
+        /*
+        =============================================
+        АВТОРСКИЕ ПРАВА ЗАЩИЩЕНЫ © 2025 SAMIR GOZALOV
+        =============================================
+        Весь код, дизайн и контент этого сайта являются 
+        интеллектуальной собственностью Samir Gozalov.
+        Любое копирование, распространение или модификация 
+        кода без разрешения автора ЗАПРЕЩЕНЫ.
+        
+        Для сотрудничества: office@aztechnicalsupport.az
+        =============================================
+        */
+        
         * {
             margin: 0;
             padding: 0;
@@ -1208,7 +1299,7 @@
                 
                 // Catalog Section
                 catalogTitle: "Kataloq",
-                catalogText: "Kataloqa daxil olan əsas məhsul qrupları:",
+                catalogText: "Kataloqa daxil olan əsas мəhsul qrupları:",
                 catalogItem1: "Hidravlik nasoslar və motorlar",
                 catalogItem2: "Hidravlik silindrlər",
                 catalogItem3: "Hidravlik klapanlar və paylayıcılar",
@@ -1235,7 +1326,7 @@
                 
                 // Projects Section
                 projectsTitle: "Layihələr",
-                projectsText: "Uğurla həyata keçirdiyimiz bəzi layihələr. Şirkətimiz neft-qaz və gəmiçilik sənayesində mürəkkəb texniki layihələrin həyata keçirilməsində geniş təcrübəyə malikdir.",
+                projectsText: "Uğurla həyata keçirdiyimiz bəzi layihələr. Шirkətimiz neft-qaz və gəmiçilik sənayesində mürəkkəb texniki layihələrin həyata keçirilməsində geniş təcrübəyə malikdir.",
                 
                 // Contact Section
                 contactTitle: "Bizim ilə Əlaqə",
@@ -1257,7 +1348,7 @@
                 projects: "ПРОЕКТЫ",
                 contact: "КОНТАКТЫ",
                 
-                // About Section (ANA SƏHİFƏDƏKİ МƏTN BURADA)
+                // About Section (ANA SƏHİFƏDƏКİ МƏTN BURADA)
                 aboutTitle: "О нас",
                 aboutText1: "Наша компания была основана в 2025 году в соответствии с законодательством Азербайджанской Республики. Основное направление нашей деятельности заключается в поставке, продаже и сервисном обслуживании гидравлического и механического оборудования для нефтегазовой и судоходной промышленности. Несмотря на то, что мы являемся новой компанией, благодаря профессиональному опыту нашей команды и современному подходу мы стремимся предоставлять нашим клиентам надежную, высококачественную продукцию и оперативную поддержку для бесперебойного продолжения их операций.",
                 aboutText2: "Наша миссия — предоставлять высококачественные технические услуги, надежную продукцию и устойчивые решения. Мы стремимся предоставлять нашим клиентам высококвалифицированную техническую поддержку и профессиональные услуги.",
@@ -1313,7 +1404,7 @@
                 projects: "PROJECTS",
                 contact: "CONTACT",
                 
-                // About Section (ANA SƏHİFƏDƏKİ МƏTN BURADA)
+                // About Section (ANA SƏHİFƏDƏКİ МƏTN BURADA)
                 aboutTitle: "About Us",
                 aboutText1: "Our company was established in 2025 in accordance with the legislation of the Republic of Azerbaijan. Our main area of activity is the supply, sale, and service of hydraulic and mechanical equipment for the oil-gas and shipping industries. Although we are a newly established company, thanks to the professional experience of our team and modern approach, we aim to provide our customers with reliable, high-quality products and operational support for the uninterrupted continuation of their operations.",
                 aboutText2: "Our mission is to provide high-quality technical service, reliable products, and sustainable solutions. We are committed to providing our customers with high-level technical support and professional service.",
@@ -1447,6 +1538,28 @@
             // Original code initialized both animations on load
             // But we only initialize projects animation since contact is hidden
             createCubeAnimation('projects-cube-animation');
+        });
+    </script>
+    
+    <!-- ЗАЩИТА ОТ КОПИРОВАНИЯ -->
+    <script>
+        // Отключаем выделение текста
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+        
+        // Предупреждение при попытке сохранить страницу
+        window.addEventListener('beforeunload', function(e) {
+            return 'Авторские права защищены © Samir Gozalov. Копирование кода запрещено.';
+        });
+        
+        // Добавляем водяной знак при копировании
+        document.addEventListener('copy', function(e) {
+            const selection = window.getSelection();
+            const copyright = '\n\n---\nАвторские права © 2025 Samir Gozalov\nКопирование запрещено\n---\n';
+            e.clipboardData.setData('text/plain', selection + copyright);
+            e.preventDefault();
+            alert('Авторские права защищены. Копирование запрещено.');
         });
     </script>
 </body>
