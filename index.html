@@ -1548,9 +1548,11 @@ document.addEventListener('keydown', function(e) {
             e.preventDefault();
         });
         
-        // Предупреждение при попытке сохранить страницу
+// Предупреждение при попытке сохранить страницу
 window.addEventListener('beforeunload', function(e) {
-    return 'Внимание: Авторские права защищены. Копирование контента запрещено.';
+    // Стандартный текст, который будет отображать браузер
+    e.preventDefault();
+    e.returnValue = '';
 });
         
         // Добавляем водяной знак при копировании
