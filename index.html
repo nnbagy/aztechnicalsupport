@@ -25,20 +25,20 @@ document.addEventListener('keydown', function(e) {
     // Блокировка Ctrl+Shift+I и F12 (инструменты разработчика)
     if ((e.ctrlKey && e.shiftKey && e.key === 'I') || e.key === 'F12') {
         e.preventDefault();
-        alert('Авторские права защищены. Инструменты разработчика отключены.');
+      
         return false;
     }
     
     // Блокировка Ctrl+S (сохранение страницы)
     if (e.ctrlKey && e.key === 's') {
         e.preventDefault();
-        alert('Авторские права защищены. Сохранение страницы запрещено.');
+       
         return false;
     }
     
     // Блокировка Ctrl+C, Ctrl+V, Ctrl+X
     if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'x')) {
-        alert('Авторские права защищены. Копирование контента запрещено.');
+    
     }
 });
         
