@@ -6,10 +6,96 @@
     <title>AZHYDRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-
+    <!-- ЗАЩИТА АВТОРСКИХ ПРАВ -->
+    <script>
+        // Запрет на копирование кода
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+// Запрет на копирование через Ctrl+C, Ctrl+U, F12
+document.addEventListener('keydown', function(e) {
+    // Блокировка Ctrl+U (просмотр исходного кода)
+    if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        alert('Авторские права защищены. Копирование кода запрещено.');
+        return false;
+    }
+    
+    // Блокировка Ctrl+Shift+I и F12 (инструменты разработчика)
+    if ((e.ctrlKey && e.shiftKey && e.key === 'I') || e.key === 'F12') {
+        e.preventDefault();
+        alert('Авторские права защищены. Инструменты разработчика отключены.');
+        return false;
+    }
+    
+    // Блокировка Ctrl+S (сохранение страницы)
+    if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        alert('Авторские права защищены. Сохранение страницы запрещено.');
+        return false;
+    }
+    
+    // Блокировка Ctrl+C, Ctrl+V, Ctrl+X
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'x')) {
+        alert('Авторские права защищены. Копирование контента запрещено.');
+    }
+});
+        
+        // Скрытие кода при открытии через Ctrl+U
+        window.addEventListener('load', function() {
+            // Добавляем скрытый комментарий с предупреждением
+            const warning = document.createElement('div');
+            warning.id = 'copyright-warning';
+            warning.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: black;
+                color: red;
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                z-index: 999999;
+                padding: 20px;
+                display: none;
+            `;
+            warning.innerHTML = `
+                <div>
+                    <h1 style="color: yellow; font-size: 36px;">⚠ ВНИМАНИЕ ⚠</h1>
+                    <p style="color: white; font-size: 20px; margin: 20px 0;">
+                        АВТОРСКИЕ ПРАВА ЗАЩИЩЕНЫ © 2025 SAMIR GOZALOV
+                    </p>
+                    <p style="color: cyan; font-size: 18px;">
+                        Весь код, дизайн и контент этого сайта являются интеллектуальной собственностью.<br>
+                        Любое копирование, распространение или модификация кода ЗАПРЕЩЕНЫ.
+                    </p>
+                    <p style="color: lime; font-size: 16px; margin-top: 30px;">
+                        Для сотрудничества обращайтесь: office@aztechnicalsupport.az
+                    </p>
+                </div>
+            `;
+            document.body.appendChild(warning);
+        });
+    </script>
     
     <style>
-
+        /*
+        =============================================
+        АВТОРСКИЕ ПРАВА ЗАЩИЩЕНЫ © 2025 SAMIR GOZALOV
+        =============================================
+        Весь код, дизайн и контент этого сайта являются 
+        интеллектуальной собственностью Samir Gozalov.
+        Любое копирование, распространение или модификация 
+        кода без разрешения автора ЗАПРЕЩЕНЫ.
+        
+        Для сотрудничества: office@aztechnicalsupport.az
+        =============================================
+        */
         
         * {
             margin: 0;
